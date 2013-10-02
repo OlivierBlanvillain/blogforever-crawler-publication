@@ -13,6 +13,8 @@ Web pages:
 - [Spinn3r: RSS Content, News Feeds, News Content, News Crawler and Web Crawler APIs](http://spinn3r.com/)
 - [Prenetation on scrapy](http://asheesh.org/pub/scrapy-talk/#1)
 - [Google stats of the web](https://developers.google.com/speed/articles/web-metrics?csw=1)
+- [GoogleBot is Chrome](http://ipullrank.com/googlebot-is-chrome/)
+- [Ajax crawl tests](http://ajax.rswebanalytics.com/)
 
 Images:
 
