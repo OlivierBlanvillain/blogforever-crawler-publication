@@ -5,7 +5,8 @@ Papers:
 - [Self-supervised Automated Wrapper Generation for Weblog Data Extraction](https://mail-attachment.googleusercontent.com/attachment/u/0/?ui=2&ik=ae2ab1330d&view=att&th=1416f2e5f2e3ac3f&attid=0.1&disp=inline&realattid=f_hm7r8j6k0&safe=1&zw&saduie=AG9B_P8OZ1oKWvzPCKL5vxLfM3hY&sadet=1380550058811&sads=i9Iirg-zGIlP_eFFWu20_QqQxxE)
 - [Archiving Data Objects using Web Feeds](http://hal.archives-ouvertes.fr/docs/00/53/79/62/PDF/iwawienna.pdf)
 - [Intelligent and Adaptive Crawling of Web Applications for Web Archiving](http://pierre.senellart.com/publications/faheem2013intelligent.pdf)
-- [Self-supervised Automated Wrapper Generationfor Weblog Data Extraction](http://www.scribd.com/doc/172396337/Published)
+- [Self-supervised Automated Wrapper Generation for Weblog Data Extraction](http://www.scribd.com/doc/172396337/Published)
+- [Zero-cost Labelling with Web Feeds for Weblog Data Extraction](http://www2013.org/companion/p73.pdf)
 
 Web pages:
 
