@@ -15,6 +15,7 @@ Web pages:
 - [Google stats of the web](https://developers.google.com/speed/articles/web-metrics?csw=1)
 - [GoogleBot is Chrome](http://ipullrank.com/googlebot-is-chrome/)
 - [Ajax crawl tests](http://ajax.rswebanalytics.com/)
+- [How to draw CPU graph](http://stackoverflow.com/questions/13792450/extracting-cpu-use-for-specific-process-periodically)
 
 Images:
 
