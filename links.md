@@ -16,7 +16,7 @@ Web pages:
 - [GoogleBot is Chrome](http://ipullrank.com/googlebot-is-chrome/)
 - [Ajax crawl tests](http://ajax.rswebanalytics.com/)
 - [How to draw CPU graph](http://stackoverflow.com/questions/13792450/extracting-cpu-use-for-specific-process-periodically)
-
+- [Evaluating text extraction algorithms](http://tomazkovacic.com/blog/122/evaluating-text-extraction-algorithms/)
 Images:
 
 - [Google spiders image](http://www.hdwallpaperbackground.com/uploads/allimg/130619/google%20Theme%20HD%20Desktop%20Wallpapers%207_1440x900.jpg)
