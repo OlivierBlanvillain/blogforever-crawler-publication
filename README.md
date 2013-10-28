@@ -7,4 +7,4 @@ Install:
 
 Compile:
 
-    latexmk -pdf -pvc sigproc-sp.tex
+    latexmk -pdf -pvc main.tex
