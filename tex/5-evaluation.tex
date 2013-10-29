@@ -4,12 +4,36 @@
 What is evaluated (not comments, iframes, authors, dates...)
 
 \subsection{Content extraction}
+Compare:
+\begin{itemize}
+  \item Our solution
+  \item Boilerpipe \surl{https://github.com/misja/python-boilerpipe}
+  \item Goose \surl{https://github.com/grangier/python-goose}
+  \item Readability \surl{https://github.com/buriy/python-readability}
+\end{itemize}
+On:
 \begin{enumerate}
-  \item running time
-  \item quality of output compared
+  \item Running time
+  \begin{itemize}
+    \item Plot duration as a function of the page length
+    \item Plot duration as a function of the number or pages (our should only take time to build the rules)
+  \end{itemize}
+  \item Quality of output compared:
+  \begin{itemize}
+    \item Chart of success pourcentages
+  \end{itemize}
 \end{enumerate}
 
 \subsection{JavaScript rendering}
-\begin{enumerate}
-  \item running time
-\end{enumerate}
+Compare:
+\begin{itemize}
+  \item "Wget crawl" \surl{http://blogforever.eu/blog/2011/05/21/creating-a-snapshot-of-a-blog-post-using-wget/}
+  \item wkhtmltopdf \surl{http://code.google.com/p/wkhtmltopdf/}
+  \item Selenium + full browser
+  \item probably others
+\end{itemize}
+On:
+\begin{itemize}
+  \item Table comparing functionalities of each solution
+  \item Histogram of redering time per browser (phantomjs/chrome/firefox)
+\end{itemize}
