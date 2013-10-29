@@ -7,7 +7,6 @@ Papers:
 - [Intelligent and Adaptive Crawling of Web Applications for Web Archiving](http://pierre.senellart.com/publications/faheem2013intelligent.pdf)
 - [Zero-cost Labelling with Web Feeds for Weblog Data Extraction](http://www2013.org/companion/p73.pdf)
 - [OXPath: A Language for Scalable, Memory-efﬁcient Data Extraction from Web Applications](http://www.vldb.org/pvldb/vol4/p1016-furche.pdf)
-
 - [How to Read a Paper](http://zoo.cs.yale.edu/classes/cs722/2012/paper-reading.pdf)
 
 Web pages:
