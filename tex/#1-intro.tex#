@@ -1,6 +1,6 @@
 \section{Intro}
 
-Aims and contributions of this work. Example from my last paper to see the format:
+ims and contributions of this work. Example from my last paper to see the format:
 \surl{http://purl.pt/24107/1/iPres2013_PDF/CLEAR\%20a\%20credible\%20method\%20to\%20evaluate\%20website\%20archivability.pdf}
 
 \begin{enumerate}
@@ -8,10 +8,4 @@ Aims and contributions of this work. Example from my last paper to see the forma
   \item Explain the difficulties in harvesting blogs
   \item Explain why open source and Invenio
   \item Introduce the blog crawler
-\end{enumerate}
-
-Challenges consist of:
-\begin{enumerate}
-  \item Providing a high degree of automation
-  \item Dealing with large volumes of data
 \end{enumerate}
