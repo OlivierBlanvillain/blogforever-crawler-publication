@@ -1,0 +1,25 @@
+\section{Techniques}
+
+This section gives a high level overview of the techniques used in our crawler. We will first give an overview of the overall software architecture, precisely locating the different modules that are addressed in this paper. Secondly the JavaScript rendering process will be 
+
+# Architecture
+- top down
+- stateless, global scalability
+- scrapy, dl policies and post identification
+- item pipeline, modularity
+- js rendering done upfront, everything else general
+
+# JavaScript rendering
+- challenges
+Ajax
+Google Blogspot Dynamic Views: \surl{http://buzz.blogger.com/2012/02/dynamic-views-update-3-gadgets.html}, \surl{https://support.google.com/blogger/answer/1229061?hl=en}
+- present phjs, also here screenshot
+- ez of use vs power
+- our click show more use case
+- parallelization
+
+# Content Extraction
+- two phase process:
+- wrapper generation, next section
+- use per blog
+- a word about maintainability, given because by recompute them each tim
