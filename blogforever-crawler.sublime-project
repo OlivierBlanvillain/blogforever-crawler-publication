@@ -2,12 +2,12 @@
   "folders":
   [
     {
-      "path": "blogforever-crawler/",
+      "path": "../blogforever-crawler/",
       "file_exclude_patterns": [".*"],
       "folder_exclude_patterns": ["out", "img", "lib", ".scrapy"]
     },
     {
-      "path": "blogforever-crawler-publication/tex",
+      "path": "tex",
       "file_include_patterns": ["*.tex"]
     }
   ]
