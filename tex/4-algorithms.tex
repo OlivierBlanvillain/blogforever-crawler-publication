@@ -1,11 +1,28 @@
 \section{Algorithms}
+This section explains in details the content wrapper generation algorithm and it's variations for authors, date and comments. We will see how our seemingly brute force approach can be tweaked in order to achieve reasonable running times.
+
+\subsection{intro}
+Being a subset of XML, (HTML) (HTML) is often categorized as semi-structured document*. Root labeled ordered tree
+
+"div"
+
+When working with blogs, web feed are saving grace 
+
+definitions, args and return value
 
 \subsection{Content extraction}
-\begin{enumerate}
-  \item The algorithm
-  \item Choice of selectors (id, else class)
-  \item Choice of string similarity
-\end{enumerate}
+related algos, generale brute force vue
+
+algorithm
+selectors (id, else class)
+string similarity
+
 
 \subsection{Variations for comments and date}
 All the details about how to use the same algorithm to extract comments and dates.
+
+
+
+Concretely, a wrapper is an procedure to extract relevant data from a document. In our case, we aim to build queries in the XML path language (XPath) to extract relevant data from blog posts.
+
+Each time a new crawl is initiated our system builds a set of wrappers that are then used for the entirety of the blog. With this wrappers in hands, extraction data from the HTML page of a blog post is nothing more than parsing the HTML page running each XPath query, which can all by done with standard * libraries.
