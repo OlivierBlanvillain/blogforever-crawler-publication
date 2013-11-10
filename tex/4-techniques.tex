@@ -1,0 +1,32 @@
+\section{Techniques}
+
+This section gives an overview of different techniques used in our crawler. We first show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display content. The overall software architecture with then be discussed, introducing the tools that come before and after the content extraction process: Scrapy and In2venio. *
+
+\subsection{JavaScript rendering}
+- challenges \\
+Ajax
+Google Blogspot Dynamic Views: \surl{http://buzz.blogger.com/2012/02/dynamic-views-update-3-gadgets.html}, \surl{https://support.google.com/blogger/answer/1229061?hl=en}
+- present phjs, also here screenshot \\
+- ez of use vs power \\
+- our click show more use case \\
+- parallelization \\
+- js rendering done upfront, everything else general \\
+
+\subsection{Architecture}
+\subsubsection{Item pipeline}
+- item pipeline, modularity \\
+
+\subsubsection{Scalability}
+- stateless \\
+- scrapyd \\
+
+
+\subsection{Enriching Scrapy}
+Our project is build on top of Scrapy\TODO{link}, an open source python framework for web crawling. In addition to the extraction aspects of the project, we also enrich the framework with two components specific to blog post extraction: blog post identification and download policies.
+
+Given an entry to a blog, Scrapy provides the infrastructure to look over all pages on the same domain. In order to identify the subset of pages that are actually blog posts, we build a "blog post identification" function that given an URL, returns whether or not it is a blog post. This function uses a regular expression that is constructed from the web feed entries: the only set of known blog post URLs.
+
+
+Due to space constraints, more precise description and evaluation of these components where not included in this paper.
+
+
