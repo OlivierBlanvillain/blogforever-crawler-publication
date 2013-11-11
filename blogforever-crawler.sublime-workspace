@@ -1,0 +1,1772 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sec",
+				"sec	Section"
+			],
+			[
+				"item",
+				"item	Itemize"
+			],
+			[
+				"con",
+				"constants"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"for",
+				"for	for - Yield"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "blogforever-crawler/bibcrawl/run.py",
+			"settings":
+			{
+				"buffer_size": 648,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "blogforever-crawler/bibcrawl/spiders/newcrawl.py",
+			"settings":
+			{
+				"buffer_size": 2495,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "blogforever-crawler/out.txt",
+			"settings":
+			{
+				"buffer_size": 417452,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "blogforever-crawler/bibcrawl/spiders/utils.py",
+			"settings":
+			{
+				"buffer_size": 5598,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "blogforever-crawler/bibcrawl/spiders/spiders_unit_tests.py",
+			"settings":
+			{
+				"buffer_size": 831,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "blogforever-crawler/Guardfile",
+			"settings":
+			{
+				"buffer_size": 168,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 324.0,
+		"selected_items":
+		[
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"tolgsta",
+				"View: Toggle Status Bar"
+			],
+			[
+				"toglest",
+				"View: Toggle Status Bar"
+			],
+			[
+				"setting",
+				"Preferences: Settings - User"
+			],
+			[
+				"sor",
+				"Sort Lines"
+			],
+			[
+				"user ",
+				"Preferences: Settings - User"
+			],
+			[
+				"status",
+				"View: Toggle Status Bar"
+			],
+			[
+				"settun",
+				"Preferences: Settings - User"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"previ",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"gitdifi",
+				"Git: Diff Current File"
+			],
+			[
+				"gitdi",
+				"Git: Diff Current File"
+			],
+			[
+				"shell",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"less",
+				"Set Syntax: LESS"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"she",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"shel",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"keyb",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"uer",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"git file",
+				"Git: Log Current File"
+			],
+			[
+				"gitd",
+				"Git: Diff All"
+			],
+			[
+				"setuser",
+				"Preferences: Settings - User"
+			],
+			[
+				"setus",
+				"Preferences: Settings - User"
+			],
+			[
+				"kede",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"statu",
+				"View: Toggle Status Bar"
+			],
+			[
+				"markd",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"togs",
+				"View: Toggle Status Bar"
+			],
+			[
+				"togstat",
+				"View: Toggle Status Bar"
+			],
+			[
+				"toglsa",
+				"View: Toggle Status Bar"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				"git hi",
+				"Git: Commit history"
+			],
+			[
+				"git ",
+				"Git: Log Current File"
+			],
+			[
+				"toglcons",
+				"View: Toggle Console"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"conso",
+				"View: Toggle Console"
+			],
+			[
+				"mark",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"togco",
+				"View: Toggle Console"
+			],
+			[
+				"togc",
+				"View: Toggle Console"
+			],
+			[
+				"instll",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"ke",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"gits",
+				"Git: Status"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"tos",
+				"View: Toggle Status Bar"
+			],
+			[
+				"gitcomm",
+				"Git: Commit"
+			],
+			[
+				"tost",
+				"View: Toggle Status Bar"
+			],
+			[
+				"scala",
+				"Set Syntax: Scala"
+			],
+			[
+				"gitdiff",
+				"Git: Diff Staged"
+			],
+			[
+				"git di",
+				"Git: Diff Current File"
+			],
+			[
+				"user",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"us",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"keydef",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"keyde",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"settin",
+				"Preferences: Settings - User"
+			],
+			[
+				"conver",
+				"Convert Case: Title Case"
+			],
+			[
+				"tosta",
+				"View: Toggle Status Bar"
+			],
+			[
+				"stat",
+				"View: Toggle Status Bar"
+			],
+			[
+				"togl",
+				"View: Toggle Status Bar"
+			],
+			[
+				"casepasa",
+				"Convert Case: PascalCase"
+			],
+			[
+				"toglesta",
+				"View: Toggle Status Bar"
+			],
+			[
+				"toglsta",
+				"View: Toggle Status Bar"
+			],
+			[
+				"to",
+				"View: Toggle Side Bar"
+			],
+			[
+				"tog",
+				"View: Toggle Status Bar"
+			],
+			[
+				"",
+				"Align Tabular"
+			],
+			[
+				"ali",
+				"Align Tabular"
+			],
+			[
+				"tog con",
+				"View: Toggle Console"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"git log",
+				"Git: Log All"
+			],
+			[
+				"togle co",
+				"View: Toggle Console"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git st",
+				"Git: Status"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"snak",
+				"Convert Case: snake_case"
+			],
+			[
+				"sna",
+				"Convert Case: snake_case"
+			],
+			[
+				"snake",
+				"Convert Case: snake_case"
+			],
+			[
+				"lis",
+				"Package Control: List Packages"
+			],
+			[
+				"conve",
+				"Convert Case: snake_case"
+			],
+			[
+				"convert case",
+				"Convert Case: snake_case"
+			],
+			[
+				"edit",
+				"Project: Edit Project"
+			],
+			[
+				"side b",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"in side ba",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"Package Control: list",
+				"Package Control: List Packages"
+			],
+			[
+				"rou",
+				"Set Syntax: Play Routes"
+			],
+			[
+				"snipped",
+				"Snippet: CDATA"
+			],
+			[
+				"togle",
+				"View: Toggle Tabs"
+			],
+			[
+				"toggle t",
+				"View: Toggle Tabs"
+			],
+			[
+				"latex",
+				"Set Syntax: LaTeX"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"bach",
+				"Set Syntax: Batch File"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"hist",
+				"Local History: Replace"
+			],
+			[
+				"history",
+				"Local History: Browse"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"togle con",
+				"View: Toggle Console"
+			],
+			[
+				"reposi",
+				"Package Control: Add Repository"
+			],
+			[
+				"package",
+				"Package Control: Add Repository"
+			],
+			[
+				"defualt",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"pre",
+				"Preferences: Settings - User"
+			],
+			[
+				"so",
+				"Sort Lines"
+			],
+			[
+				"sort ",
+				"Sort Lines"
+			],
+			[
+				"togle cons",
+				"View: Toggle Console"
+			],
+			[
+				"kde",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"defa",
+				"Preferences: Settings - Default"
+			],
+			[
+				"keybin",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"console",
+				"View: Toggle Console"
+			],
+			[
+				"import ",
+				"Snippet: import"
+			],
+			[
+				"defau",
+				"Preferences: Settings - Default"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"defautl ",
+				"Preferences: Settings - Default"
+			],
+			[
+				"Snippet: con",
+				"Snippet: constant"
+			],
+			[
+				"cons",
+				"View: Toggle Console"
+			],
+			[
+				"consol",
+				"View: Toggle Console"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"sublimeliner",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"htmp",
+				"Set Syntax: HTML (ASP)"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML (Tcl)"
+			],
+			[
+				"mii",
+				"View: Toggle Minimap"
+			],
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"sideba",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"key ",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"prefe",
+				"Preferences: Settings - Default"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 164.0,
+		"history":
+		[
+			"exit",
+			"ls",
+			"quit",
+			"qiut",
+			"exit",
+			"sublime.log_commands(True)",
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": true,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/out.txt",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/bibcrawl/spiders/utils.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/Gemfile",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/Guardfile",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/bibcrawl/spiders/tes.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/unit_test.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/spiders/newcrawl.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/spiders/utils.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/run.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/unit_tests.py",
+		"/home/olivier/workspace/scrapytuto/blogforever-crawler/spiders/fullblog.py",
+		"/home/olivier/.config/sublime-text-3/Packages/User/PythonMap.sublime-snippet",
+		"/home/olivier/locate",
+		"/home/olivier/workspace/scrapytuto/spiders/utils.py",
+		"/home/olivier/workspace/scrapytuto/spiders/newcrawl.py",
+		"/home/olivier/.local/share/applications/mimeinfo.cache",
+		"/home/olivier/.local/share/applications/mimeapps.list",
+		"/home/olivier/mimeapps.list",
+		"/usr/local/lib/python2.7/dist-packages/lxml/__init__.py",
+		"/usr/local/lib/python2.7/dist-packages/lxml/etree.so",
+		"/home/olivier/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/olivier/workspace/scrapytuto/scrapy.cfg",
+		"/home/olivier/.config/sublime-text-3/Packages/User/PythonFilter.sublime-snippet",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/pipelines.py",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/items.py",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/spiders/fullblog.py",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/run.py",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/spiders/newcrawl.py",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/settings.py",
+		"/home/olivier/workspace/scrapytuto/out/http:||mnmlist.com|feed|",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/spiders/rss.py",
+		"/home/olivier/workspace/scrapytuto/out/http",
+		"/home/olivier/workspace/scrapytuto/out.txt",
+		"/home/olivier/restore.py",
+		"/home/olivier/workspace/window_position/window.py",
+		"/home/olivier/workspace/window_position/window_position.py",
+		"/home/olivier/.windows_session.conf",
+		"/home/olivier/.bash_aliases",
+		"/home/olivier/workspace/window_position/window",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/spiders/man.py",
+		"/home/olivier/.config/gtk-3.0/gtk.css",
+		"/tmp/xa-Ut9Sbu/readme.txt",
+		"/tmp/xa-Ut9Sbu/window.py",
+		"/home/olivier/workspace/scrapytuto/out/http:==korben.info=wtf.html",
+		"/home/olivier/workspace/scrapytuto/scrapytuto/spiders/__init__.py",
+		"/home/olivier/workspace/scrapytuto/korben.info",
+		"/home/olivier/gnome-terminal-colors/Twilight.itermcolors",
+		"/etc/gconf/gconf.xml.",
+		"/home/olivier/workspace/invenio/modules/websubmit/lib/websubmit_webinterface.py",
+		"/home/olivier/.bashrc",
+		"/home/olivier/.config/devilspie2/test.lua",
+		"/home/olivier/workspace/invenio/modules/websubmit/lib/websubmit_file_metadata.py",
+		"/home/olivier/workspace/invenio/modules/bibupload/lib/bibupload.py",
+		"/home/olivier/workspace/invenio/modules/bibupload/lib/batchuploader.py",
+		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_engine.py",
+		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_menu.js",
+		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_unit_tests.py",
+		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_templates.py",
+		"/home/olivier/workspace/invenio/modules/bibedit/bin/bibedit.in",
+		"/home/olivier/workspace/invenio/modules/bibedit/bin/bibedit",
+		"/home/olivier/workspace/invenio/modules/bibedit/doc/admin/bibedit-admin-guide.webdoc",
+		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_config.py",
+		"/home/olivier/workspace/invenio/modules/bibindex/lib/Makefile",
+		"/home/olivier/workspace/invenio/modules/bibindex/lib/Makefile.am",
+		"/home/olivier/workspace/invenio/modules/bibindex/lib/Makefile.in",
+		"/home/olivier/workspace/invenio/THANKS",
+		"/home/olivier/workspace/invenio/INSTALL",
+		"/home/olivier/Downloads/shorcuts",
+		"/home/olivier/.bash_history",
+		"/home/olivier/workspace/mod_wsgi-3.4/configure",
+		"/home/olivier/workspace/mod_wsgi-3.4/config",
+		"/etc/apache2/sites-available/invenio",
+		"/etc/apache2/sites-enabled/invenio.conf",
+		"/usr/sbin/a2ensite",
+		"/etc/apache2/httpd.conf",
+		"/etc/init.d/apache2",
+		"/etc/apache2/sites-available/reload",
+		"/etc/apache2/sites-available/invenio-ssl",
+		"/etc/apache2/sites-available/default-ssl.conf",
+		"/etc/apache2/sites-available/000-default.conf",
+		"/opt/invenio/etc/apache/invenio-apache-vhost.conf",
+		"/opt/invenio/etc/invenio-local.conf",
+		"/home/olivier/workspace/invenio/install-sh",
+		"/home/olivier/Downloads/gnomeshell",
+		"/home/olivier/Downloads/shorcuts (1)",
+		"/home/olivier/workspace/acmss/app/models/entities/Authors.scala",
+		"/home/olivier/workspace/acmss/app/models/entities/Members.scala",
+		"/home/olivier/.config/sublime-text-3/Packages/User/tex/Cases.sublime-snippet",
+		"/home/olivier/workspace/acmss/app/models/SlickEnum.scala",
+		"/home/olivier/workspace/acmss/app/models/relations/MemberTopics.scala",
+		"/home/olivier/workspace/acmss/app/models/relations/PaperTopics.scala",
+		"/home/olivier/workspace/acmss/app/models/relations/Reviews.scala",
+		"/home/olivier/workspace/acmss/app/models/secureSocial/SecureSocialTokens.scala",
+		"/home/olivier/workspace/acmss/app/models/utils/Files.scala",
+		"/home/olivier/workspace/acmss/app/models/utils/Logs.scala",
+		"/home/olivier/workspace/acmss/app/models/utils/SentEmails.scala",
+		"/home/olivier/workspace/acmss/app/models/secureSocial/SecureSocialUsers.scala",
+		"/home/olivier/workspace/acmss/app/models/entities/Papers.scala",
+		"/home/olivier/workspace/acmss/app/models/utils/Settings.scala",
+		"/home/olivier/workspace/acmss/app/models/secureSocial/SecureSocialUserService.scala",
+		"/home/olivier/workspace/acmss/app/models/entities/Topics.scala",
+		"/home/olivier/workspace/acmss/app/models/relations/Comments.scala",
+		"/home/olivier/workspace/acmss/app/models/relations/MemberBids.scala",
+		"/home/olivier/workspace/acmss/app/models/utils/Templates.scala",
+		"/home/olivier/workspace/acmss/app/models/README.md",
+		"/home/olivier/workspace/acmss/target/External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/controllers/LoginPage.scala",
+		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/login.scala.html",
+		"/home/olivier/workspace/acmss/README.md",
+		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/provider.scala.html",
+		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/mails/passwordResetEmail.scala.html",
+		"/home/olivier/workspace/acmss/public/stylesheets/bootstrap3.css",
+		"/home/olivier/workspace/acmss/public/stylesheets/main.css",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/checkbox.scala.html",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputCheckboxGroup.scala.html",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/bootstrap3FieldConstructor.scala.html",
+		"/home/olivier/workspace/acmss/app/views/main.scala.html",
+		"/home/olivier/workspace/acmss/app/controllers/Submitting.scala",
+		"/home/olivier/workspace/acmss/app/views/submission.scala.html",
+		"/home/olivier/workspace/acmss/target/External Libraries/play_2.10-2.1.1/play/api/mvc/Controller.scala",
+		"/home/olivier/workspace/acmss/conf/routes",
+		"/home/olivier/workspace/acmss/public/javascripts/file-selector.js",
+		"/home/olivier/workspace/acmss/app/Global.scala",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputFile.scala.html",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputRadioGroup.scala.html",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/emptyFieldConstructor.scala.html",
+		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/inputFieldConstructor.scala.html",
+		"/home/olivier/workspace/acmss/target/External Libraries/play_2.10-2.1.1/views/helper/defaultFieldConstructor.scala.html",
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputText.scala.html"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"blogforever-crawler:",
+			"/home/olivier/workspace/blogforever-crawler",
+			"/home/olivier/workspace/acmss/",
+			"/home/olivier/workspace/acmss/app/",
+			"/home/olivier/workspace/acmss/app",
+			"/home/olivier/workspace/",
+			"/home/olivier/workspace/acmss/app",
+			"/home/olivier/workspace/acmss/",
+			"/home/olivier/workspace/acmss/app",
+			"/home/olivier/workspace/acmss/app/models",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			",",
+			"\n",
+			"\nhttp://",
+			"\nhttp://mnmlist.com/uncopyright/",
+			"LINKS",
+			" '",
+			"', ",
+			",",
+			"PRUNED:",
+			"PRUNED:  []",
+			"PRUNED",
+			"step-lightly/",
+			"step-lightly",
+			"http://mnmlist.com/step-lightly-upon-this-world-or-why-minimalism-is-sustainable/",
+			"http://mnmlist.com/step-lightly",
+			"step-lightly",
+			"http://mnmlist.com/avoid-new",
+			"url",
+			"1",
+			"a",
+			"e",
+			"prounedZipedLinks",
+			"response.url",
+			"prunedUrl",
+			"newLinks",
+			"filter",
+			"self.seen",
+			"'//",
+			"//",
+			"title",
+			"brokenPage",
+			"><",
+			"extensionRegex",
+			"\", \"",
+			"string",
+			"|",
+			" .",
+			"urlparse",
+			"NotImplementedError",
+			"extractNewLinks",
+			"New",
+			"response",
+			"font",
+			"imap",
+			"import",
+			"extract",
+			"filter",
+			"_",
+			"ration",
+			"distance",
+			"parsed",
+			"    print(u\"got \" + response.url)\n",
+			"extractHrefLinks",
+			"\"",
+			"utils.",
+			"xPathSelectFirst",
+			"xpathSelectFirst",
+			"\\n\\n",
+			"RssSpider.",
+			"xpathSelectFirst",
+			"extractLinks",
+			"extractLink",
+			"newUrls",
+			"seen",
+			"newUrls",
+			"x",
+			"#",
+			"print",
+			"known_cms",
+			"xPathEvaluator",
+			"[0].text",
+			"tree",
+			"XPath",
+			"parsed",
+			"root",
+			"ratio",
+			"x",
+			"lambda x",
+			"((",
+			"print",
+			"# Step ",
+			"Ste",
+			"# S",
+			"firstEntry",
+			"feed.entry[0]",
+			"rssUrl",
+			"Ur",
+			"_extractRssLink",
+			"_dl",
+			".*",
+			"regex",
+			"match",
+			"--",
+			"'",
+			"%s",
+			"restor",
+			"]",
+			"cmd",
+			"line",
+			"_command",
+			".x",
+			"w",
+			"wn",
+			"wnc",
+			"wnck",
+			"wnckp",
+			"wnckprop",
+			"mnmlist",
+			"CrawlFullBlog",
+			"CrawlRSS",
+			"CrawlSpider",
+			"Man",
+			"man",
+			"Man",
+			"alias.sh",
+			"'",
+			"::",
+			"parsed_url",
+			"tart_urls",
+			"filename",
+			"response.url",
+			"_visited",
+			"Default",
+			"wsgi",
+			"libapache2-mod-wsg",
+			"WSGI",
+			"var/www",
+			"{u}"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+			"http://mnmlist.com/step-upon-this-world-or-why-minimalism-is-sustainable/",
+			"extractLinks",
+			"extractNewLinks",
+			"PaperType",
+			"@media (min-width: 120px) {",
+			"",
+			"insertAll",
+			"memberbids",
+			"MembersManaging",
+			"Form(",
+			"mapping(",
+			"Form (",
+			"mapping (",
+			"Members.getFromRequest",
+			"(implicit session =>",
+			"\\(\\1\\)",
+			"controllers.member",
+			"Emailing",
+			"_.nonEmpty",
+			".delete)",
+			"Member",
+			"Template",
+			"email",
+			"utils",
+			"java",
+			"comment",
+			"Comment",
+			"column\\[String]\\(\"\\1\", O.DBType\\(\"TEXT\")",
+			"",
+			" ",
+			"column[String](\"\\1\", O.DBType(\"TEXT\"))",
+			"",
+			"id",
+			"=",
+			"automata",
+			"\\n@",
+			"@",
+			"\"$1 lolol\"",
+			"\"\\1 lolol\"",
+			"\"\\1++\"",
+			"\"\\1\"",
+			"\"(\\U.*)\"",
+			"Member",
+			"member",
+			"Member",
+			"member",
+			"Member",
+			" primarykey ",
+			"DateTime ",
+			" ",
+			"  ",
+			"** ",
+			"\n** ",
+			"\n ",
+			" PRIMARY_KEY",
+			"color=<color value=\"shade/gtk:bg[SELECTED]/1.25\"",
+			"<color value=\"shade/gtk:bg[SELECTED]/1.25\"/>",
+			"color=\"0\"",
+			"y2=\"0\"",
+			"x2=\"0\"",
+			"y1=\"0\"",
+			"x1=\"0\"",
+			"y=\"0\"",
+			"height=\"0\"",
+			"y=\"0\"",
+			"x=\"0\"",
+			"height=\"0\"",
+			"width=\"0\"",
+			"textbf ",
+			"textbh",
+			"++",
+			"bundles",
+			"troll",
+			"kjfd",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "blogforever-crawler/bibcrawl/run.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								648,
+								648
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "blogforever-crawler/bibcrawl/spiders/newcrawl.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2306,
+								2306
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 176.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "blogforever-crawler/out.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 417452,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12932,
+								12932
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6528.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "blogforever-crawler/bibcrawl/spiders/utils.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5598,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4814,
+								4814
+							]
+						],
+						"settings":
+						{
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1449.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "blogforever-crawler/bibcrawl/spiders/spiders_unit_tests.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 831,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								58
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "blogforever-crawler/Guardfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								168,
+								168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 158.0
+	},
+	"project": "blogforever-crawler.sublime-project",
+	"replace":
+	{
+		"height": 68.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"u",
+				"spiders/utils.py"
+			],
+			[
+				"pip",
+				"scrapytuto/scrapytuto/pipelines.py"
+			],
+			[
+				"websummi",
+				"websubmit/lib/websubmit_file_metadata.py"
+			],
+			[
+				"memb",
+				"acmss/app/models/entities/Members.scala"
+			],
+			[
+				"authoss",
+				"acmss/app/models/entities/Authors.scala"
+			],
+			[
+				"subhtml",
+				"acmss/app/views/submission.scala.html"
+			],
+			[
+				"login",
+				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/controllers/LoginPage.scala"
+			],
+			[
+				"suhtml",
+				"acmss/app/views/submission.scala.html"
+			],
+			[
+				"main",
+				"acmss/public/stylesheets/main.css"
+			],
+			[
+				"routes",
+				"acmss/conf/routes"
+			],
+			[
+				"readme",
+				"acmss/README.md"
+			],
+			[
+				"rout",
+				"acmss/conf/routes"
+			],
+			[
+				"boo",
+				"acmss/public/stylesheets/bootstrap3.css"
+			],
+			[
+				"boot",
+				"acmss/public/stylesheets/bootstrap3.css"
+			],
+			[
+				"submitt",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"submi",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"fieldcontr",
+				"acmss/app/views/securesocialtemplates/inputFieldConstructor.scala.html"
+			],
+			[
+				"glob",
+				"acmss/app/Global.scala"
+			],
+			[
+				"fieldconstructor",
+				"External Libraries/play_2.10-2.1.1/views/helper/defaultFieldConstructor.scala.html"
+			],
+			[
+				"fields",
+				"acmss/app/views/securesocialtemplates/inputFieldConstructor.scala.html"
+			],
+			[
+				"check",
+				"acmss/app/views/bootstrap3/checkbox.scala.html"
+			],
+			[
+				"select",
+				"acmss/app/views/bootstrap3/select.scala.html"
+			],
+			[
+				"text",
+				"acmss/app/views/bootstrap3/inputText.scala.html"
+			],
+			[
+				"checl",
+				"acmss/app/views/bootstrap3/checkbox.scala.html"
+			],
+			[
+				"glo",
+				"acmss/app/Global.scala"
+			],
+			[
+				"",
+				"acmss/.gitignore"
+			],
+			[
+				"seljs",
+				"acmss/public/javascripts/file-selector.js"
+			],
+			[
+				"intext",
+				"acmss/app/views/bootstrap3/inputText.scala.html"
+			],
+			[
+				"subm",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"shell",
+				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/providers/utils/RoutesHelper.scala"
+			],
+			[
+				".js",
+				"acmss/public/javascripts/file-selector.js"
+			],
+			[
+				"selctor",
+				"acmss/public/javascripts/file-selector.js"
+			],
+			[
+				"min.js",
+				"acmss/public/javascripts/bootstrap-fileupload.min.js"
+			],
+			[
+				"fileupload",
+				"acmss/public/stylesheets/bootstrap-fileupload.css"
+			],
+			[
+				"inputtext",
+				"acmss/app/views/bootstrap3/inputText.scala.html"
+			],
+			[
+				"ma",
+				"acmss/public/stylesheets/main.css"
+			],
+			[
+				"mail",
+				"acmss/app/views/main.scala.html"
+			],
+			[
+				"plu",
+				"acmss/project/plugins.sbt"
+			],
+			[
+				"sumiss",
+				"acmss/app/views/submission.scala.html"
+			],
+			[
+				"mainsh",
+				"acmss/app/views/main.scala.html"
+			],
+			[
+				"bui",
+				"acmss/project/Build.scala"
+			],
+			[
+				"maisca",
+				"acmss/app/views/main.scala.html"
+			],
+			[
+				"setting",
+				"acmss/app/models/utils/Settings.scala"
+			],
+			[
+				"maincss",
+				"acmss/public/stylesheets/main.css"
+			],
+			[
+				"plug",
+				"acmss/project/plugins.sbt"
+			],
+			[
+				"buil",
+				"acmss/project/Build.scala"
+			],
+			[
+				"main.",
+				"acmss/public/stylesheets/main.css"
+			],
+			[
+				"sqlhtml",
+				"acmss/app/views/sql.scala.html"
+			],
+			[
+				"mainht",
+				"acmss/app/views/main.scala.html"
+			],
+			[
+				"route",
+				"acmss/conf/routes"
+			],
+			[
+				"rea",
+				"acmss/README.md"
+			],
+			[
+				"membertopics",
+				"acmss/app/models/relations/MemberTopics.scala"
+			],
+			[
+				"paper",
+				"acmss/app/models/entities/Papers.scala"
+			],
+			[
+				"rou",
+				"acmss/conf/routes"
+			],
+			[
+				"mam",
+				"acmss/app/views/manageMembers.scala.html"
+			],
+			[
+				"bding",
+				"acmss/app/controllers/member/Bidding.scala"
+			],
+			[
+				"mbid",
+				"acmss/app/models/relations/MemberBids.scala"
+			],
+			[
+				"bidhtml",
+				"acmss/app/views/bid.scala.html"
+			],
+			[
+				"reing",
+				"acmss/app/controllers/member/Reviewing.scala"
+			],
+			[
+				"revie",
+				"acmss/app/models/relations/Reviews.scala"
+			],
+			[
+				"reiing",
+				"acmss/app/controllers/member/Reviewing.scala"
+			],
+			[
+				"revi",
+				"acmss/app/controllers/member/Reviewing.scala"
+			],
+			[
+				"bi",
+				"acmss/app/controllers/member/Bidding.scala"
+			],
+			[
+				"mem",
+				"acmss/app/models/entities/Members.scala"
+			],
+			[
+				"bid",
+				"acmss/app/models/relations/MemberBids.scala"
+			],
+			[
+				"did",
+				"acmss/app/controllers/member/Bidding.scala"
+			],
+			[
+				"sub",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"suing",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"subing",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"topi",
+				"acmss/app/models/entities/Topics.scala"
+			],
+			[
+				"previ",
+				"acmss/app/views/paperReview.scala.html"
+			],
+			[
+				"paperpa",
+				"acmss/app/views/paperPage.scala.html"
+			],
+			[
+				"paperli",
+				"acmss/app/views/paperList.scala.html"
+			],
+			[
+				"manage",
+				"acmss/app/controllers/chair/ManageMembers.scala"
+			],
+			[
+				"reout",
+				"External Libraries/scala-library-2.10.0/scala/collection/readme-if-you-want-to-add-something.txt"
+			],
+			[
+				"read",
+				"acmss/README.md"
+			],
+			[
+				"sql",
+				"acmss/app/controllers/chair/Sql.scala"
+			],
+			[
+				"mana",
+				"acmss/app/views/manageMembers.scala.html"
+			],
+			[
+				"manme",
+				"acmss/app/views/manageMembers.scala.html"
+			],
+			[
+				"ssuser.",
+				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
+			],
+			[
+				"au",
+				"acmss/app/controllers/Authorizations.scala"
+			],
+			[
+				"ssuer",
+				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
+			],
+			[
+				"rev",
+				"acmss/app/controllers/Reviewing.scala"
+			],
+			[
+				"emai",
+				"acmss/app/controllers/chair/Emailing.scala"
+			],
+			[
+				"suh",
+				"acmss/app/views/submission.scala.html"
+			],
+			[
+				"sumitt",
+				"acmss/app/controllers/Submitting.scala"
+			],
+			[
+				"aut",
+				"acmss/app/controllers/Authorizations.scala"
+			],
+			[
+				"member",
+				"acmss/app/models/entities/Members.scala"
+			],
+			[
+				"subht",
+				"acmss/app/views/submission.scala.html"
+			],
+			[
+				"secur",
+				"acmss/app/models/secureSocial/SecureSocialTokens.scala"
+			],
+			[
+				"sstoek",
+				"acmss/app/models/secureSocial/SecureSocialTokens.scala"
+			],
+			[
+				"sent",
+				"acmss/app/models/utils/SentEmails.scala"
+			],
+			[
+				"secureso",
+				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
+			],
+			[
+				"emailh",
+				"acmss/app/views/email.scala.html"
+			],
+			[
+				"papers",
+				"acmss/app/models/entities/Papers.scala"
+			],
+			[
+				"email",
+				"acmss/app/controllers/chair/Emailing.scala"
+			],
+			[
+				"templa",
+				"acmss/app/models/utils/Templates.scala"
+			],
+			[
+				"sqht",
+				"acmss/app/views/sql.scala.html"
+			],
+			[
+				"licen",
+				"acmss/MIT-LICENSE.txt"
+			],
+			[
+				"auth",
+				"acmss/docs/authentication.md"
+			],
+			[
+				"sqlht",
+				"acmss/app/views/sql.scala.html"
+			],
+			[
+				"chair",
+				"acmss/app/controllers/Chair.scala"
+			],
+			[
+				"re",
+				"acmss/README.md"
+			],
+			[
+				"settings",
+				"acmss/app/models/utility/Settings.scala"
+			],
+			[
+				"comm",
+				"acmss/app/models/relations/Comments.scala"
+			],
+			[
+				"commen",
+				"acmss/app/models/relations/Comments.scala"
+			],
+			[
+				"tostau",
+				"External Libraries/postgresql-9.1-901-1.jdbc4/org/postgresql/jdbc2/TimestampUtils.java"
+			],
+			[
+				"chai",
+				"acmss/app/controllers/Chair.scala"
+			],
+			[
+				"plist",
+				"acmss/app/views/paperList.scala.html"
+			],
+			[
+				"ro",
+				"acmss/conf/routes"
+			],
+			[
+				"gl",
+				"acmss/app/Global.scala"
+			],
+			[
+				"autho",
+				"acmss/app/models/entities/Authors.scala"
+			],
+			[
+				"ssu",
+				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
+			],
+			[
+				"secure",
+				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
+			],
+			[
+				"applic",
+				"acmss/app/controllers/Application.scala"
+			],
+			[
+				"logger",
+				"External Libraries/play_2.10-2.1.1/play/api/Logger.scala"
+			],
+			[
+				"lo",
+				"acmss/app/models/utility/Logs.scala"
+			],
+			[
+				"su",
+				"acmss/app/controllers/Submission.scala"
+			],
+			[
+				"sesu",
+				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
+			],
+			[
+				"pap",
+				"acmss/app/models/relations/PaperTopics.scala"
+			],
+			[
+				"papt",
+				"acmss/app/models/relations/PaperTopics.scala"
+			],
+			[
+				"cha",
+				"acmss/app/controllers/Chair.scala"
+			],
+			[
+				"1.",
+				"acmss/conf/evolutions/default/1.sql"
+			],
+			[
+				"build",
+				"acmss/project/Build.scala"
+			],
+			[
+				"soci",
+				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
+			],
+			[
+				"socialuser",
+				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
+			],
+			[
+				"social",
+				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
+			],
+			[
+				"user",
+				"acmss/app/models/User.scala"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/Desktop/acc2013-group05/l3/compiler/l3-compiler.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 37.0,
+		"selected_items":
+		[
+			[
+				"aes_blockenc_SWacc",
+				"aes_blockenc_SWacc"
+			],
+			[
+				"s",
+				"separate"
+			]
+		],
+		"width": 378.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}
