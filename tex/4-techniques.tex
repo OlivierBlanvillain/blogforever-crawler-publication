@@ -22,11 +22,12 @@ Google Blogspot Dynamic Views: \surl{http://buzz.blogger.com/2012/02/dynamic-vie
 
 
 \subsection{Enriching Scrapy}
-Our project is build on top of Scrapy\TODO{link}, an open source python framework for web crawling. In addition to the extraction aspects of the project, we also enrich the framework with two components specific to blog post extraction: blog post identification and download policies.
+Our project is build on top of Scrapy\TODO{link}, an open source python framework for web crawling. In addition to the extraction aspects of the project, we also enrich the framework with two components specific to blog-post extraction: blog-post identification and download priority heuristic.
 
-Given an entry to a blog, Scrapy provides the infrastructure to look over all pages on the same domain. In order to identify the subset of pages that are actually blog posts, we build a "blog post identification" function that given an URL, returns whether or not it is a blog post. This function uses a regular expression that is constructed from the web feed entries: the only set of known blog post URLs.
+Given an entry to a blog, Scrapy provides the infrastructure to look over all pages on the same domain. In order to identify the subset of pages that are actually blog-posts, we build a \emph{blog-post identification} function that given an URL, returns whether or not it is a blog-post. This function uses a regular expression that is constructed from the web feed entries: the only set of known blog-post URLs.
 
+In order to efficiently deal with blogs with a large number non-blog-post pages, this mechanism is not sufficient. Indeed, after all pages identify as blog-post are processed, the crawler needs to download non-blog-post pages to search for additional blog-posts. To replace the naïve random walks, deaph first search and breath first search web site traversals, we use a priority queue with an heuristic function. Our \emph{download priority heuristic}works with a simple machine learning algorithm that given an URL predicts the number of links to blog-post the corresponding page will contain. Each time a page is dowloaded the number of blog-post links it contains is computer and given to the machine learning ...
 
-Due to space constraints, more precise description and evaluation of these components where not included in this paper.
+Due to space constraints, more precise description and evaluation of these two components where not included in this paper.
 
 
