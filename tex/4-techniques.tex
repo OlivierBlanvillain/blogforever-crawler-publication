@@ -10,10 +10,9 @@ JavaScript is a widely used use language for client-side web scripting. While so
 In our specific use case of crawling the blog sphere, we encountered several blogs where data was missed because of the lack of JavaScript interpretation. The most frequent cases where blogs using the Disqus\TODO{link} and LiveFyre\TODO{link} comment hosting services. These tools are very handy to setup for webmasters because the entire comments infrastructure is externalized and the setup essiential comes down to including a JavaScript snippet in the target web page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time update of comments there are written by users. Less commonly, some blogs are fully rendered using JavaScript. Concretely, when loading such website the web browser will not recieve the page content inside an HTML page, but will instead have to execute a script containing the procedure to download and display the page content. On example can be found on the Blogger platforms which proposes as one of its default templates the \emph{Dynamic Views} \TODO{link to \surl{http://buzz.blogger.com/2011/09/dynamic-views-seven-new-ways-to-share.html}} that use this mechanism.
 
 % The solution
-the solution: phjs \cite{readability}
-js rendering done upfront, everything else general
-screenshot ?
-
+- the solution: phjs
+- js rendering done upfront, everything else general
+- python scripting click click use case
 - ez of use vs power, fine because it's automated
 
 \subsection{Architecture}
