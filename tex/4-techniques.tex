@@ -7,13 +7,14 @@ This section gives an overview of different techniques used in our crawler. We f
 JavaScript is a widely used use language for client-side web scripting. While some applications simply use it for aesthetics aspects such as menus and animations, an increasing number of websites use JavaScript to download and display content. In such circumstances, traditional HTML based crawled would not see the web site as it would be presented to a human visitor and might therefore be obsolete for extracting data from the page.
 
 % Motivation
-In our specific use case of crawling the blog sphere, we encountered several blogs where data was missed because of the lack of JavaScript interpretation. The most frequent cases where blogs using the Disqus\TODO{link} and LiveFyre\TODO{link} comment hosting services. These tools are very handy to setup for webmasters because the entire comments infrastructure is externalized and the setup essiential comes down to including a JavaScript snippet in the target web page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time update of comments there are written by users. Less commonly, some blogs are fully rendered using JavaScript. Concretely, when loading such website the web browser will not recieve the page content inside an HTML page, but will instead have to execute a script containing the procedure to download and display the page content. On example can be found on the Blogger platforms which proposes as one of its default templates the \emph{Dynamic Views} \TODO{link to \surl{http://buzz.blogger.com/2011/09/dynamic-views-seven-new-ways-to-share.html}} that use this mechanism.
+In our specific use case of crawling the blog sphere, we encountered several blogs where data was missed because of the lack of JavaScript interpretation. The most frequent cases where blogs using the Disqus\cite{disqus2013} and LiveFyre\cite{livefyre2013} comment hosting services. These tools are very handy to setup for webmasters because the entire comments infrastructure is externalized and the setup essential comes down to including a JavaScript snippet in the target web page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time update of comments there are written by users. Less commonly, some blogs are fully rendered using JavaScript. Concretely, when loading such website the web browser will not receive the page content inside an HTML page, but will instead have to execute a script containing the procedure to download and display the page content. On example can be found on the Blogger platforms which proposes as one of its default templates the \emph{Dynamic Views} \cite{antinharasymiv2011} that use this mechanism.
 
 % The solution
-- the solution: phjs
-- js rendering done upfront, everything else general
+To support blogs with JavaScript generated content we embed a full web browser into the crawler. After considering mutliple option, we opted for PhantomJS\cite{phantomjs2013}, a headless web browser with great performences and scipting capabilities. In order to take full advantage of all extraction capabilities, the JavaScript rendering is done as the very first step of blog post processing. This way, every other part of the project is independent of whether or not the page its currently processing was actually rendered by PhantomJS or comes directly from the web server. Extracting blog post content, comments and images therefore works equally well on both blogs with JavaScript generated content and traditional HTML blogs.
+
+
 - python scripting click click use case
-- ez of use vs power, fine because it's automated
+
 
 \subsection{Architecture}
 \subsubsection{Item pipeline}
@@ -26,7 +27,7 @@ In our specific use case of crawling the blog sphere, we encountered several blo
 
 
 \subsection{Enriching Scrapy}
-Our project is build on top of Scrapy\TODO{link}, an open source python framework for web crawling. In addition to the extraction aspects of the project, we also enrich the framework with two components specific to blog-post extraction: blog-post identification and download priority heuristic.
+Our project is build on top of Scrapy\cite{scrapy2013}, an open source python framework for web crawling. In addition to the extraction aspects of the project, we also enrich the framework with two components specific to blog-post extraction: blog-post identification and download priority heuristic.
 
 Given an entry to a blog, Scrapy provides the infrastructure to look over all pages on the same domain. In order to identify the subset of pages that are actually blog-posts, we build a \emph{blog-post identification} function that given an URL, returns whether or not it is a blog-post. This function uses a regular expression that is constructed from the web feed entries: the only set of known blog-post URLs.
 
