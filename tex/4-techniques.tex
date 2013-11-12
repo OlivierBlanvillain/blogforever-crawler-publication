@@ -1,22 +1,27 @@
 \section{Techniques}
 
-This section gives an overview of different techniques used in our crawler. We first show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display content. The overall software architecture with then be discussed, introducing the tools that come before and after the content extraction process: Scrapy and In2venio. *
+This section gives an overview of different techniques used in our crawler. We first show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. The overall software architecture with then be discussed, introducing the tools that come before and after the content extraction process: Scrapy and Invenio.
 
 \subsection{JavaScript rendering}
-- challenges \\
-Ajax
-Google Blogspot Dynamic Views: \surl{http://buzz.blogger.com/2012/02/dynamic-views-update-3-gadgets.html}, \surl{https://support.google.com/blogger/answer/1229061?hl=en}
-- present phjs, also here screenshot \\
-- ez of use vs power \\
-- our click show more use case \\
-- parallelization \\
-- js rendering done upfront, everything else general \\
+% Introduction
+JavaScript is a widely used use language for client-side web scripting. While some applications simply use it for aesthetics aspects such as menus and animations, an increasing number of websites use JavaScript to download and display content. In such circumstances, traditional HTML based crawled would not see the web site as it would be presented to a human visitor and might therefore be obsolete for extracting data from the page.
+
+% Motivation
+In our specific use case of crawling the blog sphere, we encountered several blogs where data was missed because of the lack of JavaScript interpretation. The most frequent cases where blogs using the Disqus\TODO{link} and LiveFyre\TODO{link} comment hosting services. These tools are very handy to setup for webmasters because the entire comments infrastructure is externalized and the setup essiential comes down to including a JavaScript snippet in the target web page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time update of comments there are written by users. Less commonly, some blogs are fully rendered using JavaScript. Concretely, when loading such website the web browser will not recieve the page content inside an HTML page, but will instead have to execute a script containing the procedure to download and display the page content. On example can be found on the Blogger platforms which proposes as one of its default templates the \emph{Dynamic Views} \TODO{link to \surl{http://buzz.blogger.com/2011/09/dynamic-views-seven-new-ways-to-share.html}} that use this mechanism.
+
+% The solution
+the solution: phjs \cite{readability}
+js rendering done upfront, everything else general
+screenshot ?
+
+- ez of use vs power, fine because it's automated
 
 \subsection{Architecture}
 \subsubsection{Item pipeline}
 - item pipeline, modularity \\
 
 \subsubsection{Scalability}
+- http://www.reactivemanifesto.org/
 - stateless \\
 - scrapyd \\
 
@@ -26,8 +31,6 @@ Our project is build on top of Scrapy\TODO{link}, an open source python framewor
 
 Given an entry to a blog, Scrapy provides the infrastructure to look over all pages on the same domain. In order to identify the subset of pages that are actually blog-posts, we build a \emph{blog-post identification} function that given an URL, returns whether or not it is a blog-post. This function uses a regular expression that is constructed from the web feed entries: the only set of known blog-post URLs.
 
-In order to efficiently deal with blogs with a large number non-blog-post pages, this mechanism is not sufficient. Indeed, after all pages identify as blog-post are processed, the crawler needs to download non-blog-post pages to search for additional blog-posts. To replace the naïve random walks, deaph first search and breath first search web site traversals, we use a priority queue with an heuristic function. Our \emph{download priority heuristic}works with a simple machine learning algorithm that given an URL predicts the number of links to blog-post the corresponding page will contain. Each time a page is dowloaded the number of blog-post links it contains is computer and given to the machine learning ...
+In order to efficiently deal with blogs with a large number non-blog-post pages, this mechanism is not sufficient. Indeed, after all pages identify as blog-post are processed, the crawler needs to download non-blog-post pages to search for additional blog-posts. To replace the naive random walk, depth first search or breadth first search web site traversals, we use a priority queue where URL priorities are determined by a simple machine learning system. Given an URL, the machine learning system predicts the number of links to blog-post the corresponding page will contain. Each time a page is effectively downloaded, the actual number of blog-post links it contains is computed and given to the machine learning system that will store this value and take it into account for its future prediction. This mechanism has shown to be indispensable for web sites that host on the single domain a blog along with a large number of non-blog web pages, such as a forum or a wiki.
 
 Due to space constraints, more precise description and evaluation of these two components where not included in this paper.
-
-

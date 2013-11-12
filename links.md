@@ -18,6 +18,7 @@ Web pages:
 - [Ajax crawl tests](http://ajax.rswebanalytics.com/)
 - [How to draw CPU graph](http://stackoverflow.com/questions/13792450/extracting-cpu-use-for-specific-process-periodically)
 - [Evaluating text extraction algorithms](http://tomazkovacic.com/blog/122/evaluating-text-extraction-algorithms/)
+- [Python type checking](https://github.com/OlivierBlanvillain/blogforever-crawler/commit/908fae8ab9018ceac5cdc992234d33756ba8d6ac#diff-90dc002ba6032c2ee5e728ad0583a585L139)
 
 Images:
 
