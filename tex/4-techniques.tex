@@ -10,21 +10,14 @@ JavaScript is a widely used use language for client-side web scripting. While so
 In our specific use case of crawling the blog sphere, we encountered several blogs where data was missed because of the lack of JavaScript interpretation. The most frequent cases where blogs using the Disqus\cite{disqus2013} and LiveFyre\cite{livefyre2013} comment hosting services. These tools are very handy to setup for webmasters because the entire comments infrastructure is externalized and the setup essential comes down to including a JavaScript snippet in the target web page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time update of comments there are written by users. Less commonly, some blogs are fully rendered using JavaScript. Concretely, when loading such website the web browser will not receive the page content inside an HTML page, but will instead have to execute a script containing the procedure to download and display the page content. On example can be found on the Blogger platforms which proposes as one of its default templates the \emph{Dynamic Views} \cite{antinharasymiv2011} that use this mechanism.
 
 % The solution
-To support blogs with JavaScript generated content we embed a full web browser into the crawler. After considering mutliple option, we opted for PhantomJS\cite{phantomjs2013}, a headless web browser with great performences and scipting capabilities. In order to take full advantage of all extraction capabilities, the JavaScript rendering is done as the very first step of blog post processing. This way, every other part of the project is independent of whether or not the page its currently processing was actually rendered by PhantomJS or comes directly from the web server. Extracting blog post content, comments and images therefore works equally well on both blogs with JavaScript generated content and traditional HTML blogs.
+To support blogs with JavaScript generated content we embed a full web browser into the crawler. After considering mutliple option, we opted for PhantomJS\cite{phantomjs2013}, a headless web browser with great performences and scipting capabilities. In order to take full advantage of all the extraction functionalities, the JavaScript rendering is done as the very first step of blog post processing. This way, every other part of the project is independent of whether or not the page its currently processing was actually rendered by PhantomJS or comes directly from the web server. Extracting blog post content, comments and images therefore works equally well on both blogs with JavaScript generated content and traditional HTML blogs.
 
+% Click click scripting
+In addition to extracting page after JavaScript execution, we also use some of PhantomJS scripting capabilities. When the number of comments on one page exceeds a certain threshold, both Disqus and LiveFyre only load a subset of them and end the stream of comments with a "Show More Comments" buttons. As part of the page load process we instruct PhantomJS to repeatedly click on this button until all comments are loaded. As you will see in the evaluation section, \TODO{we will see..}
 
-- python scripting click click use case
-
-
-\subsection{Architecture}
-\subsubsection{Item pipeline}
-- item pipeline, modularity \\
-
-\subsubsection{Scalability}
-- http://www.reactivemanifesto.org/
-- stateless \\
-- scrapyd \\
-
+% \subsection{Architecture}
+% \subsubsection{Item pipeline}
+% - item pipeline, modularity \\
 
 \subsection{Enriching Scrapy}
 Our project is build on top of Scrapy\cite{scrapy2013}, an open source python framework for web crawling. In addition to the extraction aspects of the project, we also enrich the framework with two components specific to blog-post extraction: blog-post identification and download priority heuristic.
@@ -34,3 +27,9 @@ Given an entry to a blog, Scrapy provides the infrastructure to look over all pa
 In order to efficiently deal with blogs with a large number non-blog-post pages, this mechanism is not sufficient. Indeed, after all pages identify as blog-post are processed, the crawler needs to download non-blog-post pages to search for additional blog-posts. To replace the naive random walk, depth first search or breadth first search web site traversals, we use a priority queue where URL priorities are determined by a simple machine learning system. Given an URL, the machine learning system predicts the number of links to blog-post the corresponding page will contain. Each time a page is effectively downloaded, the actual number of blog-post links it contains is computed and given to the machine learning system that will store this value and take it into account for its future prediction. This mechanism has shown to be indispensable for web sites that host on the single domain a blog along with a large number of non-blog web pages, such as a forum or a wiki.
 
 Due to space constraints, more precise description and evaluation of these two components where not included in this paper.
+
+\subsubsection{Scalability}
+At the time of writing...
+- http://www.reactivemanifesto.org/
+- stateless \\
+- scrapyd \\
