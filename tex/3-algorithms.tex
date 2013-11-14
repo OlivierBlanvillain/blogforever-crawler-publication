@@ -1,16 +1,23 @@
 \section{Algorithms}
 
-This section explains in details the content wrapper generation algorithm and it's variations for authors, date and comments. We will see how our seemingly brute force approach can be tweaked in order to achieve reasonable running times.
+This section explains in details the algorithm we developed to extract blog posts content and it's variations for authors, date and comments.
+webfeeeeeeeeds
+We will see how our seemingly brute force approach can be tweaked in order to achieve reasonable running times.
 
 \subsection{Assumptions}
-Being a subset of XML, (HTML)* (HTML) documents are often categorized as semi-structured*. Some sementic tags were recently introduced in HTML*footnote* language specification, bringing **. If properly used, tags such as `<article>`, `<title>` and `<date>` can greatly simlify the tasks of content identification and extraction. However, the practice shows that these recent convetions are use by very few websites. Most are still using the more traditional aproach where pages are arbitrery hierarchi of `<div>` tags with arbitrery `class` or `id` names.
+
+\cite{worldwidewebconsortiumw3c2002}
+If properly used, tags such as `<article>`, `<title>` and `<date>` can greatly simplify the tasks of content identification and extraction. However, practice shows that these recent conventions are use by very few websites.
+
+Most are still using the more traditional approach where pages are arbitrary hierarchy of `<div>` tags with arbitrary `class` or `id` names.
+
 
 Working with blogs allows to make assumptions that are central in our extraction procedure:
 1. Web feeds provide structured and standardised view of the last posts
 2. Posts of a same blog share the same HTMP structure.
 \footnote{We constated in the evaluation that all blogs where our system failed to extract content violated one of these assumptions.}
 
-In average, web feeds contain around 20 entries \cite{french paper} which is generally lower than the total number of posts in a blog. In order to effectively archive old content from blogs it is necessery to download and process pages beyong the one referenced by the feed. The algorithm we are going to present in this section as for function to build wrappers for the relevent data of blog posts, which are going to be use 
+In average, web feeds contain around 20 entries \cite{french paper} which is generally lower than the total number of posts in a blog. In order to effectively archive old content from blogs it is necessery to download and process pages beyong the one referenced by the feed. The algorithm we are going to present in this section as for function to build wrappers for the relevent data of blog posts, which are going to be use
 
 
 Concretely, a wrapper is an procedure to extract relevant data from a document. In our case, we aim to build queries in the XML path language (XPath) to extract relevant data from blog posts.
@@ -23,10 +30,46 @@ Each time a new crawl is initiated our system builds a set of wrappers that are 
 
 \subsection{Content extraction}
 - definitions, args and return value \\
-- related algos, generale brute force vue \\
-- algorithm \\
-- selectors (id, else class) \\
-- string similarity \\
 
 \subsection{Variations for comments and date}
-All the details about how to use the same algorithm to extract comments and dates.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Algorithms}
+
+\subsection{Motivation}
+- getting content from html is not easy. \cite{w3c2002}
+- assumptions when working with blogs
+- web feeds limitations
+- input output
+
+\subsection{Content extraction}
+- related algos, generale brute force vue
+- algorithm
+- xpath selectors (id, else class, else path)
+- string similarity
+- caching
+
+\subsection{Variations for comments, date and authors extraction}
+- comments
+- date authors

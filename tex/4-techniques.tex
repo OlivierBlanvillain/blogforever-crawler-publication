@@ -1,7 +1,9 @@
 \section{Techniques}
 
-This section gives an overview of different techniques used in our crawler. We first show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. The overall software architecture with then be discussed, introducing the Scrapy framework and the different addition we implemented for our use case.
+This section gives an overview of different techniques used in our crawler. We first show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. The overall software architecture with then be discussed, introducing the Scrapy framework and the enrichments we implemented for our specific use case. The section will conclude with a discussion about how the crawler design leads nicely into a scalable and fault resilient distributed architecture.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JavaScript rendering}
 % Introduction
 JavaScript is a widely used use language for client-side web scripting. While some applications simply use it for aesthetics aspects such as menus and animations, an increasing number of websites use JavaScript to download and display content. In such circumstances, traditional HTML based crawled would not see the web site as it would be presented to a human visitor and might therefore be obsolete for extracting data from the page.
@@ -15,10 +17,8 @@ To support blogs with JavaScript generated content we embed a full web browser i
 % Click click scripting
 In addition to extracting page after JavaScript execution, we also use some of PhantomJS scripting capabilities. When the number of comments on one page exceeds a certain threshold, both Disqus and LiveFyre only load a subset of them and end the stream of comments with a \emph{Show More Comments} buttons. As part of the page load process we instruct PhantomJS to repeatedly click on this button until all comments are loaded. As you will see in the evaluation section, \TODO{we will see..}
 
-% \subsection{Architecture}
-% \subsubsection{Item pipeline}
-% - item pipeline, modularity \\
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Architecture}
 
 \begin{figure}
@@ -41,6 +41,7 @@ Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, w
 This pipeline design, often called the \emph{pipes and filters pattern}\cite[Chapter Messaging Systems]{hohpe2003}, provides great modularity. Indeed, disabeling JavaScript rendering or plugging in an alternative backend can be done by editing a single configuration line.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Enriching Scrapy}
 In order to find and identify blog posts, our implementation enriches Scrapy with two components to narrow the extraction process to the subsets of blog pages holding blog posts: blog-post identification and download priority heuristic. Given an entry point to a website, the default Scrapy behavior allows to look over all pages of the same domain in a \emph{last in first out} manner. The \emph{blog-post identification} function is able to identify from a URL whether or not the corresponding page is a blog-post. Internally, this function uses a regular expression constructed for each blog from it's web feed entries. These constitute the only set of known blog post URLs, and can therefore be used identify the structure of blog post URLs. This simple approach requires that blogs use the same pattern for all posts (or false negative will occur) which has to be distinct for non post pages (or false positive will occur). In practice this assumption held for all blog platforms we encountered during the developments and seems to be a common practice among web developer.
 
@@ -49,6 +50,7 @@ In order to efficiently deal with blogs with a large number non-blog-post pages,
 Due to space constraints, more precise description and evaluation of these two components where not included in this paper.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalability}
 When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable. Citing the Reactive Manifesto\cite{thereactivemanifesto2013}:
 
