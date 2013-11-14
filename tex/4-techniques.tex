@@ -30,7 +30,7 @@ In addition to extracting page after JavaScript execution, we also use some of P
 
 Our project is build on top of Scrapy\cite{scrapy2013}, an open source Python framework for web crawling. Scrapy provide an elegant and modulable high-level architecture which we followed in our implementation of the BlogForever Crawler. As illustrated in Figure~\ref{architecture}, Scrapy is divided in several components: \emph{Spiders}, \emph{Item Pipeline}, \emph{Downleader Middlewares} and \emph{Spider Middlewares}, where each of can be used to implement a different functionality.
 
-Our use case has two types of spiders: NewCrawl and UpdateCrawl, which respectively implement the logic to crawl a new blog and to get updates from a previously crawled blog. After downloading the HTML page, blog posts are packed into Items and sent through the folloing pipeline of operation:
+Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, which respectively implement the logic to crawl a new blog and to get updates from a previously crawled blog. After downloading the HTML page, blog posts are packed into Items and sent through the folloing pipeline of operation:
 \begin{enumerate}[noitemsep]
   \item Render JavaScript
   \item Extract content
@@ -42,7 +42,7 @@ This pipeline design, often called the \emph{pipes and filters pattern}\cite[Cha
 
 
 \subsection{Enriching Scrapy}
-In order to find and identify blog posts, our implementation enriches Scrapy with two components to narrow the extraction process to the subsets of blog pages holding blog posts: blog-post identification and download priority heuristic. Given an entry point to a website, the default Scrapy behavior allows to look over all pages of the same domain in a \emph{last in first out} manner. The \emph{blog-post identification} function is able to identify from a URL whether or not the corresponding page is a blog-post. Internally, this function uses a regular expression constructed for each blog from it's web feed entries. These constitute the only set of known blog post URLs, and can therefore be used identify the structure of blog post URLs. This simple approach requires that blogs use the same pattern for all posts (or false negative will occur) which has to be distinct for non post pages (or false positive will occur). In practice this assumption held for all blog platforms we encountered during the developments and seems to be a common practice among web developer. 
+In order to find and identify blog posts, our implementation enriches Scrapy with two components to narrow the extraction process to the subsets of blog pages holding blog posts: blog-post identification and download priority heuristic. Given an entry point to a website, the default Scrapy behavior allows to look over all pages of the same domain in a \emph{last in first out} manner. The \emph{blog-post identification} function is able to identify from a URL whether or not the corresponding page is a blog-post. Internally, this function uses a regular expression constructed for each blog from it's web feed entries. These constitute the only set of known blog post URLs, and can therefore be used identify the structure of blog post URLs. This simple approach requires that blogs use the same pattern for all posts (or false negative will occur) which has to be distinct for non post pages (or false positive will occur). In practice this assumption held for all blog platforms we encountered during the developments and seems to be a common practice among web developer.
 
 In order to efficiently deal with blogs with a large number non-blog-post pages, this blog-post identification mechanism is not sufficient. Indeed, after all pages identified as blog-post are processed, the crawler needs to download non-blog-post pages to search for additional blog-posts. To replace the naive random walk, depth first search or breadth first search web site traversals, we use a priority queue where new URL priorities are determined using a simple machine learning algorithm. Given an URL, the machine learning system does an estimation on the number of links to blog-post the corresponding page will contain. Each time a page is effectively downloaded, the actual number of blog-post links it contains is computed and passed to the machine learning system as training data. that will then be taken it into account during future predictions. This mechanism has shown to be indispensable for blogs hosting on the single domain a large number of non-blog web pages, such as a forum or a wiki.
 
@@ -50,22 +50,14 @@ Due to space constraints, more precise description and evaluation of these two c
 
 
 \subsection{Scalability}
-When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable.
+When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable. Citing the Reactive Manifesto\cite{thereactivemanifesto2013}:
 
-{{If one of these layers does not participate—making blocking calls to the database, relying on shared mutable state, calling out to expensive synchronous operations—then the whole pipeline stalls and users will suffer through increased latency and reduced scalability.}}\cite{reactivemanifesto2013}
+\begin{quoting}
+  If one of these layers does not participate—making blocking calls to the database, relying on shared mutable state, calling out to expensive synchronous operations—then the whole pipeline stalls and users will suffer through increased latency and reduced scalability.
+\end{quoting}
 
-At the time of writting we did not had the chance to work on a distributed depoyement of the BlogForever project. However, the crawler was built tu be
+At the time of writing we did not had the chance to work on a distributed deployment of the BlogForever project. However, the BlogForever crawler, and in particular the two core procedures \emph{NewCrawl} and \emph{UpdateCrawl}, where designed to be usable as part of a event-driven, scalable and fault resilient distributed system.
 
+\Anotecontent{commentfeed}{Blogs that do not provide a global comment feed need a special handling. If comment feeds are attached to each blog post, periodically checking for comment updates might be done with a reasonable cost. However, in the worst case where no comment feeds are provided, the only solution is to periodically do a full crawl of the blog to capture new comments.}
 
-
-
-
-
-Scrapy is written with Twisted, a popular event-driven networking framework for Python. Thus, it’s implemented using a non-blocking (aka asynchronous) code for concurrency.
-
-Scrapy uses the Twisted\cite{twisted2013} asynchronous networking engine
-
-At the time of writing...
-- http://www.reactivemanifesto.org/
-- stateless \\
-- scrapyd \\
+Scalability and fault resilience are induced by the fact that both \emph{NewCrawl} and \emph{UpdateCrawl} are from a high level viewpoint stateless entities. \emph{NewCrawl} can be seen as a function, which takes as input the URL of a blog and returns structured records for blog-posts, comments and medias. Similarly, \emph{UpdateCrawl} takes as inputs the URL of blog\Anote{commentfeed} and a time, and returns records of objects that where emitted after the given time. The absence of state implies that in a distributed setup, crawler instances could be removed, added, and used interchangeably. Regarding the asynchronous architecture, Scrapy is build upon Twisted\cite{twisted2013}, an event-driven networking framework for Python. Scrapy also provides a built-in service to start spiders with an HTTP JSON API. With these tools in hand, the only component to implement in order to achieve a scalable and fault resilient distributed crawling system is an entity to keep track of available crawlers and does appropriate load balancing between them.

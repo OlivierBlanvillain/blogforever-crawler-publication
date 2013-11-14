@@ -8,8 +8,13 @@
 \usepackage{epsfig}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{quoting}
 \usepackage{url}
+\usepackage{sepfootnotes}
+
+\newfootnotes{A}
 \MakeOuterQuote{"}
+\quotingsetup{vskip=0pt,font={itshape}}
 \setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
 \newcommand{\TODO}[1]{\emph{\color{red} TODO: #1}}
@@ -17,56 +22,58 @@
 
 \begin{document}
 
-\title{BlogForever Crawler: Techniques and Algorithms to Harvest Modern Weblogs}
+  \title{BlogForever Crawler: Techniques and Algorithms to Harvest Modern Weblogs}
 
-\numberofauthors{3}
+  \numberofauthors{3}
 
-\author{
-% 1st. author
-\alignauthor
-Olivier Blanvillain\\
-       \affaddr{École polytechnique fédérale de Lausanne (EPFL)}\\
-       \affaddr{1014 Lausanne, Switzerland}\\
-       \email{\surl{olivier.blanvillain@epfl.ch}}
-% 2nd. author
-\alignauthor
-Nikos Kasioumis\\
-       \affaddr{European Organization for Nuclear Research (CERN)}\\
-       \affaddr{1211 Geneva 23, Switzerland}\\
-       \email{\surl{nikos.kasioumis@cern.ch}}
-% 3rd. author
-\alignauthor
-Vangelis Banos\\
-       \affaddr{Department of Informatics}\\
-       \affaddr{Aristotle University of Thessaloniki, Greece}\\
-       \email{\surl{vbanos@gmail.com}}
-}
+  \author{
+  % 1st. author
+  \alignauthor
+  Olivier Blanvillain\\
+         \affaddr{École polytechnique fédérale de Lausanne (EPFL)}\\
+         \affaddr{1014 Lausanne, Switzerland}\\
+         \email{\surl{olivier.blanvillain@epfl.ch}}
+  % 2nd. author
+  \alignauthor
+  Nikos Kasioumis\\
+         \affaddr{European Organization for Nuclear Research (CERN)}\\
+         \affaddr{1211 Geneva 23, Switzerland}\\
+         \email{\surl{nikos.kasioumis@cern.ch}}
+  % 3rd. author
+  \alignauthor
+  Vangelis Banos\\
+         \affaddr{Department of Informatics}\\
+         \affaddr{Aristotle University of Thessaloniki, Greece}\\
+         \email{\surl{vbanos@gmail.com}}
+  }
 
-\maketitle
-\begin{abstract}
-\input{0-abstract.tex}
-\end{abstract}
+  \maketitle
 
-% A category with the (minimum) three required fields
-\category{H.4}{Information Systems Applications}{Miscellaneous}
-%A category including the fourth, optional field follows...
-\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+  \begin{abstract}
+    \input{0-abstract.tex}
+  \end{abstract}
 
-\terms{Theory}
+  % A category with the (minimum) three required fields
+  \category{H.4}{Information Systems Applications}{Miscellaneous}
+  %A category including the fourth, optional field follows...
+  \category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
 
-\keywords{ACM proceedings, \LaTeX, text tagging} % NOT required for Proceedings
+  \terms{Theory}
 
-\input{1-intro.tex}
-\input{2-related-work.tex}
-\clearpage
-\input{3-algorithms.tex}
-\clearpage
-\input{4-techniques.tex}
-\clearpage
-\input{5-evaluation.tex}
-\clearpage
-\input{6-conclusion-and-future-work.tex}
+  \keywords{ACM proceedings, \LaTeX, text tagging} % NOT required for Proceedings
 
-\bibliographystyle{abbrv}
-\bibliography{main}
+  \input{1-intro.tex}
+  \input{2-related-work.tex}
+  \clearpage
+  \input{3-algorithms.tex}
+  \clearpage
+  \input{4-techniques.tex}
+  \clearpage
+  \input{5-evaluation.tex}
+  \clearpage
+  \input{6-conclusion-and-future-work.tex}
+
+  \bibliographystyle{abbrv}
+  \bibliography{main}
+
 \end{document}
