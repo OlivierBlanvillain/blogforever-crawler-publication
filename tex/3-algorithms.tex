@@ -1,30 +1,46 @@
 \section{Algorithms}
 
-This section explains in details the algorithm we developed to extract blog posts content and it's variations for authors, date and comments. We will see how blog specific characteristics can be exploited to obtain an extraction procedure applicable to all posts of a blog. A careful attention will be paid to minimizing algorithmic complexity while keeping the simple and general approach of the algorithm.
+This section explains in details the algorithm we developed to extract blog posts content and it's variations for authors, date and comments. We will see how we can take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog. A careful attention will be paid to minimizing algorithmic complexity while keeping the approach simple and general.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Motivation}
-- getting content from HTML is not easy.
-\cite{worldwidewebconsortiumw3c2002}
+% HTML extraction is non trival
+Extracting metadata and content from HTML is not easy. Standards and recommendations have been present for quite some time, and tend to be quite strict on how the HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not be used more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantics and metadatas inside HTML documents, but as of today suffer from very low usage rates, under 0.5\%\cite{andrewrogers2013}. In fact, a majority of web designer rely on the generic \code{<span></span>} and \code{<div></div>} containers with a custom \code{class} or \code{id} attributes to organize HTML pages. Under such consistences, relying on HTML structure to extract data from web pages it's not viable and other techniques have to be employed.
 
 % Assumptions when working with blogs
-\Anotecontent{assumptions}{We observed during evaluation that all failing test blogs where violating one of these assumptions.}
-Working with blogs allows to make assumptions\Anote{assumptions} that are central in our extraction procedure:
-\begin{enumerate}
-  \item Web feeds provide a structured and standardized view of the most recent posts
-  \item Posts of a same blog share the similar HTMP structure.
+\Anotecontent{noteA}{We observed during evaluation that all failing test blogs where violating one of these assumptions.}
+
+Working with blogs allows to make assumptions\Anote{noteA} that will be central in our extraction procedure:
+\begin{enumerate}[label={(\arabic*)}]
+  \item \label{havefeed} Blogs provide web feeds that give a structured and standardized view of the blogs most recent posts,
+  \item \label{similarhtml} Posts of a same blog share a similar HTML structure.
 \end{enumerate}
-
-% Web feeds limitations
-In average, web feeds only contain about 20 entries \cite{french paper} which is generally lower than the total number of posts in a blog. In order to effectively archive old content from blogs it is necessary to download and process pages beyond the one referenced by the feed. The algorithm we are going to present in this section as for function to build wrappers for the relevant data of blog posts, which are going to be use
-
-% Per blog procedure, inputs/output
-Each time a new crawl is initiated our system builds a set of wrappers that are then used for the entirety of the blog. With this wrappers in hands, extraction data from the HTML page of a blog post is nothing more than parsing the HTML page running each XPath query, which can all by done with the standard python library \footnote{lxml, beautifullsoop}.
+On average, web feeds only contain about 20 entries\cite{oita2010}, less than the total number of posts in an average blog. In order to effectively archive old content from blogs it is necessary to download and process pages beyond the one referenced by the feed.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
+% \Anotecontent{vague}{The definition of the objective extraction rule is voluntarily vague, }
+
+% Per blog procedure, inputs/output
+The algorithm we are going to present in this section as for function to build an extraction rule for a relevant data of blog posts. It takes an input a set of pairs of HTML pages and target contents, and returns a extraction rule. The extraction rule should be such that when applied to one of the page, it will return data close to the target content of the corresponding page.
+
+input : A set $pageZipTarget$ of Html page and Text target pairs
+output: Best extraction rule
+Q <- empty list
+foreach (page, target) \in pageZipTarget do
+  Q <- Q + BestExtractionRule(page, target)
+return the extraction rule with highest occurrence in Q
+
+
+
+ALGO1.
+
+Given a blog, the crawler can use assumption \ref{havefeed} to obtain inputs for ALGO1. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtml} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtml} is also key to ensure applicability of the rule to all posts of the blog.
+
+2
+
 - related algorithms, general brute force viewpoint
 - algorithm
 - XPath selectors (id, else class, else path)
