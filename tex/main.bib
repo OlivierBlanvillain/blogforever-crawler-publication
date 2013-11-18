@@ -188,21 +188,6 @@
 	howpublished = {http://scrapy.org/}
 },
 
-@inproceedings{gkotsis2013,
-	address = {Republic and Canton of Geneva, Switzerland},
-	series = {{WWW} '13 Companion},
-	title = {Zero-cost labelling with web feeds for weblog data extraction},
-	isbn = {978-1-4503-2038-2},
-	url = {http://dl.acm.org/citation.cfm?id=2487788.2487819},
-	abstract = {Data extraction from web pages often involves either human intervention for training a wrapper or a reduced level of granularity in the information acquired. Even though the study of social media has drawn the attention of researchers, weblogs remain a part of the web that cannot be harvested efficiently. In this paper, we propose a fully automated approach in generating a wrapper for weblogs, which exploits web feeds for cheap labelling of weblog properties. Instead of performing a pairwise comparison between posts, the model matches the values of the web feeds against their corresponding {HTML} elements retrieved from multiple weblog posts. It adopts a probabilistic approach for deriving a set of rules and automating the process of wrapper generation. Our evaluation shows that our approach is robust, accurate and efficient in handling different types of weblogs.},
-	booktitle = {Proceedings of the 22nd international conference on World Wide Web companion},
-	publisher = {International World Wide Web Conferences Steering Committee},
-	author = {Gkotsis, George and Stepanyan, Karen and Cristea, Alexandra I. and Joy, Mike S.},
-	year = {2013},
-	keywords = {Data extraction, weblogs, wrapper induction},
-	pages = {73{\textendash}74}
-},
-
 @techreport{ferrara2012,
 	type = {{arXiv} e-print},
 	title = {Web Data Extraction, Applications and Techniques: A Survey},
@@ -221,6 +206,24 @@
 	author = {{PhantomJS}},
 	year = {2013},
 	howpublished = {http://phantomjs.org/}
+},
+
+@incollection{gkotsis2013,
+	series = {Lecture Notes in Computer Science},
+	title = {Self-supervised Automated Wrapper Generation for Weblog Data Extraction},
+	copyright = {{\textcopyright}2013 {Springer-Verlag} Berlin Heidelberg},
+	isbn = {978-3-642-39466-9, 978-3-642-39467-6},
+	url = {http://link.springer.com/chapter/10.1007/978-3-642-39467-6_26},
+	abstract = {Data extraction from the web is notoriously hard. Of the types of resources available on the web, weblogs are becoming increasingly important due to the continued growth of the blogosphere, but remain poorly explored. Past approaches to data extraction from weblogs have often involved manual intervention and suffer from low scalability. This paper proposes a fully automated information extraction methodology based on the use of web feeds and processing of {HTML.} The approach includes a model for generating a wrapper that exploits web feeds for deriving a set of extraction rules automatically. Instead of performing a pairwise comparison between posts, the model matches the values of the web feeds against their corresponding {HTML} elements retrieved from multiple weblog posts. It adopts a probabilistic approach for deriving a set of rules and automating the process of wrapper generation. An evaluation of the model is conducted on a dataset of 2,393 posts and the results (92\% accuracy) show that the proposed technique enables robust extraction of weblog properties and can be applied across the blogosphere for applications such as improved information retrieval and more robust web preservation initiatives.},
+	number = {7968},
+	booktitle = {Big Data},
+	publisher = {Springer Berlin Heidelberg},
+	author = {Gkotsis, George and Stepanyan, Karen and Cristea, Alexandra I. and Joy, Mike},
+	editor = {Gottlob, Georg and Grasso, Giovanni and Olteanu, Dan and Schallhart, Christian},
+	month = jan,
+	year = {2013},
+	keywords = {Automatic Wrapper Induction, Database Management, Data Storage Representation, Data Structures, Information Storage and Retrieval, Information Systems Applications (incl. Internet), Software Engineering, Web Information Extraction, weblogs},
+	pages = {292--302}
 },
 
 @article{agha1985,

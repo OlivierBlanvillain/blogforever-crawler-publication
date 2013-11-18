@@ -21,11 +21,8 @@ On average, web feeds only contain about 20 entries\cite{oita2010}, less than th
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
-% \Anotecontent{vague}{The definition of the objective extraction rule is voluntarily vague, }
-
-% Per blog procedure, inputs/output
-Algorithm \ref{extraction} we are going to present in this section as for function to build an extraction rule for a relevant data of blog posts. It takes an input a set of pairs of HTML pages and target contents, and returns a extraction rule. The returned extraction rule should be such that when applied to one of the input page, the extracted text is close to the target content of the corresponding page.
-
+% Per blog procedure, related work
+In order to extract content, authors, date and comments of posts of a blog, we will proceed by first building extraction rules from the information given on the web feed. These rules will take advantage of the HTML structure similarities between pages of a same blog in order to be applicable to all posts of a blog. The approach is not new and has already showed to give great results (\cite{gkotsis2013}, \cite{oita2010}), outperforming a more generic state-of-the-art extraction algorithms which works directly from the HTML page, without the need for a web feed.
 
 \begin{algorithm}
   \caption{Best Extraction Rule}\label{extraction}
@@ -56,14 +53,18 @@ Algorithm \ref{extraction} we are going to present in this section as for functi
   \Return{\emph{rule with highest occurrence in} $topRules$}\;
 \end{algorithm}
 
+% Algo, inputs/output
+Algorithm \ref{extraction} shows the procedure we use to build the extraction rule for content of blog posts. It takes as input a set of pairs of HTML pages and target contents, and returns a extraction rule. The returned extraction rule should be such that when applied to one of the input page, the extracted text is close to the target content of the corresponding page.
 
-Given a blog, the crawler can use assumption \ref{havefeed} to obtain inputs for ALGO1. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtml} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtml} is also key to ensure applicability of the rule to all posts of the blog.
+% General comment, embarrassingly parallel
+The idea is quite simple: compute the best extraction rule for each page/target tuple and return the most frequent rule. Making each of these computation independent might seems like a lose of information compared to another solution such as setting score of each rule to the average of it's score over all pages of the feed. However observed several cases were the independent solution performs better. When the web feed has a large portion of media only posts or with very short text, mean based solution tend to be more influenced by these outliers and are more likely to return wrong rules with constant low scores. In addition, having a independent computation for each input makes the algorithm \emph{embarrassingly parallel}: iterations of the outer loop are independent and can be executed on multiple threads.
 
-- related algorithms, general brute force viewpoint
-- algorithm
+% Input from assumptions.
+Given a blog, the crawler can use assumption \ref{havefeed} to obtain inputs for Algorithm \ref{extraction}. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtml} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtml} is also key to ensure applicability of the rule to all posts of the blog.
+
 - XPath selectors (id, else class, else path)
-- string similarity
-- caching
+- string similarity, caching
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
