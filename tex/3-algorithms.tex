@@ -24,22 +24,40 @@ On average, web feeds only contain about 20 entries\cite{oita2010}, less than th
 % \Anotecontent{vague}{The definition of the objective extraction rule is voluntarily vague, }
 
 % Per blog procedure, inputs/output
-The algorithm we are going to present in this section as for function to build an extraction rule for a relevant data of blog posts. It takes an input a set of pairs of HTML pages and target contents, and returns a extraction rule. The extraction rule should be such that when applied to one of the page, it will return data close to the target content of the corresponding page.
-
-input : A set $pageZipTarget$ of Html page and Text target pairs
-output: Best extraction rule
-Q <- empty list
-foreach (page, target) \in pageZipTarget do
-  Q <- Q + BestExtractionRule(page, target)
-return the extraction rule with highest occurrence in Q
+Algorithm \ref{extraction} we are going to present in this section as for function to build an extraction rule for a relevant data of blog posts. It takes an input a set of pairs of HTML pages and target contents, and returns a extraction rule. The returned extraction rule should be such that when applied to one of the input page, the extracted text is close to the target content of the corresponding page.
 
 
+\begin{algorithm}
+  \caption{Best Extraction Rule}\label{extraction}
+  \setstretch{1.1}
+  \thinspace
+  \SetKw{Of}{of}
+  \SetKw{In}{in}
+  \SetKwFunction{Pair}{}
+  \SetKwFunction{Apply}{Apply}
+  \SetKwFunction{AllRules}{AllRules}
+  \SetKwFunction{Similarity}{Similarity}
+  \SetKwInOut{Input}{input}
+  \SetKwInOut{Output}{output}
+  \DontPrintSemicolon
 
-ALGO1.
+  \Input{Set $pageZipTarget$ of Html and Text pairs}
+  \Output{Best extraction rule}
+  \BlankLine
+  $topRules \longleftarrow new~list$\;
+  \ForEach{\Pair{page, target} \In $pageZipTarget$}{
+    $score \longleftarrow new~map$\;
+    \ForEach{$rule$ \In \AllRules{page}}{
+      $extracted \longleftarrow$ \Apply{rule, page}\;
+      $score$ \Of $rule \longleftarrow$ \Similarity{extracted, target}\;
+    }
+    $topRules \longleftarrow topRules$ + rule with highest $score$\;
+  }
+  \Return{\emph{rule with highest occurrence in} $topRules$}\;
+\end{algorithm}
+
 
 Given a blog, the crawler can use assumption \ref{havefeed} to obtain inputs for ALGO1. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtml} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtml} is also key to ensure applicability of the rule to all posts of the blog.
-
-2
 
 - related algorithms, general brute force viewpoint
 - algorithm
