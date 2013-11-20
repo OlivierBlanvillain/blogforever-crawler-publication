@@ -1,6 +1,6 @@
 \documentclass{acm_proc_article-sp}
 
-% \usepackage{amssymb} $\mathcal{O}$
+\usepackage{amssymb}
 \usepackage[autostyle=false, style=english]{csquotes}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -24,10 +24,12 @@
 
 \newcommand{\TODO}[1]{\emph{\color{red} TODO: #1}}
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\coderef}[1]{\texttt{\ref{#1}}}
 \newcommand{\stringliteral}[1]{\texttt{\char`\"#1\char`\"}}
 \newcommand{\surl}[1]{\urlstyle{ff}\url{#1}}
 \newcommand{\set}[1]{\{ #1 \}}
 \newcommand{\len}[1]{|#1|}
+\newcommand{\Oof}[1]{$\mathcal{O}(#1)$}
 
 \begin{document}
 

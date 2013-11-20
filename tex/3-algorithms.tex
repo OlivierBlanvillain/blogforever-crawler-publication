@@ -6,7 +6,7 @@ This section explains in details the algorithm we developed to extract blog post
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Motivation}
 % HTML extraction is non trival
-Extracting metadata and content from HTML is not easy. Standards and recommendations have been present for quite some time, and strict specify how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantics and metadatas inside HTML documents, but as of today suffer from very low usage rates, under 0.5\%\cite{andrewrogers2013}. In fact, a majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} containers with custom \code{class} or \code{id} attributes to organize HTML pages. Under such consistences, relying on HTML structure to extract data from web pages it's not viable and other techniques have to be employed.
+Extracting metadata and content from HTML is not easy. Standards and recommendations have been present for quite some time, and strict specify how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantics and metadatas inside HTML documents, but as of today suffer from very low usage rates, under 0.5\%\cite{andrewrogers2013}. In fact, a majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} containers with custom \code{id} or \code{class} attributes to organize HTML pages. Under such consistences, relying on HTML structure to extract data from web pages it's not viable and other techniques have to be employed.
 
 % Assumptions when working with blogs
 \Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed than most of the failing blogs are violating one of these assumptions.}
@@ -14,8 +14,8 @@ Extracting metadata and content from HTML is not easy. Standards and recommendat
 With web blogs as our target websites we made the following assumptions\Anote{assumptions} that will be central in our extraction procedure:
 n procedure:
 \begin{enumerate}[label={(\arabic*)}]
-  \item \label{havefeedAssum} Blogs provide web feeds that give a structured and standardized view of the blogs most recent posts,
-  \item \label{similarhtmlAssum} Posts of a same blog share a similar HTML structure.
+  \item\label{havefeedAssum} Blogs provide web feeds that give a structured and standardized view of the blogs most recent posts,
+  \item\label{similarhtmlAssum} Posts of a same blog share a similar HTML structure.
 \end{enumerate}
 On average, web feeds only contain about 20 entries\cite{oita2010}, less than the total number of posts in an average blog. Consequently, in order to effectively archive old content from blogs it is necessary to download and process pages beyond the one referenced by the feed.
 
@@ -23,7 +23,7 @@ On average, web feeds only contain about 20 entries\cite{oita2010}, less than th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
 % Per blog procedure, related work
-In order to extract content, authors, date and comments of posts of a blog, we will proceed by first building extraction rules from the information given on it's web feed. These rules will take advantage of the similarities between HTML structure of pages on a same blog in order to be applicable to all posts of a blog. The approach is not new and has already showed to give great results (\cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that works directly on HTML pages, without the need for a web feed.
+In order to extract content, authors, date and comments of posts of a blog, we will proceed by first building extraction rules from the information given on it's web feed. These rules will take advantage of the similarities between HTML structure of pages on a same blog in order to be applicable to all posts of a blog. The approach is not new and has already showed to give great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that works directly on HTML pages, without the need for a web feed.
 
 \extractionAlgo
 
@@ -40,7 +40,7 @@ Given a blog, the crawler can use assumption \ref{havefeedAssum} to obtain input
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
 % XPath selectors (id, else class, else path)
-In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse html pages and apply extraction rules, thus providing the \code{apply} function use Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over \code{id} attribute, selection over \code{class} attribute and selection with absolute path. We have found that ignoring nodes without \code{id} or \code{class} absolutes prunes out a lot of uninteresting HTML nodes without decreasing  the quality of the result. Also when both \code{id} and \code{class} attributes are present the \code{id} attribute shows to be a stronger selector, here matching the HTML specification regarding the uniqueness of \code{id}. This observations led to the following \code{\ref{allrulesAlgo}} function:
+In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse html pages and apply extraction rules, thus providing the \code{Apply} function use Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over \code{id} attribute, selection over \code{class} attribute and selection with absolute path. We have found that ignoring nodes without \code{id} or \code{class} absolutes prunes out a lot of uninteresting HTML nodes without decreasing  the quality of the result. Also when both \code{id} and \code{class} attributes are present the \code{id} attribute shows to be a stronger selector, here matching the HTML specification regarding the uniqueness of \code{id}. This observations led to the following \coderef{allrulesAlgo} function:
 
 \allrulesAlgo
 
@@ -48,9 +48,9 @@ In our implementation, rules are queries in the XML Path Language (XPath). Conse
 Unsurprisingly, the choice of string similarity has a strong influence on the running time and precision of the extraction procedure. We use Sørensen–Dice coefficient similarity\cite{dice1945}, which is to the best of our knowledge the only string similarity fulfilling the following criteria:
 
 \begin{enumerate}
-  \item \label{wordorderProp} Have low sensibility to word ordering
-  \item \label{substringProp} Favor substrings over strings of similar length
-  \item \label{lineraProp} Run in linear time
+  \item\label{wordorderProp} Have low sensibility to word ordering
+  \item\label{substringProp} Favor substrings over strings of similar length
+  \item\label{linearProp} Run in linear time
 \end{enumerate}
 
 Properties \ref{wordorderProp} and \ref{substringProp} are essential to deal with cases where web feeds contain only an abstract or the first paragraph of the post content. The following table illustrates these two properties with examples, also giving the Levenshtein\cite{levenshtein1966} similarity to illustrate the poor performance of string matching based similarities.
@@ -64,9 +64,10 @@ The Sørensen–Dice coefficient methods operates by first building sets of pair
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time complexity, linear reformulation}
 
-We will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linera time HTML parser that build an index on
+With both \coderef{allrulesAlgo} and \coderef{similarityAlgo} function defined, we will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linear time HTML parser which builds an appropriate data-structure indexed on \code{id} and \code{class} attributes, effectively making \code{Apply} $\in$ \Oof{1}. As stated before, the outer loop splits the input into independent computations, and each call to \coderef{allrulesAlgo} returns less rules than the number of nodes in HTML tree, in linear time. Therefor, the body of the inner loop will be executed a linear number of time. Because extraction rule can return arbitrary subtrees of the queried page, each call to \coderef{similarityAlgo} will run in \Oof{n}, leading a overall quadratic running time.
 
-As stated before, the outer simply splits the input into independent computations. \ref{allrulesAlgo} return a lkajsd flkasjd félkasjd félaksdjfélaskdjf
+While caching the bigram computation of target gives a speed up
+
 % Algo 1 is quadratic
 
 % Linera reformulation
