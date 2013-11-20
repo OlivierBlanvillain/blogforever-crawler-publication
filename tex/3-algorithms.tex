@@ -36,7 +36,7 @@ The idea is quite simple: compute the best extraction rule for each page/target 
 % Input from assumptions.
 Given a blog, the crawler can use assumption \ref{havefeedAssum} to obtain inputs for Algorithm \ref{extractionAlgo}. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtmlAssum} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtmlAssum} is also key to ensure applicability of the rule to all posts of the blog.
 
-
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
 % XPath selectors (id, else class, else path)
@@ -62,11 +62,22 @@ The Sørensen–Dice coefficient methods operates by first building sets of pair
 \similarityAlgo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Linear time reformulation}
+\subsection{Time complexity, linear reformulation}
+
+We will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linera time HTML parser that build an index on
+
+As stated before, the outer simply splits the input into independent computations. \ref{allrulesAlgo} return a lkajsd flkasjd félkasjd félaksdjfélaskdjf
+% Algo 1 is quadratic
+
+% Linera reformulation
+
+% Algo 2
+
+
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Variations for comments, date and authors extraction}
+\subsection{Variations for comments and authors}
 - comments
 - date authors
