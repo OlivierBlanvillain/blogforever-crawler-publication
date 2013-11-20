@@ -1,0 +1,33 @@
+\newcommand{\similarityTable}{
+  \begin{table}[h]\centering
+    \setstretch{1.1}
+    \begin{tabular*}{\columnwidth}{
+      @{}p{0.144\textwidth}p{0.18\textwidth}rr@{}
+    }
+    \bottomrule
+    \emph{string1} & \emph{string2} & Dice & Leven. \\
+    \toprule
+    \stringliteral{Scheme Scala} & \stringliteral{Scala Scheme}
+    & 90\% & 50\% \\
+    \stringliteral{Rachid} & \stringliteral{Richard}
+    & 18\% & 61\% \\
+    \stringliteral{Rachid} & \stringliteral{Amy, Rachid and all their friends}
+    & 29\% & 31\% \\
+    \bottomrule
+    \end{tabular*}
+  % \caption{Caption}\label{similarityTable}
+  \end{table}
+}
+
+% In [5]: d("Scheme Scala", "Scala Scheme")
+% Out[5]: 0.
+% In [6]: r("Scheme Scala", "Scala Scheme")
+% Out[6]: 0.5
+% In [7]: d("Rachid", "Amy, Rachid and all their friends")
+% Out[7]: 0.29411764705882354
+% In [8]: r("Rachid", "Amy, Rachid and all their friends")
+% Out[8]: 0.3076923076923077
+% In [9]: d("Rachid", "Rexford")
+% Out[9]: 0.18181818181818182
+% In [10]: r("Rachid", "Rexford")
+% Out[10]: 0.6153846153846154

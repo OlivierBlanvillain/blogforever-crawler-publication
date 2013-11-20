@@ -6,64 +6,63 @@ This section explains in details the algorithm we developed to extract blog post
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Motivation}
 % HTML extraction is non trival
-Extracting metadata and content from HTML is not easy. Standards and recommendations have been present for quite some time, and tend to be quite strict on how the HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not be used more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantics and metadatas inside HTML documents, but as of today suffer from very low usage rates, under 0.5\%\cite{andrewrogers2013}. In fact, a majority of web designer rely on the generic \code{<span></span>} and \code{<div></div>} containers with a custom \code{class} or \code{id} attributes to organize HTML pages. Under such consistences, relying on HTML structure to extract data from web pages it's not viable and other techniques have to be employed.
+Extracting metadata and content from HTML is not easy. Standards and recommendations have been present for quite some time, and strict specify how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantics and metadatas inside HTML documents, but as of today suffer from very low usage rates, under 0.5\%\cite{andrewrogers2013}. In fact, a majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} containers with custom \code{class} or \code{id} attributes to organize HTML pages. Under such consistences, relying on HTML structure to extract data from web pages it's not viable and other techniques have to be employed.
 
 % Assumptions when working with blogs
-\Anotecontent{noteA}{We observed during evaluation that all failing test blogs where violating one of these assumptions.}
+\Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed than most of the failing blogs are violating one of these assumptions.}
 
-Working with blogs allows to make assumptions\Anote{noteA} that will be central in our extraction procedure:
+With web blogs as our target websites we made the following assumptions\Anote{assumptions} that will be central in our extraction procedure:
+n procedure:
 \begin{enumerate}[label={(\arabic*)}]
-  \item \label{havefeed} Blogs provide web feeds that give a structured and standardized view of the blogs most recent posts,
-  \item \label{similarhtml} Posts of a same blog share a similar HTML structure.
+  \item \label{havefeedAssum} Blogs provide web feeds that give a structured and standardized view of the blogs most recent posts,
+  \item \label{similarhtmlAssum} Posts of a same blog share a similar HTML structure.
 \end{enumerate}
-On average, web feeds only contain about 20 entries\cite{oita2010}, less than the total number of posts in an average blog. In order to effectively archive old content from blogs it is necessary to download and process pages beyond the one referenced by the feed.
+On average, web feeds only contain about 20 entries\cite{oita2010}, less than the total number of posts in an average blog. Consequently, in order to effectively archive old content from blogs it is necessary to download and process pages beyond the one referenced by the feed.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
 % Per blog procedure, related work
-In order to extract content, authors, date and comments of posts of a blog, we will proceed by first building extraction rules from the information given on the web feed. These rules will take advantage of the HTML structure similarities between pages of a same blog in order to be applicable to all posts of a blog. The approach is not new and has already showed to give great results (\cite{gkotsis2013}, \cite{oita2010}), outperforming a more generic state-of-the-art extraction algorithms which works directly from the HTML page, without the need for a web feed.
+In order to extract content, authors, date and comments of posts of a blog, we will proceed by first building extraction rules from the information given on it's web feed. These rules will take advantage of the similarities between HTML structure of pages on a same blog in order to be applicable to all posts of a blog. The approach is not new and has already showed to give great results (\cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that works directly on HTML pages, without the need for a web feed.
 
-\begin{algorithm}
-  \caption{Best Extraction Rule}\label{extraction}
-  \setstretch{1.1}
-  \thinspace
-  \SetKw{Of}{of}
-  \SetKw{In}{in}
-  \SetKwFunction{Pair}{}
-  \SetKwFunction{Apply}{Apply}
-  \SetKwFunction{AllRules}{AllRules}
-  \SetKwFunction{Similarity}{Similarity}
-  \SetKwInOut{Input}{input}
-  \SetKwInOut{Output}{output}
-  \DontPrintSemicolon
+\extractionAlgo
 
-  \Input{Set $pageZipTarget$ of Html and Text pairs}
-  \Output{Best extraction rule}
-  \BlankLine
-  $topRules \longleftarrow new~list$\;
-  \ForEach{\Pair{page, target} \In $pageZipTarget$}{
-    $score \longleftarrow new~map$\;
-    \ForEach{$rule$ \In \AllRules{page}}{
-      $extracted \longleftarrow$ \Apply{rule, page}\;
-      $score$ \Of $rule \longleftarrow$ \Similarity{extracted, target}\;
-    }
-    $topRules \longleftarrow topRules$ + rule with highest $score$\;
-  }
-  \Return{\emph{rule with highest occurrence in} $topRules$}\;
-\end{algorithm}
-
-% Algo, inputs/output
-Algorithm \ref{extraction} shows the procedure we use to build the extraction rule for content of blog posts. It takes as input a set of pairs of HTML pages and target contents, and returns a extraction rule. The returned extraction rule should be such that when applied to one of the input page, the extracted text is close to the target content of the corresponding page.
+% Algorithm, inputs/output
+Algorithm \ref{extractionAlgo} shows the procedure we use to build the extraction rule for content of blog posts. It takes as input a set of pairs of HTML pages and target contents, and returns an extraction rule. This rule should be such that when applied to one of the input pages, the extracted text is close to the corresponding target content.
 
 % General comment, embarrassingly parallel
-The idea is quite simple: compute the best extraction rule for each page/target tuple and return the most frequent rule. Making each of these computation independent might seems like a lose of information compared to another solution such as setting score of each rule to the average of it's score over all pages of the feed. However observed several cases were the independent solution performs better. When the web feed has a large portion of media only posts or with very short text, mean based solution tend to be more influenced by these outliers and are more likely to return wrong rules with constant low scores. In addition, having a independent computation for each input makes the algorithm \emph{embarrassingly parallel}: iterations of the outer loop are independent and can be executed on multiple threads.
+The idea is quite simple: compute the best extraction rule for each page/target pair and return the most frequent best rule. Making each of these computation independent might seems like a lose of information compared to alternative solutions such as having a global score for each rule computed as the average of it's score over all pages of the feed. We observed in our tests several cases were the independent solution performs better. When the web feed has a large portion of posts with very few text, mean based solutions tend to be more influenced by these outliers and are inclined to return wrong results with constant low scores. In addition, having a independent computation for each input makes the algorithm \emph{embarrassingly parallel}: iterations of the outer loop can trivialy be executed by multiple threads.
 
 % Input from assumptions.
-Given a blog, the crawler can use assumption \ref{havefeed} to obtain inputs for Algorithm \ref{extraction}. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtml} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtml} is also key to ensure applicability of the rule to all posts of the blog.
+Given a blog, the crawler can use assumption \ref{havefeedAssum} to obtain inputs for Algorithm \ref{extractionAlgo}. Indeed a web feeds provide either a textual content or a textual description for each of it's entries, as well as a link to the corresponding page. Assumptions \ref{similarhtmlAssum} suggests the existence of solution: an extraction rule appropriate for each input pages/target content pairs. \ref{similarhtmlAssum} is also key to ensure applicability of the rule to all posts of the blog.
 
-- XPath selectors (id, else class, else path)
-- string similarity, caching
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extraction rules and string similarity}
+% XPath selectors (id, else class, else path)
+In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse html pages and apply extraction rules, thus providing the \code{apply} function use Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over \code{id} attribute, selection over \code{class} attribute and selection with absolute path. We have found that ignoring nodes without \code{id} or \code{class} absolutes prunes out a lot of uninteresting HTML nodes without decreasing  the quality of the result. Also when both \code{id} and \code{class} attributes are present the \code{id} attribute shows to be a stronger selector, here matching the HTML specification regarding the uniqueness of \code{id}. This observations led to the following \code{\ref{allrulesAlgo}} function:
+
+\allrulesAlgo
+
+% String similarity
+Unsurprisingly, the choice of string similarity has a strong influence on the running time and precision of the extraction procedure. We use Sørensen–Dice coefficient similarity\cite{dice1945}, which is to the best of our knowledge the only string similarity fulfilling the following criteria:
+
+\begin{enumerate}
+  \item \label{wordorderProp} Have low sensibility to word ordering
+  \item \label{substringProp} Favor substrings over strings of similar length
+  \item \label{lineraProp} Run in linear time
+\end{enumerate}
+
+Properties \ref{wordorderProp} and \ref{substringProp} are essential to deal with cases where web feeds contain only an abstract or the first paragraph of the post content. The following table illustrates these two properties with examples, also giving the Levenshtein\cite{levenshtein1966} similarity to illustrate the poor performance of string matching based similarities.
+
+\similarityTable
+
+The Sørensen–Dice coefficient methods operates by first building sets of pairs of adjacent characters, also knows as \emph{Bigrams}, and then applying the \emph{quotient of similarity} formula:
+
+\similarityAlgo
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Linear time reformulation}
 
 
 
