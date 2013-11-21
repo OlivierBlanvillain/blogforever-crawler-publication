@@ -2,9 +2,12 @@
 \SetKw{In}{in}
 \SetKw{As}{as}
 \SetKw{With}{with}
+\SetKw{Over}{over}
+\SetKw{Using}{for}
 \SetKwFunction{Par}{}
+\SetKwFunction{Rule}{Rule}
 \SetKwFunction{Apply}{Apply}
-\SetKwFunction{Bigrams}{Bigrams}
+\SetKwFunction{Bigram}{Bigram}
 \SetKwFunction{AllRules}{\ref{allrulesAlgo}}
 \SetKwFunction{Similarity}{\ref{similarityAlgo}}
 \SetKwFunction{AbsolutePathTo}{AbsolutePathTo}
@@ -44,16 +47,16 @@
     \caption{AllRules(page)}\label{allrulesAlgo}
     \setstretch{1.1}
 
-    \emph{rules \Arrow new set}\;
+    \emph{rules} \Arrow new set\;
     \ForEach{node \In page}{
       \uIf{node \As \emph{\code{id} attribute}}{
-        \emph{rules \Arrow rules} + \set{\stringliteral{
+        \emph{rules \Arrow rules} +\set{\stringliteral{
           //*[@id=`\textnormal{\it node.id}']}}\;
       } \ElseIf{node \As \emph{\code{class} attribute}}{
-        \emph{rules \Arrow rules} + \set{\stringliteral{
+        \emph{rules \Arrow rules} +\set{\stringliteral{
           //*[@class=`\textnormal{\it node.class}']}}\;
       } \code{//} \lElse{
-        \emph{rules \Arrow rules} + \set{\AbsolutePathTo{node}}
+        \emph{rules \Arrow rules} +\set{\AbsolutePathTo{node}}
       }
     }
     \Return{rules}\;
@@ -67,7 +70,7 @@
 
     \emph{bigram1 \Arrow}set of pairs of adjacent characters in \emph{string1}\;
     \emph{bigram2 \Arrow}set of pairs of adjacent characters in \emph{string2}\;
-    \Return{\emph{2} $\cdot$ \len{bigram1 $\cap$ bigram2} / \Par{\len{bigram1} \emph{+} \len{bigram2}}}\;
+    \Return{\emph{2} $\cdot$ \len{bigram1 $\cap$ bigram2} \emph{/} \Par{\len{bigram1} \emph{+} \len{bigram2}}}\;
     \end{function}
 }
 
@@ -87,13 +90,18 @@
       \emph{score \Arrow}new map\;
       \emph{bigram \Arrow}new map\;
       \emph{bigram \Of target \Arrow}set of pairs of adjacents in \emph{target}\;
-      \ForEach{node \In page \With \emph{post order traversal}}{
-        \emph{bigram \Of node \Arrow}set of pairs of adjacents in \emph{node.text $\cup$ bigram \Of target}\;
-
-        \emph{extracted \Arrow \Apply{rule, page}}\;
-        \emph{score \Of rule \Arrow \Similarity{extracted, target}}\;
+      \ForEach{node \In page \With \emph{post-order traversal}}{
+        \emph{bigram \Of node \Arrow}\; \Indp
+          set of pairs of adjacent characters in \emph{node.text\;
+          $\bigcup$ \Par{\Using C \Over node.childs} bigram \Of C}\;
+          \Indm
+        \emph{score \Of node \Arrow }\; \Indp $\dfrac{{
+            2 \cdot \len{\Par{bigram~\Of~node} \cap \Par{bigram~\Of~target}}}
+            }{
+            \len{bigram~\Of~node} + \len{bigram~\Of~target} }$\;
+          \Indm
       }
-      \emph{topRules \Arrow topRules} + rule with highest \emph{score}\;
+      \emph{topRules \Arrow topRules} + \Rule{\emph{node with highest} score}\;
     }
     \Return{\emph{rule with highest occurrence in} topRules}\;
   \end{algorithm}

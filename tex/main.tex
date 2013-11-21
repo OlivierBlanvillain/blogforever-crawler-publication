@@ -1,17 +1,19 @@
 \documentclass{acm_proc_article-sp}
 
-\usepackage{amssymb}
+\usepackage[ruled, vlined, ]{algorithm2e}
 \usepackage[autostyle=false, style=english]{csquotes}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{commath}
 \usepackage{booktabs}
-\usepackage{color}
+\usepackage{microtype}
 \usepackage{enumitem}
-\usepackage{epsfig}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{quoting}
-\usepackage[ruled, vlined, ]{algorithm2e}
 \usepackage{url}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
@@ -22,12 +24,13 @@
 \setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
-\newcommand{\TODO}[1]{\emph{\color{red} TODO: #1}}
+\newcommand{\TODO}[1]{\emph{\color{Red} TODO: #1}}
+\newcommand{\comment}[1]{%
+  \emph{\color{Gray}Comment: #1\\}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\coderef}[1]{\texttt{\ref{#1}}}
 \newcommand{\stringliteral}[1]{\texttt{\char`\"#1\char`\"}}
 \newcommand{\surl}[1]{\urlstyle{ff}\url{#1}}
-\newcommand{\set}[1]{\{ #1 \}}
 \newcommand{\len}[1]{|#1|}
 \newcommand{\Oof}[1]{$\mathcal{O}(#1)$}
 
@@ -42,7 +45,7 @@
   \alignauthor
   Olivier Blanvillain\\
          \affaddr{École polytechnique fédérale de Lausanne (EPFL)}\\
-         \affaddr{1014 Lausanne, Switzerland\TODO{Check.}}\\
+         \affaddr{1015 Lausanne, Switzerland}\\
          \email{\surl{olivier.blanvillain@epfl.ch}}
   % 2nd. author
   \alignauthor
