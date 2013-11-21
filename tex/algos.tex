@@ -1,6 +1,7 @@
 \SetKw{Of}{of}
 \SetKw{In}{in}
 \SetKw{As}{as}
+\SetKw{With}{with}
 \SetKwFunction{Par}{}
 \SetKwFunction{Apply}{Apply}
 \SetKwFunction{Bigrams}{Bigrams}
@@ -12,7 +13,7 @@
 \SetProcNameSty{texttt}
 \SetProcArgSty{textit}
 
-\newcommand{\arrow}{$\longleftarrow$ }
+\newcommand{\Arrow}{$\longleftarrow$~}
 
 \newcommand{\extractionAlgo}{
   \begin{algorithm}
@@ -25,14 +26,14 @@
     \Input{Set \emph{pageZipTarget} of Html and Text pairs}
     \Output{Best extraction rule}
     \BlankLine
-    \emph{topRules \arrow}new list\;
+    \emph{topRules \Arrow}new list\;
     \ForEach{\Par{page, target} \In pageZipTarget}{
-      \emph{score \arrow}new map\;
+      \emph{score \Arrow}new map\;
       \ForEach{rule \In \AllRules{page}}{
-        \emph{extracted \arrow \Apply{rule, page}}\;
-        \emph{score \Of rule \arrow \Similarity{extracted, target}}\;
+        \emph{extracted \Arrow \Apply{rule, page}}\;
+        \emph{score \Of rule \Arrow \Similarity{extracted, target}}\;
       }
-      \emph{topRules \arrow topRules} + rule with highest \emph{score}\;
+      \emph{topRules \Arrow topRules} + rule with highest \emph{score}\;
     }
     \Return{\emph{rule with highest occurrence in} topRules}\;
   \end{algorithm}
@@ -43,16 +44,16 @@
     \caption{AllRules(page)}\label{allrulesAlgo}
     \setstretch{1.1}
 
-    \emph{rules \arrow new set}\;
+    \emph{rules \Arrow new set}\;
     \ForEach{node \In page}{
       \uIf{node \As \emph{\code{id} attribute}}{
-        \emph{rules \arrow rules} + \set{\stringliteral{
+        \emph{rules \Arrow rules} + \set{\stringliteral{
           //*[@id=`\textnormal{\it node.id}']}}\;
       } \ElseIf{node \As \emph{\code{class} attribute}}{
-        \emph{rules \arrow rules} + \set{\stringliteral{
+        \emph{rules \Arrow rules} + \set{\stringliteral{
           //*[@class=`\textnormal{\it node.class}']}}\;
       } \code{//} \lElse{
-        \emph{rules \arrow rules} + \set{\AbsolutePathTo{node}}
+        \emph{rules \Arrow rules} + \set{\AbsolutePathTo{node}}
       }
     }
     \Return{rules}\;
@@ -64,8 +65,36 @@
     \caption{Similarity(string1, string2)}\label{similarityAlgo}
     \setstretch{1.1}
 
-    \emph{bigram1 \arrow}set of pairs of adjacent characters in \emph{string1}\;
-    \emph{bigram2 \arrow}set of pairs of adjacent characters in \emph{string2}\;
+    \emph{bigram1 \Arrow}set of pairs of adjacent characters in \emph{string1}\;
+    \emph{bigram2 \Arrow}set of pairs of adjacent characters in \emph{string2}\;
     \Return{\emph{2} $\cdot$ \len{bigram1 $\cap$ bigram2} / \Par{\len{bigram1} \emph{+} \len{bigram2}}}\;
     \end{function}
+}
+
+\newcommand{\linearAlgo}{
+  \begin{algorithm}
+    \caption{Linear Time Content Extraction Rule}\label{linearAlgo}
+    \SetKwInOut{Input}{input}
+    \SetKwInOut{Output}{output}
+    \setstretch{1.1}
+    \thinspace
+
+    \Input{Set \emph{pageZipTarget} of Html and Text pairs}
+    \Output{Best extraction rule}
+    \BlankLine
+    \emph{topRules \Arrow}new list\;
+    \ForEach{\Par{page, target} \In pageZipTarget}{
+      \emph{score \Arrow}new map\;
+      \emph{bigram \Arrow}new map\;
+      \emph{bigram \Of target \Arrow}set of pairs of adjacents in \emph{target}\;
+      \ForEach{node \In page \With \emph{post order traversal}}{
+        \emph{bigram \Of node \Arrow}set of pairs of adjacents in \emph{node.text $\cup$ bigram \Of target}\;
+
+        \emph{extracted \Arrow \Apply{rule, page}}\;
+        \emph{score \Of rule \Arrow \Similarity{extracted, target}}\;
+      }
+      \emph{topRules \Arrow topRules} + rule with highest \emph{score}\;
+    }
+    \Return{\emph{rule with highest occurrence in} topRules}\;
+  \end{algorithm}
 }

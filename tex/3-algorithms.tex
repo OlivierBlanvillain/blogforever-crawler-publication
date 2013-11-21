@@ -64,18 +64,20 @@ The Sørensen–Dice coefficient methods operates by first building sets of pair
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time complexity, linear reformulation}
 
-With both \coderef{allrulesAlgo} and \coderef{similarityAlgo} function defined, we will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linear time HTML parser which builds an appropriate data-structure indexed on \code{id} and \code{class} attributes, effectively making \code{Apply} $\in$ \Oof{1}. As stated before, the outer loop splits the input into independent computations, and each call to \coderef{allrulesAlgo} returns less rules than the number of nodes in HTML tree, in linear time. Therefor, the body of the inner loop will be executed a linear number of time. Because extraction rule can return arbitrary subtrees of the queried page, each call to \coderef{similarityAlgo} will run in \Oof{n}, leading a overall quadratic running time.
-
-While caching the bigram computation of target gives a speed up
-
 % Algo 1 is quadratic
+With both \coderef{allrulesAlgo} and \coderef{similarityAlgo} function defined, we will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linear time HTML parser which builds an appropriate data-structure indexed on \code{id} and \code{class} attributes, effectively making \code{Apply} $\in$ \Oof{1}. As stated before, the outer loop splits the input into independent computations, and each call to \coderef{allrulesAlgo} returns less rules than the number of nodes in HTML tree, in linear time. Therefor, the body of the inner loop will be executed a linear number of time. Because extraction rule can return arbitrary subtrees of the queried page, each call to \coderef{similarityAlgo} will run in \Oof{n}, leading to an overall quadratic running time.
 
 % Linera reformulation
+There is a reformulation of Algorithm \ref{extractionAlgo} with linar running time. As you will see, it requiers to break the separation in annex functions by bringing string similariy and HTML tree traversal logic into the core of the algorithm. It works like this
 
-% Algo 2
+\linearAlgo
 
+-> (algo)
+-> complecity analisis
 
+The reason we presented Algorithm \ref{extractionAlgo} and 
 
+While caching the bigram computation of target gives a speed up
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
