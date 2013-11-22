@@ -56,7 +56,8 @@
         \emph{rules \Arrow rules} +\set{\stringliteral{
           //*[@class=`\textnormal{\it node.class}']}}\;
       } \code{//} \lElse{
-        \emph{rules \Arrow rules} +\set{\AbsolutePathTo{node}}
+        \emph{rules \Arrow rules} +\set{\AbsolutePathTo{node}}%
+        \comment{not sure if this commented else is usefull...}%
       }
     }
     \Return{rules}\;
@@ -68,15 +69,15 @@
     \caption{Similarity(string1, string2)}\label{similarityAlgo}
     \setstretch{1.1}
 
-    \emph{bigram1 \Arrow}set of pairs of adjacent characters in \emph{string1}\;
-    \emph{bigram2 \Arrow}set of pairs of adjacent characters in \emph{string2}\;
-    \Return{\emph{2} $\cdot$ \len{bigram1 $\cap$ bigram2} \emph{/} \Par{\len{bigram1} \emph{+} \len{bigram2}}}\;
+    \emph{bigrams1 \Arrow}set of pairs of adjacent characters in \emph{string1}\;
+    \emph{bigrams2 \Arrow}set of pairs of adjacent characters in \emph{string2}\;
+    \Return{\emph{2} \envert{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\envert{bigrams1} \emph{+} \envert{bigrams2}}}\;
     \end{function}
 }
 
 \newcommand{\linearAlgo}{
   \begin{algorithm}
-    \caption{Linear Time Content Extraction Rule}\label{linearAlgo}
+    \caption{Linear Time Best Content Extraction Rule}\label{linearAlgo}
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
     \setstretch{1.1}
@@ -88,17 +89,15 @@
     \emph{topRules \Arrow}new list\;
     \ForEach{\Par{page, target} \In pageZipTarget}{
       \emph{score \Arrow}new map\;
-      \emph{bigram \Arrow}new map\;
-      \emph{bigram \Of target \Arrow}set of pairs of adjacents in \emph{target}\;
+      \emph{bigrams \Arrow}new map\;
+      \emph{bigrams \Of target \Arrow}set of pairs of adjacents in \emph{target}\;
       \ForEach{node \In page \With \emph{post-order traversal}}{
-        \emph{bigram \Of node \Arrow}\; \Indp
+        \emph{bigrams \Of node \Arrow}\; \Indp
           set of pairs of adjacent characters in \emph{node.text\;
-          $\bigcup$ \Par{\Using C \Over node.childs} bigram \Of C}\;
+          $\bigcup$ \Par{\Using C \Over node.childs} bigrams \Of C}\;
           \Indm
-        \emph{score \Of node \Arrow }\; \Indp $\dfrac{{
-            2 \cdot \len{\Par{bigram~\Of~node} \cap \Par{bigram~\Of~target}}}
-            }{
-            \len{bigram~\Of~node} + \len{bigram~\Of~target} }$\;
+        \emph{score \Of node \Arrow }\; \Indp
+            $\dfrac{ {2 \envert{\Par{bigram~\Of~node} \cap \Par{bigram~\Of~target}}} }{ \envert{bigram~\Of~node} + \envert{bigram~\Of~target} }$\;
           \Indm
       }
       \emph{topRules \Arrow topRules} + \Rule{\emph{node with highest} score}\;

@@ -12,11 +12,12 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{graphicx}
-\usepackage{hyperref}
 \usepackage{quoting}
 \usepackage{url}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{hypcap}
 
 \MakeOuterQuote{"}
 \newfootnotes{A}
@@ -24,14 +25,17 @@
 \setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
+\setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
+\setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
+\setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
+
 \newcommand{\TODO}[1]{\emph{\color{Red} TODO: #1}}
-\newcommand{\comment}[1]{%
-  \emph{\color{Gray}Comment: #1\\}}
+% \newcommand{\comment}[1]{}
+\newcommand{\comment}[1]{\emph{\color{Gray}Comment: #1\\}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\coderef}[1]{\texttt{\ref{#1}}}
 \newcommand{\stringliteral}[1]{\texttt{\char`\"#1\char`\"}}
 \newcommand{\surl}[1]{\urlstyle{ff}\url{#1}}
-\newcommand{\len}[1]{|#1|}
 \newcommand{\Oof}[1]{$\mathcal{O}(#1)$}
 
 \begin{document}
