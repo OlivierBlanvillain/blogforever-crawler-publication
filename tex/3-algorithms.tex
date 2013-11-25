@@ -38,7 +38,7 @@ In addition, having a independent computation for each input makes the algorithm
 Before going in details about annex functions and time complexity, we explain how the previously stated assumptions relate to Algorithm \ref{extractionAlgo}. Given a blog, assumption \ref{havefeedAssum} allows the crawler to obtain inputs for the algorithm. Indeed, web feeds provide either textual content or description of its entries, as well as a link to the corresponding page. Assumption \ref{similarhtmlAssum} garenties the existence of an appropriate an extraction rule, as well it's applicability to all posts of the blog.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
 % xpath selectors (id, else class, else path)
 In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse html pages and apply extraction rules, thus providing the \code{Apply} function used Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection with path in the HTML tree. We have found that ignoring nodes without \code{id} or \code{class} attributes prunes out many uninteresting HTML nodes without decreasing  the quality of the result. Also when both \code{id} and \code{class} attributes are present, we can ignore the \code{class} has \code{id}s should be unique. This observations led to the following \coderef{allrulesAlgo} function:
@@ -63,7 +63,7 @@ The Sørensen–Dice coefficient methods operates by first building sets of pair
 \similarityAlgo
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time complexity and linear reformulation}
 
 % algo 1 is quadratic
@@ -76,8 +76,14 @@ We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulat
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Variations for authors, dates and comments}
+As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. The case of author is problematic because is not uncommon to encounter the name a post author in several places in the pages. Because of this, to return a rule to extract the owner of the blog instead of the post author. In cases the blog owner and the post author is the same person in the feed entries but not across all the blog, we might extract the wrong information when the two differ. The heuristic we used to fix this issue is to add a new component in the scores of author extraction rules: the \emph{tree distance} between the current node and the node holding the post content.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Variations for comments, dates and authors}
-- comments
+Dates are affected by the same issue often having duplicated in a page, but 
+ 
+
+
 - date authors
+
+- comments
