@@ -28,50 +28,26 @@
 	"buffers":
 	[
 		{
-			"file": "blogforever-crawler/bibcrawl/run.py",
+			"file": "/home/olivier/Desktop/post",
 			"settings":
 			{
-				"buffer_size": 648,
+				"buffer_size": 300,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "blogforever-crawler/bibcrawl/spiders/newcrawl.py",
+			"file": "tex/3-algorithms.tex",
 			"settings":
 			{
-				"buffer_size": 2495,
+				"buffer_size": 9199,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "blogforever-crawler/out.txt",
+			"file": "tex/algos.tex",
 			"settings":
 			{
-				"buffer_size": 417452,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "blogforever-crawler/bibcrawl/spiders/utils.py",
-			"settings":
-			{
-				"buffer_size": 5598,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "blogforever-crawler/bibcrawl/spiders/spiders_unit_tests.py",
-			"settings":
-			{
-				"buffer_size": 831,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "blogforever-crawler/Guardfile",
-			"settings":
-			{
-				"buffer_size": 168,
+				"buffer_size": 3613,
 				"line_ending": "Unix"
 			}
 		}
@@ -79,9 +55,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 324.0,
+		"height": 375.0,
 		"selected_items":
 		[
+			[
+				"seetx",
+				"Set Syntax: TeX"
+			],
 			[
 				"sort",
 				"Sort Lines"
@@ -589,10 +569,6 @@
 			[
 				"key ",
 				"Preferences: Key Bindings - Default"
-			],
-			[
-				"prefe",
-				"Preferences: Settings - Default"
 			]
 		],
 		"width": 435.0
@@ -617,11 +593,25 @@
 		"show_minimap": false,
 		"show_open_files": false,
 		"show_tabs": false,
-		"side_bar_visible": true,
+		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
 	"file_history":
 	[
+		"/home/olivier/Downloads/Pollinator_specificity_changes.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/3-algorithms.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/4-techniques.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/tables.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.tex",
+		"/home/olivier/Desktop/post",
+		"/home/olivier/Desktop/ml",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/algos.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/Guardfile",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/spiders_unit_tests.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/out.txt",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/newcrawl.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/utils.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/run.py",
 		"/home/olivier/workspace/scrapytuto/blogforever-crawler/out.txt",
 		"/home/olivier/workspace/scrapytuto/blogforever-crawler/bibcrawl/spiders/utils.py",
 		"/home/olivier/workspace/scrapytuto/blogforever-crawler/Gemfile",
@@ -735,25 +725,11 @@
 		"/home/olivier/workspace/acmss/public/stylesheets/bootstrap3.css",
 		"/home/olivier/workspace/acmss/public/stylesheets/main.css",
 		"/home/olivier/workspace/acmss/app/views/bootstrap3/checkbox.scala.html",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputCheckboxGroup.scala.html",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/bootstrap3FieldConstructor.scala.html",
-		"/home/olivier/workspace/acmss/app/views/main.scala.html",
-		"/home/olivier/workspace/acmss/app/controllers/Submitting.scala",
-		"/home/olivier/workspace/acmss/app/views/submission.scala.html",
-		"/home/olivier/workspace/acmss/target/External Libraries/play_2.10-2.1.1/play/api/mvc/Controller.scala",
-		"/home/olivier/workspace/acmss/conf/routes",
-		"/home/olivier/workspace/acmss/public/javascripts/file-selector.js",
-		"/home/olivier/workspace/acmss/app/Global.scala",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputFile.scala.html",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputRadioGroup.scala.html",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/emptyFieldConstructor.scala.html",
-		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/inputFieldConstructor.scala.html",
-		"/home/olivier/workspace/acmss/target/External Libraries/play_2.10-2.1.1/views/helper/defaultFieldConstructor.scala.html",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputText.scala.html"
+		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputCheckboxGroup.scala.html"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -779,6 +755,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"super pulse laser cyborg",
+			"<a href=\"",
+			"<li",
+			"machinegun",
+			"machinegu",
+			"mini",
+			"arrow",
+			"bigrams",
+			"As",
+			"o ",
+			"verview of the cr",
+			"lineraProp",
+			"Prop",
+			"Line",
+			"line",
+			"code{\\ref",
+			"code\\re",
+			"linear time",
+			"label",
+			"cref",
+			"ref",
+			"\\code{\\ref",
+			"gibing",
+			"{apply}",
+			"apply",
+			"Apply",
+			"\\code{class}",
+			"\\code{id}",
 			",",
 			"\n",
 			"\nhttp://",
@@ -878,35 +882,7 @@
 			"]",
 			"cmd",
 			"line",
-			"_command",
-			".x",
-			"w",
-			"wn",
-			"wnc",
-			"wnck",
-			"wnckp",
-			"wnckprop",
-			"mnmlist",
-			"CrawlFullBlog",
-			"CrawlRSS",
-			"CrawlSpider",
-			"Man",
-			"man",
-			"Man",
-			"alias.sh",
-			"'",
-			"::",
-			"parsed_url",
-			"tart_urls",
-			"filename",
-			"response.url",
-			"_visited",
-			"Default",
-			"wsgi",
-			"libapache2-mod-wsg",
-			"WSGI",
-			"var/www",
-			"{u}"
+			"_command"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -999,170 +975,91 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "blogforever-crawler/bibcrawl/run.py",
+					"file": "/home/olivier/Desktop/post",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 648,
+						"buffer_size": 300,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								648,
-								648
+								300,
+								300
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/LaTeX/TeX.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "blogforever-crawler/bibcrawl/spiders/newcrawl.py",
+					"file": "tex/3-algorithms.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2495,
+						"buffer_size": 9199,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2306,
-								2306
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 176.0,
+						"translation.y": 1504.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "blogforever-crawler/out.txt",
+					"file": "tex/algos.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 417452,
+						"buffer_size": 3613,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12932,
-								12932
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 6528.0,
+						"translation.y": 1144.0,
 						"zoom_level": 1.0
 					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "blogforever-crawler/bibcrawl/spiders/utils.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5598,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4814,
-								4814
-							]
-						],
-						"settings":
-						{
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1449.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "blogforever-crawler/bibcrawl/spiders/spiders_unit_tests.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 831,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								58,
-								58
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "blogforever-crawler/Guardfile",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 168,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								168,
-								168
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1170,7 +1067,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 36.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -1203,10 +1100,14 @@
 	{
 		"height": 158.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
 	"project": "blogforever-crawler.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1214,6 +1115,30 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"algo",
+				"tex/algos.tex"
+			],
+			[
+				"3.",
+				"tex/3-algorithms.tex"
+			],
+			[
+				"sstex",
+				"~/Downloads/Pollinator_specificity_changes.tex"
+			],
+			[
+				"main",
+				"tex/main.tex"
+			],
+			[
+				"tables",
+				"tex/tables.tex"
+			],
+			[
+				"3-",
+				"tex/3-algorithms.tex"
+			],
 			[
 				"u",
 				"spiders/utils.py"
@@ -1245,10 +1170,6 @@
 			[
 				"suhtml",
 				"acmss/app/views/submission.scala.html"
-			],
-			[
-				"main",
-				"acmss/public/stylesheets/main.css"
 			],
 			[
 				"routes",
@@ -1705,26 +1626,6 @@
 			[
 				"1.",
 				"acmss/conf/evolutions/default/1.sql"
-			],
-			[
-				"build",
-				"acmss/project/Build.scala"
-			],
-			[
-				"soci",
-				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
-			],
-			[
-				"socialuser",
-				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
-			],
-			[
-				"social",
-				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
-			],
-			[
-				"user",
-				"acmss/app/models/User.scala"
 			]
 		],
 		"width": 0.0

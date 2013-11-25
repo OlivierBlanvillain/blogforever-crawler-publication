@@ -38,7 +38,7 @@ In addition, having a independent computation for each input makes the algorithm
 Before going in details about annex functions and time complexity, we explain how the previously stated assumptions relate to Algorithm \ref{extractionAlgo}. Given a blog, assumption \ref{havefeedAssum} allows the crawler to obtain inputs for the algorithm. Indeed, web feeds provide either textual content or description of its entries, as well as a link to the corresponding page. Assumption \ref{similarhtmlAssum} garenties the existence of an appropriate an extraction rule, as well it's applicability to all posts of the blog.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
 % xpath selectors (id, else class, else path)
 In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse html pages and apply extraction rules, thus providing the \code{Apply} function used Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection with path in the HTML tree. We have found that ignoring nodes without \code{id} or \code{class} attributes prunes out many uninteresting HTML nodes without decreasing  the quality of the result. Also when both \code{id} and \code{class} attributes are present, we can ignore the \code{class} has \code{id}s should be unique. This observations led to the following \coderef{allrulesAlgo} function:
@@ -63,7 +63,7 @@ The Sørensen–Dice coefficient methods operates by first building sets of pair
 \similarityAlgo
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time complexity and linear reformulation}
 % algo 1 is quadratic
 With both \coderef{allrulesAlgo} and \coderef{similarityAlgo} function defined, we will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linear time HTML parser and a data-structure indexing HTML nodes on their \code{id} and \code{class} attributes, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before, the outer loop splits the input into independent computations, and each call to \coderef{allrulesAlgo} returns (in linear time) less rules than the number of nodes of the HTML tree argument. Therefore, the body of the inner loop will be executed a linear number of time. Because extraction rule can return arbitrary subtrees of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
@@ -74,7 +74,14 @@ With both \coderef{allrulesAlgo} and \coderef{similarityAlgo} function defined, 
 We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulation of Algorithm \ref{extractionAlgo} with linear running time. While very intuitive, the original idea of first generating extraction rules and then picking these best rule prevents an effective reuse of previously computed bigrams. For instance, when evaluating the extraction rule for the HTML root node, Algorithm \ref{extractionAlgo} will obtain the complete string of the page and pass it to the \coderef{similarityAlgo} function. At this point, the information of where the string could be spitted into substring with already computed bigrams is not accessible, and the bigrams of the page has to be computed by linearly traversing the full string. To overcome this limitation and implement an effective $memoization$ \comment{without R!}over the bigrams computations, Algorithm \ref{linearAlgo} uses a post-order traversal of the HTML tree to compute node bigrams from it's children bigrams, effectively avoiding serialization of HTML subtrees.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Variations for comments, dates and authors}
-- comments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Variations for authors, dates and comments}
+As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. The case of author is problematic because is not uncommon to encounter the name a post author in several places in the pages. Because of this, to return a rule to extract the owner of the blog instead of the post author. In cases the blog owner and the post author is the same person in the feed entries but not across all the blog, we might extract the wrong information when the two differ. The heuristic we used to fix this issue is to add a new component in the scores of author extraction rules: the \emph{tree distance} between the current node and the node holding the post content.
+
+Dates are affected by the same issue often having duplicated in a page, but
+
+
+
 - date authors
+
+- comments
