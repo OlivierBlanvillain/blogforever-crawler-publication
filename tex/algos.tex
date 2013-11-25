@@ -71,7 +71,7 @@
 
     \emph{bigrams1 \Arrow}set of pairs of adjacent characters in \emph{string1}\;
     \emph{bigrams2 \Arrow}set of pairs of adjacent characters in \emph{string2}\;
-    \Return{\emph{2} \envert{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\envert{bigrams1} \emph{+} \envert{bigrams2}}}\;
+    \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1} \emph{+} \len{bigrams2}}}\;
     \end{function}
 }
 
@@ -97,7 +97,7 @@
           $\bigcup$ \Par{\Using C \Over node.childs} bigrams \Of C}\;
           \Indm
         \emph{score \Of node \Arrow }\; \Indp
-            $\dfrac{ {2 \envert{\Par{bigram~\Of~node} \cap \Par{bigram~\Of~target}}} }{ \envert{bigram~\Of~node} + \envert{bigram~\Of~target} }$\;
+            $\dfrac{ {2 \len{\Par{bigram~\Of~node} \cap \Par{bigram~\Of~target}}} }{ \len{bigram~\Of~node} + \len{bigram~\Of~target} }$\;
           \Indm
       }
       \emph{topRules \Arrow topRules} + \Rule{\emph{node with highest} score}\;

@@ -25,11 +25,11 @@ In addition to extracting page after JavaScript execution, we also use some of P
   \capstart
   \centering
   \includegraphics[width=0.47\textwidth]{img/scrapy_architecture.png}
-  \caption{Overview of the crawler architecture.\TODO{Source}}
+  \caption{Overview of the crawler architecture.\\\small{(Credit: Pablo Hoffman, Daniel Graña, \cite{scrapy2013})}}
   \label{architecture}
 \end{figure}
 
-Our project is build on top of Scrapy\cite{scra py2013}, an open source Python framework for web crawling. Scrapy provide an elegant and modulable high-level architecture which we followed in our implementation of the BlogForever Crawler. As illustrated in Figure~\ref{architecture}, Scrapy is divided in several components: \emph{Spiders}, \emph{Item Pipeline}, \emph{Downleader Middlewares} and \emph{Spider Middlewares}, where each of can be used to implement a different functionality.
+Our project is build on top of Scrapy\cite{scrapy2013}, an open source Python framework for web crawling. Scrapy provide an elegant and modulable high-level architecture which we followed in our implementation of the BlogForever Crawler. As illustrated in Figure~\ref{architecture}, Scrapy is divided in several components: \emph{Spiders}, \emph{Item Pipeline}, \emph{Downleader Middlewares} and \emph{Spider Middlewares}, where each of can be used to implement a different functionality.
 
 Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, which respectively implement the logic to crawl a new blog and to get updates from a previously crawled blog. After downloading the HTML page, blog posts are packed into Items and sent through the folloing pipeline of operation:
 \begin{enumerate}[noitemsep]
@@ -55,7 +55,7 @@ Due to space constraints, more precise description and evaluation of these two c
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalability}
-When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable. Citing the Reactive Manifesto\cite{thereactivemanifesto2013}:
+When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable. Citing the Reactive Manifesto \cite{thereactivemanifesto2013}:
 
 \begin{quoting}
   If one of these layers does not participate—making blocking calls to the database, relying on shared mutable state, calling out to expensive synchronous operations—then the whole pipeline stalls and users will suffer through increased latency and reduced scalability.

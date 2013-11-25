@@ -1,10 +1,11 @@
 \documentclass{acm_proc_article-sp}
 
 \usepackage[ruled, vlined, ]{algorithm2e}
-\usepackage[autostyle=false, style=english]{csquotes}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[autostyle=false, style=english]{csquotes}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage[justification=centering]{caption}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{commath}
@@ -16,7 +17,7 @@
 \usepackage{url}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
-\usepackage{hyperref}
+\usepackage[pdfpagelabels=false]{hyperref}
 \usepackage{hypcap}
 
 \MakeOuterQuote{"}
@@ -35,6 +36,7 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\coderef}[1]{\texttt{\ref{#1}}}
 \newcommand{\stringliteral}[1]{\texttt{\char`\"#1\char`\"}}
+\newcommand{\len}[1]{|#1|}
 \newcommand{\surl}[1]{\urlstyle{ff}\url{#1}}
 \newcommand{\Oof}[1]{$\mathcal{O}(#1)$}
 
@@ -65,6 +67,7 @@
          \email{\surl{vbanos@gmail.com}}
   }
 
+  \hypersetup{pageanchor=false}
   \maketitle
 
   \begin{abstract}

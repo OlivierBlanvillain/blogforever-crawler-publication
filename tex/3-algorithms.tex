@@ -54,7 +54,7 @@ Unsurprisingly, the choice of string similarity has a strong influence on the ru
   \item\label{linearProp} Run in linear time
 \end{enumerate}
 
-Properties \ref{wordorderProp} and \ref{substringProp} are essential to deal with cases where web feeds contain only an abstract or a subset of the post content. The following table \comment{or with a caption?}illustrates these two properties with examples, also giving the Levenshtein\cite{levenshtein1966} similarity to illustrate poor performances of string matching based similarities.
+Properties \ref{wordorderProp} and \ref{substringProp} are essential to deal with cases where web feeds contain only an abstract or a subset of the post content. Table \ref{similarityTable} illustrates these two properties with examples, also giving the Levenshtein\cite{levenshtein1966} similarity to illustrate poor performances of string matching based similarities.
 
 \similarityTable
 
@@ -76,12 +76,10 @@ We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulat
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Variations for authors, dates and comments}
-As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. The case of author is problematic because is not uncommon to encounter the name a post author in several places in the pages. Because of this, to return a rule to extract the owner of the blog instead of the post author. In cases the blog owner and the post author is the same person in the feed entries but not across all the blog, we might extract the wrong information when the two differ. The heuristic we used to fix this issue is to add a new component in the scores of author extraction rules: the \emph{tree distance} between the current node and the node holding the post content.
+% Intro, authors
+As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, leading to several rules with maximum score. The heuristic we use to get around this issue consists in adding a new component in the scores of authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new score component takes advantage of the positioning of post's authors which is often a direct child or shares parent with the post content node.
 
-Dates are affected by the same issue often having duplicated in a page, but
+% Dates, authors
+Dates are affected by the same issue of often being duplicated in a page, which is complexified by the inconsistances of format between the dates provided in web feeds and their representation on web pages. Our solution uses the same tree distance score component presented
 
-
-
-- date authors
-
-- comments
+% Comments

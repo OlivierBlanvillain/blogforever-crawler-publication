@@ -28,18 +28,10 @@
 	"buffers":
 	[
 		{
-			"file": "/home/olivier/Desktop/post",
-			"settings":
-			{
-				"buffer_size": 300,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "tex/3-algorithms.tex",
 			"settings":
 			{
-				"buffer_size": 9199,
+				"buffer_size": 10010,
 				"line_ending": "Unix"
 			}
 		},
@@ -47,36 +39,134 @@
 			"file": "tex/algos.tex",
 			"settings":
 			{
-				"buffer_size": 3613,
+				"buffer_size": 3595,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tex/tables.tex",
+			"settings":
+			{
+				"buffer_size": 1068,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tex/4-techniques.tex",
+			"settings":
+			{
+				"buffer_size": 9835,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 28 files for \"manifesto\"\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/4-techniques.tex:\n   56  %%%%%%%%%%%%%%%%%%%%%%%%\n   57  \\subsection{Scalability}\n   58: When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable. Citing the Reactive Manifesto\\cite{thereactivemanifesto2013}:\n   59  \n   60  \\begin{quoting}\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/main.aux:\n   63  \\@writefile{toc}{\\contentsline {subsection}{\\numberline {4.2}Architecture}{\\thepage }{subsection.4.2}}\n   64  \\@writefile{toc}{\\contentsline {subsection}{\\numberline {4.3}Enriching Scrapy}{\\thepage }{subsection.4.3}}\n   65: \\citation{thereactivemanifesto2013}\n   66  \\citation{twisted2013}\n   67  \\@writefile{toc}{\\contentsline {subsection}{\\numberline {4.4}Scalability}{\\thepage }{subsection.4.4}}\n   ..\n   81  \\bibcite{levenshtein1966}{7}\n   82  \\bibcite{livefyre2013}{8}\n   83: \\bibcite{thereactivemanifesto2013}{9}\n   84  \\bibcite{oita2010}{10}\n   85  \\bibcite{phantomjs2013}{11}\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/main.bbl:\n   45  \\newblock http://web.livefyre.com/, 2013.\n   46  \n   47: \\bibitem{thereactivemanifesto2013}\n   48: T.~R. Manifesto.\n   49: \\newblock http://www.reactivemanifesto.org/, 2013.\n   50  \n   51  \\bibitem{oita2010}\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/main.bib:\n   41  },\n   42  \n   43: @misc{thereactivemanifesto2013,\n   44: 	url = {http://www.reactivemanifesto.org/},\n   45: 	author = {The Reactive Manifesto},\n   46  	year = {2013},\n   47: 	howpublished = {http://www.reactivemanifesto.org/}\n   48  },\n   49  \n\n11 matches across 4 files\n",
+			"settings":
+			{
+				"buffer_size": 1696,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "tex/main.tex",
+			"settings":
+			{
+				"buffer_size": 2954,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 108.0,
 		"selected_items":
 		[
 			[
-				"seetx",
-				"Set Syntax: TeX"
+				"toglest",
+				"View: Toggle Status Bar"
+			],
+			[
+				"to",
+				"View: Toggle Status Bar"
 			],
 			[
 				"sort",
 				"Sort Lines"
 			],
 			[
-				"tolgsta",
-				"View: Toggle Status Bar"
+				"sspytho",
+				"Set Syntax: Python"
 			],
 			[
-				"toglest",
-				"View: Toggle Status Bar"
+				"editp",
+				"Project: Edit Project"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"ke",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"proj",
+				"Project: Edit Project"
+			],
+			[
+				"project",
+				"Project: Edit Project"
+			],
+			[
+				"tme",
+				"View: Toggle Menu"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"tom",
+				"View: Toggle Menu"
+			],
+			[
+				"togm",
+				"View: Toggle Menu"
+			],
+			[
+				"togle",
+				"View: Toggle Menu"
+			],
+			[
+				"sssh",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"toglm",
+				"View: Toggle Menu"
 			],
 			[
 				"setting",
 				"Preferences: Settings - User"
+			],
+			[
+				"tog",
+				"View: Toggle Status Bar"
+			],
+			[
+				"snipp",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"stshell",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"tolgsta",
+				"View: Toggle Status Bar"
 			],
 			[
 				"sor",
@@ -145,10 +235,6 @@
 			[
 				"commit",
 				"Git: Commit"
-			],
-			[
-				"key",
-				"Preferences: Key Bindings - User"
 			],
 			[
 				"keyb",
@@ -247,10 +333,6 @@
 				"Set Syntax: HTML"
 			],
 			[
-				"ke",
-				"Preferences: Key Bindings - Default"
-			],
-			[
 				"gits",
 				"Git: Status"
 			],
@@ -328,14 +410,6 @@
 			],
 			[
 				"toglsta",
-				"View: Toggle Status Bar"
-			],
-			[
-				"to",
-				"View: Toggle Side Bar"
-			],
-			[
-				"tog",
 				"View: Toggle Status Bar"
 			],
 			[
@@ -421,10 +495,6 @@
 			[
 				"snipped",
 				"Snippet: CDATA"
-			],
-			[
-				"togle",
-				"View: Toggle Tabs"
 			],
 			[
 				"toggle t",
@@ -525,50 +595,6 @@
 			[
 				"Snippet: con",
 				"Snippet: constant"
-			],
-			[
-				"cons",
-				"View: Toggle Console"
-			],
-			[
-				"consol",
-				"View: Toggle Console"
-			],
-			[
-				"packa",
-				"Package Control: Remove Package"
-			],
-			[
-				"reinde",
-				"Indentation: Reindent Lines"
-			],
-			[
-				"sublimeliner",
-				"Preferences: SublimeLinter Settings – User"
-			],
-			[
-				"htmp",
-				"Set Syntax: HTML (ASP)"
-			],
-			[
-				"ht",
-				"Set Syntax: HTML (Tcl)"
-			],
-			[
-				"mii",
-				"View: Toggle Minimap"
-			],
-			[
-				"mini",
-				"View: Toggle Minimap"
-			],
-			[
-				"sideba",
-				"View: Toggle Open Files in Side Bar"
-			],
-			[
-				"key ",
-				"Preferences: Key Bindings - Default"
 			]
 		],
 		"width": 435.0
@@ -589,7 +615,7 @@
 	},
 	"distraction_free":
 	{
-		"menu_visible": true,
+		"menu_visible": false,
 		"show_minimap": false,
 		"show_open_files": false,
 		"show_tabs": false,
@@ -598,20 +624,82 @@
 	},
 	"file_history":
 	[
-		"/home/olivier/Downloads/Pollinator_specificity_changes.tex",
-		"/home/olivier/workspace/blogforever-crawler-publication/tex/3-algorithms.tex",
-		"/home/olivier/workspace/blogforever-crawler-publication/tex/4-techniques.tex",
-		"/home/olivier/workspace/blogforever-crawler-publication/tex/tables.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/links.md",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.tex",
-		"/home/olivier/Desktop/post",
-		"/home/olivier/Desktop/ml",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/5-evaluation.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/tables.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/4-techniques.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/algos.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/1-intro.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/2-related-work.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.aux",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.bib",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/3-algorithms.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/algorithm2es.tex",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/utils/stringsimilarity.py",
+		"/home/olivier/workspace/blogforever-crawler/tex/algorithm2es.tex",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/utils/parsing.py",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/utils/contentextractor.py",
+		"/home/olivier/workspace/lxml/src/lxml/serializer.pxi",
+		"/home/olivier/workspace/lxml/src/lxml/lxml.etree.pyx",
+		"/home/olivier/workspace/blogforever-crawler-publication/README.md",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/pipelines/extractcomments.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler.sublime-project",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/units/blogs/www.huffingtonpost.com/melissa-sher/18-things-children-can-teach-us-about-happiness_b_3343082.html",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/0-abstract.tex",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/run.py",
+		"/home/olivier/.bash_aliases",
+		"/home/olivier/Downloads/ipython_session.txt",
+		"/home/olivier/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/pipelines/timeextrator.py",
+		"/home/olivier/workspace/blogforever-crawler/runningtime.txt",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/spiders/rsscrawl.py",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/spiders/newcrawl.py",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/utils/fixbadunicode.py",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/model/postitem.py",
+		"/home/olivier/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/readability/gen.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/goose/gen.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/boilerpipe/gen.py",
+		"/home/olivier/Downloads/EpidemySimulator.scala",
+		"/home/olivier/Downloads/EpidemySimulator (1).scala",
+		"/home/olivier/Downloads/Simulator.scala",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/spiders/evalcrawl.py",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/pipelines/processhtml.py",
+		"/home/olivier/workspace/blogforever-crawler/timeextrator.py",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/settings.py",
+		"/tmp/xa-R8TiLN/Nil.sublime-theme",
+		"/home/olivier/workspace/blogforever-crawler-publication/Re",
+		"/home/olivier/Downloads/My Library.bib",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.bbl",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/sigproc-sp.bbl",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/sigproc.bib",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.blg",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/sigproc.bbl",
+		"/home/olivier/Downloads/jsss",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/score.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/readability/http:{{booksr4reading.wordpress.com{2012{03{04{march-sales-2{",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/goose/http:{{booksr4reading.wordpress.com{2012{03{04{march-sales-2{",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/contents/http:{{booksr4reading.wordpress.com{2012{03{04{march-sales-2{",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/boilerpipe/http:{{booksr4reading.wordpress.com{2012{03{04{march-sales-2{",
+		"/home/olivier/workspace/blogforever-crawler/bibcrawl/pipelines/outpropagate.py",
+		"/home/olivier/workspace/blogforever-crawler/.bash_aliases",
+		"/home/olivier/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/olivier/.bashrc",
+		"/home/olivier/workspace/blogforever-crawler/gen.sh",
+		"/home/olivier/workspace/blogforever-crawler/gen.py",
+		"/home/olivier/workspace/blogforever-crawler/.bashrc",
+		"/home/olivier/workspace/blogforever-crawler/out/http:{{keeponknittinginthefreeworld.blogspot.ch{2012{05{pix.html",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/contents/http:{{keeponknittinginthefreeworld.blogspot.com{2012{05{pix.html",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/boilerpipe/http:{{askbusinesscoach.wordpress.com{2010{07{15{free-wifi-%e2%80%93-be-very-careful{",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/allScores.sh",
+		"/home/olivier/workspace/blogforever-crawler-publication/dataset/allScores.py",
 		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/Guardfile",
 		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/spiders_unit_tests.py",
 		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/out.txt",
 		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/newcrawl.py",
-		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/utils.py",
 		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/run.py",
+		"/home/olivier/workspace/blogforever-crawler-publication/blogforever-crawler/bibcrawl/spiders/utils.py",
 		"/home/olivier/workspace/scrapytuto/blogforever-crawler/out.txt",
 		"/home/olivier/workspace/scrapytuto/blogforever-crawler/bibcrawl/spiders/utils.py",
 		"/home/olivier/workspace/scrapytuto/blogforever-crawler/Gemfile",
@@ -632,7 +720,6 @@
 		"/home/olivier/mimeapps.list",
 		"/usr/local/lib/python2.7/dist-packages/lxml/__init__.py",
 		"/usr/local/lib/python2.7/dist-packages/lxml/etree.so",
-		"/home/olivier/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/olivier/workspace/scrapytuto/scrapy.cfg",
 		"/home/olivier/.config/sublime-text-3/Packages/User/PythonFilter.sublime-snippet",
 		"/home/olivier/workspace/scrapytuto/scrapytuto/pipelines.py",
@@ -649,7 +736,6 @@
 		"/home/olivier/workspace/window_position/window.py",
 		"/home/olivier/workspace/window_position/window_position.py",
 		"/home/olivier/.windows_session.conf",
-		"/home/olivier/.bash_aliases",
 		"/home/olivier/workspace/window_position/window",
 		"/home/olivier/workspace/scrapytuto/scrapytuto/spiders/man.py",
 		"/home/olivier/.config/gtk-3.0/gtk.css",
@@ -661,81 +747,22 @@
 		"/home/olivier/gnome-terminal-colors/Twilight.itermcolors",
 		"/etc/gconf/gconf.xml.",
 		"/home/olivier/workspace/invenio/modules/websubmit/lib/websubmit_webinterface.py",
-		"/home/olivier/.bashrc",
 		"/home/olivier/.config/devilspie2/test.lua",
 		"/home/olivier/workspace/invenio/modules/websubmit/lib/websubmit_file_metadata.py",
 		"/home/olivier/workspace/invenio/modules/bibupload/lib/bibupload.py",
 		"/home/olivier/workspace/invenio/modules/bibupload/lib/batchuploader.py",
-		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_engine.py",
-		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_menu.js",
-		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_unit_tests.py",
-		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_templates.py",
-		"/home/olivier/workspace/invenio/modules/bibedit/bin/bibedit.in",
-		"/home/olivier/workspace/invenio/modules/bibedit/bin/bibedit",
-		"/home/olivier/workspace/invenio/modules/bibedit/doc/admin/bibedit-admin-guide.webdoc",
-		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_config.py",
-		"/home/olivier/workspace/invenio/modules/bibindex/lib/Makefile",
-		"/home/olivier/workspace/invenio/modules/bibindex/lib/Makefile.am",
-		"/home/olivier/workspace/invenio/modules/bibindex/lib/Makefile.in",
-		"/home/olivier/workspace/invenio/THANKS",
-		"/home/olivier/workspace/invenio/INSTALL",
-		"/home/olivier/Downloads/shorcuts",
-		"/home/olivier/.bash_history",
-		"/home/olivier/workspace/mod_wsgi-3.4/configure",
-		"/home/olivier/workspace/mod_wsgi-3.4/config",
-		"/etc/apache2/sites-available/invenio",
-		"/etc/apache2/sites-enabled/invenio.conf",
-		"/usr/sbin/a2ensite",
-		"/etc/apache2/httpd.conf",
-		"/etc/init.d/apache2",
-		"/etc/apache2/sites-available/reload",
-		"/etc/apache2/sites-available/invenio-ssl",
-		"/etc/apache2/sites-available/default-ssl.conf",
-		"/etc/apache2/sites-available/000-default.conf",
-		"/opt/invenio/etc/apache/invenio-apache-vhost.conf",
-		"/opt/invenio/etc/invenio-local.conf",
-		"/home/olivier/workspace/invenio/install-sh",
-		"/home/olivier/Downloads/gnomeshell",
-		"/home/olivier/Downloads/shorcuts (1)",
-		"/home/olivier/workspace/acmss/app/models/entities/Authors.scala",
-		"/home/olivier/workspace/acmss/app/models/entities/Members.scala",
-		"/home/olivier/.config/sublime-text-3/Packages/User/tex/Cases.sublime-snippet",
-		"/home/olivier/workspace/acmss/app/models/SlickEnum.scala",
-		"/home/olivier/workspace/acmss/app/models/relations/MemberTopics.scala",
-		"/home/olivier/workspace/acmss/app/models/relations/PaperTopics.scala",
-		"/home/olivier/workspace/acmss/app/models/relations/Reviews.scala",
-		"/home/olivier/workspace/acmss/app/models/secureSocial/SecureSocialTokens.scala",
-		"/home/olivier/workspace/acmss/app/models/utils/Files.scala",
-		"/home/olivier/workspace/acmss/app/models/utils/Logs.scala",
-		"/home/olivier/workspace/acmss/app/models/utils/SentEmails.scala",
-		"/home/olivier/workspace/acmss/app/models/secureSocial/SecureSocialUsers.scala",
-		"/home/olivier/workspace/acmss/app/models/entities/Papers.scala",
-		"/home/olivier/workspace/acmss/app/models/utils/Settings.scala",
-		"/home/olivier/workspace/acmss/app/models/secureSocial/SecureSocialUserService.scala",
-		"/home/olivier/workspace/acmss/app/models/entities/Topics.scala",
-		"/home/olivier/workspace/acmss/app/models/relations/Comments.scala",
-		"/home/olivier/workspace/acmss/app/models/relations/MemberBids.scala",
-		"/home/olivier/workspace/acmss/app/models/utils/Templates.scala",
-		"/home/olivier/workspace/acmss/app/models/README.md",
-		"/home/olivier/workspace/acmss/target/External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/controllers/LoginPage.scala",
-		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/login.scala.html",
-		"/home/olivier/workspace/acmss/README.md",
-		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/provider.scala.html",
-		"/home/olivier/workspace/acmss/app/views/securesocialtemplates/mails/passwordResetEmail.scala.html",
-		"/home/olivier/workspace/acmss/public/stylesheets/bootstrap3.css",
-		"/home/olivier/workspace/acmss/public/stylesheets/main.css",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/checkbox.scala.html",
-		"/home/olivier/workspace/acmss/app/views/bootstrap3/inputCheckboxGroup.scala.html"
+		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_engine.py"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"/home/olivier/workspace/blogforever-crawler-publication/tex",
 			"",
 			"blogforever-crawler:",
 			"/home/olivier/workspace/blogforever-crawler",
@@ -755,134 +782,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"super pulse laser cyborg",
-			"<a href=\"",
-			"<li",
-			"machinegun",
-			"machinegu",
-			"mini",
-			"arrow",
-			"bigrams",
-			"As",
-			"o ",
-			"verview of the cr",
-			"lineraProp",
-			"Prop",
-			"Line",
-			"line",
-			"code{\\ref",
-			"code\\re",
-			"linear time",
-			"label",
-			"cref",
-			"ref",
-			"\\code{\\ref",
-			"gibing",
-			"{apply}",
-			"apply",
-			"Apply",
-			"\\code{class}",
-			"\\code{id}",
-			",",
-			"\n",
-			"\nhttp://",
-			"\nhttp://mnmlist.com/uncopyright/",
-			"LINKS",
-			" '",
-			"', ",
-			",",
-			"PRUNED:",
-			"PRUNED:  []",
-			"PRUNED",
-			"step-lightly/",
-			"step-lightly",
-			"http://mnmlist.com/step-lightly-upon-this-world-or-why-minimalism-is-sustainable/",
-			"http://mnmlist.com/step-lightly",
-			"step-lightly",
-			"http://mnmlist.com/avoid-new",
-			"url",
-			"1",
-			"a",
-			"e",
-			"prounedZipedLinks",
-			"response.url",
-			"prunedUrl",
-			"newLinks",
-			"filter",
-			"self.seen",
-			"'//",
-			"//",
-			"title",
-			"brokenPage",
-			"><",
-			"extensionRegex",
-			"\", \"",
-			"string",
-			"|",
-			" .",
-			"urlparse",
-			"NotImplementedError",
-			"extractNewLinks",
-			"New",
-			"response",
-			"font",
-			"imap",
-			"import",
-			"extract",
-			"filter",
+			"manifesto",
+			"manidesto",
+			"\\capstart",
+			"or with a caption",
+			"\\surl{",
+			"Amy, Rachid and",
+			"htt",
+			"\\%20",
 			"_",
-			"ration",
-			"distance",
-			"parsed",
-			"    print(u\"got \" + response.url)\n",
-			"extractHrefLinks",
+			"\\surl{",
+			"scra py2013",
+			"scrapy",
+			"envert",
+			"similarityAlgo",
+			"\\code{\\",
+			"\\len",
+			"len",
+			"bigram",
+			"bigram1",
+			"bigram ",
+			"linear",
+			"their",
+			"Therefor",
+			"\\in",
+			"capstart",
+			"an ab",
+			"absolute",
+			"HTML",
+			"class",
+			"emph",
+			"comment",
+			"fxnote",
+			"marginnote",
+			"comment",
+			"comment{",
+			"moti",
+			"bigrams",
+			"bigram",
+			"bigrams",
+			"bigram",
+			"bigram1",
+			"bigram",
+			"RuleOf",
+			"Apply",
+			"for",
+			"Using",
+			"bf",
+			"\\bf",
+			"bf",
+			"\\bf",
+			"\\center",
+			"begin{center",
+			"center",
+			"% ",
+			"\\\\}",
+			"\\comment",
+			"%",
+			"\\C",
+			"\\c",
+			"\\C",
+			"adjacents",
+			"$",
+			"\\len",
+			"\\set",
+			"\\Set",
+			"\\set",
+			"bigram1",
+			"Indp",
+			"Indent",
+			"Indp",
+			"Richard",
+			".",
+			"Amy",
+			"Rachid",
+			"42",
+			"5",
+			"15",
+			"levenshtein1966",
+			"leven",
+			"leve",
+			"Indeed",
+			"bigram2",
+			"b2",
+			"b1",
+			"bigrams2",
+			"bigrams1",
+			"metric",
+			"bigrams",
+			"out",
+			"Algorithm",
+			"Consequently ",
+			"thinspace",
+			"similarhtml",
+			"havefeed",
+			"ref",
+			"label",
+			"34",
+			"linewidth",
+			"newcommand",
+			"stringliteral",
+			"@{}",
+			"&",
+			"tabularx",
+			"@{}",
+			"hline",
+			"\\\\hline",
+			"\\\\\\",
+			"             ",
+			"            ",
+			"           ",
+			"          ",
+			"         ",
+			"        ",
+			"       ",
+			"      ",
+			"     ",
+			"    ",
+			"   ",
+			"  ",
+			"code",
+			"\\code{",
 			"\"",
-			"utils.",
-			"xPathSelectFirst",
-			"xpathSelectFirst",
-			"\\n\\n",
-			"RssSpider.",
-			"xpathSelectFirst",
-			"extractLinks",
-			"extractLink",
-			"newUrls",
-			"seen",
-			"newUrls",
-			"x",
-			"#",
-			"print",
-			"known_cms",
-			"xPathEvaluator",
-			"[0].text",
-			"tree",
-			"XPath",
-			"parsed",
-			"root",
-			"ratio",
-			"x",
-			"lambda x",
-			"((",
-			"print",
-			"# Step ",
-			"Ste",
-			"# S",
-			"firstEntry",
-			"feed.entry[0]",
-			"rssUrl",
-			"Ur",
-			"_extractRssLink",
-			"_dl",
-			".*",
-			"regex",
-			"match",
-			"--",
-			"'",
-			"%s",
-			"restor",
-			"]",
-			"cmd",
-			"line",
-			"_command"
+			"\\arrow",
+			"arrow",
+			"longleftarrow",
+			"$",
+			"emph",
+			"longleftarrow"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -890,6 +917,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\\envert",
+			"bigrams ",
+			"bigrams",
+			"\\eval",
+			"",
 			"http://mnmlist.com/step-upon-this-world-or-why-minimalism-is-sustainable/",
 			"extractLinks",
 			"extractNewLinks",
@@ -975,29 +1007,201 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/olivier/Desktop/post",
+					"file": "tex/3-algorithms.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 300,
+						"buffer_size": 10010,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								300,
-								300
+								6778,
+								6778
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/TeX.tmLanguage"
+							"spell_check": false,
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1592.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "tex/algos.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3595,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2380,
+								2380
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "tex/tables.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1068,
+								1068
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "tex/4-techniques.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9835,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3697,
+								3697
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 650.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1696,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										326,
+										335
+									],
+									[
+										352,
+										361
+									],
+									[
+										722,
+										731
+									],
+									[
+										978,
+										987
+									],
+									[
+										1216,
+										1225
+									],
+									[
+										1244,
+										1253
+									],
+									[
+										1291,
+										1300
+									],
+									[
+										1460,
+										1469
+									],
+									[
+										1509,
+										1518
+									],
+									[
+										1557,
+										1566
+									],
+									[
+										1635,
+										1644
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1007,20 +1211,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "tex/3-algorithms.tex",
+					"buffer": 5,
+					"file": "tex/main.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9199,
+						"buffer_size": 2954,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1301,
+								1301
 							]
 						],
 						"settings":
@@ -1028,38 +1232,10 @@
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1504.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "tex/algos.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3613,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1144.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1067,7 +1243,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1107,7 +1283,7 @@
 	"project": "blogforever-crawler.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 68.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1116,28 +1292,216 @@
 		"selected_items":
 		[
 			[
+				"main",
+				"tex/main.tex"
+			],
+			[
+				"4-",
+				"tex/4-techniques.tex"
+			],
+			[
 				"algo",
 				"tex/algos.tex"
 			],
 			[
-				"3.",
+				"table",
+				"tex/tables.tex"
+			],
+			[
+				"evalu",
+				"tex/5-evaluation.tex"
+			],
+			[
+				"2-re",
+				"tex/2-related-work.tex"
+			],
+			[
+				"1",
+				"tex/1-intro.tex"
+			],
+			[
+				"algos",
+				"tex/algos.tex"
+			],
+			[
+				"",
 				"tex/3-algorithms.tex"
 			],
 			[
-				"sstex",
-				"~/Downloads/Pollinator_specificity_changes.tex"
+				"algor",
+				"tex/3-algorithms.tex"
 			],
 			[
-				"main",
-				"tex/main.tex"
+				"tabl",
+				"tex/tables.tex"
 			],
 			[
 				"tables",
 				"tex/tables.tex"
 			],
 			[
-				"3-",
+				"4",
+				"tex/4-techniques.tex"
+			],
+			[
+				"al",
+				"tex/algos.tex"
+			],
+			[
+				"mabib",
+				"tex/main.bib"
+			],
+			[
+				"mainbi",
+				"tex/main.bib"
+			],
+			[
+				"mainbib",
+				"tex/main.bib"
+			],
+			[
+				"3",
 				"tex/3-algorithms.tex"
+			],
+			[
+				"teble",
+				"tex/tables.tex"
+			],
+			[
+				"string",
+				"blogforever-crawler/bibcrawl/utils/stringsimilarity.py"
+			],
+			[
+				"stringsi",
+				"blogforever-crawler/bibcrawl/utils/stringsimilarity.py"
+			],
+			[
+				"algoe2",
+				"tex/algorithm2es.tex"
+			],
+			[
+				"m",
+				"tex/main.tex"
+			],
+			[
+				"alg",
+				"tex/algorithm2es.tex"
+			],
+			[
+				"contentex",
+				"blogforever-crawler/bibcrawl/utils/contentextractor.py"
+			],
+			[
+				"strings",
+				"blogforever-crawler/bibcrawl/utils/stringsimilarity.py"
+			],
+			[
+				"conten",
+				"blogforever-crawler/bibcrawl/utils/contentextractor.py"
+			],
+			[
+				"pars",
+				"blogforever-crawler/bibcrawl/utils/parsing.py"
+			],
+			[
+				"tech",
+				"tex/4-techniques.tex"
+			],
+			[
+				"lpar",
+				"blogforever-crawler/bibcrawl/utils/parsing.py"
+			],
+			[
+				"mainbb",
+				"tex/main.bib"
+			],
+			[
+				"te",
+				"tex/4-techniques.tex"
+			],
+			[
+				"mainbob",
+				"blogforever-crawler/bibcrawl/units/blogs/www.huffingtonpost.com/melissa-sher/18-things-children-can-teach-us-about-happiness_b_3343082.html"
+			],
+			[
+				"abs",
+				"tex/0-abstract.tex"
+			],
+			[
+				"e",
+				"tex/5-evaluation.tex"
+			],
+			[
+				"run",
+				"blogforever-crawler/bibcrawl/run.py"
+			],
+			[
+				"new",
+				"blogforever-crawler/bibcrawl/spiders/newcrawl.py"
+			],
+			[
+				"item",
+				"blogforever-crawler/bibcrawl/model/postitem.py"
+			],
+			[
+				"rss",
+				"blogforever-crawler/bibcrawl/spiders/rsscrawl.py"
+			],
+			[
+				"content",
+				"blogforever-crawler/bibcrawl/utils/contentextractor.py"
+			],
+			[
+				"conte",
+				"blogforever-crawler/bibcrawl/utils/contentextractor.py"
+			],
+			[
+				"timex",
+				"blogforever-crawler/bibcrawl/pipelines/timeextrator.py"
+			],
+			[
+				"newc",
+				"blogforever-crawler/bibcrawl/spiders/newcrawl.py"
+			],
+			[
+				"time",
+				"blogforever-crawler/bibcrawl/pipelines/timeextrator.py"
+			],
+			[
+				"pro",
+				"blogforever-crawler/bibcrawl/pipelines/processhtml.py"
+			],
+			[
+				"bib",
+				"tex/main.bib"
+			],
+			[
+				"main.",
+				"tex/main.tex"
+			],
+			[
+				"parni",
+				"blogforever-crawler/bibcrawl/utils/parsing.py"
+			],
+			[
+				"parsing",
+				"blogforever-crawler/bibcrawl/utils/parsing.py"
+			],
+			[
+				"parsin",
+				"blogforever-crawler/bibcrawl/utils/parsing.py"
+			],
+			[
+				"abstr",
+				"tex/0-abstract.tex"
+			],
+			[
+				"techn",
+				"tex/4-techniques.tex"
+			],
+			[
+				"proce",
+				"blogforever-crawler/bibcrawl/pipelines/processhtml.py"
 			],
 			[
 				"u",
@@ -1236,10 +1600,6 @@
 				"acmss/app/Global.scala"
 			],
 			[
-				"",
-				"acmss/.gitignore"
-			],
-			[
 				"seljs",
 				"acmss/public/javascripts/file-selector.js"
 			],
@@ -1318,10 +1678,6 @@
 			[
 				"buil",
 				"acmss/project/Build.scala"
-			],
-			[
-				"main.",
-				"acmss/public/stylesheets/main.css"
 			],
 			[
 				"sqlhtml",
@@ -1446,186 +1802,6 @@
 			[
 				"mana",
 				"acmss/app/views/manageMembers.scala.html"
-			],
-			[
-				"manme",
-				"acmss/app/views/manageMembers.scala.html"
-			],
-			[
-				"ssuser.",
-				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
-			],
-			[
-				"au",
-				"acmss/app/controllers/Authorizations.scala"
-			],
-			[
-				"ssuer",
-				"External Libraries/securesocial_2.10-master-SNAPSHOT/securesocial/core/SocialUser.scala"
-			],
-			[
-				"rev",
-				"acmss/app/controllers/Reviewing.scala"
-			],
-			[
-				"emai",
-				"acmss/app/controllers/chair/Emailing.scala"
-			],
-			[
-				"suh",
-				"acmss/app/views/submission.scala.html"
-			],
-			[
-				"sumitt",
-				"acmss/app/controllers/Submitting.scala"
-			],
-			[
-				"aut",
-				"acmss/app/controllers/Authorizations.scala"
-			],
-			[
-				"member",
-				"acmss/app/models/entities/Members.scala"
-			],
-			[
-				"subht",
-				"acmss/app/views/submission.scala.html"
-			],
-			[
-				"secur",
-				"acmss/app/models/secureSocial/SecureSocialTokens.scala"
-			],
-			[
-				"sstoek",
-				"acmss/app/models/secureSocial/SecureSocialTokens.scala"
-			],
-			[
-				"sent",
-				"acmss/app/models/utils/SentEmails.scala"
-			],
-			[
-				"secureso",
-				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
-			],
-			[
-				"emailh",
-				"acmss/app/views/email.scala.html"
-			],
-			[
-				"papers",
-				"acmss/app/models/entities/Papers.scala"
-			],
-			[
-				"email",
-				"acmss/app/controllers/chair/Emailing.scala"
-			],
-			[
-				"templa",
-				"acmss/app/models/utils/Templates.scala"
-			],
-			[
-				"sqht",
-				"acmss/app/views/sql.scala.html"
-			],
-			[
-				"licen",
-				"acmss/MIT-LICENSE.txt"
-			],
-			[
-				"auth",
-				"acmss/docs/authentication.md"
-			],
-			[
-				"sqlht",
-				"acmss/app/views/sql.scala.html"
-			],
-			[
-				"chair",
-				"acmss/app/controllers/Chair.scala"
-			],
-			[
-				"re",
-				"acmss/README.md"
-			],
-			[
-				"settings",
-				"acmss/app/models/utility/Settings.scala"
-			],
-			[
-				"comm",
-				"acmss/app/models/relations/Comments.scala"
-			],
-			[
-				"commen",
-				"acmss/app/models/relations/Comments.scala"
-			],
-			[
-				"tostau",
-				"External Libraries/postgresql-9.1-901-1.jdbc4/org/postgresql/jdbc2/TimestampUtils.java"
-			],
-			[
-				"chai",
-				"acmss/app/controllers/Chair.scala"
-			],
-			[
-				"plist",
-				"acmss/app/views/paperList.scala.html"
-			],
-			[
-				"ro",
-				"acmss/conf/routes"
-			],
-			[
-				"gl",
-				"acmss/app/Global.scala"
-			],
-			[
-				"autho",
-				"acmss/app/models/entities/Authors.scala"
-			],
-			[
-				"ssu",
-				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
-			],
-			[
-				"secure",
-				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
-			],
-			[
-				"applic",
-				"acmss/app/controllers/Application.scala"
-			],
-			[
-				"logger",
-				"External Libraries/play_2.10-2.1.1/play/api/Logger.scala"
-			],
-			[
-				"lo",
-				"acmss/app/models/utility/Logs.scala"
-			],
-			[
-				"su",
-				"acmss/app/controllers/Submission.scala"
-			],
-			[
-				"sesu",
-				"acmss/app/models/secureSocial/SecureSocialUsers.scala"
-			],
-			[
-				"pap",
-				"acmss/app/models/relations/PaperTopics.scala"
-			],
-			[
-				"papt",
-				"acmss/app/models/relations/PaperTopics.scala"
-			],
-			[
-				"cha",
-				"acmss/app/controllers/Chair.scala"
-			],
-			[
-				"1.",
-				"acmss/conf/evolutions/default/1.sql"
 			]
 		],
 		"width": 0.0
@@ -1644,7 +1820,7 @@
 	},
 	"select_symbol":
 	{
-		"height": 37.0,
+		"height": 375.0,
 		"selected_items":
 		[
 			[
@@ -1656,7 +1832,7 @@
 				"separate"
 			]
 		],
-		"width": 378.0
+		"width": 498.0
 	},
 	"settings":
 	{
@@ -1665,7 +1841,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 241.0,
+	"side_bar_width": 261.0,
 	"status_bar_visible": false,
 	"template_settings":
 	{
