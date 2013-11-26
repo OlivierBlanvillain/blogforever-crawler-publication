@@ -76,10 +76,15 @@ We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulat
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Variations for authors, dates and comments}
-% Intro, authors
-As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, leading to several rules with maximum score. The heuristic we use to get around this issue consists in adding a new component in the scores of authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new score component takes advantage of the positioning of post's authors which is often a direct child or shares parent with the post content node.
+% Intro
+As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. This subsection presents variations of the general extraction techniques presented before. Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
+
+% Authors
+The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, leading to several rules with maximum score. The heuristic we use to get around this issue consists in adding a new component in the scores of authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new score component takes advantage of the positioning of post's authors which is often a direct child or shares parent with the post content node.
 
 % Dates, authors
-Dates are affected by the same issue of often being duplicated in a page, which is complexified by the inconsistances of format between the dates provided in web feeds and their representation on web pages. Our solution uses the same tree distance score component presented
+Dates are affected by the same duplication issue, as well as inconsistence of format between web feeds and web pages. Our solution to build date extraction rules extends what we presented before for authors by using multiple \emph{target} strings. For instance, if the feed indicates that a post was published on \stringliteral{2013-12-09}, our algorithm will search for a rule to extract one of \stringliteral{}, \stringliteral{}, \stringliteral{} and so on. We use a list of \TODO{0} target date formats that was empirically built during our experiments. While this list is certainly not exhaustive, our approach using string similarity on multiple target is robust to format changes. We did not took the time to support dates in multiple languages but it would be a straightforward modification.
 
 % Comments
+Comments are usually available is separated web feeds, organized by blog post. Similarity to blog feeds, comment feeds have a limited number en entries, and in case of overflow content has to be extracted from the post web page.
+
