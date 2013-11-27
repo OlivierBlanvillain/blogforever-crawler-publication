@@ -7,6 +7,6 @@ Install:
 
 Compile:
 
-    latexmk -pdf -pvc main.tex
+    latexmk -pdflatex='pdflatex -interaction=nonstopmode -halt-on-error -file-line-error --shell-escape' -bibtex -pdf -pvc main.tex
 
 Note that tex/main.bib is generated with zotero and the [modified bibtex export translator](http://www.rtwilson.com/academic/autozotbib) from [this shared library](https://www.zotero.org/groups/blogforever-crawler).
