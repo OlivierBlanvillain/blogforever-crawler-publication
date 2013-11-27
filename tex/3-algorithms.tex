@@ -1,98 +1,93 @@
 \section{Algorithms}
 
-This section explains in details the algorithm we developed to extract blog posts content and it's variations for authors, date and comments. We will see how we can take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog. A careful attention will be paid to minimizing algorithmic complexity while keeping the approach simple and general.
-
+This section explains in detail the algorithms we developed to extract blog posts' content and its variations for authors, dates and comments. We will see how we can take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog. We focused on minimizing the algorithmic complexity while keeping our approach simple and generic enough.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Motivation}
-% html extraction is non trival
-Extracting metadata and content from HTML is not easy. Standards and recommendations have been present for quite some time, strictly specifying how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantics and metadatas inside HTML documents, but as of today suffer from very low usage rates, under 0.5\%\cite{andrewrogers2013}. In fact, a majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} containers with custom \code{id} or \code{class} attributes to organize pages, and it is not uncommon to enconter incorrect HTML. Under such consistences, relying on HTML structure to extract data from web pages it's not viable and other techniques have to be employed.
+% html extraction is not trival
+Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantic information and metadata inside HTML documents, but still suffer from very low usage: under 0.5\%\cite{andrewrogers2013}. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organize structure pages, and it is common to encounter incorrect HTML. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques have to be employed.
 
 \Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed than failing tests where either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
 % assumptions when working with blogs
-With web blogs as our target websites we made the following assumptions that will play a central role in the extraction procedure\Anote{assumptions}:
+Having blogs as our target websites we made the following assumptions that play a central role in the extraction process\Anote{assumptions}:
 \begin{enumerate}[label={(\arabic*)}]
-  \item\label{havefeedAssum} Blogs provide web feeds: a structured and standardized view of blogs most recent posts,
-  \item\label{similarhtmlAssum} Posts of a same blog share a similar HTML structure.
+  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the most recent posts of a blog,
+  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
 \end{enumerate}
-Web feeds contain about 20 entries\cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive old content from blogs it is necessary to download and process pages beyond the one referenced by the feed.
-
+Web feeds usually contain about 20 entries\cite{oita2010}\comment{maybe say that 1 entry is 1 post?}, often less than the total number of posts in blogs. Consequently, in order to effectively archive old content from blogs it is necessary to download and process pages beyond the ones referenced in the feed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
 % per blog procedure, related work
-To extract content, authors, date and comments of blog posts, we will proceed by first building extraction rules from the information given on it's web feed. These rules will take advantage of the similarities between HTML structure of pages on a same blog in order to be applicable to all posts of a blog. The approach is not new and has already showed to give great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that works directly on HTML pages.
+To extract content, authors, dates and comments from blog posts, we proceed by first building extraction rules from the data given in the blog's web feed. These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.
 
 \extractionAlgo
 
 % algorithm, inputs/output
-Algorithm \ref{extractionAlgo} shows the procedure we use to build the extraction rule for blog post contents. It takes as input a set of pairs of HTML pages and target contents, and returns an extraction rule. This rule will be such that when applied input pages, the extracted texts are close to the corresponding target contents. \comment{this last sentence might not be clear (?), this is quite important.}%
+Algorithm \ref{extractionAlgo} shows the steps we follow to build extraction rules for the content pof blog posts. As input, it takes a set of pairs of HTML pages and target contents, and finally returns an extraction rule. This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents. \comment{Does it make more sense now? Is it correct? To be honest, I'm not 100\% what you were trying to say.}%
 
 % general idea, embarrassingly parallel
-The idea is quite simple: compute the best extraction rule for each page/target pair and return the most frequent best rule. Making each of these computation independent might seems like a lose of information compared to alternative solutions such as having a global score for each rule, computed as the average of it's score over all pages of the feed. We observed in our experimentation several cases were the independent solution performs better. When web feeds have many posts with very few text, mean based solutions tend to be more influenced by these outliers and are inclined to return wrong rules which never return target contents but constantly have an average score.
+The idea is quite simple: to compute the best extraction rule for each pair of HTML page and target conent and to finally return the most frequent best rule. Making each of these computations independent might seem like a loss of information compared to alternative solutions such as having a global score for each rule, computed as the average of each rule's score over all the pages of the feed. In our experimentation we observed several cases where the independent solution performs better\comment{reference or proof?}. When web feeds have many posts with very short content each, mean based solutions tend to be more influenced by these outliers\comment{other word for outliers?} and are inclined to return erronous rules which fail to return target contents but constantly have an average score.
 
-In addition, having a independent computation for each input makes the algorithm \emph{embarrassingly parallel}: iterations of the outer loop can trivialy be executed by multiple threads.
+In addition, having a independent computation for each input makes the algorithm \emph{embarrassingly parallel}\comment{it's a coined term, so it's fine, but should we have a reference here?}: iterations of the outer loop can trivialy be executed by multiple threads.
 
 % input from assumptions.
-Before going in details about annex functions and time complexity, we explain how the previously stated assumptions relate to Algorithm \ref{extractionAlgo}. Given a blog, assumption \ref{havefeedAssum} allows the crawler to obtain inputs for the algorithm. Indeed, web feeds provide either textual content or description of its entries, as well as a link to the corresponding page. Assumption \ref{similarhtmlAssum} garenties the existence of an appropriate an extraction rule, as well it's applicability to all posts of the blog.
-
+Before going into further details about annex functions and time complexity, we should explain how the previously stated assumptions relate to Algorithm \ref{extractionAlgo}. Given a blog, assumption \ref{havefeedAssum} allows the crawler to obtain input for the algorithm. Indeed, web feeds provide either textual content or descriptions for their entries, as well as links to the corresponding pages. Assumption \ref{similarhtmlAssum} guaranties the existence of an appropriate an extraction rule, as well as its applicability to all the posts of a blog.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
 % xpath selectors (id, else class, else path)
-In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse html pages and apply extraction rules, thus providing the \code{Apply} function used Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection with path in the HTML tree. We have found that ignoring nodes without \code{id} or \code{class} attributes prunes out many uninteresting HTML nodes without decreasing  the quality of the result. Also when both \code{id} and \code{class} attributes are present, we can ignore the \code{class} has \code{id}s should be unique. This observations led to the following \coderef{allrulesAlgo} function:
+In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse HTML pages and apply extraction rules, thus providing the \code{Apply} function, used in Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection with the absokute path in the HTML tree. We have found that ignoring nodes without \code{id} or \code{class} attributes prunes out many uninteresting HTML nodes without decreasing the quality of the result. Also when both \code{id} and \code{class} attributes are present, we can ignore the \code{class} as we expect the \code{id} to be unique. These observations led to the following \coderef{allrulesAlgo} function:
 
 \allrulesAlgo
 
 % string similarity
-Unsurprisingly, the choice of string similarity has a strong influence on the running time and precision of the extraction procedure. We use Sørensen–Dice coefficient similarity\cite{dice1945}, which is to the best of our knowledge the only string similarity fulfilling the following criterias:
+Unsurprisingly, the choice of the string similarity algorithm greatly influences the running time and precision of the extraction process. We chose the Sørensen–Dice similarity coefficient\cite{dice1945}, which, to the best of our knowledge\comment{maybe remove this? it weakens our choice a bit.}, is the only string similarity algorithm fulfilling the following criteria:
 
 \begin{enumerate}
-  \item\label{wordorderProp} Have low sensibility to word ordering
-  \item\label{substringProp} Favor substrings over strings of similar length
-  \item\label{linearProp} Run in linear time
+  \item\label{wordorderProp} Has low sensitivity to word ordering
+  \item\label{substringProp} Favors substrings over strings of similar length
+  \item\label{linearProp} Runs in linear time
 \end{enumerate}
 
-Properties \ref{wordorderProp} and \ref{substringProp} are essential to deal with cases where web feeds contain only an abstract or a subset of the post content. Table \ref{similarityTable} illustrates these two properties with examples, also giving the Levenshtein\cite{levenshtein1966} similarity to illustrate poor performances of string matching based similarities.
+Properties \ref{wordorderProp} and \ref{substringProp} are essential to deal with cases where a blog's web feed only contains an abstract or a subset of the entire post content. Table \ref{similarityTable} illustrates these two properties with examples, while comparing the chosen algorithm to the Levenshtein string similarity algorithm\cite{levenshtein1966} to illustrate poor performances of string matching based similarities.\comment{rephrase "poor performances of string matching based similarities"}
 
 \similarityTable
 
-The Sørensen–Dice coefficient methods operates by first building sets of pairs of adjacent characters, also knows as \emph{bigram}, and then applying the \emph{quotient of similarity} formula:
+The Sørensen–Dice coefficient methods operate by first building sets of pairs of adjacent characters, also knows as \emph{bigrams}, and then applying the \emph{quotient of similarity} formula:
 
 \similarityAlgo
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time complexity and linear reformulation}
 % algo 1 is quadratic
-With both \coderef{allrulesAlgo} and \coderef{similarityAlgo} function defined, we will now show that Algorithm \ref{extractionAlgo} has a quadratic running time. Let's first assume that we have at our disposal a linear time HTML parser and a data-structure indexing HTML nodes on their \code{id} and \code{class} attributes, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before, the outer loop splits the input into independent computations, and each call to \coderef{allrulesAlgo} returns (in linear time) less rules than the number of nodes of the HTML tree argument. Therefore, the body of the inner loop will be executed a linear number of time. Because extraction rule can return arbitrary subtrees of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
+With both the \coderef{allrulesAlgo} and \coderef{similarityAlgo} functions defined, we will show that Algorithm \ref{extractionAlgo} has a quadratic running time. First, let's assume that we have at our disposal a linear time HTML parser and a data structure with HTML nodes indexed on their \code{id} and \code{class} attributes\comment{does this need rephrasing to be clearer?}, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before the outer loop splits the input into independent computations and each call to \coderef{allrulesAlgo} returns (in linear time) less rules than the number of nodes of the HTML tree argument. Therefore, the body of the inner loop will be executed in a linear amount of time. Because the extraction rule can return arbitrary subtrees of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
 
 \linearAlgo
 
 % Linear reformulation
-We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulation of Algorithm \ref{extractionAlgo} with linear running time. While very intuitive, the original idea of first generating extraction rules and then picking these best rule prevents an effective reuse of previously computed bigrams. For instance, when evaluating the extraction rule for the HTML root node, Algorithm \ref{extractionAlgo} will obtain the complete string of the page and pass it to the \coderef{similarityAlgo} function. At this point, the information of where the string could be spitted into substring with already computed bigrams is not accessible, and the bigrams of the page has to be computed by linearly traversing the full string. To overcome this limitation and implement $memoization$ \comment{without R!}over the bigrams computations, Algorithm \ref{linearAlgo} uses a post-order traversal of the HTML tree to compute node bigrams from children bigrams. This way we avoid serializing HTML subtrees at each bigrams computation and have a guaranty that each character of the HTML page will be read at most once during bigrams computations. Thus, the cumlated time needed to compute bigrams of \emph{node.text} is linear.
+We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulation of Algorithm \ref{extractionAlgo} with linear running time. While very intuitive, the original idea of first generating extraction rules and then picking these best rules prevents us from an effective reuse of previously computed bigrams. For instance, when evaluating the extraction rule for the HTML root node, Algorithm \ref{extractionAlgo} will obtain the complete string of the page and pass it to the \coderef{similarityAlgo} function. At this point, the information on where the string could be split into substrings with already computed bigrams is not accessible, and the bigrams of the page have to be computed by linearly traversing the entire string. To overcome this limitation and implement $memoization$ \comment{without R!}over the bigram computations, Algorithm \ref{linearAlgo} uses a post-order traversal of the HTML tree to compute node bigrams from children bigrams\comment{instead: from their children?}. This way we avoid serializing HTML subtrees for each bigram computation and we can guaranty that each character of the HTML page will be read at most once during the bigrams computation. Thus, the cumlated time needed to compute the bigrams of \emph{node.text} is linear.
 
 % End of proof
-To conclude the proof that algorithm \ref{linearAlgo} runs in linear time we show that all its inner loop computations other than bigrams of \emph{node.text} can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortised} number of bigrams unions per inner loop iterations is one. Each \emph{quotient of similarity} computation requires one bigrams intersection and three bigrams lenght computation. Over a finite alphabet (we used printable ASCII), bigrams sizes have bounded size and each of these operation can be done in constant time.
-
+To conclude the proof that algorithm \ref{linearAlgo} runs in linear time we show that all its inner loop computations other than bigrams of \emph{node.text} can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortised} number of bigram unions per inner loop iteration is one. Each \emph{quotient of similarity} computation requires one bigram intersection and three bigram length computations. Over a finite alphabet (we used printable ASCII), bigram sizes have bounded size and each of these operations can be done in constant time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Variations for authors, dates and comments}
 % Intro
-As is, algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performed poorly for authors and dates extraction and are not suitable for comment extraction. This subsection presents variations of the general extraction techniques presented before. Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
+In the current state algorithms \ref{extractionAlgo} and \ref{linearAlgo} will performe poorly for author and date extraction and are not suitable for comment extraction. This subsection presents variations on the general extraction techniques presented before. Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
 
 % Authors
-The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, leading to several rules with maximum score. The heuristic we use to get around this issue consists in adding a new component in the scores of authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new score component takes advantage of the positioning of post's authors which is often a direct child or shares parent with the post content node.
+The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, leading to several rules with maximum score. The heuristic we use to get around this issue consists of adding a new component in the scores of authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new score component takes advantage of the positioning of post's authors which is often a direct child or shares parent with the post content node.
 
 % Dates, authors
-Dates are affected by the same duplication issue, as well as inconsistence of format between web feeds and web pages. Our solution to build date extraction rules extends what we presented before for authors by using multiple \emph{target} strings. For instance, if the feed indicates that a post was published on
-\stringliteral{Thu, 01 Jan 1970 00:00:00}, our algorithm will search for a rule to extract one of \stringliteral{Thursday January 1, 1970}, \stringliteral{1970-01-01}, \stringliteral{43 years ago} and so on. We use a list of \TODO{none so far :(} target date formats that was empirically built during our experiments. While this list is certainly not exhaustive, our approach using string similarity on multiple target is robust to format changes. We did not took the time to support dates in multiple languages but it would be a straightforward modification.
+Dates are affected by the same duplication issue, as well as the inconsistence of format between web feeds and web pages. Our solution is to use multiple \emph{target} strings, while extending the rule that we previously described for author extraction. For instance, if the feed indicates that a post was published on
+\stringliteral{Thu, 01 Jan 1970 00:00:00}, our algorithm will create a rule that extracts one of \stringliteral{Thursday January 1, 1970}, \stringliteral{1970-01-01}, \stringliteral{43 years ago} and so on. We use a list of \TODO{none so far :(} target date formats that was empirically built during our experiments. While this list is certainly not exhaustive, our approach using string similarity on multiple target dates is robust and tolerant to format variations. We do not, so far, support dates in multiple languages but English was sufficient for our experiments.
 
 % Comments
-Comments are usually available in a separated web feeds, organized by blog post. Similarity to blog feeds, comment feeds have a limited number en entries, and in case of overflow data has to be extracted from the post web page. To do so we use algorithm \ref{extractionAlgo} with the following modifications:
+Comments are usually available in separate web feeds, one per blog post. Similarly to blog feeds, comment feeds have a limited number of entries, and in case a blog post has more comments than the ones appearing in the feed, comments have to be extracted from the post web page. To do so we use algorithm \ref{extractionAlgo} with the following modifications:
 \begin{enumerate}
   \item\label{lessthanfeedMod} Rules that return less HTML nodes than the number of comments on the feed are filtered out.
   \item\label{assignmentMod} The score of a rule is the value of the \emph{maximum weighted matching} in the \emph{complete bipartite graph} $G = (U, V, E)$, where $U$ is the set of HTML nodes returned by the rule, $V$ is the set of target comment fields from the web feed (such as comment authors) and $E(u, v)$ as weight equal to \code{\ref{similarityAlgo}(}$u, v$\code{)}.
 \end{enumerate}
-Our crawler executes this algorithm on each page with comment overflow, and thus supports blogs with multiple commenting engines. Comment contents are extracted first, which allows to narrow down modification \ref{lessthanfeedMod} by fixing the target number of comments.
+Our crawler executes this algorithm on each post that present a comment feed overflow, thus supporting blogs with multiple commenting engines. Comment contents are extracted first, which allows to narrow down modifications \ref{lessthanfeedMod} by fixing the target number of comments.
