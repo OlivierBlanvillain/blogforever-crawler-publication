@@ -17,11 +17,12 @@
 \SetProcNameSty{texttt}
 \SetProcArgSty{textit}
 
-\newcommand{\Arrow}{$\longleftarrow$~}
-\newcommand{\Indent}{\hspace{12pt}}
+\newcommand\Arrow{$\longleftarrow$~}
+\newcommand\Indent{\hspace{12pt}}
 
-\newcommand{\extractionAlgo}{
+\newcommand\extractionAlgo{
   \begin{algorithm}
+    \capstart
     \caption{Best Extraction Rule}\label{extractionAlgo}
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -44,8 +45,9 @@
   \end{algorithm}
 }
 
-\newcommand{\allrulesAlgo}{
+\newcommand\allrulesAlgo{
   \begin{function}
+    \capstart
     \caption{AllRules(page)}\label{allrulesAlgo}
     \setstretch{1.1}
 
@@ -66,8 +68,9 @@
   \end{function}
 }
 
-\newcommand{\similarityAlgo}{
+\newcommand\similarityAlgo{
   \begin{function}
+    \capstart
     \caption{Similarity(string1, string2)}\label{similarityAlgo}
     \setstretch{1.1}
 
@@ -77,8 +80,9 @@
     \end{function}
 }
 
-\newcommand{\linearAlgo}{
+\newcommand\linearAlgo{
   \begin{algorithm}
+    \capstart
     \caption{Linear Time Best Content Extraction Rule}\label{linearAlgo}
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}

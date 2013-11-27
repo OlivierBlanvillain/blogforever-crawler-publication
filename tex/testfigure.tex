@@ -1,0 +1,14 @@
+\begin{figure}[ht]
+  \centering
+  \begin{gnuplot}[scale=.75,terminal=epslatex,terminaloptions=color]
+    set size ratio 0.618
+    set yrange [0:50]
+    set xrange [0:70]
+    plot "data/runningtime.txt"\
+       using 0:1 smooth cumulative with lines linewidth 5 title 'ContentExtractor',\
+    "" using 0:2 smooth cumulative with lines linewidth 5 title 'Boilerpipe',\
+    "" using 0:3 smooth cumulative with lines linewidth 5 title 'Goose',\
+    "" using 0:4 smooth cumulative with lines linewidth 5 title 'Readability'
+  \end{gnuplot}
+\end{figure}
+%lskdfjlsjflskjfls

@@ -18,6 +18,7 @@
 \usepackage{url}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
+\usepackage{xparse}
 \usepackage[pdfpagelabels=false]{hyperref}
 \usepackage{hypcap}
 
@@ -31,15 +32,15 @@
 \setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
 
-\newcommand{\TODO}[1]{\emph{\color{Red} TODO: #1}}
+\newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
 % \renewcommand{\comment}[1]{}
-\renewcommand{\comment}[1]{\emph{\color{Gray}Comment: #1\\}}
-\newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\coderef}[1]{\texttt{\ref{#1}}}
-\newcommand{\stringliteral}[1]{\texttt{\char`\"#1\char`\"}}
-\newcommand{\len}[1]{|#1|}
-\newcommand{\surl}[1]{\urlstyle{ff}\url{#1}}
-\newcommand{\Oof}[1]{$\mathcal{O}(#1)$}
+\renewcommand\comment[1]{\emph{\color{Gray}Comment: #1\\}}
+\newcommand\code[1]{\texttt{#1}}
+\newcommand\coderef[1]{\texttt{\ref{#1}}}
+\newcommand\stringliteral[1]{\texttt{\char`\"#1\char`\"}}
+\newcommand\len[1]{|#1|}
+\newcommand\surl[1]{\urlstyle{ff}\url{#1}}
+\newcommand\Oof[1]{$\mathcal{O}(#1)$}
 
 \begin{document}
 

@@ -1,0 +1,4 @@
+../../blogforever-crawler/out 0.5-score: 93.0082796688%
+goose/ 0.5-score: 79.2088316467%
+readability/ 0.5-score: 88.132474701%
+boilerpipe/ 0.5-score: 79.3008279669%
