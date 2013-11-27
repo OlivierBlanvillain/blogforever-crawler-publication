@@ -13,6 +13,7 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{gnuplottex}
 \usepackage{quoting}
 \usepackage{url}
 \usepackage{sepfootnotes}
@@ -31,8 +32,8 @@
 \setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
 
 \newcommand{\TODO}[1]{\emph{\color{Red} TODO: #1}}
-% \newcommand{\comment}[1]{}
-\newcommand{\comment}[1]{\emph{\color{Gray}Comment: #1\\}}
+% \renewcommand{\comment}[1]{}
+\renewcommand{\comment}[1]{\emph{\color{Gray}Comment: #1\\}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\coderef}[1]{\texttt{\ref{#1}}}
 \newcommand{\stringliteral}[1]{\texttt{\char`\"#1\char`\"}}

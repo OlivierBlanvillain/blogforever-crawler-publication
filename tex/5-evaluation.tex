@@ -16,16 +16,10 @@ Compare:
 \end{itemize}
 On:
 \begin{enumerate}
-  \item Running time
-  \begin{itemize}
-    \item Plot duration as a function of the page length
-    \item Plot duration as a function of the number or pages (our should only take time to build the rules)
-  \end{itemize}
-  \item Quality of output compared:
-  \begin{itemize}
-    \item Chart of success pourcentages
-  \end{itemize}
+  \item Quality of output compared, Chart of success pourcentages
+  \item Running time, Plot duration as a function of the number or pages (our should only take time to build the rules)
 \end{enumerate}
+
 
 \subsection{JavaScript rendering}
 Compare:
@@ -38,8 +32,15 @@ Compare:
 On:
 \begin{itemize}
   \item Table comparing functionalities of each solution
-  \item Histogram of redering time per browser\\(phantomjs/chrome/firefox)
+  \item Histogram of redering time per browser\\(phantomjs/chrome/firefox?)
 \end{itemize}
 
 - ez of use vs power, fine because it's automated
 - c++ vs java vs scala vs go \cite{hundt2011}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{gnuplot}[terminal=epslatex,terminaloptions=color]
+    plot [0:2*pi] sin(x) title 'Sine', cos(x) title 'Cosine'
+  \end{gnuplot}
+\end{figure}

@@ -1,6 +1,7 @@
 \SetKw{Of}{of}
 \SetKw{In}{in}
 \SetKw{As}{as}
+\SetKw{All}{all}
 \SetKw{With}{with}
 \SetKw{Over}{over}
 \SetKw{Using}{for}
@@ -17,6 +18,7 @@
 \SetProcArgSty{textit}
 
 \newcommand{\Arrow}{$\longleftarrow$~}
+\newcommand{\Indent}{\hspace{12pt}}
 
 \newcommand{\extractionAlgo}{
   \begin{algorithm}
@@ -92,13 +94,11 @@
       \emph{bigrams \Arrow}new map\;
       \emph{bigrams \Of target \Arrow}set of pairs of adjacents in \emph{target}\;
       \ForEach{node \In page \With \emph{post-order traversal}}{
-        \emph{bigrams \Of node \Arrow}\; \Indp
-          set of pairs of adjacent characters in \emph{node.text\;
-          $\bigcup$ \Par{\Using C \Over node.childs} bigrams \Of C}\;
-          \Indm
-        \emph{score \Of node \Arrow }\; \Indp
-            $\dfrac{ {2 \len{\Par{bigram~\Of~node} \cap \Par{bigram~\Of~target}}} }{ \len{bigram~\Of~node} + \len{bigram~\Of~target} }$\;
-          \Indm
+        \emph{bigrams \Of node \Arrow}
+          \Par{\emph{set of pairs of adjacent chars}\;
+          \Indent \In node.text $\bigcup$ bigrams \Of \All node.childs}\;
+        \emph{score \Of node \Arrow }\;
+          \Indent $\dfrac{ {2 \len{\Par{bigrams~\Of~node} \cap \Par{bigrams~\Of~target}}} }{ \len{bigrams~\Of~node} + \len{bigrams~\Of~target} }$\;
       }
       \emph{topRules \Arrow topRules} + \Rule{\emph{node with highest} score}\;
     }
