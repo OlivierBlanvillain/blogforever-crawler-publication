@@ -32,3 +32,18 @@
 % Out[9]: 0.18181818181818182
 % In [10]: r("Rachid", "Rexford")
 % Out[10]: 0.6153846153846154
+
+\newcommand{\precisionTable}{
+  \begin{table}[h]\centering
+    \capstart
+    \setstretch{1.1}
+    \begin{tabular*}{\columnwidth}{@{}*{4}{p{0.254\columnwidth}}@{}}
+    \toprule
+    Our Approach & Readability & Boilerpipe & Goose \\
+    \midrule
+    93.0\% & 88.1\% & 79.3\% & 79.2\% \\
+    \bottomrule
+    \end{tabular*}
+  \caption{Content extracton success rates}\label{precisionTable}
+  \end{table}
+}
