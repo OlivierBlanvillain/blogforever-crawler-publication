@@ -1,8 +1,8 @@
 \begin{figure}[ht]
-  \centering
+  \hspace{-30pt}
   \begin{gnuplot}
     set terminal epslatex color
-    set size 0.71
+    set size 0.733
     set size ratio 0.618
 
     # set title 'title'
@@ -10,15 +10,14 @@
     set xlabel 'Processed pages'
 
     set yrange [0:55]
-    set xrange [0:70]
+    set xrange [0:65]
 
     set arrow from 15,graph(0,0) to 15,graph(1,1) nohead linecolor rgb 'grey'
 
     plot 'data/runningtime.txt'\
-       u 0:1 smooth cumulative w lines linewidth 5 title 'Our Approach',\
+       u 0:1 smooth cumulative w lines linewidth 5 title 'Algorithm \ref{extractionAlgo}',\
     '' u 0:4 smooth cumulative w lines linewidth 5 title 'Readability',\
     '' u 0:2 smooth cumulative w lines linewidth 5 title 'Boilerpipe',\
     '' u 0:3 smooth cumulative w lines linewidth 5 title 'Goose'
   \end{gnuplot}
 \end{figure}
-%lskdfjlsjflskjfls
