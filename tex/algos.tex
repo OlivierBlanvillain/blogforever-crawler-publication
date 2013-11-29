@@ -54,14 +54,13 @@
     \emph{rules} \Arrow new set\;
     \ForEach{node \In page}{
       \uIf{node \As \emph{\code{id} attribute}}{
-        \emph{rules \Arrow rules} +\set{\stringliteral{
+        \emph{rules \Arrow rules} + \set{\stringliteral{
           //*[@id=`\textnormal{\it node.id}']}}\;
       } \ElseIf{node \As \emph{\code{class} attribute}}{
-        \emph{rules \Arrow rules} +\set{\stringliteral{
+        \emph{rules \Arrow rules} + \set{\stringliteral{
           //*[@class=`\textnormal{\it node.class}']}}\;
-      } \code{//} \lElse{
-        \emph{rules \Arrow rules} +\set{\AbsolutePathTo{node}}%
-        \comment{not sure if this commented else is usefull...}%
+      } \lElse{
+        \emph{rules \Arrow rules} + \set{\AbsolutePathTo{node}}
       }
     }
     \Return{rules}\;

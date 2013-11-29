@@ -38,11 +38,7 @@ Before going into further details about annex functions and time complexity, we 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
 % xpath selectors (id, else class, else path)
-In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse HTML pages and apply extraction rules, thus providing the \code{Apply} function, used in Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection with the absolute path in the HTML tree.
-
-Ignoring nodes without \code{id} or \code{class} attributes turns out to prune out many uninteresting HTML nodes without decreasing the quality of the result.
-
-Also when both \code{id} and \code{class} attributes are present, we can ignore the \code{class} as we expect the \code{id} to be unique. These observations led to the following \coderef{allrulesAlgo} function:
+In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used parse HTML pages and apply extraction rules, thus providing the \code{Apply} function, used in Algorithm \ref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection with the absolute path in the HTML tree. \code{id} attributes are expected to be unique, and \code{class} attributes have showed to have better blog consistency than absolute paths. For these reasons, the \coderef{allrulesAlgo} function only returns the best rule for each node:
 
 \allrulesAlgo
 
