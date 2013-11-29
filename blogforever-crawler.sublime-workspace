@@ -28,18 +28,10 @@
 	"buffers":
 	[
 		{
-			"file": "tex/3-algorithms.tex",
+			"file": "tex/5-evaluation.tex",
 			"settings":
 			{
-				"buffer_size": 10010,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tex/algos.tex",
-			"settings":
-			{
-				"buffer_size": 3595,
+				"buffer_size": 2087,
 				"line_ending": "Unix"
 			}
 		},
@@ -47,34 +39,16 @@
 			"file": "tex/tables.tex",
 			"settings":
 			{
-				"buffer_size": 1068,
+				"buffer_size": 1470,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "tex/4-techniques.tex",
+			"file": "/home/olivier/Downloads/tex/ANSPAT_report.tex",
 			"settings":
 			{
-				"buffer_size": 9835,
+				"buffer_size": 34528,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 28 files for \"manifesto\"\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/4-techniques.tex:\n   56  %%%%%%%%%%%%%%%%%%%%%%%%\n   57  \\subsection{Scalability}\n   58: When aiming to work with a large number of inputs, it is crucial that every layer of the system is build to be scalable. Citing the Reactive Manifesto\\cite{thereactivemanifesto2013}:\n   59  \n   60  \\begin{quoting}\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/main.aux:\n   63  \\@writefile{toc}{\\contentsline {subsection}{\\numberline {4.2}Architecture}{\\thepage }{subsection.4.2}}\n   64  \\@writefile{toc}{\\contentsline {subsection}{\\numberline {4.3}Enriching Scrapy}{\\thepage }{subsection.4.3}}\n   65: \\citation{thereactivemanifesto2013}\n   66  \\citation{twisted2013}\n   67  \\@writefile{toc}{\\contentsline {subsection}{\\numberline {4.4}Scalability}{\\thepage }{subsection.4.4}}\n   ..\n   81  \\bibcite{levenshtein1966}{7}\n   82  \\bibcite{livefyre2013}{8}\n   83: \\bibcite{thereactivemanifesto2013}{9}\n   84  \\bibcite{oita2010}{10}\n   85  \\bibcite{phantomjs2013}{11}\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/main.bbl:\n   45  \\newblock http://web.livefyre.com/, 2013.\n   46  \n   47: \\bibitem{thereactivemanifesto2013}\n   48: T.~R. Manifesto.\n   49: \\newblock http://www.reactivemanifesto.org/, 2013.\n   50  \n   51  \\bibitem{oita2010}\n\n/home/olivier/workspace/blogforever-crawler-publication/tex/main.bib:\n   41  },\n   42  \n   43: @misc{thereactivemanifesto2013,\n   44: 	url = {http://www.reactivemanifesto.org/},\n   45: 	author = {The Reactive Manifesto},\n   46  	year = {2013},\n   47: 	howpublished = {http://www.reactivemanifesto.org/}\n   48  },\n   49  \n\n11 matches across 4 files\n",
-			"settings":
-			{
-				"buffer_size": 1696,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "tex/main.tex",
-			"settings":
-			{
-				"buffer_size": 2954,
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -624,17 +598,19 @@
 	},
 	"file_history":
 	[
-		"/home/olivier/workspace/blogforever-crawler-publication/links.md",
-		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.tex",
-		"/home/olivier/workspace/blogforever-crawler-publication/tex/5-evaluation.tex",
+		"/home/olivier/Downloads/tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/tables.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/testfigure.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/4-techniques.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/algos.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/3-algorithms.tex",
+		"/home/olivier/workspace/blogforever-crawler-publication/links.md",
+		"/home/olivier/workspace/blogforever-crawler-publication/tex/5-evaluation.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/1-intro.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/2-related-work.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.aux",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/main.bib",
-		"/home/olivier/workspace/blogforever-crawler-publication/tex/3-algorithms.tex",
 		"/home/olivier/workspace/blogforever-crawler-publication/tex/algorithm2es.tex",
 		"/home/olivier/workspace/blogforever-crawler/bibcrawl/utils/stringsimilarity.py",
 		"/home/olivier/workspace/blogforever-crawler/tex/algorithm2es.tex",
@@ -749,13 +725,11 @@
 		"/home/olivier/workspace/invenio/modules/websubmit/lib/websubmit_webinterface.py",
 		"/home/olivier/.config/devilspie2/test.lua",
 		"/home/olivier/workspace/invenio/modules/websubmit/lib/websubmit_file_metadata.py",
-		"/home/olivier/workspace/invenio/modules/bibupload/lib/bibupload.py",
-		"/home/olivier/workspace/invenio/modules/bibupload/lib/batchuploader.py",
-		"/home/olivier/workspace/invenio/modules/bibedit/lib/bibedit_engine.py"
+		"/home/olivier/workspace/invenio/modules/bibupload/lib/bibupload.py"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -782,6 +756,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"&",
+			"approach",
+			"success",
 			"manifesto",
 			"manidesto",
 			"\\capstart",
@@ -906,9 +883,6 @@
 			"\"",
 			"\\arrow",
 			"arrow",
-			"longleftarrow",
-			"$",
-			"emph",
 			"longleftarrow"
 		],
 		"highlight": true,
@@ -1007,85 +981,29 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "tex/3-algorithms.tex",
+					"file": "tex/5-evaluation.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10010,
+						"buffer_size": 2087,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6778,
-								6778
+								967,
+								967
 							]
 						],
 						"settings":
 						{
 							"spell_check": false,
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1592.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "tex/algos.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3595,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2380,
-								2380
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "tex/tables.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1068,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1068,
-								1068
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -1096,20 +1014,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "tex/4-techniques.tex",
+					"buffer": 1,
+					"file": "tex/tables.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9835,
+						"buffer_size": 1470,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3697,
-								3697
+								405,
+								405
 							]
 						],
 						"settings":
@@ -1117,72 +1035,21 @@
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 650.0,
+						"translation.y": 100.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 2,
+					"file": "/home/olivier/Downloads/tex/ANSPAT_report.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1696,
+						"buffer_size": 34528,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										326,
-										335
-									],
-									[
-										352,
-										361
-									],
-									[
-										722,
-										731
-									],
-									[
-										978,
-										987
-									],
-									[
-										1216,
-										1225
-									],
-									[
-										1244,
-										1253
-									],
-									[
-										1291,
-										1300
-									],
-									[
-										1460,
-										1469
-									],
-									[
-										1509,
-										1518
-									],
-									[
-										1557,
-										1566
-									],
-									[
-										1635,
-										1644
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
@@ -1193,49 +1060,13 @@
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "tex/main.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2954,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1301,
-								1301
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1292,6 +1123,22 @@
 		"selected_items":
 		[
 			[
+				"ta",
+				"tex/tables.tex"
+			],
+			[
+				"table",
+				"tex/tables.tex"
+			],
+			[
+				"test",
+				"tex/testfigure.tex"
+			],
+			[
+				"5-e",
+				"tex/5-evaluation.tex"
+			],
+			[
 				"main",
 				"tex/main.tex"
 			],
@@ -1302,10 +1149,6 @@
 			[
 				"algo",
 				"tex/algos.tex"
-			],
-			[
-				"table",
-				"tex/tables.tex"
 			],
 			[
 				"evalu",
@@ -1790,18 +1633,6 @@
 			[
 				"reout",
 				"External Libraries/scala-library-2.10.0/scala/collection/readme-if-you-want-to-add-something.txt"
-			],
-			[
-				"read",
-				"acmss/README.md"
-			],
-			[
-				"sql",
-				"acmss/app/controllers/chair/Sql.scala"
-			],
-			[
-				"mana",
-				"acmss/app/views/manageMembers.scala.html"
 			]
 		],
 		"width": 0.0
