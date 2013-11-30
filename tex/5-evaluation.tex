@@ -5,36 +5,15 @@ Our evaluation will be articulated in two parts. Firstly, we will compare the co
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction Precision}
-To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (assuptions \ref{havefeedAssum} and \ref{similarhtmlAssum}).
+To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (assumptions \ref{havefeedAssum} and \ref{similarhtmlAssum}).
 
-Readability relies mainly on common naming practices among web-developers  .
+\comment{Is it useful to present algorithms of the three other projects?
+\\ Readability relies mainly on common naming practices among web-developers
+\\ Boilerpipe: http://tomazkovacic.com/blog/14/extracting-article-text-from-html-documents/
+\\ Goose clusters of paragraphs, word dencity and link dencity}
 
+Table \ref{precisionTable} shows extraction success rates of content and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}. An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
 
-Boilerpipe uses a very ....
-% Boilerpipe is probably one of the best open source packages when it comes to full article text extraction that leverages on machine learning. The overall algorithm works by computing both text and structural features on parts of the document and based on these features, decide if the observed part of the document belongs to the article text or not. The decision rules are inferred by a classifier trained on a set of labeled documents.
-% To obtain a set of learning examples that are fed into a classifier, boilerplate observes a list of features on different levels of the HTML document:
-
-% text frequency in the whole corpus: to obtain phrases commonly used in useless parts of the document
-% presence of particular tags that enclose a block of text: <h#> headline, <p> paragraph, <a> anchor and <div> division
-% shallow text features: average word length, average sentence length, absolute number of words in the segment
-% local context of text: absolute and relative position of the text block
-% heuristic features: number of words that start with an uppercase letter, number of words written in all-caps, number of date and time tokens, link density and certain ratios of those previously listed
-% density of text blocks: number of words in a wrapped fixed column width text block divided by number of lines of the same block
-% Each HTML document is segmented into atomic text blocks that are annotated with features listed above and labeled (by a human annotator) with content or boilerpate class.
-
-% In the original paper authors used decision trees and SVMs, trained on previously mentioned set of learning examples, to classify parts of the newly observed document as content or boilerplate text.
-
-
-
-Goose implements a more sofisticated algorithm which ....
-% clusters of paragraphs, word dencity and link dencity
-
-
-% dataset
-\cite{burton2011}
-
-% table
-Table \ref{precisionTable} shows the
 \precisionTable
 
 % short discussion, stress the fact that we use different tools
