@@ -4,34 +4,35 @@ Our evaluation will be articulated in two parts. Firstly, we will compare the co
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Content extraction Precision}
+\subsection{Extraction success rates}
 To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (assumptions \ref{havefeedAssum} and \ref{similarhtmlAssum}).
-
-\comment{Is it useful to present algorithms of the three other projects?
-\\ Readability relies mainly on common naming practices among web-developers
-\\ Boilerpipe: http://tomazkovacic.com/blog/14/extracting-article-text-from-html-documents/
-\\ Goose clusters of paragraphs, word dencity and link dencity}
 
 Table \ref{precisionTable} shows extraction success rates of content and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}. An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
 
 \precisionTable
 
-% short discussion, stress the fact that we use different tools
-
+On our test-set algorithm~\ref{extractionAlgo} outperformed the concurrence by 4.9\% margin on content extraction and a 10.1\% margin on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise,\TODO{is this transition ok?} our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in table \ref{precisionTable} should not be interpreted as general evaluation of quality of the different projects, but simply mean that our approach is more suitable when working with blogs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content running time}
 
-Implemented in Javascript, Java and Scala respectively, all three offer the same functionality: given an HTML web page, identify and extract content, tit.
+In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The two point of interest are the time required to process a single page and the cumulated running time required to process multiple pages of a blog. The first result is significant for the \emph{UpdateCrawl} procedure, which is responsible for obtaining updates of already monitored blogs, and the second result regards the \emph{NewCrawl} procedure triggered when a new blog is added to the system and all previously published content has to be processed. 
+
+Our measurements were made with garbage collector disabled on a otherwise idle core of a \TODO{Intel X} processor.  asdjf élaksd jfélkas jfélkas jfélaskjd félakjd fékas jfdéasdj féaksd jf
+
+
+% rtime eval, scalability with size of blogs
+
 % rsetup (single core, gc disabled, measure time spent in respective extraction functions)
+
 % result (plot)
-\input{runningtimesfigure.tex}
 
+\input{runningtimeFigure.tex}
 
-% discussion: we are "cheating" on scalability
-% discussion: raw perf (15 feed entry)
-% discussion: (c++ vs java vs scala vs go \cite{hundt2011})
+% discussion: again, we are "cheating" on scalability
+% discussion: raw perf (15 feed entry),
+% discussion: (c++ vs java vs scala vs go \cite{hundt2011})Implemented in Javascript, Java and Scala respectively
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

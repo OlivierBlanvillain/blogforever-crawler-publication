@@ -1,17 +1,16 @@
 \section{Algorithms}\label{algorithms}
 
-This section explains in detail the algorithms we developed to extract blog posts' content and its variations for authors, dates and comments. We will see how we can take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog. We focused on minimizing the algorithmic complexity while keeping our approach simple and generic enough.
-
+This section explains in detail the algorithms we developed to extract blog posts' content and its variations for authors, dates and comments. We will see how we can take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog. We focused on minimizing the algorithmic complexity while keeping our approach simple and generic.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Motivation}
 % html extraction is not trival
-Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantic information and metadata inside HTML documents, but still suffer from very low usage: under 0.5\%\cite{andrewrogers2013}. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organize structure pages\cite{brianwilson2008}\TODO{FIX REF!}, and more than 95\% of pages do not pass HTML validation\cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques have to be employed.
+Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organize structure pages\cite{brianwilson2008}\TODO{FIX REF!}, and more than 95\% of pages do not pass HTML validation\cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
 
-\Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed than failing tests where either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
+\Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
 % assumptions when working with blogs
-Having blogs as our target websites we made the following assumptions that play a central role in the extraction process\Anote{assumptions}:
+Having blogs as our target websites, the assumptions we made and which play a central role in the extraction process are the following\Anote{assumptions}:
 \begin{enumerate}[label={(\arabic*)}]
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the most recent posts of a blog,\TODO{mention RSS and Atom, just to confirm to the reader what a web feed is?}
   \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
@@ -21,7 +20,7 @@ Web feeds usually contain about 20 posts\cite{oita2010}, often less than the tot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
 % per blog procedure, related work
-To extract content, authors, dates and comments from blog posts, we proceed by first building extraction rules from the data given in the blog's web feed. These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.\comment{This might be a bit too raw, give more context at this point?}
+To extract content, authors, dates and comments from blog posts, we started by building extraction rules from the data given in the blog's web feed. These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.\comment{This might be a bit too raw, give more context at this point?}
 
 \extractionAlgo
 
@@ -29,12 +28,13 @@ To extract content, authors, dates and comments from blog posts, we proceed by f
 Algorithm \ref{extractionAlgo} shows the steps we follow to build extraction rules for the content of blog posts. As input, it takes a set of pairs of HTML pages and target contents, and finally returns an extraction rule. This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents.
 
 % general idea, embarrassingly parallel
-The idea is quite simple: to compute the best extraction rule for each pair of HTML page and target content and to finally return the most frequent best rule. Making each of these computations independent might seem like a loss of information compared to alternative solutions such as having a global score for each rule, computed as the average of each rule's score over all the pages of the feed. In our experimentation we observed several cases where the independent solution performs better\TODO{example, reference or proof?}. When web feeds have posts with very short content, mean based solutions tend to be more influenced by these outliers and are inclined to return erronous rules which fail to return target contents but constantly have an average score.\TODO{rephrase!}
+The idea is quite simple: to compute the best extraction rule for each pair of HTML pages and target content and to finally return the most frequent best rule. Making each of these computations independent might seem like a loss of information compared to alternative solutions such as having a global score for each rule, computed as the average of each rule's score over all the pages of the feed. In our experimentation we observed several cases where the independent solution performs better\TODO{example, reference or proof?}. When web feeds have posts with very short content, mean based solutions tend to be more influenced by these outliers and are inclined to return erroneous rules which fail to return target contents but constantly have an average score.\TODO{rephrase!}
 
-In addition, having an independent computation for each input makes the algorithm \emph{embarrassingly parallel}\comment{it's a coined term, so it's fine, but should we have a reference here? -> Can't find a good one..}: iterations of the outer loop can trivialy be executed by multiple threads.
+In addition, having an independent computation for each input makes the algorithm \emph{embarrassingly parallel}\comment{it's a coined term, so it's fine, but should we have a reference here? -> Can't find a good one..}: iterations of the outer loop can trivially be executed by multiple threads.
 
 % input from assumptions.
-Before going into further details about annex functions and time complexity, we should explain how the previously stated assumptions relate to Algorithm \ref{extractionAlgo}. Given a blog, assumption \ref{havefeedAssum} allows the crawler to obtain input for the algorithm. Indeed, web feeds provide either textual content or descriptions for their entries, as well as links to the corresponding pages. Assumption \ref{similarhtmlAssum} guaranties the existence of an appropriate extraction rule, as well as its applicability to all the posts of a blog.
+Before going into further details about annex functions and time complexity, we should explain how the previously stated assumptions relate to Algorithm \ref{extractionAlgo}. Given a blog, assumption \ref{havefeedAssum} allows the crawler to obtain input for the algorithm. Indeed, web feeds provide either textual content or descriptions for their entries, as well as links to the corresponding pages. Assumption \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all the posts of a blog.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
