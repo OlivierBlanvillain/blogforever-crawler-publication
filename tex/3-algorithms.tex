@@ -1,11 +1,32 @@
 \section{Algorithms}\label{algorithms}
 
-This section explains in detail the algorithms we developed to extract blog posts' content and its variations for authors, dates and comments. We will see how we can take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog. We focused on minimizing the algorithmic complexity while keeping our approach simple and generic.
+This section explains in detail the algorithms we developed to extract blog posts' content and its variations for authors, dates and comments.
+We explain how we take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog.
+Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Motivation}
 % html extraction is not trival
-Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organized. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to nest semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organize structure pages\cite{brianwilson2008}\TODO{FIX REF!}, and more than 95\% of pages do not pass HTML validation\cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
+Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organised \TODO{ref to W3C standards}.
+For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}.
+More recently, specifications such as Microdata\cite{whatwg2013} define ways to embed semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages\cite{brianwilson2008}\TODO{FIX REF!}, and more than 95\% of pages do not pass HTML validation\cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
+
+\TODO{Assumption is not a good word, we are based on facts from previous work.
+I suggest that you restructure this part as follows:
+
+Having blogs as our target websites, we are taking into account  the following facts that play a central role in the extraction process.
+
+1. "Blog is a kind of web page [with] frequent, usually brief posts, with the immediacy of reverse chronological order" (+ ref to BlogForever D2.2: BlogForever Data Model 
+https://zenodo.org/record/7488/files/BlogForever\_D2\_2WeblogDataModel.pdf 
+
+2. blogs provide web feeds: structured and standardised views of the most recent blog posts.
+
+3. Web feeds contain information regarding the latest blog posts (usually 10 or 20 entries) + ref
+
+4. posts of the same blog share a similar HTML structure.
+
+Consequently, in order to effectively archive old blog content, it is necessary to download and process pages beyond the ones referenced in web feeds.
+}
 
 \Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
@@ -15,19 +36,24 @@ Having blogs as our target websites, the assumptions we made and which play a ce
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the most recent posts of a blog,\TODO{mention RSS and Atom, just to confirm to the reader what a web feed is?}
   \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
 \end{enumerate}
-Web feeds usually contain about 20 posts\cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive old content from blogs, it is necessary to download and process pages beyond the ones referenced in the feed.
+Web feeds usually contain about 20 posts\cite{oita2010},\TODO{Add more info on web feeds, merge with the text on intro.} often less than the total number of posts in blogs. Consequently, in order to effectively archive old content from blogs, it is necessary to download and process pages beyond the ones referenced in the feed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
+\TODO{When I read this section for the first time, I was confused.
+After I also read 3.3 and 3.4 I understood better.
+You should have a nicely structured overview of the algorithm in 3.2 and have references for 3.3 and 3.4
+When you describe the algorithm overview, you should say explicitly that function X and operation Y is explained in section Z, etc}
 % per blog procedure, related work
-To extract content, authors, dates and comments from blog posts, we started by building extraction rules from the data given in the blog's web feed. These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.\comment{This might be a bit too raw, give more context at this point?}
+To extract content, authors, dates and comments from blog posts, we started by building extraction rules from the data given in the blog's web feed. \TODO{These rules take advantaged of the facts presented in 3.1 to create a more efficient data extraction process, outperforming more generic extraction algorithms that work directly with HTML pages.}These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.\comment{This might be a bit too raw, give more context at this point?}
 
 \extractionAlgo
 
 % algorithm, inputs/output
-Algorithm \ref{extractionAlgo} shows the steps we follow to build extraction rules for the content of blog posts. As input, it takes a set of pairs of HTML pages and target contents, and finally returns an extraction rule. This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents.
+Algorithm \ref{extractionAlgo} shows the steps we follow to build extraction rules for the content of blog posts. As input, it takes a set of pairs of HTML pages and target contents, and finally returns an extraction rule. This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents.\TODO{You definitely need a better explanation}
 
 % general idea, embarrassingly parallel
+\TODO{This paragraph is not clear.}
 The idea is quite simple: to compute the best extraction rule for each pair of HTML pages and target content and to finally return the most frequent best rule. Making each of these computations independent might seem like a loss of information compared to alternative solutions such as having a global score for each rule, computed as the average of each rule's score over all the pages of the feed. In our experimentation we observed several cases where the independent solution performs better\TODO{example, reference or proof?}. When web feeds have posts with very short content, mean based solutions tend to be more influenced by these outliers and are inclined to return erroneous rules which fail to return target contents but constantly have an average score.\TODO{rephrase!}
 
 In addition, having an independent computation for each input makes the algorithm \emph{embarrassingly parallel}\comment{it's a coined term, so it's fine, but should we have a reference here? -> Can't find a good one..}: iterations of the outer loop can trivially be executed by multiple threads.
@@ -58,6 +84,7 @@ Properties \ref{wordorderProp} and \ref{lengthProp} are essential to deal with c
 
 The Sørensen–Dice coefficient method operates by first building sets of pairs of adjacent characters, also knows as \emph{bigrams}, and then applying the \emph{quotient of similarity} formula:
 
+\TODO{similatiry -> score function}
 \similarityAlgo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,7 +103,7 @@ To conclude the proof that algorithm \ref{linearAlgo} runs in linear time we sho
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Variations for authors, dates and comments}
 % Intro
-In the current state algorithms \ref{extractionAlgo} and \ref{linearAlgo} will perform poorly for author and date extraction and are not suitable for comment extraction. This subsection presents variations on the general extraction techniques presented before. Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
+In the current state algorithms \ref{extractionAlgo} and \ref{linearAlgo} will perform poorly for author and date extraction and are not suitable for comment extraction. This subsection presents variations on the general extraction techniques presented before. \TODO{Rephrase this to say that we don't show the full algos because it's just as in the 2 previous with customised score function!}Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
 
 % Authors
 The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, leading to several rules with maximum score. The heuristic we use to get around this issue consists of adding a new component in the scores of authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new score component takes advantage of the positioning of post's authors which often is a direct child or shares its parent with the post content node.
