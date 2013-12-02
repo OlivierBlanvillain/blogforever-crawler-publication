@@ -4,15 +4,16 @@ This section explains in detail the algorithms we developed to extract blog post
 We explain how we take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog.
 Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Motivation}
+\subsection{Motivation}\label{motivation}
 % html extraction is not trival
 Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organised \cite{w3c2013}. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to embed semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages\cite{brianwilson2008}, and more than 95\% of pages do not pass HTML validation\cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
 
 \TODO{Assumption is not a good word, we are based on facts from previous work.}
 % I suggest that you restructure this part as follows:
 
-% Having blogs as our target websites, we are taking into account  the following facts that play a central role in the extraction process.
+% Having blogs as our target websites, we are taking into account the following facts that play a central role in the extraction process.
 
 % 1. "Blog is a kind of web page [with] frequent, usually brief posts, with the immediacy of reverse chronological order" (+ ref to BlogForever D2.2: BlogForever Data Model
 % https://zenodo.org/record/7488/files/BlogForever\_D2\_2WeblogDataModel.pdf
@@ -28,12 +29,13 @@ Extracting metadata and content from HTML documents is a challenging task. Stand
 \Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
 % assumptions when working with blogs
-Having blogs as our target websites, the assumptions we made and which play a central role in the extraction process are the following\Anote{assumptions}:
+Having blogs as our target websites, we use the following observations \TODO{If ok, change everywhere else.} which play a central role in the extraction process\Anote{assumptions}:  
 \begin{enumerate}[label={(\arabic*)}]
-  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the most recent posts of a blog,\TODO{mention RSS and Atom, just to confirm to the reader what a web feed is?}
+  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog
   \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
 \end{enumerate}
-Web feeds usually contain about 20 posts\cite{oita2010},\TODO{Add more info on web feeds, merge with the text on intro.} often less than the total number of posts in blogs. Consequently, in order to effectively archive old content from blogs, it is necessary to download and process pages beyond the ones referenced in the feed.
+Web feeds usually contain about 20 posts\cite{oita2010}, often less than the total number of posts in blogs. \TODO{Add more info on web feeds, merge with the text on intro?} Consequently, in order to effectively archive old content from blogs, it is necessary to download and process pages beyond the ones referenced in the feed.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Content extraction}
@@ -41,8 +43,17 @@ Web feeds usually contain about 20 posts\cite{oita2010},\TODO{Add more info on w
 After I also read 3.3 and 3.4 I understood better.
 You should have a nicely structured overview of the algorithm in 3.2 and have references for 3.3 and 3.4
 When you describe the algorithm overview, you should say explicitly that function X and operation Y is explained in section Z, etc}
+
 % per blog procedure, related work
-To extract content, authors, dates and comments from blog posts, we started by building extraction rules from the data given in the blog's web feed. \TODO{These rules take advantaged of the facts presented in 3.1 to create a more efficient data extraction process, outperforming more generic extraction algorithms that work directly with HTML pages.}These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.\comment{This might be a bit too raw, give more context at this point?}
+To extract articles, authors, dates and comments from blog posts, we procede by building extraction rules from the data given in the blog's web feed. Concretely, this procedure takes as input a set of pairs of HTML pages and target contents. It will then search for an extraction rule that jkjhkjhkjhkjhkjhkjhkjh
+
+This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents.\TODO{You definitely need a better explanation}
+
+
+
+These rules take advantaged of the assumption presented in \ref{motivation} to create a more efficient data extraction process, outperforming more generic extraction algorithms that work directly with HTML pages \cite{gkotsis2013}, \cite{oita2010}.
+
+These rules take advantage of our assumption that the HTML structure between different posts of the same blog is the same, in order to be applicable to all the posts of a blog. This approach has been examined in the past and has demonstrated great results (see \cite{gkotsis2013}, \cite{oita2010}), outperforming more generic extraction algorithms that work directly on HTML pages.
 
 \extractionAlgo
 
@@ -84,6 +95,7 @@ The Sørensen–Dice coefficient method operates by first building sets of pairs
 \TODO{similatiry -> score function}
 \similarityAlgo
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time complexity and linear reformulation}
 % algo 1 is quadratic
@@ -96,6 +108,7 @@ We will now present Algorithm \ref{linearAlgo}, a dynamic programming reformulat
 
 % End of proof
 To conclude the proof that algorithm \ref{linearAlgo} runs in linear time we show that all its inner loop computations other than bigrams of \emph{node.text} can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortised} number of bigram unions per inner loop iteration is one. Each \emph{quotient of similarity} computation requires one bigram intersection and three bigram length computations. Over a finite alphabet (we used printable ASCII), bigram sizes have bounded size and each of these operations can be done in constant time.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Variations for authors, dates and comments}
