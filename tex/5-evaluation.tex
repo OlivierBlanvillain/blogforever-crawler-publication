@@ -8,13 +8,13 @@ Our evaluation will be articulated in two parts. Firstly, we will compare the co
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction success rates}
-To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (assumptions \ref{havefeedAssum} and \ref{similarhtmlAssum}).
+To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{python-readability2011}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{goose2012}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (assumptions \ref{havefeedAssum} and \ref{similarhtmlAssum}).
 
 Table \ref{precisionTable} shows extraction success rates of content and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}. An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
 
 \precisionTable
 
-On our test-set algorithm~\ref{extractionAlgo} outperformed the concurrence by 4.9\% margin on content extraction and a 10.1\% margin on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise,\TODO{is this transition ok?} our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in table \ref{precisionTable} should not be interpreted as general evaluation of quality of the different projects, but simply mean that our approach is more suitable when working with blogs.
+On our test-set algorithm~\ref{extractionAlgo} outperformed the concurrence by 4.9\% margin on content extraction and a 10.1\% margin on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in table \ref{precisionTable} should not be interpreted as general evaluation of quality of the different projects, but simply mean that our approach is more suitable when working with blogs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

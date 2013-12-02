@@ -3,7 +3,12 @@
     \capstart
     \setstretch{1.1}
     \begin{tabular*}{\columnwidth}{
-      @{}p{0.144\textwidth}p{0.18\textwidth}rr@{}
+      @{}
+      p{0.144\textwidth}
+      p{0.18\textwidth}
+      r
+      r
+      @{}
     }
     \toprule
     \emph{string1} & \emph{string2} & Dice & Leven. \\
@@ -20,26 +25,14 @@
   \end{table}
 }
 
-% In [5]: d("Scheme Scala", "Scala Scheme")
-% Out[5]: 0.9
-% In [6]: r("Scheme Scala", "Scala Scheme")
-% Out[6]: 0.5
-% In [7]: d("Rachid", "Amy, Rachid and all their friends")
-% Out[7]: 0.29411764705882354
-% In [8]: r("Rachid", "Amy, Rachid and all their friends")
-% Out[8]: 0.3076923076923077
-% In [9]: d("Rachid", "Rexford")
-% Out[9]: 0.18181818181818182
-% In [10]: r("Rachid", "Rexford")
-% Out[10]: 0.6153846153846154
-
 \newcommand\precisionTable{
   \begin{table}[h]\centering
     \capstart
     \setstretch{1.1}
-    \begin{tabular*}{\columnwidth}{@{}*{5}{p{0.18\columnwidth}}@{}}
+    \setlength{\tabcolsep}{5pt}
+    \begin{tabular*}{\columnwidth}{ @{} llllr @{} }
     \toprule
-    Target & Algorithm~\ref{extractionAlgo} & Readability & Boilerpipe & Goose \\
+    Target & Our~approach & Readability & Boilerpipe & Goose \\
     \midrule
     Content & 93.0\% & 88.1\% & 79.3\% & 79.2\% \\
     Title & 95.0\% & 74.0\% & N/A & 84.9\% \\
