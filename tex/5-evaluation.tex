@@ -24,7 +24,9 @@ On our test-set algorithm~\ref{extractionAlgo} outperformed the concurrence by 4
 In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The main point of interest will be the scalability of extraction procedures as the number of processes pages increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all previously published data on a blog.
 
 % setup
-Our measurements were made with garbage collector disabled on a otherwise idle core of an \TODO{Intel X} processor. Experimental data where obtained by taking the median of 11 mesurements. confidence intervals .. in .. as (max 0.002 sec)
+Our measurements were made with garbage collector disabled on a otherwise idle core of an \emph{Intel Core i7-3770 3.4 GHz} processor. Experimental data was obtained by taking the median of 11 mesurements. On this setup we obtained very low standard deviations on the order of 2 milliseconds which are therefor
+
+confidence intervals .. in .. as (max 2ms)
 
 Figure 2 shows the cumulated time spent on each content extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of process blog posts on the \surl{http://quantumdiaries.org/} website.
 
