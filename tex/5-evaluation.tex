@@ -2,8 +2,11 @@
 
 Our evaluation will be articulated in two parts. Firstly, we will compare the content extraction procedure presented in section \ref{algorithms} with three open source projects capable of generically extracting content from web articles. The comparison will show that our blog targeted solution has better performances both in term of running time and success rates. Secondly, a discussion will be held regarding the different solutions available to archive data beyond what is available in HTML source code. Extraction of authors, dates and comments is not part of evaluation because of the lack of publicly available competing projects and reference data sets.
 
+% All experiments are reproducable by following instructions on the \emph{evaluation} branch of the BlogForever-Crawler version control **.
+% https://github.com/OlivierBlanvillain/blogforever-crawler-publication
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction success rates}
 To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (assumptions \ref{havefeedAssum} and \ref{similarhtmlAssum}).
 
@@ -15,25 +18,24 @@ On our test-set algorithm~\ref{extractionAlgo} outperformed the concurrence by 4
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Content running time}
+\subsection{Content extraction running times}
 
-In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The two point of interest are the time required to process a single page and the cumulated running time required to process multiple pages of a blog. The first result is significant for the \emph{UpdateCrawl} procedure, which is responsible for obtaining updates of already monitored blogs, and the second result regards the \emph{NewCrawl} procedure triggered when a new blog is added to the system and all previously published content has to be processed. 
+% running time eval, scalability with size of blogs
+In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The main point of interest will be the scalability of extraction procedures as the number of processes pages increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all previously published data on a blog.
 
-Our measurements were made with garbage collector disabled on a otherwise idle core of a \TODO{Intel X} processor.  asdjf élaksd jfélkas jfélkas jfélaskjd félakjd fékas jfdéasdj féaksd jf
+% setup
+Our measurements were made with garbage collector disabled on a otherwise idle core of an \TODO{Intel X} processor. Experimental data where obtained by taking the median of 11 mesurements. confidence intervals .. in .. as (max 0.002 sec)
 
-
-% rtime eval, scalability with size of blogs
-
-% rsetup (single core, gc disabled, measure time spent in respective extraction functions)
+Figure 2 shows the cumulated time spent on each content extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of process blog posts on the \surl{http://quantumdiaries.org/} website.
 
 % result (plot)
-
 \input{runningtimeFigure.tex}
 
 % discussion: again, we are "cheating" on scalability
+
 % discussion: raw perf (15 feed entry),
 % discussion: (c++ vs java vs scala vs go \cite{hundt2011})Implemented in Javascript, Java and Scala respectively
-
+% YUNO algo 2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JavaScript rendering}
