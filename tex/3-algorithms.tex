@@ -50,9 +50,10 @@ To extract content, authors, dates and comments from blog posts, we started by b
 \extractionAlgo
 
 % algorithm, inputs/output
-Algorithm \ref{extractionAlgo} shows the steps we follow to build extraction rules for the content of blog posts. As input, it takes a set of pairs of HTML pages and target contents, and finally returns an extraction rule. This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents.
+Algorithm \ref{extractionAlgo} shows the steps we follow to build extraction rules for the content of blog posts. As input, it takes a set of pairs of HTML pages and target contents, and finally returns an extraction rule. This rule is such that when applied to other input pages, the extracted contents are as similar as possible to the corresponding target contents.\TODO{You definitely need a better explanation}
 
 % general idea, embarrassingly parallel
+\TODO{This paragraph is not clear.}
 The idea is quite simple: to compute the best extraction rule for each pair of HTML pages and target content and to finally return the most frequent best rule. Making each of these computations independent might seem like a loss of information compared to alternative solutions such as having a global score for each rule, computed as the average of each rule's score over all the pages of the feed. In our experimentation we observed several cases where the independent solution performs better\TODO{example, reference or proof?}. When web feeds have posts with very short content, mean based solutions tend to be more influenced by these outliers and are inclined to return erroneous rules which fail to return target contents but constantly have an average score.\TODO{rephrase!}
 
 In addition, having an independent computation for each input makes the algorithm \emph{embarrassingly parallel}\comment{it's a coined term, so it's fine, but should we have a reference here? -> Can't find a good one..}: iterations of the outer loop can trivially be executed by multiple threads.
