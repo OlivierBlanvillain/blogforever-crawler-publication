@@ -32,7 +32,7 @@ Extracting metadata and content from HTML documents is a challenging task. Stand
 \Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
 % assumptions when working with blogs
-Having blogs as our target websites, we use the following observations \TODO{If ok, change everywhere else.} which play a central role in the extraction process\Anote{assumptions}:  
+Having blogs as our target websites, we use the following observations \TODO{If ok, change everywhere else.} which play a central role in the extraction process\Anote{assumptions}:
 \begin{enumerate}[label={(\arabic*)}]
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog
   \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
@@ -44,31 +44,22 @@ Web feeds usually contain about 20 posts\cite{oita2010}, often less than the tot
 \subsection{Content extraction}
 \label{contentextraction}
 
-\TODO{When I read this section for the first time, I was confused.
-After I also read 3.3 and 3.4 I understood better.
-You should have a nicely structured overview of the algorithm in 3.2 and have references for 3.3 and 3.4
-When you describe the algorithm overview, you should say explicitly that function X and operation Y is explained in section Z, etc}
-
 % per blog procedure, related work
-To extract articles, authors, dates and comments from blog posts, we procede by building extraction rules from the data given in the blog's web feed. The idea is to provide a set of \emph{training data} to the algorithm, pairs of HTML page and target content, which are then used to build an extraction rule capable of locating the target content on each HTML page. 
+To extract articles, authors, dates and comments from blog posts, we procede by building extraction rules from the data given in the blog's web feed. The idea is to provide a set of \emph{training data} to the algorithm, pairs of HTML page and target content, which are then used to build an extraction rule capable of locating the target content on each HTML page.
 
 % input from assumptions.
 Assumption \ref{havefeedAssum} allows the crawler to obtain input for the algorithm: each entry of the web feed provides a link to the corresponding we page as well as potential target content such as the article, it's title, authors and publication date. Assumption \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all the posts of a blog.
 
-% In the case the reader does not know how to read pseudocode
+% textual pseudocode
 Algorithm \ref{extractionAlgo} show the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute out of all extraction rules the best one with respect to a certain \code{ScoreFunction}. The rule which was the most frequently a \emph{best rule} is then returned.
-
 
 \extractionAlgo
 
+% Embarrassingly parallel
+One might notice that each \emph{best rule} computation is independent and operates on a different input pairs. Therefore algorithm \ref{extractionAlgo} \emph{embarrassingly parallel}: iterations of the outer loop can trivially be executed by multiple threads.
+
 % abs, plan
-Most functions in algorithm \ref{extractionAlgo} are voluntarily abstract at this point and will be explained in details in the remaining of this section. \ref{extractionrulesandstringsimilarity}, \ref{timecomplexityandlinearreformulation}, \ref{variationsforauthorsdatesandcomments}
-
-% general idea, embarrassingly parallel
-\TODO{This paragraph is not clear.}
-The idea is quite simple: to compute the best extraction rule for each pair of HTML pages and target content and to finally return the most frequent best rule. Making each of these computations independent might seem like a loss of information compared to alternative solutions such as having a global score for each rule, computed as the average of each rule's score over all the pages of the feed. In our experimentation we observed several cases where the independent solution performs better\TODO{example, reference or proof?}. When web feeds have posts with very short content, mean based solutions tend to be more influenced by these outliers and are inclined to return erroneous rules which fail to return target contents but constantly have an average score.\TODO{rephrase!}
-
-In addition, having an independent computation for each input makes the algorithm \emph{embarrassingly parallel}: iterations of the outer loop can trivially be executed by multiple threads.
+Functions in algorithm \ref{extractionAlgo} are voluntarily abstract at this point and will be explained in details in the remaining of this section. \ref{extractionrulesandstringsimilarity} defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article and title extraction. In \ref{timecomplexityandlinearreformulation} we analyses time complexity of Algorithm \ref{extractionAlgo} and give a linear time reformulation using dynamic programing. Finally, \ref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,7 +111,7 @@ To conclude the proof that algorithm \ref{linearAlgo} runs in linear time we sho
 \label{variationsforauthorsdatesandcomments}
 
 % Intro
-In the current state algorithms \ref{extractionAlgo} and \ref{linearAlgo} will perform poorly for author and date extraction and are not suitable for comment extraction. This subsection presents variations on the general extraction 
+In the current state algorithms \ref{extractionAlgo} and \ref{linearAlgo} will perform poorly for author and date extraction and are not suitable for comment extraction. This subsection presents variations on the general extraction
 \label{presentsvariationsonthegeneralextraction}techniques presented before. \TODO{Rephrase this to say that we don't show the full algos because it's just as in the 2 previous with customised score function!}Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
 
 % Authors
