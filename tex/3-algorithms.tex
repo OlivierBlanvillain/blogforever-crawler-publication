@@ -1,7 +1,7 @@
 \section{Algorithms}
 \label{algorithms}
 
-This section explains in detail the algorithms we developed to extract blog posts' content and its variations for authors, dates and comments.
+This section explains in detail the algorithms we developed to extract blog posts' article and its variations for authors, dates and comments.
 We explain how we take advantage of blog specific characteristics to build extraction rules applicable to all posts of a blog.
 Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
 
@@ -14,20 +14,6 @@ Our focus is on minimising the algorithmic complexity while keeping our approach
 Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organised \cite{w3c2013}. For instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. More recently, specifications such as Microdata\cite{whatwg2013} define ways to embed semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages\cite{brianwilson2008}, and more than 95\% of pages do not pass HTML validation\cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
 
 \TODO{Assumption is not a good word, we are based on facts from previous work.}
-% I suggest that you restructure this part as follows:
-
-% Having blogs as our target websites, we are taking into account the following facts that play a central role in the extraction process.
-
-% 1. "Blog is a kind of web page [with] frequent, usually brief posts, with the immediacy of reverse chronological order" (+ ref to BlogForever D2.2: BlogForever Data Model
-% https://zenodo.org/record/7488/files/BlogForever\_D2\_2WeblogDataModel.pdf
-
-% 2. blogs provide web feeds: structured and standardised views of the most recent blog posts.
-
-% 3. Web feeds contain information regarding the latest blog posts (usually 10 or 20 entries) + ref
-
-% 4. posts of the same blog share a similar HTML structure.
-
-% Consequently, in order to effectively archive old blog content, it is necessary to download and process pages beyond the ones referenced in web feeds.}
 
 \Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
@@ -61,8 +47,8 @@ One might notice that each \emph{best rule} computation is independent and opera
 % abs, plan
 Functions in algorithm \ref{extractionAlgo} are voluntarily abstract at this point and will be explained in details in the remaining of this section. \ref{extractionrulesandstringsimilarity} defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article and title extraction. In \ref{timecomplexityandlinearreformulation} we analyses time complexity of Algorithm \ref{extractionAlgo} and give a linear time reformulation using dynamic programing. Finally, \ref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
 \subsection{Extraction rules and string similarity}
 \label{extractionrulesandstringsimilarity}
 
@@ -71,8 +57,8 @@ In our implementation, rules are queries in the XML Path Language (XPath). Conse
 
 \allrulesAlgo
 
-% string similarity
-Unsurprisingly, the choice of the string similarity algorithm greatly influences the running time and precision of the extraction process. We chose the Sørensen–Dice coefficient similarity\cite{dice1945}, which, to the best of our knowledge, is the only string similarity algorithm fulfilling the following criteria:
+% score function := string similarity
+Unsurprisingly, the choice of \code{ScoreFunction} greatly influences the running time and precision of the extraction process. When targeting articles, extraction rules are scored with a string similarity function comparing extracted and target strings. We chose the Sørensen–Dice coefficient similarity\cite{dice1945}, which, to the best of our knowledge, is the only string similarity algorithm fulfilling the following criteria:
 
 \begin{enumerate}
   \item\label{wordorderProp} Has low sensitivity to word ordering
@@ -80,13 +66,12 @@ Unsurprisingly, the choice of the string similarity algorithm greatly influences
   \item\label{linearProp} Runs in linear time
 \end{enumerate}
 
-Properties \ref{wordorderProp} and \ref{lengthProp} are essential to deal with cases where a blog's web feed only contains an abstract or a subset of the entire post content. Table \ref{similarityTable} gives examples to illustrate how these two properties are fulfilled by the Sørensen–Dice coefficient similarity but do not hold for \emph{edit distance} based similarities such as the Levenshtein\cite{levenshtein1966} similarity.
+Properties \ref{wordorderProp} and \ref{lengthProp} are essential to deal with cases where a blog's web feed only contains an abstract or a subset of the entire post article. Table \ref{similarityTable} gives examples to illustrate how these two properties are fulfilled by the Sørensen–Dice coefficient similarity but do not hold for \emph{edit distance} based similarities such as the Levenshtein\cite{levenshtein1966} similarity.
 
 \similarityTable
 
 The Sørensen–Dice coefficient method operates by first building sets of pairs of adjacent characters, also knows as \emph{bigrams}, and then applying the \emph{quotient of similarity} formula:
 
-\TODO{similatiry -> score function}
 \similarityAlgo
 
 

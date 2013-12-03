@@ -13,6 +13,7 @@
 \SetKwFunction{Similarity}{Similarity}
 \SetKwFunction{ScoreFunction}{ScoreFunction}
 \SetKwFunction{AbsolutePathTo}{AbsolutePathTo}
+\SetKwFunction{Bigrams}{Bigrams}
 
 \DontPrintSemicolon
 \SetProcNameSty{texttt}
@@ -23,7 +24,6 @@
 
 \newcommand\extractionAlgo{
   \begin{algorithm}
-    \capstart
     \caption{Best Extraction Rule}\label{extractionAlgo}
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -48,7 +48,6 @@
 
 \newcommand\allrulesAlgo{
   \begin{function}
-    \capstart
     \caption{AllRules(page)}\label{allrulesAlgo}
     \setstretch{1.1}
 
@@ -68,21 +67,37 @@
   \end{function}
 }
 
-\newcommand\similarityAlgo{
-  \begin{function}
-    \capstart
-    \caption{Similarity(string1, string2)}\label{similarityAlgo}
-    \setstretch{1.1}
+\makeatletter
+\newcommand{\removelatexerror}{\let\@latex@error\@gobble}
+\makeatother
 
-    \emph{bigrams1 \Arrow}set of pairs of adjacent characters in \emph{string1}\;
-    \emph{bigrams2 \Arrow}set of pairs of adjacent characters in \emph{string2}\;
-    \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1} \emph{+} \len{bigrams2}}}\;
+\newcommand\similarityAlgo{
+
+  \begingroup
+  \removelatexerror
+  \begin{figure}
+
+    \begin{function}[H]
+      \capstart
+      \caption{Similarity(string1, string2)}\label{similarityAlgo}
+      \setstretch{1.1}
+
+      \emph{bigrams1 \Arrow} \Bigrams{string1}\;
+      \emph{bigrams2 \Arrow} \Bigrams{string2}\;
+      \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1} \emph{+} \len{bigrams2}}}\;
     \end{function}
+
+    \begin{function}[H]
+      \caption{Bigrams(string)}\label{bigramsAlgo}
+      \Return{\emph{set of pairs of adjacent characters in \emph{string}}}\;
+    \end{function}
+
+  \end{figure}
+  \endgroup
 }
 
 \newcommand\linearAlgo{
   \begin{algorithm}
-    \capstart
     \caption{Linear Time Best Content Extraction Rule}\label{linearAlgo}
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -96,15 +111,16 @@
     \ForEach{\Par{page, target} \In pageZipTarget}{
       \emph{score \Arrow}new map\;
       \emph{bigrams \Arrow}new map\;
-      \emph{bigrams \Of target \Arrow}set of pairs of adjacents in \emph{target}\;
+      \emph{bigrams \Of target \Arrow \Bigrams{target}}\;
       \ForEach{node \In page \With \emph{post-order traversal}}{
-        \emph{bigrams \Of node \Arrow}
-          \Par{\emph{set of pairs of adjacent chars}\;
-          \Indent \In node.text $\bigcup$ bigrams \Of \All node.childs}\;
+        \emph{bigrams \Of node \Arrow}\;
+          \Indent \Bigrams{node.text} $\bigcup$ \emph{bigrams \Of \All node.childs}\;
+          % \Par{\emph{set of pairs of adjacent chars}\; \Indent
+          %   \In node.text $\bigcup$ bigrams \Of \All node.childs}\;
         \emph{score \Of node \Arrow }\;
-          \Indent $\dfrac{ {2 \len{\Par{bigrams~\Of~node} \cap \Par{bigrams~\Of~target}}} }{ \len{bigrams~\Of~node} + \len{bigrams~\Of~target} }$\;
+          \Indent $\dfrac{ {2~\len{\Par{bigrams~\Of~node} \cap \Par{bigrams~\Of~target}}} }{ \len{bigrams~\Of~node} + \len{bigrams~\Of~target} }$\;
       }
-      \emph{bestRules \Arrow bestRules} + \Rule{\emph{node with highest} score}\;
+      \emph{bestRules \Arrow bestRules} + \Rule{\emph{node with best} score}\;
     }
     \Return{\emph{rule with highest occurrence in} bestRules}\;
   \end{algorithm}
