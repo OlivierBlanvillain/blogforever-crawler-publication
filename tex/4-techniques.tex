@@ -57,7 +57,7 @@ In order to efficiently deal with blogs with a large number of non-blog-post pag
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalability}
-When aiming to work with a large number of inputs, it is crucial to build every layer of the system with scalability in mind\cite{thereactivemanifesto2013}. At the time of writing we did not had the chance to work on the deployment of the BlogForever project on a distributed environment. However, the BlogForever crawler, and in particular the two core procedures \emph{NewCrawl} and \emph{UpdateCrawl}, are designed to be usable as part of an event-driven, scalable and fault resilient distributed system.
+When aiming to work with a large number of inputs, it is crucial to build every layer of the system with scalability in mind\cite{thereactivemanifesto2013}. However, the BlogForever crawler, and in particular the two core procedures \emph{NewCrawl} and \emph{UpdateCrawl}, are designed to be usable as part of an event-driven, scalable and fault resilient distributed system.
 
 To achieve this property we made the key design choice to have both \emph{NewCrawl} and \emph{UpdateCrawl} as stateless components. Indeed, from a high level viewpoint, these two components are \emph{purely functional}:
 %

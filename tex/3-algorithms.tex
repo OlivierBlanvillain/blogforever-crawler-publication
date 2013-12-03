@@ -11,17 +11,17 @@ Our focus is on minimising the algorithmic complexity while keeping our approach
 \label{motivation}
 
 % html extraction is not trival
-extracting metadata and content from html documents is a challenging task. standards and format recommendations have been around for quite some time, strictly specifying how html documents should be organised \cite{w3c2013}. for instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. more recently, specifications such as microdata\cite{whatwg2013} define ways to embed semantic information and metadata inside html documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. in fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages\cite{brianwilson2008}, and more than 95\% of pages do not pass html validation\cite{brianwilson2008-a}. under such circumstances, relying on html structure to extract content from web pages is not viable and other techniques need to be employed.
+extracting metadata and content from html documents is a challenging task. standards and format recommendations have been around for quite some time, strictly specifying how html documents should be organised \cite{w3c2013}. for instance the \code{<h1></h1>} tags should contain the highest-level heading of the page and must not appear more than once per page\cite{w3c2002}. more recently, specifications such as microdata\cite{whatwg2013} define ways to embed semantic information and metadata inside html documents, but these still suffer from very low usage: estimated to be used in less than 0.5\%\cite{andrewrogers2013} of websites. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages\cite{brianwilson2008}, and more than 95\% of pages do not pass html validation\cite{brianwilson2008-a}. under such circumstances, relying on html structure to extract content from web pages is not viable and other techniques need to be employed.
 
-\Anotecontent{assumptions}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these assumptions, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
+\Anotecontent{observations}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these observations, or to an insufficient amount of text in posts, such as \emph{photoblogs} with short captions.}
 
-% assumptions when working with blogs
-Having blogs as our target websites, we use the following observations \TODO{If ok, change everywhere else.} which play a central role in the extraction process\Anote{assumptions}:
+% observations when working with blogs
+Having blogs as our target websites, we use the following observations which play a central role in the extraction process\Anote{observations}:
 \begin{enumerate}[label={(\arabic*)}]
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog
   \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
 \end{enumerate}
-Web feeds usually contain about 20 posts\cite{oita2010}, often less than the total number of posts in blogs. \TODO{Add more info on web feeds, merge with the text on intro?} Consequently, in order to effectively archive old content from blogs, it is necessary to download and process pages beyond the ones referenced in the feed.
+Web feeds usually contain about 20 posts\cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive old content from blogs, it is necessary to download and process pages beyond the ones referenced in the feed.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,8 +31,8 @@ Web feeds usually contain about 20 posts\cite{oita2010}, often less than the tot
 % per blog procedure, related work
 To extract articles, authors, dates and comments from blog posts, we procede by building extraction rules from the data given in the blog's web feed. The idea is to provide a set of \emph{training data} to the algorithm, pairs of HTML page and target content, which are then used to build an extraction rule capable of locating the target content on each HTML page.
 
-% input from assumptions.
-Assumption \ref{havefeedAssum} allows the crawler to obtain input for the algorithm: each entry of the web feed provides a link to the corresponding we page as well as potential target content such as the article, it's title, authors and publication date. Assumption \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all the posts of a blog.
+% input from observations.
+Observation \ref{havefeedAssum} allows the crawler to obtain input for the algorithm: each entry of the web feed provides a link to the corresponding we page as well as potential target content such as the article, it's title, authors and publication date. Observation \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all the posts of a blog.
 
 % textual pseudocode
 Algorithm \ref{extractionAlgo} show the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute out of all extraction rules the best one with respect to a certain \code{ScoreFunction}. The rule which was the most frequently a \emph{best rule} is then returned.
@@ -77,7 +77,7 @@ The Sørensen–Dice coefficient method operates by first building sets of pairs
 \label{timecomplexityandlinearreformulation}
 
 % into: algo 1 defined
-With \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as \code{ScoreFunction}) functions defined, the definition of algorithm \ref{extractionAlgo} for article extraction is completed. We now proceed with a time complexity analysis which will show that this aproach has a quadratic running time.
+With \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as the \code{ScoreFunction}) functions defined, the definition of algorithm \ref{extractionAlgo} for article extraction is completed. We now proceed with a time complexity analysis which will show that this aproach has a quadratic running time.
 
 % algo 1 is quadratic
 First, let's assume that we have at our disposal a linear time HTML parser that constructs an appropriate data structure indexing HTML nodes on their \code{id} and \code{class} attributes, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before the outer loop splits the input into independent computations and each call to \coderef{allrulesAlgo} returns (in linear time) at most as many rules as the number of nodes in its \emph{page} argument. Therefore, the body of the inner loop will be executed \Oof{n} times. Because the extraction rule can return any subtree of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
@@ -92,12 +92,11 @@ With bigrams computed in a dynamic programming manner, the cumulated time needed
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Variations for authors, dates and comments}
+\subsection{Variations for authors, dates, comments}
 \label{variationsforauthorsdatesandcomments}
 
 % intro
-In the current state algorithms \ref{extractionAlgo} and \ref{linearAlgo} will perform poorly for author and date extraction and are not suitable for comment extraction. This subsection presents variations on the general extraction
-\label{presentsvariationsonthegeneralextraction}techniques presented before. \TODO{Rephrase this to say that we don't show the full algos because it's just as in the 2 previous with customised score function!}Due to space constraints, we will only provide the main ideas and omit algorithmic and implementation details.
+Using string similarity as only score measurement leads to poor performances on authors and dates extraction and is not suitable for comment extraction. This subsection presents variations of the previously presented \code{ScoreFunction} which address issues of these other contents.
 
 % authors
 The case of authors is problematic because it is not uncommon to encounter the author's name at several places in a page, which results in several rules with maximum \coderef{similarityAlgo} score. The heuristic we use to get around this issue consists of adding a new component in the \code{ScoreFunction} for authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new component takes advantage of the positioning of post's authors which often is a direct child or shares its parent with the post content node.
@@ -113,4 +112,5 @@ Comments are usually available in separate web feeds, one per blog post. Similar
 \end{itemize}
 Our crawler executes this algorithm on each post with overflow on its comment feed, thus supporting blogs with multiple commenting engines. Comment contents are extracted first, which allows to narrow down the initial filtering by fixing a target number of comments.
 
-\TODO{rush some time complexity analysis and conclude that we can do optimization analogs to algo 2 to obtain linear time on each extraction algo. }
+% rush some time complexity analysis
+Regarding time complexity, computing the \emph{tree distance} of all nodes of a graph to a single reference node can be done in linear time, and multiplying the number of targets by a constant factor does not affects the asymptotic computational complexity. While evaluating rules for comments extraction requires more a expensive algorithm, the proportion of candidates left after filter out comment rules with an insufficient number of results was very low in practice. Analog  reformulations to the one explained in \ref{timecomplexityandlinearreformulation} can be applied for each \code{ScoreFunction} in order to minimize the time spent in \coderef{similarityAlgo}.
