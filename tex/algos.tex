@@ -9,8 +9,9 @@
 \SetKwFunction{Rule}{Rule}
 \SetKwFunction{Apply}{Apply}
 \SetKwFunction{Bigram}{Bigram}
-\SetKwFunction{AllRules}{\ref{allrulesAlgo}}
-\SetKwFunction{Similarity}{\ref{similarityAlgo}}
+\SetKwFunction{AllRules}{AllRules}
+\SetKwFunction{Similarity}{Similarity}
+\SetKwFunction{ScoreFunction}{ScoreFunction}
 \SetKwFunction{AbsolutePathTo}{AbsolutePathTo}
 
 \DontPrintSemicolon
@@ -29,19 +30,19 @@
     \setstretch{1.1}
     \thinspace
 
-    \Input{Set \emph{pageZipTarget} of Html and Text pairs}
+    \Input{Set \emph{pageZipTarget} of HTML page and target pairs}
     \Output{Best extraction rule}
     \BlankLine
-    \emph{topRules \Arrow}new list\;
+    \emph{bestRules \Arrow}new list\;
     \ForEach{\Par{page, target} \In pageZipTarget}{
       \emph{score \Arrow}new map\;
       \ForEach{rule \In \AllRules{page}}{
         \emph{extracted \Arrow \Apply{rule, page}}\;
-        \emph{score \Of rule \Arrow \Similarity{extracted, target}}\;
+        \emph{score \Of rule \Arrow \ScoreFunction{extracted, target}}\;
       }
-      \emph{topRules \Arrow topRules} + rule with highest \emph{score}\;
+      \emph{bestRules \Arrow bestRules} + rule with highest \emph{score}\;
     }
-    \Return{\emph{rule with highest occurrence in} topRules}\;
+    \Return{\emph{rule with highest occurrence in} bestRules}\;
   \end{algorithm}
 }
 
@@ -91,7 +92,7 @@
     \Input{Set \emph{pageZipTarget} of Html and Text pairs}
     \Output{Best extraction rule}
     \BlankLine
-    \emph{topRules \Arrow}new list\;
+    \emph{bestRules \Arrow}new list\;
     \ForEach{\Par{page, target} \In pageZipTarget}{
       \emph{score \Arrow}new map\;
       \emph{bigrams \Arrow}new map\;
@@ -103,8 +104,8 @@
         \emph{score \Of node \Arrow }\;
           \Indent $\dfrac{ {2 \len{\Par{bigrams~\Of~node} \cap \Par{bigrams~\Of~target}}} }{ \len{bigrams~\Of~node} + \len{bigrams~\Of~target} }$\;
       }
-      \emph{topRules \Arrow topRules} + \Rule{\emph{node with highest} score}\;
+      \emph{bestRules \Arrow bestRules} + \Rule{\emph{node with highest} score}\;
     }
-    \Return{\emph{rule with highest occurrence in} topRules}\;
+    \Return{\emph{rule with highest occurrence in} bestRules}\;
   \end{algorithm}
 }
