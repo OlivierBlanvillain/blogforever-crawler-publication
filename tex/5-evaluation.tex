@@ -1,6 +1,6 @@
 \section{Evaluation}
 
-Our evaluation will be articulated in two parts. Firstly, we will compare the content extraction procedure presented in section \ref{algorithms} with three open source projects capable of generically extracting content from web articles. The comparison will show that our blog targeted solution has better performances both in term of running time and success rates. Secondly, a discussion will be held regarding the different solutions available to archive data beyond what is available in HTML source code. Extraction of authors, dates and comments is not part of evaluation because of the lack of publicly available competing projects and reference data sets.
+Our evaluation will be articulated in two parts. Firstly, we will compare the article extraction procedure presented in section \ref{algorithms} with three open source projects capable of extracting content and title of web articles. The comparison will show that our blog targeted solution has better performances both in term of success rate and running time. Secondly, a discussion will be held regarding the different solutions available to archive data beyond what is available in HTML source code. Extraction of authors, dates and comments is not part of evaluation because of the lack of publicly available competing projects and reference data sets.
 
 % All experiments are reproducable by following instructions on the \emph{evaluation} branch of the BlogForever-Crawler version control **.
 % https://github.com/OlivierBlanvillain/blogforever-crawler-publication
@@ -8,29 +8,29 @@ Our evaluation will be articulated in two parts. Firstly, we will compare the co
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction success rates}
-To evaluate of post content and title extraction we compared our approach to three open source projects: Readability\cite{python-readability2011}, Boilerpipe\cite{kohlschuetter2010} and Goose\cite{goose2012}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}).
+To evaluate post article and title extraction we compared our approach to three open source projects: Readability \cite{python-readability2011}, Boilerpipe \cite{kohlschuetter2010} and Goose \cite{goose2012}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}).
 
-Table \ref{precisionTable} shows extraction success rates of content and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}. An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
+Table \ref{precisionTable} shows extraction success rates for article and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}. An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity. \TODO{fix 0.5...}
 
 \precisionTable
 
-On our test-set algorithm~\ref{extractionAlgo} outperformed the concurrence by 4.9\% margin on content extraction and a 10.1\% margin on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in table \ref{precisionTable} should not be interpreted as general evaluation of quality of the different projects, but simply mean that our approach is more suitable when working with blogs.
+On our test-set Algorithm~\ref{extractionAlgo} outperformed the concurrence by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in table \ref{precisionTable} should not be interpreted as general quality evaluation of the different projects, but simply show that our approach is more suitable when working with blogs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Content extraction running times}
+\subsection{Article extraction running times}
 
 % running time eval, scalability with size of blogs
-In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The main point of interest will be the scalability of extraction procedures as the number of processed pages increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all previously published data on a blog.
+In addition to the quality of the extracted data we also evaluated the running time of the extraction procedures. The main point of interest will be the scalability of extraction procedures as the number of posts in the processed blog increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all previously published content on a blog.
 
 % setup
-Our measurements were made with garbage collector disabled on a otherwise idle core of an \emph{Intel Core i7-3770 3.4 GHz} processor. Experimental data was obtained by taking the median of 11 mesurements. On this setup we obtained very low standard deviations on the order of 2 milliseconds which are therefor
+Our measurements were made with garbage collector disabled on an otherwise idle core of an \emph{Intel Core i7-3770 3.4 GHz} processor. Experimental data was obtained by taking the median of 11 mesurements. On this setup we obtained very low standard deviations on the order of 2 milliseconds which are therefor
 
 \TODO{make a paragraph with linux, python and processor}
 
 confidence intervals .. in .. as (max 2ms)
 
-Figure 2 shows the cumulated time spent on each content extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of process blog posts on the \surl{http://quantumdiaries.org/} website.
+Figure 2 shows the cumulated time spent on each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of process blog posts on the \surl{http://quantumdiaries.org/} website.
 
 % result (plot)
 \input{runningtimeFigure.tex}
