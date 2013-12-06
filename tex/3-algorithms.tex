@@ -30,10 +30,10 @@ Web feeds usually contain about 20 posts, often less than the total number of po
 To extract content from blog posts, we procede by building extraction rules from the data given in the blog's web feed. The idea is to use a set of \emph{training data}, pairs of HTML page and target content, which are used to build an extraction rule capable of locating the target content on each HTML page.
 
 % input from observations.
-Observation \ref{havefeedAssum} allows the crawler to obtain inputs for the extraction rule builder algorithm: each web feed entry contains a link to the corresponding we page as well as target content such as the article, it's title, authors and publication date. Observation \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
+Observation \ref{havefeedAssum} allows the crawler to obtain inputs for the extraction rule builder algorithm: each web feed entry contains a link to the corresponding web page as well as target content such as the article, its title, authors and publication date. Observation \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
 
 % textual pseudocode
-\autoref{extractionAlgo} show the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute out of all possible extraction rules the best one with respect to a certain \code{ScoreFunction}. The rule which is most frequently a \emph{best rule} is then returned.
+\autoref{extractionAlgo} shows the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute out of all possible extraction rules the best one with respect to a certain \code{ScoreFunction}. The rule which is most frequently a \emph{best rule} is then returned.
 
 \extractionAlgo
 
@@ -41,7 +41,7 @@ Observation \ref{havefeedAssum} allows the crawler to obtain inputs for the extr
 One might notice that each \emph{best rule} computation is independent and operates on a different input pairs. This implies that \autoref{extractionAlgo} is \emph{embarrassingly parallel}: iterations of the outer loop can trivially be executed on multiple threads.
 
 % abs, plan
-Functions in \autoref{extractionAlgo} are voluntarily abstract at this point and will be explained in details in the remaining of this section. \ref{extractionrulesandstringsimilarity} defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In \ref{timecomplexityandlinearreformulation} we analyses time complexity of \autoref{extractionAlgo} and give a linear time reformulation using dynamic programing. Finally, \ref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
+Functions in \autoref{extractionAlgo} are voluntarily abstract at this point and will be explained in details in the remaining of this section. \ref{extractionrulesandstringsimilarity} defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In \ref{timecomplexityandlinearreformulation} we analyse time complexity of \autoref{extractionAlgo} and give a linear time reformulation using dynamic programing. Finally, \ref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
