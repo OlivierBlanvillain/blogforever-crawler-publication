@@ -29,7 +29,7 @@ When the number of comments on a page exceeds a certain threshold, both Disqus a
   \label{architecture}
 \end{figure}
 
-Our crawler is built on top of Scrapy \cite{scrapy2013}, an open source Python framework for web crawling. Scrapy provide an elegant and modular architecture illustrated in Figure~\ref{architecture}. Several components can be plugged in Scrapy core infrastructure: \emph{Spiders}, \emph{Item Pipelines}, \emph{Downloader Middlewares} and \emph{Spider Middlewares}; each allowing to implement a different type of functionalities.
+Our crawler is built on top of Scrapy \cite{scrapy2013}, an open source Python framework for web crawling. Scrapy provide an elegant and modular architecture illustrated in \autoref{architecture}. Several components can be plugged in Scrapy core infrastructure: \emph{Spiders}, \emph{Item Pipelines}, \emph{Downloader Middlewares} and \emph{Spider Middlewares}; each allowing to implement a different type of functionalities.
 
 Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, which respectively implement the logic to crawl a new blog and to get updates from a previously crawled blog. After beeing downloaded and identified as blog posts (details in \ref{enrichingscrapy}), pages are packed into \emph{Items} and sent through the following pipeline of operation:
 \begin{enumerate}[noitemsep]

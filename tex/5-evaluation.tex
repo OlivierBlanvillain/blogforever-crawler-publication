@@ -1,20 +1,19 @@
 \section{Evaluation}
 
-Our evaluation will be articulated in two parts. Firstly, we will compare the article extraction procedure presented in section \ref{algorithms} with three open source projects capable of extracting content and title of web articles. The comparison will show that our blog targeted solution has better performances both in term of success rate and running time. Secondly, a discussion will be held regarding the different solutions available to archive data beyond what is available in HTML source code. Extraction of authors, dates and comments is not part of evaluation because of the lack of publicly available competing projects and reference data sets.
+Our evaluation will be articulated in two parts. Firstly, we will compare the article extraction procedure presented in \autoref{algorithms} with three open source projects capable of extracting content and title of web articles. The comparison will show that our blog targeted solution has better performances both in term of success rate and running time. Secondly, a discussion will be held regarding the different solutions available to archive data beyond what is available in HTML source code. Extraction of authors, dates and comments is not part of evaluation because of the lack of publicly available competing projects and reference data sets.
 
-% All experiments are reproducable by following instructions on the \emph{evaluation} branch of the BlogForever-Crawler version control **.
-% https://github.com/OlivierBlanvillain/blogforever-crawler-publication
+Experiments were made on \emph{Debian GNU/Linux 7.2} with \emph{Python 2.7} on an \emph{Intel Core i7-3770 3.4 GHz} processor. Timing measurements used a single otherwise idle core with garbage collector disabled. The Git repository of this paper \cite{blogforever-crawler-publication} \TODO{cite blogforever-crawler-publication} contains the necessary scripts and instructions to reproduce all evaluation experiments presented in this section.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction success rates}
-To evaluate post article and title extraction we compared our approach to three open source projects: Readability \cite{python-readability2011}, Boilerpipe \cite{kohlschuetter2010} and Goose \cite{goose2012}. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}).
+To evaluate post article and title extraction we compared our approach to three open source projects: Readability \cite{python-readability2011}, Boilerpipe \cite{kohlschuetter2010} and Goose \cite{goose2012}, implemented in JavaScript, Java and Scala respectively. These projects are more generic than our blog specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of a same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}). \autoref{precisionTable} shows extraction success rates for article and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}.
 
-Table \ref{precisionTable} shows extraction success rates for article and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}. An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity. \TODO{fix 0.5...}
+% An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
 
 \precisionTable
 
-On our test-set Algorithm~\ref{extractionAlgo} outperformed the concurrence by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in table \ref{precisionTable} should not be interpreted as general quality evaluation of the different projects, but simply show that our approach is more suitable when working with blogs.
+On our test-set \autoref{extractionAlgo} outperformed the concurrence by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web pages. Contrariwise, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages. Therefore, results showed in \autoref{precisionTable} should not be interpreted as general quality evaluation of the different projects, but simply show that our approach is more suitable when working with blogs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,22 +23,18 @@ On our test-set Algorithm~\ref{extractionAlgo} outperformed the concurrence by 4
 In addition to the quality of the extracted data we also evaluated the running time of the extraction procedures. The main point of interest will be the scalability of extraction procedures as the number of posts in the processed blog increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all previously published content on a blog.
 
 % setup
-Our measurements were made with garbage collector disabled on an otherwise idle core of an \emph{Intel Core i7-3770 3.4 GHz} processor. Experimental data was obtained by taking the median of 11 mesurements. On this setup we obtained very low standard deviations on the order of 2 milliseconds which are therefor
+Experimental data was obtained by taking the arithmetic mean over 10 measurements, which we believe to be significant given that each result has a standard deviations on the order of 2 milliseconds. \comment{Do I have to justify the arithmetic mean? If yes, this could do: \surl{http://dl.acm.org/citation.cfm?id=5673}}
 
-\TODO{make a paragraph with linux, python and processor}
+\autoref{runningtime} shows the cumulated time spent on each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of blog posts processed of \surl{http://quantumdiaries.org/}.
 
-confidence intervals .. in .. as (max 2ms)
-
-Figure 2 shows the cumulated time spent on each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of process blog posts on the \surl{http://quantumdiaries.org/} website.
-
-% result (plot)
 \input{runningtimeFigure.tex}
 
-% discussion: again, we are "cheating" on scalability
+Past the initial computations, the cost to extract an article with our approach are almost null. This is a consequence of having a blog aware, rule based algorithm. If you recall the procedure presented in \autoref{algorithms}, the central idea was to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. On this example, time cost of parsing a new blog post and using extraction rules is in the order of 3 milliseconds, which is not visible on the scale of \autoref{runningtime}. The three other evaluated solutions do not function this way: each blog post is processed as a new and independent input, leading to a close to linear running times.
 
-% discussion: raw perf (15 feed entry),
-% discussion: (c++ vs java vs scala vs go \cite{hundt2011})Implemented in Javascript, Java and Scala respectively
-% YUNO algo 2
+In \autoref{runningtime}, the vertical dashed line at 15 processed blog posts represents a suitable point of comparisons for processing time per blog posts. Indeed, as the test blog's web feed contains 15 entries, the time spent on processing the first blog post also includes the processing time of the web feed and it's 15 entries. \comment{Is this clear?}That being said, comparing raw performances of different algorithm implemented with different programming languages is not very informative given the high variations of running times observes across languages for identical algorithms \cite{hundt2011}.
+
+% python x23 just-in-time compilation speed up http://dl.acm.org/citation.cfm?id=2069181
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JavaScript rendering}
