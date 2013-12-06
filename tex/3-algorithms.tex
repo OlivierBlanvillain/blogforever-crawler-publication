@@ -9,7 +9,7 @@ This section explains in detail the algorithm we developed to extract blog posts
 \label{motivation}
 
 % html extraction is not trival
-Extracting metadata and content from html documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how html documents should be organised \cite{w3c2013}. For instance the \code{<h1></h1>} tags have to contain the highest-level heading of the page and must not appear more than once per page \cite{w3c2002}. More recently, specifications such as microdata \cite{whatwg2013} define ways to embed semantic information and metadata inside html documents, but these still suffer from very low usage: estimated to be used in less than 0.5\% of websites \cite{andrewrogers2013}. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages \cite{brianwilson2008}, and more than 95\% of pages do not pass html validation \cite{brianwilson2008-a}. Under such circumstances, relying on html structure to extract content from web pages is not viable and other techniques need to be employed.
+Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organised \cite{w3c2013}. For instance the \code{<h1></h1>} tags have to contain the highest-level heading of the page and must not appear more than once per page \cite{w3c2002}. More recently, specifications such as microdata \cite{whatwg2013} define ways to embed semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than 0.5\% of websites \cite{andrewrogers2013}. In fact, the majority of websites rely on the generic \code{<span></span>} and \code{<div></div>} container elements with custom \code{id} or \code{class} attributes to organise structure pages \cite{brianwilson2008}, and more than 95\% of pages do not pass HTML validation \cite{brianwilson2008-a}. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
 
 \Anotecontent{observations}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these observations, or to an insufficient amount of text in posts.}
 
@@ -27,18 +27,18 @@ Web feeds usually contain about 20 posts, often less than the total number of po
 \label{contentextraction}
 
 % per blog procedure, related work
-To extract content from blog posts, we procede by building extraction rules from the data given in the blog's web feed. The idea is to use a set of \emph{training data}, pairs of HTML page and target content, which are used to build an extraction rule capable of locating the target content on each HTML page.
+To extract content from blog posts, we proceed by building extraction rules from the data given in the blog's web feed. The idea is to use a set of \emph{training data}, pairs of HTML page and target content, which are used to build an extraction rule capable of locating the target content on each HTML page.
 
 % input from observations.
 Observation \ref{havefeedAssum} allows the crawler to obtain inputs for the extraction rule builder algorithm: each web feed entry contains a link to the corresponding web page as well as target content such as the article, its title, authors and publication date. Observation \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
 
 % textual pseudocode
-\autoref{extractionAlgo} shows the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute out of all possible extraction rules the best one with respect to a certain \code{ScoreFunction}. The rule which is most frequently a \emph{best rule} is then returned.
+\autoref{extractionAlgo} shows the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute, out of all possible extraction rules, the best one with respect to a certain \code{ScoreFunction}. The rule which is most frequently a \emph{best rule} is then returned.
 
 \extractionAlgo
 
 % embarrassingly parallel
-One might notice that each \emph{best rule} computation is independent and operates on a different input pairs. This implies that \autoref{extractionAlgo} is \emph{embarrassingly parallel}: iterations of the outer loop can trivially be executed on multiple threads.
+One might notice that each \emph{best rule} computation is independent and operates on a different input pair. This implies that \autoref{extractionAlgo} is \emph{embarrassingly parallel}: iterations of the outer loop can trivially be executed on multiple threads.
 
 % abs, plan
 Functions in \autoref{extractionAlgo} are voluntarily abstract at this point and will be explained in details in the remaining of this section. \ref{extractionrulesandstringsimilarity} defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In \ref{timecomplexityandlinearreformulation} we analyse time complexity of \autoref{extractionAlgo} and give a linear time reformulation using dynamic programing. Finally, \ref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
@@ -75,7 +75,7 @@ The Sørensen–Dice coefficient method operates by first building sets of pairs
 \label{timecomplexityandlinearreformulation}
 
 % into: algo 1 defined
-With functions \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as the \code{ScoreFunction}) defined, the definition of \autoref{extractionAlgo} for article extraction is completed. We now proceed with a time complexity analysis.
+The functions \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as the \code{ScoreFunction}) being defined, the definition of \autoref{extractionAlgo} for article extraction is completed. We now proceed with a time complexity analysis.
 
 % algo 1 is quadratic
 First, let's assume that we have at our disposal a linear time HTML parser that constructs an appropriate data structure indexing HTML nodes on their \code{id} and \code{class} attributes, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before the outer loop splits the input into independent computations and each call to \coderef{allrulesAlgo} returns (in linear time) at most as many rules as the number of nodes in its \emph{page} argument. Therefore, the body of the inner loop will be executed \Oof{n} times. Because each extraction rule can return any subtree of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
@@ -86,7 +86,7 @@ We now present \autoref{linearAlgo}, a linear time reformulation of \autoref{ext
 \linearAlgo
 
 % proof
-With bigrams computed in this dynamic programming manner, the total time needed to compute all \coderef{bigramsAlgo}\code{(}\emph{node.text}\code{)} is linear. To conclude the proof that \autoref{linearAlgo} runs in linear time we show that all other computations of the inner loop can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortised} number of bigrams unions per inner loop iteration tends to one. Each \emph{quotient of similarity} computation requires one bigrams intersection and three bigrams length computations. Over a finite alphabet (we used printable ASCII), bigrams sizes have bounded size and each of these operations takes constant time.
+With bigrams computed in this dynamic programming manner, the total time needed to compute all \coderef{bigramsAlgo}\code{(}\emph{node.text}\code{)} is linear. To conclude the proof that \autoref{linearAlgo} runs in linear time we show that all other computations of the inner loop can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortized} number of bigrams unions per inner loop iteration tends to one. Each \emph{quotient of similarity} computation requires one bigrams intersection and three bigrams length computations. Over a finite alphabet (we used printable ASCII), bigrams sizes have bounded size and each of these operations takes constant time.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,7 +97,7 @@ With bigrams computed in this dynamic programming manner, the total time needed 
 Using string similarity as only score measurement leads to poor performances on authors and dates extraction, and is not suitable for comment extraction. This subsection presents variations of the previously presented \code{ScoreFunction} which address issues of these other contents.
 
 % authors
-The case of authors is problematic because authors' names often appears in multiple places of a page, which results in several rules with maximum \coderef{similarityAlgo} score. The heuristic we use to get around this issue consists of adding a new component in the \code{ScoreFunction} for authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new component takes advantage of the positioning of post's authors which often is a direct child or shares its parent with the post content node.
+The case of authors is problematic because authors' names often appear in multiple places of a page, which results in several rules with maximum \coderef{similarityAlgo} score. The heuristic we use to get around this issue consists in adding a new component in the \code{ScoreFunction} for authors extraction rules: the \emph{tree distance} between the evaluated node and the post content node. This new component takes advantage of the positioning of post's authors which often is a direct child or shares its parent with the post content node.
 
 % dates
 Dates are affected by the same duplication issue, as well as the inconsistence of format between web feeds and web pages. Our solution for dates extraction extends the \code{ScoreFunction} for authors by comparing the \emph{extracted} string to multiple \emph{targets}, each being a different string representation of the original date obtained from the web feed. For instance, if the feed indicates that a post was published on \stringliteral{Thu, 01 Jan 1970 00:00:00}, our algorithm will search for a rule that returns one of \stringliteral{Thursday January 1, 1970}, \stringliteral{1970-01-01}, \stringliteral{43 years ago} and so on. So far we do not support dates in multiple languages, but adding new target formats base and languages detection would be a simple extension of our date extraction algorithm.
@@ -111,4 +111,4 @@ Comments are usually available in separate web feeds, one per blog post. Similar
 Our crawler executes this algorithm on each post with overflow on its comment feed, thus supporting blogs with multiple commenting engines. Comment contents are extracted first, which allows to narrow down the initial filtering by fixing a target number of comments.
 
 % rush some time complexity analysis
-Regarding time complexity, computing the \emph{tree distance} of each nodes of a graph to a single reference node can be done in linear time, and multiplying the number of targets by a constant factor does not affects the asymptotic computational complexity. While scoring rules for comments extraction requires a more expensive algorithm, the proportion of candidates left after filter out rules with an insufficient number of results is very low in practice. Analog reformulations to the one done with \autoref{linearAlgo} can be applied on each \code{ScoreFunction} in order to minimize the time spent in \coderef{similarityAlgo}.
+Regarding time complexity, computing the \emph{tree distance} of each nodes of a graph to a single reference node can be done in linear time, and multiplying the number of targets by a constant factor does not affects the asymptotic computational complexity. Scoring rules for comments extraction requires a more expensive algorithm. However, this is compensated by the fact that the proportion of candidates left, after filter out rules not returning enough results, is very low in practice. Analog reformulations to the one done with \autoref{linearAlgo} can be applied on each \code{ScoreFunction} in order to minimize the time spent in \coderef{similarityAlgo}.

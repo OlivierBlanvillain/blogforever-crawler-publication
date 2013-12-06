@@ -1,26 +1,16 @@
 \section{Conclusion and Future Work}
 % What we presented, what we solved
-In this paper, we presented the internals of the BlogForever web crawler. Its central article extraction procedure based on extraction rules generation was introduced along with theoretical and empirical evidences validating the approach. Simple adaptation of this procedure allowed to extract different types of contents, including authors, dates and comments. In order to support 
+In this paper, we presented the internals of the BlogForever web crawler. Its central article extraction procedure based on extraction rules generation was introduced along with theoretical and empirical evidences validating the approach. Simple adaptation of this procedure allowed to extract different types of contents, including authors, dates and comments. In order to support rapidly evolving web technologies such as JavaScript generated content, the crawler uses a web browser to render pages before processing. We also discussed the overall software architecture, highlighting the design choices made to achieve both modularity and scalability.
 
-blogs with JavaScript generated content 
+% Future work, hybrid algos
+Future work could investigate \emph{hybrid} extraction algorithms to try to achieve near 100\% success rates. Even if overall our approach obtains better performs, there are few cases where other techniques managed to extract data where we did not. This suggests that combining our approach with others such such as word density, tree edit distance matching or even spacial reasoning could lead to better performances.
 
-We also discussed the overall software architecture, highlighting the design choices made to achieve both modularity and scalability. 
+% Deployment on a distributed architecture  
+Another possible research direction would be the deployment of the BlogForever crawler on a large scale distributed system. This is particularly relevant in the domain of web crawling given that intensive network operations can be a serious bottleneck which benefits from the use of multiple Internet access points. We intend to explore this opportunities in our future work.
 
+% Low level PhantomJS hooks
+% I guess two future works is enough...
 
-% Future work
+% Conclude the conclude
+To open up further possibilities, the crawler presented in this paper is available under the MIT license from the project's website. \TODO{cite \\https://github.com/OlivierBlanvillain/blogforever-crawler or http://blogforever.eu/ ?}.
 
-Plan:
-\begin{enumerate}
-  \item Recap the problem and the objective
-  \item Summarize how've solved it
-  \item Mention challenges and problems
-  \item Hint for future work
-\end{enumerate}
-
-Content:
-\begin{enumerate}
-  \item Web pages dynamically generated after filling a web form/doing some user action. This is not automated atm.
-  \item Spacial reasoning (we already have the page rendered w PhantomJS)
-  \item Low level PhantomJS hooks
-  \item Tree edit distance matching
-\end{enumerate}
