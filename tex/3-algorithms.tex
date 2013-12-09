@@ -65,7 +65,7 @@ Properties \ref{wordorderProp} and \ref{lengthProp} are essential to deal with c
 
 \similarityTable
 
-The Sørensen–Dice coefficient method operates by first building sets of pairs of adjacent characters, also knows as \emph{bigrams}, and then applying the \emph{quotient of similarity} formula:
+The Sørensen–Dice coefficient similarity algorithm operates by first building sets of pairs of adjacent characters, also knows as \emph{bigrams}, and then applying the \emph{quotient of similarity} formula:
 
 \similarityAlgo
 
@@ -75,7 +75,7 @@ The Sørensen–Dice coefficient method operates by first building sets of pairs
 \label{timecomplexityandlinearreformulation}
 
 % into: algo 1 defined
-The functions \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as the \code{ScoreFunction}) being defined, the definition of \autoref{extractionAlgo} for article extraction is completed. We now proceed with a time complexity analysis.
+The functions \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as \code{ScoreFunction}) being defined, the definition of \autoref{extractionAlgo} for article extraction is completed. We now proceed with a time complexity analysis.
 
 % algo 1 is quadratic
 First, let's assume that we have at our disposal a linear time HTML parser that constructs an appropriate data structure indexing HTML nodes on their \code{id} and \code{class} attributes, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before the outer loop splits the input into independent computations and each call to \coderef{allrulesAlgo} returns (in linear time) at most as many rules as the number of nodes in its \emph{page} argument. Therefore, the body of the inner loop will be executed \Oof{n} times. Because each extraction rule can return any subtree of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
@@ -86,7 +86,7 @@ We now present \autoref{linearAlgo}, a linear time reformulation of \autoref{ext
 \linearAlgo
 
 % proof
-With bigrams computed in this dynamic programming manner, the total time needed to compute all \coderef{bigramsAlgo}\code{(}\emph{node.text}\code{)} is linear. To conclude the proof that \autoref{linearAlgo} runs in linear time we show that all other computations of the inner loop can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortized} number of bigrams unions per inner loop iteration tends to one. Each \emph{quotient of similarity} computation requires one bigrams intersection and three bigrams length computations. Over a finite alphabet (we used printable ASCII), bigrams sizes have bounded size and each of these operations takes constant time.
+With bigrams computed in this dynamic programming manner, the overall time to compute all \coderef{bigramsAlgo}\code{(}\emph{node.text}\code{)} is linear. To conclude the proof that \autoref{linearAlgo} runs in linear time we show that all other computations of the inner loop can be done in constant \emph{amortized} time. As the number of edges in a tree is one less than the number of nodes, the \emph{amortized} number of bigrams unions per inner loop iteration tends to one. Each \emph{quotient of similarity} computation requires one bigrams intersection and three bigrams length computations. Over a finite alphabet (we used printable ASCII), bigrams sizes have bounded size and each of these operations takes constant time.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

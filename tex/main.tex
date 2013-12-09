@@ -1,5 +1,5 @@
-% \documentclass[draft]{acm_proc_article-sp}
-\documentclass{acm_proc_article-sp}
+\documentclass[draft]{acm_proc_article-sp}
+% \documentclass{acm_proc_article-sp}
 
 \usepackage[ruled, vlined]{algorithm2e}
 \usepackage[T1]{fontenc}
@@ -25,15 +25,13 @@
 \quotingsetup{vskip=0pt,font={itshape}}
 \setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
-
 \setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
-
 \def\algorithmautorefname{Algorithm}
+\graphicspath{{img/}}
 
 \newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
-% \newcommand\TODO[1]{}
 \renewcommand\comment[1]{\emph{\color{Gray}Comment: #1\\}}
 % \renewcommand{\comment}[1]{}
 \newcommand\code[1]{\texttt{#1}}
@@ -89,8 +87,8 @@
 
   \input{algos.tex}
   \input{tables.tex}
-  \input{1-intro.tex}
-  \input{2-related-work.tex}
+  % \input{1-intro.tex}
+  % \input{2-related-work.tex}
   \clearpage
   \input{3-algorithms.tex}
   \clearpage
@@ -99,9 +97,8 @@
   \input{5-evaluation.tex}
   \clearpage
   \input{6-conclusion-and-future-work.tex}
-  
-  \TODO{fix ref of T.R.Manifesto...}
+
   \bibliographystyle{abbrv}
-  \bibliography{main}
+  \bibliography{main,manual}
 
 \end{document}
