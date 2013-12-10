@@ -41,7 +41,9 @@ Observation \ref{havefeedAssum} allows the crawler to obtain input for the extra
 One might notice that each \emph{best rule} computation is independent and operates on a different input pair. This implies that \autoref{extractionAlgo} is \emph{embarrassingly parallel}: iterations of the outer loop can trivially be executed on multiple threads.
 
 % abs, plan
-Functions in \autoref{extractionAlgo} are voluntarily abstract at this point and will be explained in detail in the remaining of this section. Section \ref{extractionrulesandstringsimilarity} defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In section \ref{timecomplexityandlinearreformulation} we analyse the time complexity of \autoref{extractionAlgo} and give it a linear time reformulation using dynamic programing. Finally, section \ref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
+Functions in \autoref{extractionAlgo} are voluntarily abstract at this point and will be explained in detail in the remaining of this section.
+\hyperref[extractionrulesandstringsimilarity]{Subsection~\ref*{extractionrulesandstringsimilarity}} % Waiting for \Autoref{}...
+defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In \autoref{timecomplexityandlinearreformulation} we analyse the time complexity of \autoref{extractionAlgo} and give it\TODO{not sure about this it.} a linear time reformulation using dynamic programing. Finally, \autoref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}
@@ -61,7 +63,7 @@ Unsurprisingly, the choice of \code{ScoreFunction} greatly influences the runnin
   \item\label{linearProp} Runs in linear time.
 \end{enumerate}
 
-Properties \ref{wordorderProp} and \ref{lengthProp} are essential when we deal with cases where the blog's web feed only contains an abstract or a subset of the entire post article. \autoref{similarityTable} gives examples to illustrate how these two properties hold for the Sørensen–Dice coefficient similarity but do not for \emph{edit distance} based similarities such as the Levenshtein \cite{levenshtein1966} similarity.
+Properties \ref{wordorderProp} and \ref{lengthProp} are essential when dealing with cases where the blog's web feed only contains an abstract or a subset of the entire post article. \autoref{similarityTable} gives examples to illustrate how these two properties hold for the Sørensen–Dice coefficient similarity but do not for \emph{edit distance} based similarities such as the Levenshtein \cite{levenshtein1966} similarity.
 
 \similarityTable
 
