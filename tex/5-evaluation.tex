@@ -13,7 +13,7 @@ To evaluate article and title extraction from blog posts we compared our approac
 
 \precisionTable
 
-On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data which we search for in HTML trees of pages\TODO{this last sentence is a bit hard to understand}. Therefore, results showen in \autoref{precisionTable} should not be interpreted as a general quality evaluation of the different projects, but simply as an evidence that our approach is more suitable when working with blogs.
+On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data used to build extraction rules. Therefore, results showen in \autoref{precisionTable} should not be interpreted as a general quality evaluation of the different projects, but simply as an evidence that our approach is more suitable when working with blogs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,15 +23,15 @@ On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9
 In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The main point of interest is the ability of the extraction procedure to scale as the number of posts in the processed blog increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all published content on a blog.
 
 % setup
-Experimental data was obtained by taking the arithmetic mean over 10 measurements, which we believe to be significant given that each result has a standard deviations on the order of 2 milliseconds. \comment{Do I have to justify the arithmetic mean? If yes, this could do: \surl{http://dl.acm.org/citation.cfm?id=5673}}\comment{need to rephrase - let's discuss.}
+Experimental data was obtained by taking the arithmetic mean over 10 measurements, which we believe to be significant given that standard deviations are of the order of 2 milliseconds.
 
-\autoref{runningtime} shows the cumulated time spent for each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of blog posts processed. The reference blog we used was \surl{http://quantumdiaries.org/}.
+\autoref{runningtime} shows the cumulated time spent for each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of blog posts processed. We used the Quantum Diaries \cite{quantumdiaries} blog for this experiment.
 
 \input{runningtimeFigure.tex}
 
-Past the initial computations, the cost to extract an article with our approach is almost zero. This is a consequence of having a blog-aware, rule-based algorithm. As already mentioned in \autoref{algorithms}, the central idea is to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. In this example, the execution time needed for parsing a new blog post and applying the extraction rules is in the order of 3 milliseconds, which is barely not visible on the scale of \autoref{runningtime}. The three other evaluated solutions do not function this way: each blog post is processed as new and independent input, leading to close to linear running times.
+Past the initial computations, the cost of processing a blog posts with our approach is almost zero. This is a consequence of having a blog-aware, rule-based algorithm. As already mentioned, the central idea is to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. The initial increase in the curve of our approach corresponds to the extraction rules computations, which consist of processing the web feed and all blog posts it references. Subsequent computations only involve parsing blog posts and applying extraction rules, which takes about 3 milliseconds and is barely not visible on the scale of \autoref{runningtime}. The other evaluated solutions do not function this way: each blog post is processed as new and independent input, leading to approximatly linear running times.
 
-In \autoref{runningtime}, the vertical dashed line at 15 processed blog posts represents a suitable point of comparison of processing time per blog post. Indeed, as the test blog's web feed contains 15 blog posts, the time spent on processing the first blog post also includes the processing time of the web feed and its 15 entries\TODO{Is this clear? --> almost, let's discuss}. That being said, comparing raw performance of different algorithms implemented in different programming languages is not very informative given the high variations of running times observed across languages for identical algorithms \cite{hundt2011}.
+The vertical dashed line at 15 processed blog posts represents a suitable point of comparison of processing time per blog post as the test blog's web feed contains 15 blog posts. That being said, comparing raw performance of different algorithms implemented in different programming languages is not very informative given the high variations of running times observed across languages for identical algorithms \cite{hundt2011}.
 
 % python x23 just-in-time compilation speed up http://dl.acm.org/citation.cfm?id=2069181
 
@@ -39,6 +39,7 @@ In \autoref{runningtime}, the vertical dashed line at 15 processed blog posts re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JavaScript rendering}
 
+\TODO{}
 % intro, plan (why we pick these projects, what we want to show with this evaluation)
 
 % \item "Wget crawl" http://blogforever.eu/blog/2011/05/21/creating-a-snapshot-of-a-blog-post-using-wget/
