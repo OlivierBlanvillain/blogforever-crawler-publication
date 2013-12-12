@@ -1,4 +1,8 @@
-../../blogforever-crawler/out 0.5-score: 93.0082796688%
-goose/ 0.5-score: 79.2088316467%
-readability/ 0.5-score: 88.132474701%
-boilerpipe/ 0.5-score: 79.3008279669%
+../../blogforever-crawler/out: 93.0082796688%
+goose/: 79.2088316467%
+readability/: 88.132474701%
+boilerpipe/: 79.3008279669%
+
+../../blogforever-crawler/titles: 95.0065703022%
+TT/goose/: 84.9540078844%
+TT/readability/: 74.0473061761%
