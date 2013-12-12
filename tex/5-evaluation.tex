@@ -22,14 +22,15 @@ On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9
 % running time eval, scalability with size of blogs
 In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The main point of interest is the ability of the extraction procedure to scale as the number of posts in the processed blog increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all published content on a blog.
 
-% setup
-Experimental data was obtained by taking the arithmetic mean over 10 measurements, which we believe to be significant given that standard deviations are of the order of 2 milliseconds.
-
+% the graph
 \autoref{runningtime} shows the cumulated time spent for each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of blog posts processed. We used the Quantum Diaries \cite{quantumdiaries} blog for this experiment.
+
+% standard deviations
+Data presented in this graph was obtained by taking the arithmetic mean over 10 measurements. These results are believed to be significant given that standard deviations are of the order of 2 milliseconds.
 
 \input{runningtimeFigure.tex}
 
-Past the initial computations, the cost of processing a blog post with our approach is almost zero. This is a consequence of having a blog-aware, rule-based algorithm. As already mentioned, the central idea is to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. The initial increase in the curve of our approach corresponds to the computation of the extraction rules, which consists of processing the web feed and all the blog posts it references. Subsequent computations only involve parsing blog posts and applying extraction rules, which takes about 3 milliseconds and are barely visible on the scale of \autoref{runningtime}. The other evaluated solutions do not function this way: each blog post is processed as new and independent input, leading to approximatly linear running times.
+Past the initial computations, the cost of processing a blog post with our approach is almost zero. This is a consequence of having a blog-aware, rule-based algorithm. As already mentioned, the central idea is to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. The initial increase in the curve of our approach corresponds to the computation of the extraction rules, which consists of processing the web feed and all the blog posts it references. Subsequent computations only involve parsing blog posts and applying extraction rules, which takes about 3 milliseconds and are barely visible on the scale of \autoref{runningtime}. The other evaluated solutions do not function this way: each blog post is processed as new and independent input, leading to approximately linear running times.
 
 The vertical dashed line at 15 processed blog posts represents a suitable point of comparison of processing time per blog post as the test blog's web feed contains 15 blog posts. That being said, comparing raw performance of different algorithms implemented in different programming languages is not very informative given the high variations of running times observed across languages for identical algorithms \cite{hundt2011}.
 
