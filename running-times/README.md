@@ -8,7 +8,7 @@ To reproduce the extraction-running-time evaluation, do the following:
 - Get the version of the BlogForever Crawler used for the evaluation:
 
         git clone git@github.com:BlogForever/crawler.git
-        git checkout 192a59e6b298b9d394935538213dc132786e4f4a
+        git checkout 06a1fd89554db518c6348aba3c1709d85cce2c42
 
 - Merge it with running-times/crawler:
 

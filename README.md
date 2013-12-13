@@ -9,4 +9,4 @@ This repository contains all the scripts and files related the blogforever-crawl
 "extraction success rates" data,
 - `/running-times` contains the code we used for running time measurements.
 
-Please keep in mind that the scripts you will find here were written as "single use code" and are anything but beautiful. If you have any issue compiling the paper or running the experiments please let me know!
+Please keep in mind that the scripts you will find here were written as "single use code" and are anything but beautiful. If you have any issue compiling the paper or running the experiments just let me know!
