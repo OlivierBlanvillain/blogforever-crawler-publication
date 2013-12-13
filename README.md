@@ -9,4 +9,4 @@ This repository contains all the scripts and files related the blogforever-crawl
 "extraction success rates" data,
 - `/running-times` contains the code we used for running time measurements.
 
-Please keep in mind that all scripts you will find here were written as "single use code" and are anything but beautiful. Because the Spinn3r Dataset is only available for research purposes we could include it in this repository, which means that you will have to download it and follow the instruction in `/dataset` to be able to reproduce the `/extraction-success-rates` experiment.
+Please keep in mind that the scripts you will find here were written as "single use code" and are anything but beautiful. If you have any issue compiling the paper or running the experiments please let me know!
