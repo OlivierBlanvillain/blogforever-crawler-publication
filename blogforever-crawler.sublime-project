@@ -4,7 +4,7 @@
     {
       "path": "../crawler/",
       "file_exclude_patterns": [".*"],
-      "folder_exclude_patterns": ["out", "img", "lib", ".scrapy"]
+      "folder_exclude_patterns": ["out", "img", "lib", ".scrapy", "testdata"]
     },
     {
       "path": ".",
