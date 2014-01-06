@@ -13,7 +13,7 @@ To reproduce the success-rates evaluation, do the following:
 
 - Merge it with success-rates/crawler:
 
-        rsync -aplx --link-dest=crawler/ blogforever-crawler-publication/success-rates/crawler/ merged/
+        mkdir merged; sudo cp -al crawler/* blogforever-crawler-publication/success-rates/crawler/* merged/
 
 - Run all the extractions:
 
