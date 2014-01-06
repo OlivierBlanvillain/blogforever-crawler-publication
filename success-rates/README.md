@@ -17,8 +17,8 @@ To reproduce the success-rates evaluation, do the following:
 
 - Run all the extractions:
 
-        # for * in success-rates/title/, * in success-rates/article/, and crawler/
-        (cd path/to/project; sudo python gen.sh)
+        # for * in success-rates/title/, * in success-rates/article/, and merged/
+        sudo path/to/project/gen.sh
 
 - Compute the scores:
 
