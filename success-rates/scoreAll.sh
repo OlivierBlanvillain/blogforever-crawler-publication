@@ -1,6 +1,6 @@
 #!/bin/sh
 
-python score.py contents/ ../../blogforever-crawler/out
-python score.py contents/ goose/
-python score.py contents/ readability/
-python score.py contents/ boilerpipe/
+python score.py ../dataset/articles/ ../../crawler/articles
+python score.py ../dataset/articles/ articles/goose/
+python score.py ../dataset/articles/ articles/readability/
+python score.py ../dataset/articles/ articles/boilerpipe/

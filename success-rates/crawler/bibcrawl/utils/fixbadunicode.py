@@ -1,20 +1,6 @@
+# Source; http://blog.luminoso.com/2012/08/20/fix-unicode-mistakes-with-python/
 # -*- coding: utf-8 -*-
 
-import re
-import codecs
-def main():
-  with codecs.open("apiESCAPEDDD", "r", encoding="utf-8") as f:
-    for line in f:
-      result = re.search(
-        r"^\d*,'[^']*','[^']*','([^']*)','[^']*',\d*,'([^']*)'$"
-        , line)
-      if result:
-        content = fix_bad_unicode(result.groups()[0].replace("ESCAPEDDD", "'"))
-        url = result.groups()[1].replace("/", "{")
-        with codecs.open("articles/" + url, "w", encoding="utf-8") as out:
-          out.write(content)
-
-# Source: http://blog.luminoso.com/2012/08/20/fix-unicode-mistakes-with-python/
 import unicodedata
 
 def fix_bad_unicode(text):
@@ -81,9 +67,9 @@ def fix_bad_unicode(text):
         >>> print fix_bad_unicode(u'This text was never Unicode at all\x85')
         This text was never Unicode at all…
     """
-    # if not isinstance(text, unicode):
-    #     raise TypeError("This isn't even decoded into Unicode yet. "
-    #                     "Decode it first.")
+    if not isinstance(text, unicode):
+        raise TypeError("This isn't even decoded into Unicode yet. "
+                        "Decode it first.")
     if len(text) == 0:
         return text
 
@@ -115,9 +101,11 @@ def fix_bad_unicode(text):
         else:
             return fix_bad_unicode(goodtext)
 
+
 def reinterpret_latin1_as_utf8(wrongtext):
-    newbytes = wrongtext.encode('latin-1', 'ignore')
-    return newbytes.decode('utf-8', 'ignore')
+    newbytes = wrongtext.encode('latin-1', 'replace')
+    return newbytes.decode('utf-8', 'replace')
+
 
 def reinterpret_windows1252_as_utf8(wrongtext):
     altered_bytes = []
@@ -128,12 +116,14 @@ def reinterpret_windows1252_as_utf8(wrongtext):
             altered_bytes.append(char.encode('latin-1', 'replace'))
     return ''.join(altered_bytes).decode('utf-8', 'replace')
 
+
 def reinterpret_latin1_as_windows1252(wrongtext):
     """
     Maybe this was always meant to be in a single-byte encoding, and it
     makes the most sense in Windows-1252.
     """
     return wrongtext.encode('latin-1').decode('WINDOWS_1252', 'replace')
+
 
 def text_badness(text):
     u'''
@@ -153,7 +143,7 @@ def text_badness(text):
     - Improbable single-byte characters, such as ƒ or ¬
     - Letters in somewhat rare scripts
     '''
-    # assert isinstance(text, unicode)
+    assert isinstance(text, unicode)
     errors = 0
     very_weird_things = 0
     weird_things = 0
@@ -198,6 +188,7 @@ def text_badness(text):
                 prev_letter_script = None
 
     return 100 * errors + 10 * very_weird_things + weird_things
+
 
 def text_cost(text):
     """
@@ -298,7 +289,7 @@ SINGLE_BYTE_LETTERS = [
 # name. The number indicates how frequently we expect this script to be used
 # on computers. Many scripts not included here are assumed to have a frequency
 # of "0" -- if you're going to write in Linear B using Unicode, you're
-# probably aware enough of encoding issues to get it right.
+# you're probably aware enough of encoding issues to get it right.
 #
 # The lowercase name is a general category -- for example, Han characters and
 # Hiragana characters are very frequently adjacent in Japanese, so they all go
@@ -333,5 +324,3 @@ SCRIPT_TABLE = {
     'MASCULINE': (1, 'latin'),
     'FEMININE': (1, 'latin')
 }
-
-main()
