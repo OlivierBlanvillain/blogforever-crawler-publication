@@ -17,10 +17,10 @@ To reproduce the success-rates evaluation, do the following:
 
 - Run all the extractions:
 
-        # for * in success-rates/title/, * in success-rates/article/, and merged/
+        # for * in success-rates/titles/, * in success-rates/articles/, and merged/
         sudo path/to/project/gen.sh
 
 - Compute the scores:
 
-        success-rates/scroeAll.sh
-        success-rates/scroeTitles.sh
+        success-rates/scoreArticles.sh
+        success-rates/scoreTitles.sh

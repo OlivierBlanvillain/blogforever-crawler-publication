@@ -20,7 +20,7 @@ class OutPropagate(object):
     with codecs.open(path , "w", encoding="utf-8") as out:
       out.write(nicecontent)
 
-    path = "content/" + item.url.replace("/", "{")
+    path = "articles/" + item.url.replace("/", "{")
     spider.logInfo(path)
     nicecontent = fix_bad_unicode(cleanTags(item.content))
     with codecs.open(path , "w", encoding="utf-8") as out:
