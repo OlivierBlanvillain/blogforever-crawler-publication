@@ -50,7 +50,7 @@ defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for ar
 \label{extractionrulesandstringsimilarity}
 
 % xpath selectors (id, else class, else path)
-In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used to parse HTML pages and apply extraction rules, providing the \code{Apply} function used in \autoref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection using the absolute path in the HTML tree. \code{id} attributes are expected to be unique, and \code{class} attributes have showed in our experiments to have better consistency than absolute paths over pages of a blog. For these reasons we opt to always favor \code{class} over path, and \code{id} over \code{class}, such that the \coderef{allrulesAlgo} function returns a single rule per node.
+In our implementation, rules are queries in the XML Path Language (XPath). Consequently, standard libraries can be used to parse HTML pages and apply extraction rules, providing the \code{Apply} function used in \autoref{extractionAlgo}. We experimented with 3 types of XPath queries: selection over the HTML \code{id} attribute, selection over the HTML \code{class} attribute and selection using the relative path in the HTML tree. \code{id} attributes are expected to be unique, and \code{class} attributes have showed in our experiments to have better consistency than relative paths over pages of a blog. For these reasons we opt to always favor \code{class} over path, and \code{id} over \code{class}, such that the \coderef{allrulesAlgo} function returns a single rule per node.
 
 \allrulesAlgo
 
@@ -106,6 +106,7 @@ Dates are affected by the same duplication issue, as well as the inconsistency o
 
 % comments
 Comments are usually available in separate web feeds, one per blog post. Similarly to blog feeds, comment feeds have a limited number of entries, and when the number of comments on a blog post exceeds this limit, comments have to be extracted from the post web page. To do so we use the following \code{ScoreFunction}:
+
 \begin{itemize}
   \item Rules returning less HTML nodes than the number of comments on the feed are filtered out with a zero score,
   \item The scores of the remaining rules are computed with the value of the \emph{maximum weighted matching} in the \emph{complete bipartite graph} $G = (U, V, E)$, where $U$ is the set of HTML nodes returned by the rule, $V$ is the set of target comment fields from the web feed (such as comment authors) and $E(u, v)$ has weight equal to \coderef{similarityAlgo}\code{(}\emph{u, v}\code{)}.

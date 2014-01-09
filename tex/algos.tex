@@ -12,7 +12,7 @@
 \SetKwFunction{AllRules}{AllRules}
 \SetKwFunction{Similarity}{Similarity}
 \SetKwFunction{ScoreFunction}{ScoreFunction}
-\SetKwFunction{AbsolutePathTo}{AbsolutePathTo}
+\SetKwFunction{RelativePathTo}{RelativePathTo}
 \SetKwFunction{Bigrams}{Bigrams}
 
 \DontPrintSemicolon
@@ -60,7 +60,7 @@
         \emph{rules \Arrow rules} + \set{\stringliteral{
           //*[@class=`\textnormal{\it node.class}']}}\;
       } \lElse{
-        \emph{rules \Arrow rules} + \set{\AbsolutePathTo{node}}
+        \emph{rules \Arrow rules} + \set{\RelativePathTo{node}}
       }
     }
     \Return{rules}\;
@@ -86,9 +86,9 @@
       \emph{bigrams2 \Arrow} \Bigrams{string2}\;
       \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1} \emph{+} \len{bigrams2}}}\;
     \end{function}
-    
+
     \vspace{5pt}
-    
+
     \begin{function}[H]
       \caption{Bigrams(string)}\label{bigramsAlgo}
       \Return{\emph{set of pairs of adjacent characters in \emph{string}}}\;
