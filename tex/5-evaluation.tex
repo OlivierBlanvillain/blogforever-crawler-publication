@@ -39,7 +39,26 @@ The vertical dashed line at 15 processed blog posts represents a suitable point 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JavaScript rendering}
 
+Beside the extraction of blog post date that we have been discussing so far, it is also interesting to go one step further and preserve the design of webpages. One of the initial blog forever requirements is to be able to save blogs such that future generation could see them as they were originally when first crawled by the system.
+
+To achieve this property, our final solution was to embed a full web browser into our system, as presented in section *, which we use to take screen-shots of pages. Before choosing this tool we considered 3 other solutions: wget, wkhtmltopdf, oxpath. This subsection relates our evaluation of these tools for the specific purpose.
+
+The first solution we considered was the GNU/Linux tool wget. With the appropriate options, wget can be used to download a webpage and the associated files (css, scripts and images). On simple webpages, this process effectively captures all files necessary to display the page locally. However, it falls short* to capture webpages that download content via javascript.
+
+Another solution we considered is wkhtmltopdf, a tool to produce pdf versions of web-pages. It uses the "print" function of it's embedded web browser to produce it's output and therefore supports all web technologies supported by it underling web browser.
+
+The OXPath project goes one step further by offering an extension of the XPath language to specify page interactions such as clicks and forms filling. It also make use of a complete web browser to render pages and execute page interactions sequentially. OXPath makes it simple to extract comments displayed across multiple pages or that requiring clicks to be loaded.
+
+
+functionality |  wget  | wkhtmltopdf | oxpath | phantomjs
+---------------------------------------------------------
+js support    |        |             |        |          
+page interat  |   n    |      n      |   y    |    y     
+js support    |   n    |      y      |   y    |    y     
+running time  | 0.50s  |    7.58s    | 22.04s |  3.32s    
+
 \TODO{}
+
 % intro, plan (why we pick these projects, what we want to show with this evaluation)
 
 % \item "Wget crawl" http://blogforever.eu/blog/2011/05/21/creating-a-snapshot-of-a-blog-post-using-wget/
