@@ -1,4 +1,5 @@
 \section{Techniques}
+\label{techniques}
 
 This section gives an overview of the different techniques used in our crawler. We first show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. The overall software architecture is then discussed, introducing the Scrapy framework and the enrichments we implemented for our specific usage. Finally we talk about the design choices we made in view of a large scale deployment.
 
@@ -6,7 +7,7 @@ This section gives an overview of the different techniques used in our crawler. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JavaScript rendering}
 % Introduction
-JavaScript is a widely used language for client-side scripting. While some applications simply use it for aesthetics (menus, animations, \ldots), an increasing number of websites use JavaScript to download and display content. In such cases, traditional HTML based crawlers do not see web pages as they are presented to a human visitor by a web browser, and might therefore be obsolete for data extraction.
+JavaScript is a widely used language for client-side scripting. While some applications simply use it for aesthetics, an increasing number of websites use JavaScript to download and display content. In such cases, traditional HTML based crawlers do not see web pages as they are presented to a human visitor by a web browser, and might therefore be obsolete for data extraction.
 
 % Motivation
 In our experiments whilst crawling the blogosphere, we encountered several blogs where crawled data was incomplete because of the lack of JavaScript interpretation. The most frequent cases were blogs using the Disqus \cite{disqus2013} and LiveFyre \cite{livefyre2013} comment hosting services. For webmasters, these tools are very handy because the entire comments infrastructure is externalized and their setup essentially comes down to including a JavaScript snippet in each target page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time updates for edits and newly written comments. Less commonly, some blogs are fully rendered using JavaScript. When loading such websites, the web browser will not receive the page content as an HTML document, but will instead have to execute JavaScript code to download and display the page content. The Blogger platform provides the \emph{Dynamic Views} as a default template, which uses this mechanism \cite{antinharasymiv2011}.
