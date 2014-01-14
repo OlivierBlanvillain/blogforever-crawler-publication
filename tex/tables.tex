@@ -43,7 +43,7 @@
     Target & Our~approach & Readability & Boilerpipe & Goose \\
     \midrule
     Article & 93.0\% & 88.1\% & 79.3\% & 79.2\% \\
-    Title & 95.0\% & 74.0\% & N/A & 84.9\% \\
+    Title   & 95.0\% & 74.0\% & N/A    & 84.9\% \\
     \bottomrule
     \end{tabular*}
   \caption{Extraction success rates}\label{precisionTable}
@@ -51,32 +51,23 @@
 }
 
 \newcommand\savevisualsTable{
-  \cmark
-  \xmark
   \begin{table}[h]\centering
     \capstart
     \setstretch{1.1}
     \setlength{\tabcolsep}{5pt}
     \begin{tabular*}{\columnwidth}{
       @{}
-      l
-      l
-      p{0.204\columnwidth}
-      p{0.18\columnwidth}
-      r
+      lcccc
       @{}
     }
     \toprule
-    & GNU Wget  & wkhtmltopdf & OXPath & PhantomJS \\
+    Functionality    & wget   & wkhtml. & OXPath & PhantomJS\\
     \midrule
-    page interat  |   n    |      n      |   y    |    y
-    js support    |   n    |      y      |   y    |    y
-    running time  | 0.50s  |    7.58s    | 22.04s |  3.32s
-
-    Article & 93.0\% & 88.1\% & 79.3\% & 79.2\% \\
-    Title & 95.0\% & 74.0\% & N/A & 84.9\% \\
+    Page Interaction & \xmark & \xmark  & \cmark & \cmark\\
+    JavaScript       & \xmark & \cmark  & \cmark & \cmark\\
+    Running time     & 0.50s  & 7.58s   & 22.04s & 3.32s\\
     \bottomrule
     \end{tabular*}
-  \caption{Extraction success rates}\label{savevisualsTable}
+  \caption{\TODO{some text}}\label{savevisualsTable}
   \end{table}
 }
