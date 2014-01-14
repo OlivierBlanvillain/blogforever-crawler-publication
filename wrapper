@@ -1,0 +1,18 @@
+#!/bin/sh
+
+SERVER=$1
+WATCHED_DIR=.
+$SERVER &
+RUNNING_PID=$!
+
+trap 'kill -TERM $RUNNING_PID 2> /dev/null; exit' SIGINT
+
+while /bin/true; do
+ echo "Starting '$SERVER'..."
+ inotifywait -q --exclude '.*\.py[co]$' \
+           -e modify -e close_write -e move \
+           -e create -e delete \
+           -r $WATCHED_DIR
+ kill -HUP $RUNNING_PID
+ echo "Hupping '$SERVER'..."
+done
