@@ -1,38 +1,41 @@
 \section{Related work}
 
 Web archiving is a challenging and very interesting problem and has been the subject of many studies as well as the goal of several projects.
-A fraction of these focuses on the specific problem of blog harvesting and archiving.
-These studies and projects focus on the unique nature of blogs as dynamic web resources with a usually common set of attributes.
+\comment{Mention Internet Archive here and maybe another generic web archiving project}
+
+A fraction of web archiving studies and projects focus on the specific problem of blog harvesting and archiving.
+They focus on the unique nature of blogs as dynamic web resources with a usually common set of attributes.
 Each entry in a blog, commonly called a post, has a title, an author, a publication date, some content and possibly some descriptive tags.
-Blogs are also strongly associated with web feeds, using technologies such as RSS and Atom (expand and reference).
+(In this section we review some studies and projects that introduce and describe such techniques.)
+
+Blogs are strongly associated with web feeds, using technologies such as RSS and Atom (expand and reference - needed?).
 Web feeds are structured documents (often XML-based) that advertize and provide access to a website's content.
 Given their format, web feeds constitute an excellent source for blog archiving.
 They do, however, present some problems: (a) web feeds contain only the latest posts of a blog (usually 20) and (b) web feeds may only provide a summary or a fraction of the entire content of each blog post.
 More advanced methods and techniques have to be employed in order to achieve quality blog archiving.
-In this section we review some studies and projects that introduce and describe such techniques.
-\comment{Maybe this is repetitive, some of these things should already have been mentioned in the introduction}
 
-\comment{list the projects and compare them to what we do}
+Here mention projects that use web feeds for discovery and compare them to ours.
+\begin{itemize}
+  \item ( Zero-cost Labelling with Web Feeds for Weblog Data Extraction - http://www2013.org/companion/p73.pdf).
+  \item ( Self-supervised Automated Wrapper Generation for Weblog Data Extraction - https://github.com/OlivierBlanvillain/blogforever-crawler-publication/raw/master/papers/bncod\_published.pdf).
+  \item ( Archiving Data Objects using Web Feeds - http://hal.archives-ouvertes.fr/docs/00/53/79/62/PDF/iwawienna.pdf).
+\end{itemize}
+Some of these should also be in the comparison for extraction methods.
 
-Web Object Identification for Web Automation and Meta-Search\\
-http://www.dbai.tuwien.ac.at/proj/tamcrow/download/Kordomatis2013WIMS.pdf\\
-In this paper we deal with the problem of finding specific web objects on previously unseen web pages. The problem consists of the sub problems of how to describe the desired objects (e.g., a specific submit button)and how to identify them on new web pages. This general problem is fundamental to many fields of research like Web Data Extraction, Web Form Understanding, Web Automation, etc.
-Our approach uses features based on the visual perceivable  characteristics of web objects for object description and machine learning techniques for object identification. Applied to a meta-search setting, this allows for a very universal solution. Here, the common elements of the considered search forms can be identified on previously unseen search pages, as long as they follow the same design principles.
+Here mention projects that use other techniques for discovery and compare them to ours.
+\begin{itemize}
+  \item ???
+\end{itemize}
 
-Self-supervised Automated Wrapper Generation for Weblog Data Extraction\\
-https://github.com/OlivierBlanvillain/blogforever-crawler-publication/raw/master/papers/bncod\_published.pdf\\
+Here mention projects that use various techniques for extraction and compare them to ours.
+\begin{itemize}
+  \item ( Web Object Identification for Web Automation and Meta-Search - http://www.dbai.tuwien.ac.at/proj/tamcrow/download/Kordomatis2013WIMS.pdf).
+  \item ( OXPath: A Language for Scalable, Memory-efficient Data Extraction from Web Applications - http://www.vldb.org/pvldb/vol4/p1016-furche.pdf).
+  \item ( Intelligent and Adaptive Crawling of Web Applications for Web Archiving - http://pierre.senellart.com/publications/faheem2013intelligent.pdf).
+  \item ( Web Data Extraction, Applications and Techniques: A Survey - http://www.emilio.ferrara.name/wp-content/uploads/2011/07/survey-csur.pdf).
+\end{itemize}
 
-Web Data Extraction, Applications and Techniques: A Survey\\
-http://www.emilio.ferrara.name/wp-content/uploads/2011/07/survey-csur.pdf\\
-
-Archiving Data Objects using Web Feeds\\
-http://hal.archives-ouvertes.fr/docs/00/53/79/62/PDF/iwawienna.pdf\\
-
-Intelligent and Adaptive Crawling of Web Applications for Web Archiving\\
-http://pierre.senellart.com/publications/faheem2013intelligent.pdf\\
-
-Zero-cost Labelling with Web Feeds for Weblog Data Extraction\\
-http://www2013.org/companion/p73.pdf\\
-
-OXPath: A Language for Scalable, Memory-efficient Data Extraction from Web Applications\\
-http://www.vldb.org/pvldb/vol4/p1016-furche.pdf\\
+Here mention that there is no comparison for the JavaScript rendering as there are no similar projects.
+\begin{itemize}
+  \item ???
+\end{itemize}
