@@ -1,73 +1,38 @@
-\section{Intro}
+\section{Introduction}
 
-Web archiving is the process of harvesting and gathering web content in order to safely preserve it for posterity.
-As the volume and importance of the information on the World Wide Web increases, web archiving becomes more and more relevant and its importance becomes clearer.
-Web crawlers are an essential part of web archiving, allowing for automated capturing of web resources.
-An efficient and accurate web crawler is the first crucial step to successful digital preservation.
+This will be reorganized like this:\\
+paragraph 1:\\
+- Blog disappear every day, Some of them are important\\
+- In contrast to newspaper and centralized services like FaceBook and Twitter there are no standards and no authorities to backup blogs\\
+- Yet, blogs are an important part of today's web (number, adoption by academics and organizations)\\
+\\
+paragraph 2:\\
+- Challenges (Now starts with "The blogosphere is a massive...")\\
+\\
+paragraph 3:\\
+- Web feed, why they are so handy (merged with "Blogs are strongly associated with web feeds...")
 
-By June 2008 the Technorati Internet search engine for blogs reported indexing 112.8 million blogs \cite{technoratidata2008} while in July 2005 they had estimated that the size of the blogosphere was doubling every 5.5 months \cite{bloggrowth2005}.
-A blog is a \emph{frequently updated web site consisting of personal observations, excerpts from other sources, etc., typically run by a single person, and usually with hyperlinks to other sites; an online journal or diary.} -- Oxford English Dictionary\\
-Given the nature of blogs, they are expectedly highly volatile web resources.
+Web archiving is the process of harvesting and gathering web content in order to safely preserve it for posterity. As the volume and importance of the information on the World Wide Web increases, web archiving becomes more and more relevant and its importance becomes clearer. \comment{too early imo- Web crawlers are an essential part of web archiving, allowing for automated capturing of web resources. An efficient and accurate web crawler is the first crucial step to successful digital preservation.}
 
-Blogs are a popular means of communication and expression of ideas and have been adopted by universities, institutions and scolars (reference?).
-Recenlty, blogs have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}.
-Their political, scientific and cultural significance is undisputed. (rephrase to avoid need for reference?)
+By June 2008 the Technorati Internet search engine for blogs reported indexing 112.8 million blogs \cite{technoratidata2008} while in July 2005 they had estimated that the size of the blogosphere was doubling every 5.5 months \cite{bloggrowth2005}. A blog is a \emph{frequently updated web site consisting of personal observations, excerpts from other sources, etc., typically run by a single person, and usually with hyperlinks to other sites; an online journal or diary.} -- Oxford English Dictionary\\ Given the nature of blogs, they are expectedly highly volatile web resources.
 
-However, to this day there is no standard method or authority that ensures blog archiving and long-term digital preservation.
-There is no guarantee that a disappearing or disappeared blog will ever be retrievable in the future \cite{anderson2012}
-Therefore, it is crucial that the necessary foundations for blog archiving are put in place.
+Blogs are a popular means of communication and expression of ideas and have been adopted by universities, institutions and scolars (reference?). Recenlty, blogs have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}. Their political, scientific and cultural significance is undisputed. (rephrase to avoid need for reference?)
 
-The blogosphere is a massive web resource of unstructured data.
-Identifying, harvesting and parsing that data can be a very challenging task.
-The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of efficient extraction techniques that offer a high degree of automation necessary.
-The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents.
-Finaly, modern blogs heavily rely on dynamically created content to present information, using the latest web technologies, invalidating most traditional web crawling techniques.
+However, to this day there is no standard method or authority that ensures blog archiving and long-term digital preservation. There is no guarantee that a disappearing or disappeared blog will ever be retrievable in the future \cite{anderson2012} Therefore, it is crucial that the necessary foundations for blog archiving are put in place.
 
-*** Do we need to present issues in current solutions here? Is it needed? Can we write it in "Related Work" instead? ***
+The blogosphere is a massive web resource of unstructured data. Identifying, harvesting and parsing that data can be a very challenging task. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of efficient extraction techniques that offer a high degree of automation necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents. Finaly, modern blogs heavily rely on dynamically created content to present information, using the latest web technologies, invalidating most traditional web crawling techniques.
 
-Our solution aims to tackle the challenges and constraints described above by employing a series of techniques and algorithms to harvest modern weblogs in a high-quality, accurate and efficient manner.
-We base our crawler on one of the most common and standard characteristics of blogs: web feeds.
-Explain:
-\begin{enumerate}
-  \item what feeds are, and what we use them for (discovery, extraction)
-  \item the use of HTML + XPATH
-  \item the use of efficient string similarity
-  \item the use of javascript rendering
-\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Contributions and Overview}
+We present the BlogForever Crawler, a key component of the BlogForever platform responsible for traversing, extracting content and monitoring updates of blogs.
+Our contributions are in particular:
 
-The rest of the paper is organized as follows: Related work is presented in Section 2; the algorithms we developed to extract blog post articles, authors, dates and comments are detailed in Section 3; in section 4 we give an overview of the different techniques used in our crawler; evaluation experiments are described and commented in Section 5. We finally conclude and present future work in Section 6.
+\begin{itemize}
+  \item We present a new generic algorithm to build extraction from a set of pages and target content. We then derive an optimized reformulation tied to a particular string similarity and show that this reformulated algorithm has a linear time complexity.
+  \item We show how to use this algorithm to extract blog articles, and how it can be adapted to extract authors, publication dates and comments.
+  \item We present the overall crawler architecture and the specific components we implemented to efficiently traverse blogs. We explain how our design allows for both modularity and scalability.
+  \item We show who use make use of a complete web browser to render JavaScript powered web pages before processing them. This step allows our crawler to effectively harvest blogs build with modern technology, such at the increasingly popular third-party commenting systems.
+  \item We present and analyze performance results of our algorithm in terms of extraction success rates and execution time. A comparison is made with three state-of-the-art article extraction algorithms.
+\end{itemize}
 
-% \comment{(from wikipedia) The largest web archiving organization based on a bulk crawling approach is the Internet Archive which strives to maintain an archive of the entire Web. National libraries, national archives and various consortia of organizations are also involved in archiving culturally important Web content. Commercial web archiving software and services are also available to organizations who need to archive their own web content for corporate heritage, regulatory, or legal purposes.}
-
-% \comment{Aims and contributions of this work. Example from my last paper to see the format:\\
-% http://purl.pt/24107/1/iPres2013\_PDF/\\
-% CLEAR\%20a\%20credible\%20method\%20to\%20\\
-% evaluate\%20website\%20archivability.pdf}
-
-% \comment{Semi-structured nature of Web pages\\
-% Labeled ordered rooted trees\\
-% XML Path Language(XPath)}
-
-% \TODO{should we explain here that article is the actual content (text) of a blog post? Or is it already clear enough? -> I don't know. I used "blog post content" as "article + title + author + date + comments" in other sentences but it might be good to say somewhere that "blog post article" refers to the "core textual content of a blog post".}
-
-% \TODO{Is it ok to call this "the BlogForever cralwer", given that it will be the 3rd implementation?}
-
-% Intro contents (more or less)
-% \begin{enumerate}
-%   \item Introduce the importance for blog preservation
-%   \item Explain the difficulties in harvesting blogs
-%   \item Explain why open source and Invenio
-%   \item Introduce the blog crawler
-% \end{enumerate}
-
-% Challenges and constraints:
-% \begin{enumerate}
-%   \item size of blogosphere (Dealing with large volumes of data)
-%   \item heterogeneous nature of different publishing platforms
-%   \item ever-changing structure
-%   \item dynamically created content using modern web technologies.
-%   \item complexity in parsing blogs from unstructured data to structured information.
-%   \item programmatic access to blog content unavailable
-%   \item unpredictable publishing rate --> scalability
-%   \item Providing a high degree of automation
-% \end{enumerate}
+Although our crawler implementation is integrated with the BlogForever platform, the presented techniques and algorithms can be used in other applications related to Wrapper Generation and Web Data Extraction.

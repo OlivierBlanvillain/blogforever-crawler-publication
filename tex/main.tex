@@ -24,8 +24,8 @@
 \MakeOuterQuote{"}
 \newfootnotes{A}
 \quotingsetup{vskip=0pt,font={itshape}}
-\setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
-\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setenumerate{noitemsep,topsep=0pt,parsep=2pt,partopsep=0pt}
+\setitemize{noitemsep,topsep=0pt,parsep=4pt,partopsep=0pt}
 \setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
@@ -35,8 +35,8 @@
 \newcommand{\xmark}{\ding{55}}
 
 \newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
-\renewcommand\comment[1]{\emph{\color{Gray}Comment: #1\\}}
-% \renewcommand{\comment}[1]{}
+\renewcommand\comment[1]{\emph{\color{Gray}<#1>}}
+\newcommand\edit[1]{\emph{\color{Green}<#1>}}
 \newcommand\code[1]{\texttt{#1}}
 \newcommand\coderef[1]{\texttt{\ref{#1}}}
 \newcommand\stringliteral[1]{\texttt{\char`\"#1\char`\"}}
@@ -86,7 +86,7 @@
 
   \terms{Algorithms, Software Engineering}
 
-  \keywords{Web archiving, Web crawling, ...}
+  \keywords{Web crawling, Web Data Extraction, Wrapper Generation, Web archiving, ...}
 
   \input{algos.tex}
   \input{tables.tex}

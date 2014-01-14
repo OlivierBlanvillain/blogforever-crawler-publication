@@ -33,7 +33,7 @@ When the number of comments on a page exceeds a certain threshold, both Disqus a
 Our crawler is built on top of Scrapy \cite{scrapy2013}, an open-source Python framework for web crawling. Scrapy provides an elegant and modular architecture illustrated in \autoref{architecture}. Several components can be plugged into the Scrapy core infrastructure: \emph{Spiders}, \emph{Item Pipelines}, \emph{Downloader Middlewares} and \emph{Spider Middlewares}; each allowing us to implement a different type of functionality.
 
 Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, which implement the logic to respectively crawl a new blog and get updates from a previously crawled blog. After being downloaded and identified as blog posts (details in \autoref{enrichingscrapy}), pages are packed into \emph{Items} and sent through the following pipeline of operations:
-\begin{enumerate}[noitemsep]
+\begin{enumerate}
   \item Render JavaScript
   \item Extract content
   \item Extract comments
