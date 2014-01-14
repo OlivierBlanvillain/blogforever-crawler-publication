@@ -40,12 +40,11 @@ The vertical dashed line at 15 processed blog posts represents a suitable point 
 \subsection{Preservation of blog visuals}
 \TODO{visuals/design/graphic/?}
 
-In addition to the extraction of blog content that we have been discussing so far, the BlogForever crawler is also responsible for capturing blog visuals. Indeed, one of the requirements of the BlogForever platform is to provide snapshots of blogs visuals in order to preserve changes in appearance \cite[FR53]{blogforeverrequirements2009}.
+In addition to the extraction of blog content that we have been discussing so far, the BlogForever crawler is also responsible for capturing blog visuals. Indeed, one of the requirements of the BlogForever platform is to provide snapshots of blogs visuals in order to preserve changes in appearance \cite[FR53]{blogforeverrequirements2009}. As presented in section \autoref{techniques}, our crawler embed a full web browser in the harvesting process. In addition (***rep) to the JavaScript rendering, the browser also take care of visu by screenschots
 
-As presented in section \autoref{techniques}, our crawler uses a full web browser to render pages.
+in order to support blogs that use JavaScript to download and display content.
 
-
-To achieve this property, our final solution was to embed a full web browser into our system, , which we use to take screen-shots of pages. Before choosing this tool we considered 3 other solutions: wget, wkhtmltopdf, oxpath. This subsection relates our evaluation of these tools for the specific purpose.
+*dis also takes case of screenshots*. Before opting for this we considered 3 other solutions: wget, wkhtmltopdf, oxpath. This subsection relates our evaluation of these tools for the specific purpose.
 
 The first solution we considered was the GNU/Linux tool wget. With the appropriate options, wget can be used to download a webpage and the associated files (css, scripts and images). On simple webpages, this process effectively captures all files necessary to display the page locally. However, it falls short* to capture webpages that download content via javascript.
 
