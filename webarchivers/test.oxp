@@ -3,4 +3,3 @@ doc("http://www.chancellors.co.uk/properties/search?map=false&area=New+Barnet&lo
   /self::node()[not(//a[@id='Loadmore'])]
   /descendant::div[@class='list-property clearfix']
   /descendant::h3[@class='price']:<price=string(.)>
-

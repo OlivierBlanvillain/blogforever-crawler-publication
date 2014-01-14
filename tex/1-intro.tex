@@ -5,16 +5,16 @@ As the volume and importance of the information on the World Wide Web increases,
 Web crawlers are an essential part of web archiving, allowing for automated capturing of web resources.
 An efficient and accurate web crawler is the first crucial step to successful digital preservation.
 
-By June 2008 the Technorati Internet search engine for blogs reported indexing 112.8 million blogs (reference) while in July 2005 they had estimated that the size of the blogosphere was doubling every 5.5 months (http://www.sifry.com/alerts/archives/000332.html).
-A blog is a \emph{frequently updated web site consisting of personal observations, excerpts from other sources, etc., typically run by a single person, and usually with hyperlinks to other sites; an online journal or diary.} (http://www.oed.com/view/Entry/256743\#eid11173991).
+By June 2008 the Technorati Internet search engine for blogs reported indexing 112.8 million blogs \cite{technoratidata2008} while in July 2005 they had estimated that the size of the blogosphere was doubling every 5.5 months \cite{bloggrowth2005}.
+A blog is a \emph{frequently updated web site consisting of personal observations, excerpts from other sources, etc., typically run by a single person, and usually with hyperlinks to other sites; an online journal or diary.} -- Oxford English Dictionary\\
 Given the nature of blogs, they are expectedly highly volatile web resources.
 
 Blogs are a popular means of communication and expression of ideas and have been adopted by universities, institutions and scolars (reference?).
-Recenlty, blogs have also been used to disseminate ideas in times of political turmoil or even war (http://ijoc.org/index.php/ijoc/article/download/1242/597 - Social Media in the Egyptian Revolution).
+Recenlty, blogs have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}.
 Their political, scientific and cultural significance is undisputed. (rephrase to avoid need for reference?)
 
 However, to this day there is no standard method or authority that ensures blog archiving and long-term digital preservation.
-There is no guarantee that a disappearing or disappeared blog will ever be retrievable in the future (A Tale of a Disappearing Website : http://blogs.loc.gov/digitalpreservation/2012/01/a-tale-of-a-disappearing-website/ AND Considerations for the Preservation of Blogs : http://www.digitalpreservationeurope.eu/publications/briefs/preservartion\_blogs.pdf)
+There is no guarantee that a disappearing or disappeared blog will ever be retrievable in the future \cite{anderson2012}
 Therefore, it is crucial that the necessary foundations for blog archiving are put in place.
 
 The blogosphere is a massive web resource of unstructured data.
@@ -37,39 +37,37 @@ Explain:
 
 The rest of the paper is organized as follows: Related work is presented in Section 2; the algorithms we developed to extract blog post articles, authors, dates and comments are detailed in Section 3; in section 4 we give an overview of the different techniques used in our crawler; evaluation experiments are described and commented in Section 5. We finally conclude and present future work in Section 6.
 
-\comment{(from wikipedia) The largest web archiving organization based on a bulk crawling approach is the Internet Archive which strives to maintain an archive of the entire Web. National libraries, national archives and various consortia of organizations are also involved in archiving culturally important Web content. Commercial web archiving software and services are also available to organizations who need to archive their own web content for corporate heritage, regulatory, or legal purposes.}
+% \comment{(from wikipedia) The largest web archiving organization based on a bulk crawling approach is the Internet Archive which strives to maintain an archive of the entire Web. National libraries, national archives and various consortia of organizations are also involved in archiving culturally important Web content. Commercial web archiving software and services are also available to organizations who need to archive their own web content for corporate heritage, regulatory, or legal purposes.}
 
-\comment{Aims and contributions of this work. Example from my last paper to see the format:\\
-http://purl.pt/24107/1/iPres2013\_PDF/\\
-CLEAR\%20a\%20credible\%20method\%20to\%20\\
-evaluate\%20website\%20archivability.pdf}
+% \comment{Aims and contributions of this work. Example from my last paper to see the format:\\
+% http://purl.pt/24107/1/iPres2013\_PDF/\\
+% CLEAR\%20a\%20credible\%20method\%20to\%20\\
+% evaluate\%20website\%20archivability.pdf}
 
-\comment{Semi-structured nature of Web pages\\
-Labeled ordered rooted trees\\
-XML Path Language(XPath)}
+% \comment{Semi-structured nature of Web pages\\
+% Labeled ordered rooted trees\\
+% XML Path Language(XPath)}
 
-\TODO{should we explain here that article is the actual content (text) of a blog post? Or is it already clear enough? -> I don't know. I used "blog post content" as "article + title + author + date + comments" in other sentences but it might be good to say somewhere that "blog post article" refers to the "core textual content of a blog post".}
+% \TODO{should we explain here that article is the actual content (text) of a blog post? Or is it already clear enough? -> I don't know. I used "blog post content" as "article + title + author + date + comments" in other sentences but it might be good to say somewhere that "blog post article" refers to the "core textual content of a blog post".}
 
-\TODO{Is it ok to call this "the BlogForever cralwer", given that it will be the 3rd implementation?}
+% \TODO{Is it ok to call this "the BlogForever cralwer", given that it will be the 3rd implementation?}
 
-Intro contents (more or less)
-\begin{enumerate}
-  \item Introduce the importance for blog preservation
-  \item Explain the difficulties in harvesting blogs
-  \item Explain why open source and Invenio
-  \item Introduce the blog crawler
-\end{enumerate}
+% Intro contents (more or less)
+% \begin{enumerate}
+%   \item Introduce the importance for blog preservation
+%   \item Explain the difficulties in harvesting blogs
+%   \item Explain why open source and Invenio
+%   \item Introduce the blog crawler
+% \end{enumerate}
 
-Challenges and constraints:
-\begin{enumerate}
-  \item size of blogosphere (Dealing with large volumes of data)
-  \item heterogeneous nature of different publishing platforms
-  \item ever-changing structure
-  \item dynamically created content using modern web technologies.
-  \item complexity in parsing blogs from unstructured data to structured information.
-  \item programmatic access to blog content unavailable
-  \item unpredictable publishing rate --> scalability
-  \item Providing a high degree of automation
-\end{enumerate}
-
-
+% Challenges and constraints:
+% \begin{enumerate}
+%   \item size of blogosphere (Dealing with large volumes of data)
+%   \item heterogeneous nature of different publishing platforms
+%   \item ever-changing structure
+%   \item dynamically created content using modern web technologies.
+%   \item complexity in parsing blogs from unstructured data to structured information.
+%   \item programmatic access to blog content unavailable
+%   \item unpredictable publishing rate --> scalability
+%   \item Providing a high degree of automation
+% \end{enumerate}
