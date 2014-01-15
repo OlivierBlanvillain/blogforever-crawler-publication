@@ -4,17 +4,31 @@ Blogs disappear every day. Losing data is obviously undesirable, but even more s
 
 Among the challenges in developing a blog archiving software is providing an automatic web crawler to traverse blogs and accurately their content. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of automatic extraction techniques necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents. Finally, an increasing number of blogs heavily rely on dynamically created content to present information, using the latest web technologies, invalidating traditional web crawling techniques.
 
+A key characteristic of blogs which differentiates them from regular website is their association with web feeds. Their primary use is to provide a uniform subscription mechanism, allowing users to keep track of the latest updates without the need periodically visit the blogs of interest. 
+
+push pull model
+usefully in many ways, 
+
+-> we can use web feed to build content extraction algorithm that, as we will see, outperform the more generic approaches that not rely on webfeed.
+
+an additional tool compared to regular web sites that is very usefully for monitoring updates and obtaining content.
+
+Blogs are strongly associated with web feeds, using technologies such as RSS and Atom. Web feeds are structured documents (often XML-based) that advertise and provide access to a website's content. 
+They do, however, present some problems:
+(a) web feeds contain only the latest posts of a blog (usually 20) and
+(b) web feeds may only provide a summary or a fraction of the entire content of each blog post. More advanced methods and techniques have to be employed in order to achieve quality blog archiving.
+
+
 Blogs are strongly associated with web feeds, using technologies such as RSS and Atom (expand and reference - needed?). Web feeds are structured documents (often XML-based) that advertize and provide access to a website's content. Given their format, web feeds constitute an excellent source for blog archiving. They do, however, present some problems: (a) web feeds contain only the latest posts of a blog (usually 20) and (b) web feeds may only provide a summary or a fraction of the entire content of each blog post. More advanced methods and techniques have to be employed in order to achieve quality blog archiving.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Contributions and Overview}
-We present the BlogForever Crawler, a key component of the BlogForever platform responsible for traversing, extracting content and monitoring updates of blogs.
-Our contributions are in particular:
+We present the BlogForever Crawler, a key component of the BlogForever platform responsible for traversing, extracting content and monitoring updates of blogs. Our contributions are in particular:
 
 \begin{itemize}
-  \item We present a new generic algorithm to build extraction from a set of pages and target content. We then derive an optimized reformulation tied to a particular string similarity and show that this reformulated algorithm has a linear time complexity.
-  \item We show how to use this algorithm to extract blog articles, and how it can be adapted to extract authors, publication dates and comments.
+  \item We present a new algorithm to build extraction rules from web feeds. We then derive an optimized reformulation tied to a particular string similarity and show that this reformulated algorithm has a linear time complexity.
+  \item We show how to use this algorithm for blog article extraction, and how it can be adapted to authors, publication dates and comments.
   \item We present the overall crawler architecture and the specific components we implemented to efficiently traverse blogs. We explain how our design allows for both modularity and scalability.
   \item We show who use make use of a complete web browser to render JavaScript powered web pages before processing them. This step allows our crawler to effectively harvest blogs build with modern technology, such at the increasingly popular third-party commenting systems.
   \item We present and analyze performance results of our algorithm in terms of extraction success rates and execution time. A comparison is made with three state-of-the-art article extraction algorithms.
