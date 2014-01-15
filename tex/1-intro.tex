@@ -1,50 +1,11 @@
 \section{Introduction}
 
-Blogs disappear every day. Losing data is obviously undesirable, but even more so when this data has historic, politic or scientific value. In contrast to books, newspapers or centralized web platforms like FaceBook and Twitter, there is no standard method or authority that ensures blog archiving and long-term digital preservation. \TODO{Somewere, \cite{anderson2012}}.
+Blogs disappear every day. Losing data is obviously undesirable, but even more so when this data has historic, politic or scientific value. In contrast to books, newspapers or centralized web platforms like Facebook, there is no standard method or authority to ensure blog archiving and long-term digital preservation. Yet, blogs are an important part of today's web: the WordPress reports more than 33 million new posts and 48 million new comments each month \cite{wordpress2014}. Blogs also showed to be an important resources during the 2011 Egyptian revolution where they played an instrumental role in the organization and implementation of protests. \cite{nahedeltantawy2012}\comment{not sure where to put this one}. The need for preservation for this volatile communication medium is today a necessity.\comment{Do you have a better closing sentence?}
 
-Yet, blogs are an important part of today's web
+Among the challenges in developing a blog archiving software is providing an automatic web crawler to traverse blogs and accurately their content. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of automatic extraction techniques necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents. Finally, an increasing number of blogs heavily rely on dynamically created content to present information, using the latest web technologies, invalidating traditional web crawling techniques.
 
-By June 2008 the Technorati Internet search engine for blogs reported indexing 112.8 million blogs \cite{technoratidata2008} 
+Blogs are strongly associated with web feeds, using technologies such as RSS and Atom (expand and reference - needed?). Web feeds are structured documents (often XML-based) that advertize and provide access to a website's content. Given their format, web feeds constitute an excellent source for blog archiving. They do, however, present some problems: (a) web feeds contain only the latest posts of a blog (usually 20) and (b) web feeds may only provide a summary or a fraction of the entire content of each blog post. More advanced methods and techniques have to be employed in order to achieve quality blog archiving.
 
-
-Blogs are a popular means of communication and expression of ideas and have been adopted by universities, institutions and scolars (reference?). Recenlty, blogs have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}. Their political, scientific and cultural significance is undisputed. (rephrase to avoid need for reference?)
-
-
-Given the nature of blogs, they are expectedly highly volatile web resources.
-
-
-However, to this day there is no standard method or authority that ensures blog archiving and long-term digital preservation. There is no guarantee that a disappearing or disappeared blog will ever be retrievable in the future \cite{anderson2012} Therefore, it is crucial that the necessary foundations for blog archiving are put in place.
-
-Recently, they have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}, 
-
-
-
-Blogs are a popular means of communication and expression of ideas and have been adopted by universities, institutions and scolars (reference?). Recently, blogs have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}. Their political, scientific and cultural significance is undisputed. (rephrase to avoid need for reference?)
-
-
-
-This will be reorganized like this:\\
-paragraph 1:\\
-- Blog disappear every day, Some of them are important\\
-- In contrast to newspaper and centralized services like FaceBook and Twitter there are no standards and no authorities to backup blogs\\
-- Yet, blogs are an important part of today's web (number, adoption by academics and organizations)\\
-\\
-paragraph 2:\\
-- Challenges (Now starts with "The blogosphere is a massive...")\\
-\\
-paragraph 3:\\
-- Web feed, why they are so handy (merged with 
-"Blogs are strongly associated with web feeds...")
-
-Web archiving is the process of harvesting and gathering web content in order to safely preserve it for posterity. As the volume and importance of the information on the World Wide Web increases, web archiving becomes more and more relevant and its importance becomes clearer. \comment{too early imo- Web crawlers are an essential part of web archiving, allowing for automated capturing of web resources. An efficient and accurate web crawler is the first crucial step to successful digital preservation.}
-
-By June 2008 the Technorati Internet search engine for blogs reported indexing 112.8 million blogs \cite{technoratidata2008} while in July 2005 they had estimated that the size of the blogosphere was doubling every 5.5 months \cite{bloggrowth2005}. A blog is a \emph{frequently updated web site consisting of personal observations, excerpts from other sources, etc., typically run by a single person, and usually with hyperlinks to other sites; an online journal or diary.} -- Oxford English Dictionary\\ Given the nature of blogs, they are expectedly highly volatile web resources.
-
-Blogs are a popular means of communication and expression of ideas and have been adopted by universities, institutions and scolars (reference?). Recenlty, blogs have also been used to disseminate ideas in times of political turmoil or even war\cite{nahedeltantawy2012}. Their political, scientific and cultural significance is undisputed. (rephrase to avoid need for reference?)
-
-However, to this day there is no standard method or authority that ensures blog archiving and long-term digital preservation. There is no guarantee that a disappearing or disappeared blog will ever be retrievable in the future \cite{anderson2012} Therefore, it is crucial that the necessary foundations for blog archiving are put in place.
-
-The blogosphere is a massive web resource of unstructured data. Identifying, harvesting and parsing that data can be a very challenging task. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of efficient extraction techniques that offer a high degree of automation necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents. Finaly, modern blogs heavily rely on dynamically created content to present information, using the latest web technologies, invalidating most traditional web crawling techniques.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Contributions and Overview}
