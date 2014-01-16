@@ -30,7 +30,7 @@ Web feeds usually contain about 20 blog posts \cite{oita2010}, often less than t
 To extract content from blog posts, we proceed by building extraction rules from the data given in the blog's web feed. The idea is to use a set of \emph{training data}, pairs of HTML pages and target content, which are used to build an extraction rule capable of locating the target content on each HTML page.
 
 % input from observations.
-Observation \ref{havefeedAssum} allows the crawler to obtain input for the extraction rule builder algorithm: each web feed entry contains a link to the corresponding web page as well as target content such as the article, its title, authors and publication date. Observation \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
+Observation \ref{havefeedAssum} allows the crawler to obtain input for the extraction rule builder algorithm: each web feed entry contains a link to the corresponding web page as well as blog post article (either abstract or full text), its title, authors and publication date. We call these fields \emph{targets} as they constitute the data our crawler aims to extract. Observation \ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
 
 % textual pseudocode
 \autoref{extractionAlgo} shows the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute, out of all possible extraction rules, the best one with respect to a certain \code{ScoreFunction}. The rule which is most frequently the \emph{best rule} is then returned.
