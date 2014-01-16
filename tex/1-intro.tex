@@ -1,26 +1,11 @@
 \section{Introduction}
 
-Blogs disappear every day. Losing data is obviously undesirable, but even more so when this data has historic, politic or scientific value. In contrast to books, newspapers or centralized web platforms like Facebook, there is no standard method or authority to ensure blog archiving and long-term digital preservation. Yet, blogs are an important part of today's web: the WordPress reports more than 33 million new posts and 48 million new comments each month \cite{wordpress2014}. Blogs also showed to be an important resource during the 2011 Egyptian revolution by playing an instrumental role in the organization and implementation of protests. \cite{nahedeltantawy2012}\comment{Not sure where to put this one...}. The need for preservation of this volatile communication medium is today a necessity.\comment{Do you have a better closing sentence?}
+Blogs disappear every day. Losing data is obviously undesirable, but even more so when this data has historic, politic or scientific value. In contrast to books, newspapers or centralized web platforms like Facebook, there is no standard method or authority to ensure blog archiving and long-term digital preservation. Yet, blogs are an important part of today's web: the WordPress reports more than 33 million new posts and 48 million new comments each month \cite{wordpress2014}. Blogs also showed to be an important resource during the 2011 Egyptian revolution by playing an instrumental role in the organization and implementation of protests. \cite{nahedeltantawy2012}. The need for preservation of this volatile communication medium is today a necessity. \comment{Do you have a better closing sentence?}
 
-Among the challenges in developing a blog archiving software is* providing a web crawler capable of efficiently traversing blogs to harvest their content. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of automatic extraction techniques necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents. Finally, an increasing number of blogs heavily rely on dynamically created content to present information, using the latest web technologies, hence invalidating traditional web crawling techniques.
+Among the challenges in developing a blog archiving software is the design of a web crawler capable of efficiently traversing blogs to harvest their content. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of automatic extraction techniques necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further limited by the ever-changing structure of blog contents. Finally, an increasing number of blogs heavily rely on dynamically created content to present information, using the latest web technologies, hence invalidating traditional web crawling techniques.
 
-A key characteristic of blogs which differentiates them from regular website is their association with web feeds. Their primary use is to provide a uniform subscription mechanism, allowing users to keep track of the latest updates without the need to visit their blogs of interest. The two competing web feed technologies, Atom and RSS, use **the pull model**. Concretely, a web feed is a XML file containing links to the last posts of blog, along with abstracts or the full texts of articles and the associated metadate.
+A key characteristic of blogs which differentiates them from regular website is their association with web feeds. Their primary use is to provide a uniform subscription mechanism, thereby allowing users to keep track of the latest updates without the need to visit their blogs of interest. Concretely, a web feed is a XML file containing links to the lastest blog posts along with their articles (abstract or full text) and associated metadata. While web feeds essentially solve the question of update monitoring, their limited size makes it necessary to download blog web pages in order to harvest old content.
 
-
-usefully in many ways, 
-
--> we can use web feed to build content extraction algorithm that, as we will see, outperform the more generic approaches that not rely on web feed.
-
-an additional tool compared to regular web sites that is very usefully for monitoring updates and obtaining content.
-
-Blogs are strongly associated with web feeds, using technologies such as RSS and Atom. Web feeds are structured documents (often XML-based) that advertise and provide access to a website's content. 
-They do, however, present some problems:
-(a) web feeds contain only the latest posts of a blog (usually 20) and
-(b) web feeds may only provide a summary or a fraction of the entire content of each blog post. More advanced methods and techniques have to be employed in order to achieve quality blog archiving.
-
-
-Blogs are strongly associated with web feeds, using technologies such as RSS and Atom (expand and reference - needed?). Web feeds are structured documents (often XML-based) that advertize and provide access to a website's content. Given their format, web feeds constitute an excellent source for blog archiving. They do, however, present some problems: (a) web feeds contain only the latest posts of a blog (usually 20) and (b) web feeds may only provide a summary or a fraction of the entire content of each blog post. More advanced methods and techniques have to be employed in order to achieve quality blog archiving.
-  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Contributions and Overview}
