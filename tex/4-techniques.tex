@@ -42,6 +42,8 @@ Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, w
 \end{enumerate}
 This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing one single line of code.
 
+\TODO{Write this properly...}
+One of the main advantages of having full control over the crawling process is that contrarily to the general purpose crawlers, we do not to store all the web pages material. Instead, the content of interest is computed "on the fly", and directly saved into the back-end system. This propriety ...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Enriching Scrapy}\label{enrichingscrapy}
