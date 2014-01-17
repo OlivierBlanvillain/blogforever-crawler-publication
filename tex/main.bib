@@ -14,6 +14,14 @@
 	howpublished = {{http://goo.gl/Ma3G2I}}
 },
 
+@techreport{najork2001,
+	title = {High-performance web crawling},
+	abstract = {{SRC{\textquoteright}s} charter is to advance the state of the art in computer systems by doing basic and applied research in support of our company{\textquoteright}s business objectives. Our interests and projects span scalable systems (including hardware, networking, distributed systems, and programming-language technology), the Internet (including the Web, e-commerce, and information retrieval), and human/computer interaction (including user-interface technology, computer-based appliances, and mobile computing). {SRC} was established in 1984 by Digital Equipment Corporation. We test the value of our ideas by building hardware and software prototypes and assessing their utility in realistic settings. Interesting systems are too complex to be evaluated solely in the abstract; practical use enables us to investigate their properties in depth. This experience is useful in the short term in refining our designs and invaluable in the long term in advancing our knowledge. Most of the major advances in information systems have come through this approach, including personal computing, distributed systems, and the Internet. We also perform complementary work of a more mathematical character. Some of},
+	institution = {{SRC} Research Report 173, Compaq Systems Research},
+	author = {Najork, Marc and Heydon, Allan and Najork, Marc and Heydon, Allan},
+	year = {2001}
+},
+
 @inproceedings{muslea1999,
 	address = {New York, {NY}, {USA}},
 	series = {{AGENTS} '99},
@@ -282,6 +290,17 @@
 	pages = {127{\textendash}132}
 },
 
+@inproceedings{berger2011,
+	title = {Mapping the {Blogosphere{\textendash}Towards} a Universal and Scalable {Blog-Crawler}},
+	doi = {10.1109/PASSAT/SocialCom.2011.57},
+	abstract = {The massive adoption of social media has provided new ways for individuals to express their opinions online. The blogosphere, an inherent part of this trend, contains a vast array of information about a variety of topics. Thus, it is a huge think tank that creates an enormous and ever-changing archive of open source intelligence. Modeling and mining this vast pool of data to extract and describe meaningful knowledge in order to leverage (content-related) structures and dynamics of emerging networks within the blogo sphere is the higher-level aim of the research presented here. While the concept of our tailor-mode feed-crawler was already discussed in two earlier publications this paper focuses on our approach to extend the earlier feed crawler to a more universal and highly scalable blog-crawler.},
+	booktitle = {Privacy, security, risk and trust (passat), 2011 ieee third international conference on and 2011 ieee third international conference on social computing (socialcom)},
+	author = {Berger, P. and Hennig, P. and Bross, J. and Meinel, C.},
+	year = {2011},
+	keywords = {Blog, blog-crawler, blogosphere, Blogs, Crawlers, Databases, Data mining, Feeds, Hardware, Hasso Plattner, {HTML}, {In-Memory}, {MapReduce}, open source intelligence, Ranking, social media, Social Media Monitoring, social networking (online), tailor-mode feed-crawler},
+	pages = {672--677}
+},
+
 @misc{w3c2002,
 	title = {Use {\textless}h1{\textgreater} for top level heading},
 	url = {http://www-mit.w3.org/QA/Tips/Use_h1_for_Title},
@@ -297,6 +316,27 @@
 	author = {python-readability},
 	year = {2011},
 	howpublished = {https://github.com/gfxmonk/python-readability}
+},
+
+@inproceedings{shkapenyuk2002,
+	title = {Design and implementation of a high-performance distributed Web crawler},
+	doi = {10.1109/ICDE.2002.994750},
+	abstract = {Broad Web search engines as well as many more specialized search tools rely on Web crawlers to acquire large collections of pages for indexing and analysis. Such a Web crawler may interact with millions of hosts over a period of weeks or months, and thus issues of robustness, flexibility, and manageability are of major importance. In addition, {I/O} performance, network resources, and {OS} limits must be taken into account in order to achieve high performance at a reasonable cost. In this paper, we describe the design and implementation of a distributed Web crawler that runs on a network of workstations. The crawler scales to (at least) several hundred pages per second, is resilient against system crashes and other events, and can be adapted to various crawling applications. We present the software architecture of the system, discuss the, performance bottlenecks, and describe efficient techniques for achieving high performance. We also report preliminary experimental results based on a crawl of 120 million pages on 5 million hosts},
+	booktitle = {18th International Conference on Data Engineering, 2002. Proceedings},
+	author = {Shkapenyuk, V. and Suel, Torsten},
+	year = {2002},
+	keywords = {analysis, Application software, broad Web search engines, Computer crashes, Costs, Crawlers, flexibility, high-performance distributed Web crawler, hypermedia, indexing, information retrieval, Internet, {I/O} performance, manageability, network of workstations, network resources, {OS} limits, performance bottlenecks, robustness, search engines, software architecture, specialized search tools, Web search, workstation clusters, Workstations},
+	pages = {357--368}
+},
+
+@inproceedings{boldi2003,
+	title = {{UbiCrawler:} a scalable fully distributed web crawler},
+	shorttitle = {{UbiCrawler}},
+	url = {http://citeseer.uark.edu:8380/citeseerx/viewdoc/similar;jsessionid=9A1EB49FA584CEE26215545EDBE977AA?doi=10.1.1.14.4239&type=sc},
+	abstract = {{CiteSeerX} - Document Details {(Isaac} Councill, Lee Giles): We report our experience in implementing {UbiCrawler}, a scalable distributed web crawler, using the Java programming language. The main features of {UbiCrawler} are platform independence, fault tolerance, a very effective assignment function for partitioning the domain to crawl, and more in general the complete decentralization of every task. The necessity of handling very large sets of data has highlighted some limitation of the Java {APIs}, which prompted the authors to partially reimplement them.},
+	author = {Boldi, Paolo and Codenotti, Bruno and Santini, Massimo and Vigna, Sebastiano},
+	year = {2003},
+	keywords = {Bruno Codenotti, {CiteSeerX}, Massimo Santini, Paolo Boldi, Sebastiano Vigna}
 },
 
 @misc{scrapy2014,
