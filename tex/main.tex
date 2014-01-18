@@ -74,31 +74,35 @@
   \hypersetup{pageanchor=false}
   \maketitle
 
-  % Feedback to olivier.blanvillain@gmail.com or on \surl{github.com/OlivierBlanvillain/blogforever-crawler-publication}.\\ Thanks for reading :)
-
   \begin{abstract}
     \input{0-abstract.tex}
   \end{abstract}
+  
+  ~\\\TODO{I'm for including the first two categories:}
+  
+  \category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information filtering, Selection process]
+  \category{\\D.2.8}{Software Engineering}{Metrics}[Complexity measures, Performance measures]
+  \category{\\H.3.7}{Information Storage and Retrieval}{Digital Libraries}[Collection]
+  \category{\\H.3.4}{Information Storage and Retrieval}{Systems and Software}[Performance evaluation]
+  
+  % In order of most significant, first letter of each word capitalized.
+  \terms{Design, Algorithms, Performance, Experimentation}
 
-  % % A category with the (minimum) three required fields
-  % \category{H.4}{Information Systems Applications}{Miscellaneous}
-  % %A category including the fourth, optional field follows...
-  % \category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
-
-  \terms{Algorithms, Software Engineering}
-
-  \keywords{Web crawling, Web Data Extraction, Wrapper Generation, Web archiving, ...}
+  % In alphabetical order, first letter of the first word capitalized.
+  \keywords{Blog crawler, wrapper generation, web data extraction}
 
   \input{algos.tex}
   \input{tables.tex}
+  ~\\
   \input{1-intro.tex}
-  \input{2-related-work.tex}
   \clearpage
   \input{3-algorithms.tex}
   \clearpage
   \input{4-techniques.tex}
   \clearpage
   \input{5-evaluation.tex}
+  \clearpage
+  \input{2-related-work.tex}
   \clearpage
   \input{6-conclusion-and-future-work.tex}
 
