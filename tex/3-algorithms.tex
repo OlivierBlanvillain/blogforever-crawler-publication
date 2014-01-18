@@ -1,7 +1,7 @@
 \section{Algorithms}
 \label{algorithms}
 
-This section explains in detail the algorithms we developed to extract blog post articles as well as its variations for authors, dates and comments. Our approach uses blog specific characteristics to build extraction rules which are applicable to all posts of throughout a blog. Our focus is on minimizing the algorithmic complexity while keeping our approach simple and generic.
+This section explains in detail the algorithms we developed to extract blog post articles as well as its variations for authors, dates and comments. Our approach uses blog specific characteristics to build extraction rules which are applicable to all blog posts. Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -16,14 +16,14 @@ Extracting metadata and content from HTML documents is a challenging task. Stand
 % observations when working with blogs
 Having blogs as our target websites, we made the following observations which play a central role in the extraction process\Anote{observations}:
 \begin{enumerate}[label={(\arabic*)}]
-  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog,
-  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
+  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure,
+  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog.
 \end{enumerate}
 Web feeds usually contain about 20 blog posts \cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive the entire content of a blog, it is necessary to download and process pages beyond the ones referenced in web feed.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Content extraction}
+\subsection{Content extraction overview}
 \label{contentextraction}
 
 % per blog procedure, related work
@@ -43,7 +43,7 @@ One might notice that each \emph{best rule} computation is independent and opera
 % abs, plan
 Functions in \autoref{extractionAlgo} are voluntarily abstract at this point and will be explained in detail in the remaining of this section.
 \hyperref[extractionrulesandstringsimilarity]{Subsection~\ref*{extractionrulesandstringsimilarity}} % Waiting for \Autoref{}...
-defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In \autoref{timecomplexityandlinearreformulation} we analyse the time complexity of \autoref{extractionAlgo} and give a linear time reformulation using dynamic programing. Finally, \autoref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
+defines \code{AllRules}, \code{Apply} and the \code{ScoreFunction} we use for article extraction. In \autoref{timecomplexityandlinearreformulation} we analyse the time complexity of \autoref{extractionAlgo} and give a linear time reformulation using dynamic programming. Finally, \autoref{variationsforauthorsdatesandcomments} shows how the \code{ScoreFunction} can be adapted to extract authors, dates and comments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction rules and string similarity}

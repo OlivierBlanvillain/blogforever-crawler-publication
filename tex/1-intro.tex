@@ -1,22 +1,31 @@
 \section{Introduction}
 
-Blogs disappear every day. Losing data is obviously undesirable, but even more so when this data has historic, political or scientific value. In contrast to books, newspapers or centralized web platforms like Facebook, there is no standard method or authority to ensure blog archiving and long-term digital preservation. Yet, blogs are an important part of today's web: WordPress reports more than 33 million new posts and 48 million new comments each month \cite{wordpress2014}. Blogs also showed to be an important resource during the 2011 Egyptian revolution by playing an instrumental role in the organization and implementation of protests. \cite{nahedeltantawy2012}. The need to preserve this volatile communication medium is nowadays very clear.
+Blogs disappear every day \cite{johnson2008blogs}. Losing data is obviously undesirable, but even more so when this data has historic, political or scientific value. In contrast to books, newspapers or centralized web platforms like Facebook, there is no standard method or authority to ensure blog archiving and long-term digital preservation. Yet, blogs are an important part of today's web: WordPress reports more than 33 million new posts and 48 million new comments each month \cite{wordpress2014}. Blogs also showed to be an important resource during the 2011 Egyptian revolution by playing an instrumental role in the organization and implementation of protests. \cite{nahedeltantawy2012}. The need to preserve this volatile communication medium is nowadays very clear.
 
 Among the challenges in developing a blog archiving software is the design of a web crawler capable of efficiently traversing blogs to harvest their content. The sheer size of the blogosphere combined with an unpredictable publishing rate of new information call for a highly scalable system, while the lack of programmatic access to the complete blog content makes the use of automatic extraction techniques necessary. The variety of available blog publishing platforms offers a limited common set of properties that a crawler can exploit, further narrowed by the ever-changing structure of blog contents. Finally, an increasing number of blogs heavily rely on dynamically created content to present information, using the latest web technologies, hence invalidating traditional web crawling techniques.
 
-A key characteristic of blogs which differentiates them from regular websites is their association with web feeds. Their primary use is to provide a uniform subscription mechanism, thereby allowing users to keep track of the latest updates without the need to actually visit blogs. Concretely, a web feed is an XML file containing links to the latest blog posts along with their articles (abstract or full text) and associated metadata. Nevertheless, while web feeds essentially solve the question of update monitoring, their limited size makes it necessary to download blog web pages in order to harvest previous content.
+A key characteristic of blogs which differentiates them from regular websites is their association with web feeds \cite{lindahl2003weblogs}. Their primary use is to provide a uniform subscription mechanism, thereby allowing users to keep track of the latest updates without the need to actually visit blogs. Concretely, a web feed is an XML file containing links to the latest blog posts along with their articles (abstract or full text) and associated metadata \cite{board2007rss}. Nevertheless, while web feeds essentially solve the question of update monitoring, their limited size makes it necessary to download blog web pages in order to harvest previous content.
 
+\TODO{
+  After writing the first sentece, you should write what are our aims in this work. (keep it in the same paragraph).\\
+  \\
+  Our main objective in this work are to create better algorithms and techniques for blog content extraction. (maybe you want to write something extra here+++, then, continue with the contributions:\\
+  \\
+  Our contributions can be summarised as follows:
+}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Contributions and Overview}
-We present the BlogForever Crawler, a key component of the BlogForever platform responsible for traversing blogs, extracting their content and monitoring their updates. Our contributions are in particular:
+We present the BlogForever Crawler, a key component of the BlogForever platform \cite{kasioumis2013towards} responsible for traversing blogs, extracting their content and monitoring their updates. Our contributions can be summarized as follows:
 
 \begin{itemize}
   \item We present a new algorithm to build extraction rules from web feeds. We then derive an optimized reformulation tied to a particular string similarity metric and show that this reformulated algorithm has a linear time complexity.
   \item We show how to use this algorithm for blog article extraction and how it can be adapted to authors, publication dates and comments.
   \item We present the overall crawler architecture and the specific components we implemented to efficiently traverse blogs. We explain how our design allows for both modularity and scalability.
   \item We show how we make use of a complete web browser to render JavaScript powered web pages before processing them. This step allows our crawler to effectively harvest blogs built with modern technology, such as the increasingly popular third-party commenting systems.
-  \item We present and analyze performance results of our algorithm in terms of extraction success rates and execution time. A comparison is made with three state-of-the-art article extraction algorithms.
+  \item We evaluate the content extraction and execution time of our algorithm against three state-of-the-art web article extraction algorithms.
 \end{itemize}
+  
+\TODO{This part should be removed and the information contained here should go before the bullets (where you say what are our aims)}
 
 Although our crawler implementation is integrated with the BlogForever platform, the presented techniques and algorithms can be used in other applications related to Wrapper Generation and Web Data Extraction.
+
+The rest of the paper is organized as follows. In Section 2, we present related work on web crawlers and web data extraction. In Section 3, we define our algorithms and in Section 4 we explain the techniques we used for implementation. We evaluate our algorithms and present results in Section 5. Finally, in Section 6 we present our conclusions and future work.

@@ -6,13 +6,13 @@ In our experiments we used \emph{Debian GNU/Linux 7.2}, \emph{Python 2.7} and an
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Extraction success rates}
-To evaluate article and title extraction from blog posts we compared our approach to three open source projects: Readability \cite{python-readability2011}, Boilerpipe \cite{kohlschuetter2010} and Goose \cite{goose2012}, implemented in JavaScript, Java and Scala respectively. These projects are more generic than our blog-specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of the same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}). \autoref{precisionTable} shows the extraction success rates for article and title on a test sample of 2300 blog posts obtained from the Spinn3r dataset \cite{burton2011}.
+To evaluate article and title extraction from blog posts we compared our approach to three open source projects: Readability \cite{python-readability2011}, Boilerpipe \cite{kohlschuetter2010} and Goose \cite{goose2012}, implemented in JavaScript, Java and Scala respectively. These projects are more generic than our blog-specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of the same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}). \autoref{precisionTable} shows the extraction success rates for article and title on a test sample of 2300 blog posts from 230 blogs obtained from the Spinn3r dataset \cite{burton2011}.
 
 % An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
 
 \precisionTable
 
-On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data used to build extraction rules. Therefore, results showen in \autoref{precisionTable} should not be interpreted as a general quality evaluation of the different projects, but simply as an evidence that our approach is more suitable when working with blogs.
+On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data used to build extraction rules. Therefore, results showed in \autoref{precisionTable} should not be interpreted as a general quality evaluation of the different projects, but simply as an evidence that our approach is more suitable when working with blogs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,6 +28,11 @@ In addition to the quality of the extracted data we also evaluated the running t
 Data presented in this graph was obtained by taking the arithmetic mean over 10 measurements. These results are believed to be significant given that standard deviations are of the order of 2 milliseconds.
 
 \input{runningtimeFigure.tex}
+
+\TODO{\\
+  > what is the initial computation time? It would be good to know and have some numbers.\\\\
+  The initial computations is the time we spend to go from 0 to 1 processed blog posts on the graph, which includes processing the web feed and the 15 pages it contains. I have the exact numbers in the repo but it's basically the tiny white space we see on the graph, ~1/8 second.
+}
 
 Past the initial computations, the cost of processing a blog post with our approach is almost zero. This is a consequence of having a blog-aware, rule-based algorithm. As already mentioned, the central idea is to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. The initial increase in the curve of our approach corresponds to the computation of the extraction rules, which consists of processing the web feed and all the blog posts it references. Subsequent computations only involve parsing blog posts and applying extraction rules, which takes about 3 milliseconds and are barely visible on the scale of \autoref{runningtime}. The other evaluated solutions do not function this way: each blog post is processed as new and independent input, leading to approximately linear running times.
 
