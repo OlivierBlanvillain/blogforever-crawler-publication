@@ -6,7 +6,7 @@ Among the challenges in developing a blog archiving software is the design of a 
 
 A key characteristic of blogs which differentiates them from regular websites is their association with web feeds \cite{lindahl2003weblogs}. Their primary use is to provide a uniform subscription mechanism, thereby allowing users to keep track of the latest updates without the need to actually visit blogs. Concretely, a web feed is an XML file containing links to the latest blog posts along with their articles (abstract or full text) and associated metadata \cite{board2007rss}. Nevertheless, while web feeds essentially solve the question of update monitoring, their limited size makes it necessary to download blog web pages in order to harvest previous content.
 
-We present the BlogForever Crawler, a key component of the BlogForever platform \cite{kasioumis2013towards} responsible for traversing blogs, extracting their content and monitoring their updates. Our main objective in this work is to design a crawler capable of extracting blog articles, authors, publication dates and comments. Our contributions can be summarized as follows:
+This paper presents the BlogForever Crawler, a key component of the BlogForever platform \cite{kasioumis2013towards} responsible for traversing blogs, extracting their content and monitoring their updates. Our main objective in this work is to design a crawler capable of extracting blog articles, authors, publication dates and comments. Our contributions can be summarized as follows:
 
 \begin{itemize}
   \item We present a new algorithm to build extraction rules from web feeds. We then derive an optimized reformulation tied to a particular string similarity metric and show that this reformulated algorithm has a linear time complexity.

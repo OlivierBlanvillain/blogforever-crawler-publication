@@ -1,7 +1,7 @@
 \section{Architecture}
 \label{architecture}
 
-This section provides an overview of the crawler system architecture and the different techniques we used. The overall software architecture is presented and discussed, introducing the Scrapy framework and the enrichments we implemented for our specific usage. Then, we show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. Finally, we talk about the design choices we made in view of a large scale deployment.
+This section provides an overview \TODO{issue with subsection name} of the crawler system architecture and the different techniques we used. The overall software architecture is presented and discussed, introducing the Scrapy framework and the enrichments we implemented for our specific usage. Then, we show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. Finally, we talk about the design choices we made in view of a large scale deployment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Overview}
@@ -16,7 +16,7 @@ Our use case has two types of spiders: \emph{NewCrawl} and \emph{UpdateCrawl}, w
   \item Download multimedia files
   \item Propagate resulting records to the back end
 \end{enumerate}
-This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing one single line of code.
+This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing a single line of code.
 
 \TODO{Write this properly...}
 One of the main advantages of having full control over the crawling process is that contrarily to the general purpose crawlers, we do not to store all the web pages material. Instead, the content of interest is computed "on the fly", and directly saved into the back-end system. This propriety ...
@@ -55,7 +55,7 @@ When the number of comments on a page exceeds a certain threshold, both Disqus a
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalability}
-When aiming to work with a large amount of input, it is crucial to build every layer of a system with scalability in mind \cite{thereactivemanifesto2013}. The BlogForever crawler, and in particular the two core procedures \emph{NewCrawl} and \emph{UpdateCrawl}, are designed to be usable as part of an event-driven, scalable and fault-resilient distributed system.
+When aiming to work with a large amount of input, it is crucial to build every layer of a system with scalability in mind \cite{thereactivemanifesto2013}. The BlogForever Crawler, and in particular the two core procedures \emph{NewCrawl} and \emph{UpdateCrawl}, are designed to be usable as part of an event-driven, scalable and fault-resilient distributed system.
 
 Heading in this direction, we made the key design choice to have both \emph{NewCrawl} and \emph{UpdateCrawl} as stateless components. From a high-level point of view, these two components are \emph{purely functional}:
 %

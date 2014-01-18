@@ -1,11 +1,9 @@
 \section{Related work}
 \label{relatedwork}
 
-\Anotecontent{wrapper}{In the literature, procedures to extract structured data from unstructured document are commonly referred as \emph{wrappers}. In this paper we decided to rather employ the less generic term of \emph{extraction rules} which is closer to our implementation.}
+Web crawling has been a well-studied topic over the last decade. One direction of study which we believe to be of crucial importance is the one of large scale distributed crawlers. Our design is influenced by the work Heydon and Najork work on Mercator \cite{heydon99mercator}, Boldi et al. work's on UbiCrawler \cite{boldi2003} and Shkapenyuk and Suel work's on their spider discussed in \cite{shkapenyuk2002}. One of the core issues when scaling out a crawler seems to be in sharing the list URLs that have already been visited and need to be visited next. While \cite{heydon99mercator} and \cite{shkapenyuk2002} rely on a central node to hold this information, \cite{boldi2003} uses a fully distributed architecture where URLs are divided among nodes using consistent hashing. Both of these approaches require complex mechanisms to achieve fault tolerance.
 
-The BlogForever Crawler combines ideas from previous work on general web crawlers and extraction rule\Anote{wrapper} generation algorithms.
-
-Research on large scale distributed crawler such as Mercator \cite{najork2001}, used by AltaVista, the spider discussed in \cite{shkapenyuk2002} or UbiCrawler \cite{boldi2003} are enlightening regarding the difficulties arising when scale out a crawler. One of the core issues seems to be in sharing the list URLs which have already been visited and need to be visited. While \cite{najork2001} and \cite{shkapenyuk2002} rely on a central node to hold this information, \cite{boldi2003} uses a fully distributed architecture where URLs are divided among nodes using consistent hashing. Both of these approaches require complex mechanisms to achieve fault tolerance. The BlogForever crawler circumvent this problem by delegating all state the back-end system. This shared nothing architecture between crawler instance is made possible by the fact that our unit of computations, crawling a entire blog, is much large than fetching a single URL and does not generate further crawling tasks. In addition, because we process web pages on the fly and directly emit the extracted content to the back-end, there is no need for persistent storage on the crawler side. This removes one layer of complexity when compared to general crawler which need use a distributed file system or implement an aggregation mechanism in order to further use the collected data.
+The BlogForever Crawler -circumvent- delegates this problem by delegating all state the back-end system. This shared nothing architecture between crawler instance is made possible by the fact that our unit of computations, crawling a entire blog, is much large than fetching a single URL and does not generate further crawling tasks. In addition, because we process web pages on the fly and directly emit the extracted content to the back-end, there is no need for persistent storage on the crawler side. This removes one layer of complexity when compared to general crawler which need use a distributed file system or implement an aggregation mechanism in order to further use the collected data.
 
 \cite{shkapenyuk2002} used NFS, \cite{berger2011} uses HDFS
 
@@ -13,6 +11,22 @@ Research on large scale distributed crawler such as Mercator \cite{najork2001}, 
 these works do not clearly address how to extract other info link author and publication date, and do not include complexity analysis which is something that cannot be ignored when aiming for a universal large scale solution.
 
 \comment{One very common approach for web crawling is to follow different crawling techniques for different types of web applications and different platforms. Application-aware crawling is based on a knowledge base of web applications and their corresponding special web crawling instructions. The drawback of this type of approach is that it does not scale and it cannot cope with the increasing number and diversity of web applications. \cite{faheem2012intelligent}}
+
+
+
+\Anotecontent{wrapper}{In the literature, procedures to extract structured data from unstructured document are commonly referred as \emph{wrappers}. In this paper we decided to rather employ the less generic term of \emph{extraction rules} which is closer to our implementation.}
+
+The BlogForever Crawler combines ideas from previous work on general web crawlers and extraction rule\Anote{wrapper} generation algorithms.
+
+
+
+Several experiments have been conducted in 
+
+There have been several successful research working design distributed crawlers 
+
+
+
+
 
 % Web archiving is a challenging and very interesting problem and has been the subject of many studies as well as the goal of several projects.
 % \comment{Mention Internet Archive here and maybe another generic web archiving project}
