@@ -1,8 +1,7 @@
 \section{Conclusion and Future Work}
-% What we presented, what we solved
-In this paper, we presented the internals of the BlogForever web crawler. Its central article extraction procedure based on extraction rules generation was introduced along with theoretical and empirical evidence validating the approach. A simple adaptation of this procedure that allows to extract different types of content, including authors, dates and comments was then presented. In order to support rapidly evolving web technologies such as JavaScript-generated content, the crawler uses a web browser to render pages before processing them. We also discussed the overall software architecture, highlighting the design choices made to achieve both modularity and scalability.\TODO{Finally, ... evaluation}
 
-% Future work, hybrid algos
+In this paper, we presented the internals of the BlogForever web crawler. Its central article extraction procedure based on extraction rules generation was introduced along with theoretical and empirical evidence validating the approach. A simple adaptation of this procedure that allows to extract different types of content, including authors, dates and comments was then presented. In order to support rapidly evolving web technologies such as JavaScript-generated content, the crawler uses a web browser to render pages before processing them. We also discussed the overall software architecture, highlighting the design choices made to achieve both modularity and scalability. Finally, we evaluated our content extraction algorithm against three state-of-the-art web article extraction algorithms.
+
 Future work could investigate \emph{hybrid} extraction algorithms to try and achieve near 100\% success rates. 
 
 \TODO{\\
@@ -14,5 +13,4 @@ Future work could investigate \emph{hybrid} extraction algorithms to try and ach
 
 Even if the overall performance of our approach is better than those of comparable projects (as shown in the evaluation), there are still a few cases where other techniques managed to extract data and we did not. This suggests that combining our approach with others such such as word density, tree edit distance matching or even spacial reasoning could lead to better performance.
 
-% Deployment on a distributed architecture
-Another possible research direction would be the deployment of the BlogForever crawler on a large scale distributed system. This is particularly relevant in the domain of web crawling given that intensive network operations can be a serious bottleneck. Crawler greatly benefits from the use of multiple Internet access points which makes them natural candidates for distributed computing. We intend to explore these opportunitie in our future work.
+Another possible research direction would be the deployment of the BlogForever crawler on a large scale distributed system. This is particularly relevant in the domain of web crawling given that intensive network operations can be a serious bottleneck. Crawler greatly benefits from the use of multiple Internet access points which makes them natural candidates for distributed computing. We intend to explore these opportunities in our future work.

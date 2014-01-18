@@ -8,8 +8,6 @@ In our experiments we used \emph{Debian GNU/Linux 7.2}, \emph{Python 2.7} and an
 \subsection{Extraction success rates}
 To evaluate article and title extraction from blog posts we compared our approach to three open source projects: Readability \cite{python-readability2011}, Boilerpipe \cite{kohlschuetter2010} and Goose \cite{goose2012}, implemented in JavaScript, Java and Scala respectively. These projects are more generic than our blog-specific approach in the sense that they are able to identify and extract data directly from HTML source code, and do not make use of web feeds or structural similarities between pages of the same blog (observations \ref{havefeedAssum} and \ref{similarhtmlAssum}). \autoref{precisionTable} shows the extraction success rates for article and title on a test sample of 2300 blog posts from 230 blogs obtained from the Spinn3r dataset \cite{burton2011}.
 
-% An extraction was considered successful when the returned string is a least 0.5 similar to the reference string, with respect to the Sørensen–Dice coefficient similarity.
-
 \precisionTable
 
 On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9\% on article extraction and 10.1\% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages with associated web feeds, as these provide the reference data used to build extraction rules. Therefore, results showed in \autoref{precisionTable} should not be interpreted as a general quality evaluation of the different projects, but simply as an evidence that our approach is more suitable when working with blogs.
@@ -18,13 +16,10 @@ On our test dataset \autoref{extractionAlgo} outperformed the competition by 4.9
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Article extraction running times}
 
-% running time eval, scalability with size of blogs
 In addition to the quality of the extracted data we also evaluated the running time of the extraction procedure. The main point of interest is the ability of the extraction procedure to scale as the number of posts in the processed blog increases. This corresponds to the evaluation of a \emph{NewCrawl} task, which is in charge of harvesting all published content on a blog.
 
-% the graph
 \autoref{runningtime} shows the cumulated time spent for each article extraction procedure (this excludes common tasks such as downloading pages and storing results) as a function of the number of blog posts processed. We used the Quantum Diaries \cite{quantumdiaries} blog for this experiment.
 
-% standard deviations
 Data presented in this graph was obtained by taking the arithmetic mean over 10 measurements. These results are believed to be significant given that standard deviations are of the order of 2 milliseconds.
 
 \input{runningtimeFigure.tex}
@@ -37,34 +32,3 @@ Data presented in this graph was obtained by taking the arithmetic mean over 10 
 Past the initial computations, the cost of processing a blog post with our approach is almost zero. This is a consequence of having a blog-aware, rule-based algorithm. As already mentioned, the central idea is to first build extraction rules using the information provided by the web feed, and then use these rules on all posts of the blog. The initial increase in the curve of our approach corresponds to the computation of the extraction rules, which consists of processing the web feed and all the blog posts it references. Subsequent computations only involve parsing blog posts and applying extraction rules, which takes about 3 milliseconds and are barely visible on the scale of \autoref{runningtime}. The other evaluated solutions do not function this way: each blog post is processed as new and independent input, leading to approximately linear running times.
 
 The vertical dashed line at 15 processed blog posts represents a suitable point of comparison of processing time per blog post as the test blog's web feed contains 15 blog posts. That being said, comparing raw performance of different algorithms implemented in different programming languages is not very informative given the high variations of running times observed across languages for identical algorithms \cite{hundt2011}.
-
-% python x23 just-in-time compilation speed up http://dl.acm.org/citation.cfm?id=2069181
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Preservation of blog visuals}
-% \TODO{visuals/design/graphic/?}
-
-% Additionally to the blog content extraction that we have been discussing so far, the BlogForever crawler is also responsible for capturing blog visuals. Indeed, one of the requirements of the BlogForever platform is to provide snapshots of blogs visuals in order to preserve changes in appearance \cite[FR53]{blogforeverrequirements2009}. Our final solution consists in using the embeded web browser to take screenshots after each page rendering. Before opting for this approach we considered 3 other solutions: GNU wget, wkhtmltopdf and OXPath. This subsection relates our evaluation of these tools for the specific purpose.
-
-% \TODO{Is this whole subsection legitimate? It this part is not really relevant we could also simply not include it... I guess it is not a really useful from a research point of vue, but it might still be of some use for others to know what each of them can do. I think it's also important to say at some point how long it takes to render a pages, because if only look at the graph it seams like this is all super fast, but when we use PhantomJS the thing seriously slows down...}
-
-% The first solution we considered was the GNU/Linux tool wget. With the appropriate options, wget can be used to download a webpage and the associated files (css, scripts and images). On simple webpages, this process effectively captures all files necessary to display the page locally. However, it falls short* to capture webpages that download content via javascript.
-
-% Another solution we considered is wkhtmltopdf, a tool to produce pdf versions of web-pages. It uses the "print" function of it's embedded web browser to produce it's output and therefore supports all web technologies supported by it underling web browser.
-
-% The OXPath project goes one step further by offering an extension of the XPath language to specify page interactions such as clicks and forms filling. It also make use of a complete web browser to render pages and execute page interactions sequentially. OXPath makes it simple to extract comments displayed across multiple pages or that requiring clicks to be loaded.
-
-% \savevisualsTable
-
-% intro, plan (why we pick these projects, what we want to show with this evaluation)
-
-% \item "Wget crawl" http://blogforever.eu/blog/2011/05/21/creating-a-snapshot-of-a-blog-post-using-wget/
-% \item wkhtmltopdf http://code.google.com/p/wkhtmltopdf/ http://blogforever.eu/blog/2011/05/17/rendering-and-storing-web-pages-using-wkhtmltopdf/
-% \item OXPath
-% \item Selenium + full browser
-
-% table to recap
-
-% discussion (ez of use vs power, fine because it's automated)
-
