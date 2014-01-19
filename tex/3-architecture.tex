@@ -3,6 +3,7 @@
 
 This section provides an overview of the crawler system architecture and the different techniques we used. The overall software architecture is presented and discussed, introducing the Scrapy framework and the enrichments we implemented for our specific usage. Then, we show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. Finally, we talk about the design choices we made in view of a large scale deployment.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Overview}
 
@@ -49,6 +50,7 @@ In our experiments whilst crawling the blogosphere, we encountered several blogs
 To support blogs with JavaScript-generated content, we embed a full web browser into the crawler. After considering multiple options, we opted for PhantomJS\footnote{\url{http://phantomjs.org}}, a headless web browser with great performance and scripting capabilities. The JavaScript rendering is the very first step of web page processing. Therefore, extracting blog post articles, comments or multimedia files works equally well on blogs with JavaScript-generated content and on traditional HTML-only blogs.
 
 When the number of comments on a page exceeds a certain threshold, both Disqus and LiveFyre will only load the most recent ones and the stream of comments will end with a \emph{Show More Comments} button. As part of the page loading process, we instruct PhantomJS to repeatedly click on these buttons until all comments are loaded. Paths to Disqus and LiveFyre \emph{Show More} buttons are manually obtained. They constitute the only non-generic elements of our extraction stack which require human intervention to maintain and extend to other commenting platforms.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalability}
