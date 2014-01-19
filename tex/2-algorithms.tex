@@ -1,7 +1,7 @@
 \section{Algorithms}
 \label{algorithms}
 
-This section explains in detail the algorithms we developed to extract blog post articles as well as its variations for authors, dates and comments. Our approach uses blog specific characteristics to build \emph{extraction rules} which are applicable to all blog posts. Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
+This section explains in detail the algorithms we developed to extract blog post articles as well as its variations for extracting authors, dates and comments. Our approach uses blog specific characteristics to build \emph{extraction rules} which are applicable throughout a blog. Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -17,7 +17,7 @@ Having blogs as our target websites, we made the following observations which pl
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog.
   \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure,
 \end{enumerate}
-Web feeds usually contain about 20 blog posts \cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive the entire content of a blog, it is necessary to download and process pages beyond the ones referenced in web feed.
+Web feeds usually contain about 20 blog posts \cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive the entire content of a blog, it is necessary to download and process pages beyond the ones referenced in the web feed.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,7 +93,7 @@ Dates are affected by the same duplication issue, as well as the inconsistency o
 Comments are usually available in separate web feeds, one per blog post. Similarly to blog feeds, comment feeds have a limited number of entries, and when the number of comments on a blog post exceeds this limit, comments have to be extracted from the post web page. To do so we use the following \code{ScoreFunction}:
 
 \begin{itemize}
-  \item Rules returning less HTML nodes than the number of comments on the feed are filtered out with a zero score,
+  \item Rules returning fewer HTML nodes than the number of comments on the feed are filtered out with a zero score,
   \item The scores of the remaining rules are computed with the value of the \emph{maximum weighted matching} in the \emph{complete bipartite graph} $G = (U, V, E)$, where $U$ is the set of HTML nodes returned by the rule, $V$ is the set of target comment fields from the web feed (such as comment authors) and $E(u, v)$ has weight equal to \coderef{similarityAlgo}\code{(}\emph{u, v}\code{)}.
 \end{itemize}
 Our crawler executes this algorithm on each post with an overflow on its comment feed, thus supporting blogs with multiple commenting engines. The comment content is extracted first, allowing us to narrow down the initial filtering by fixing a target number of comments.
