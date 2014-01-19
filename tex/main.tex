@@ -7,6 +7,7 @@
 \usepackage[autostyle=false, style=english]{csquotes}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[justification=centering]{caption}
+\usepackage[nodayofweek]{datetime}
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{microtype}
@@ -21,6 +22,9 @@
 \usepackage{setspace}
 \usepackage[pdfpagelabels=false]{hyperref}
 \usepackage{hypcap}
+
+\newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
+\newcommand{\lastvisited}{Last visited \lv\today}
 
 \MakeOuterQuote{"}
 \newfootnotes{A}
