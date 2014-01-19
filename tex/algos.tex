@@ -30,7 +30,7 @@
     \setstretch{1.1}
     \thinspace
 
-    \Input{Set \emph{pageZipTarget} of HTML page and target pairs}
+    \Input{Set \emph{pageZipTarget} of (page and target) pairs}
     \Output{Best extraction rule}
     \BlankLine
     \emph{bestRules \Arrow}new list\;
@@ -106,7 +106,7 @@
     \setstretch{1.1}
     \thinspace
 
-    \Input{Set \emph{pageZipTarget} of Html and Text pairs}
+    \Input{Set \emph{pageZipTarget} of (Html and Text) pairs}
     \Output{Best extraction rule}
     \BlankLine
     \emph{bestRules \Arrow}new list\;
@@ -116,7 +116,7 @@
       \emph{bigrams \Of target \Arrow \Bigrams{target}}\;
       \ForEach{node \In page \With \emph{post-order traversal}}{
         \emph{bigrams \Of node \Arrow}\;
-          \Indent \Bigrams{node.text} $\bigcup$ \emph{bigrams \Of \All node.childs}\;
+          \Indent \Bigrams{node.text} $\cup$ \emph{bigrams \Of \All node.childs}\;
           % \Par{\emph{set of pairs of adjacent chars}\; \Indent
           %   \In node.text $\bigcup$ bigrams \Of \All node.childs}\;
         \emph{score \Of node \Arrow }\;

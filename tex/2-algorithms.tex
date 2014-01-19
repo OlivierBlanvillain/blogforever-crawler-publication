@@ -13,9 +13,9 @@ Extracting metadata and content from HTML documents is a challenging task. Stand
 \Anotecontent{observations}{Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these observations, or to an insufficient amount of text in posts.}
 
 Having blogs as our target websites, we made the following observations which play a central role in the extraction process\Anote{observations}:
-\begin{enumerate}[label={(\arabic*)}]
-  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure,
+\begin{enumerate}[label={(\alph*)}]
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog.
+  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure,
 \end{enumerate}
 Web feeds usually contain about 20 blog posts \cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive the entire content of a blog, it is necessary to download and process pages beyond the ones referenced in web feed.
 
@@ -69,11 +69,11 @@ The Sørensen–Dice coefficient similarity algorithm operates by first building
 \subsection{Time complexity and linear reformulation}
 \label{timecomplexityandlinearreformulation}
 
-The functions \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as \code{ScoreFunction}) being defined, the definition of \autoref{extractionAlgo} for article extraction is complete. We now proceed with a time complexity analysis.
+The functions \coderef{allrulesAlgo}, \code{Apply} and \coderef{similarityAlgo} (as \code{ScoreFunction}) being defined, the definition of \autoref{extractionAlgo} for article extraction is now complete. We can therefore proceed with a time complexity analysis.
 
 First, let's assume that we have at our disposal a linear time HTML parser that constructs an appropriate data structure, indexing HTML nodes on their \code{id} and \code{class} attributes, effectively making \code{Apply}~$\in$~\Oof{1}. As stated before, the outer loop splits the input into independent computations and each call to \coderef{allrulesAlgo} returns (in linear time) at most as many rules as the number of nodes in its \emph{page} argument. Therefore, the body of the inner loop will be executed \Oof{n} times. Because each extraction rule can return any subtree of the queried page, each call to \coderef{similarityAlgo} takes \Oof{n}, leading to an overall quadratic running time.
 
-We now present \autoref{linearAlgo}, a linear time reformulation of \autoref{extractionAlgo} for article extraction using dynamic programming. While very intuitive, the original idea of first generating extraction rules and then picking these best rules prevents us from effectively reusing previously computed bigrams. For instance, when evaluating the extraction rule for the HTML root node, \autoref{extractionAlgo} will obtain the complete string of the page and pass it to the \coderef{similarityAlgo} function. At this point, the information on where the string could be split into substrings with already computed bigrams is not accessible, and the bigrams of the page have to be computed by linearly traversing the entire string. To overcome this limitation and implement \emph{memoization} over the bigrams computations, \autoref{linearAlgo} uses a post-order traversal of the HTML tree and computes node bigrams from their children bigrams. This way, we avoid serializing HTML subtrees for each bigrams computation and have the guarantee that each character of the HTML page will be read at most once during the bigrams computation.
+We now present \autoref{linearAlgo}, a linear time reformulation of \autoref{extractionAlgo} for article extraction using dynamic programming. While very intuitive, the original idea of first generating extraction rules and then picking these best rules prevents us from effectively reusing previously computed bigrams (set of pairs of adjacent characters). For instance, when evaluating the extraction rule for the HTML root node, \autoref{extractionAlgo} will obtain the complete string of the page and pass it to the \coderef{similarityAlgo} function. At this point, the information on where the string could be split into substrings with already computed bigrams is not accessible, and the bigrams of the page have to be computed by linearly traversing the entire string. To overcome this limitation and implement \emph{memoization} over the bigrams computations, \autoref{linearAlgo} uses a post-order traversal of the HTML tree and computes node bigrams from their children bigrams. This way, we avoid serializing HTML subtrees for each bigrams computation and have the guarantee that each character of the HTML page will be read at most once during the bigrams computation.
 
 \linearAlgo
 
