@@ -14,8 +14,8 @@ Extracting metadata and content from HTML documents is a challenging task. Stand
 
 Having blogs as our target websites, we made the following observations which play a central role in the extraction process\Anote{observations}:
 \begin{enumerate}[label={(\alph*)}]
-  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog.
-  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure,
+  \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog,
+  \item\label{similarhtmlAssum} Posts of the same blog share a similar HTML structure.
 \end{enumerate}
 Web feeds usually contain about 20 blog posts~\cite{oita2010}, often less than the total number of posts in blogs. Consequently, in order to effectively archive the entire content of a blog, it is necessary to download and process pages beyond the ones referenced in the web feed.
 
@@ -25,10 +25,10 @@ Web feeds usually contain about 20 blog posts~\cite{oita2010}, often less than t
 \label{contentextraction}
 
 % per blog procedure, related work
-To extract content from blog posts, we proceed by building \emph{extraction rules} from the data given in the blog's web feed. The idea is to use a set of \emph{training data}, pairs of HTML pages and target content, which are used to build an extraction rule capable of locating the target content on each HTML page.
+To extract content from blog posts, we proceed by building \emph{extraction rules} from the data given in the blog's web feed. The idea is to use a set of \emph{training data}, pairs of HTML pages and target content, to build an extraction rule capable of locating the target content on each HTML page.
 
 % input from observations.
-Observation~\ref{havefeedAssum} allows the crawler to obtain input for the extraction rule generation algorithm: each web feed entry contains a link to the corresponding web page as well as blog post article (either abstract or full text), its title, authors and publication date. We call these fields \emph{targets} as they constitute the data our crawler aims to extract. Observation~\ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
+Observation~\ref{havefeedAssum} allows the crawler to obtain input for the extraction rule generation algorithm: each web feed entry contains a link to the corresponding web page as well as the blog post article (either abstract or full text), its title, authors and publication date. We call these fields \emph{targets} as they constitute the data our crawler aims to extract. Observation~\ref{similarhtmlAssum} guarantees the existence of an appropriate extraction rule, as well as its applicability to all posts of the blog.
 
 \autoref{extractionAlgo} shows the generic procedure we use to build extraction rules. The idea is quite simple: for each \code{(}\emph{page, target}\code{)} input, compute, out of all possible extraction rules, the best one with respect to a certain \code{ScoreFunction}. The rule which is most frequently the \emph{best rule} is then returned.
 

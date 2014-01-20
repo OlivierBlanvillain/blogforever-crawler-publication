@@ -1,6 +1,10 @@
 % \documentclass[draft]{acm_proc_article-sp}
 \documentclass{acm_proc_article-sp}
 
+% Toggle comment this line, the url and the hyperref package
+% to generate a PDF/X-1a compliant output.
+\usepackage[x-1a]{pdfx}
+
 \usepackage[ruled, vlined]{algorithm2e}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -11,16 +15,15 @@
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{balance}
-% \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{gnuplottex}
 \usepackage{pifont}
 \usepackage{quoting}
-\usepackage[hyphens]{url}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
-\usepackage[pdfpagelabels=false]{hyperref}
+% \usepackage[hyphens]{url}
+% \usepackage[pdfpagelabels=false]{hyperref}
 \usepackage{hypcap}
 
 \newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
@@ -53,7 +56,7 @@
 
   \title{BlogForever Crawler: Techniques and Algorithms\\to Harvest Modern Weblogs}
 
-  \numberofauthors{7}
+  \numberofauthors{3}
 
   \author{
   % 1st. author
@@ -75,8 +78,6 @@
          \affaddr{Aristotle University of Thessaloniki, Greece}\\
          \email{\href{mailto:vbanos@gmail.com}{vbanos@gmail.com}}
   }
-
-  \additionalauthors{Yannis Manolopoulos (Department of Informatics, Aristotle University of Thessaloniki, Greece, {\texttt{manolopo@csd.auth.gr}})}
 
   \hypersetup{pageanchor=false}
   \maketitle
