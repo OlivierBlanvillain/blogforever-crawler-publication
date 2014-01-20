@@ -4,7 +4,7 @@ Install:
 
 Compile:
 
-    latexmk -pdflatex='pdflatex -interaction=nonstopmode -halt-on-error -file-line-error --shell-escape' -bibtex -pdf -pvc main.tex
+    latexmk -pdflatex='pdflatex -interaction=nonstopmode -halt-on-error -file-line-error --shell-escape' -bibtex main.tex
 
 To enable visual PDF diffs:
 
