@@ -3,7 +3,7 @@
 
 % Toggle comment this line, the url and the hyperref package
 % to generate a PDF/X-1a compliant output.
-\usepackage[x-1a]{pdfx}
+% \usepackage[x-1a]{pdfx}
 
 \usepackage[ruled, vlined]{algorithm2e}
 \usepackage[T1]{fontenc}
@@ -22,8 +22,8 @@
 \usepackage{quoting}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
-% \usepackage[hyphens]{url}
-% \usepackage[pdfpagelabels=false]{hyperref}
+\usepackage[hyphens]{url}
+\usepackage[pdfpagelabels=false]{hyperref}
 \usepackage{hypcap}
 
 \newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
@@ -83,7 +83,7 @@
   \maketitle
 
   \begin{abstract}
-    \input{0-abstract.tex}
+    \input{0-abstract.mdtex}
   \end{abstract}
 
   \category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information filtering, Query formulation, Selection process]
@@ -98,13 +98,34 @@
   \input{algos.tex}
   \input{tables.tex}
   ~\\~\\~\\~\\~\\~\\~\\
-  \input{1-intro.tex}
-  \input{2-algorithms.tex}
-  \input{3-architecture.tex}
-  \input{4-evaluation.tex}
-  \input{5-related-work.tex}
-  \input{6-conclusion-and-future-work.tex}
-  \input{7-acknowledgments.tex}
+  
+  \section{Introduction}
+  \label{introduction}
+  \input{1-introduction.mdtex}
+  
+  \section{Algorithms}
+  \label{algorithms}
+  \input{2-algorithms.mdtex}
+  
+  \section{Architecture}
+  \label{architecture}
+  \input{3-architecture.mdtex}
+  
+  \section{Evaluation}
+  \label{evaluation}
+  \input{4-evaluation.mdtex}
+  
+  \section{Related Work}
+  \label{relatedwork}
+  \input{5-related-work.mdtex}
+  
+  \section{Conclusion and Future Work}
+  \label{conclusionandfuturework}
+  \input{6-conclusion-and-future-work.mdtex}
+  
+  \section{Acknowledgments}
+  \label{acknowledgments}
+  \input{7-acknowledgments.mdtex}
 
   \balance
 
