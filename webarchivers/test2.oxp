@@ -1,3 +1,0 @@
-doc("http://www.2globalnomads.info/2013/06/blogger-dynamic-views-css-fail-bug-custom-reload.html")
-  /self::node()[not(//div[@class='content-outer'])]
-  /descendant::h1[@class='title entry-title']:<price=string(.)>

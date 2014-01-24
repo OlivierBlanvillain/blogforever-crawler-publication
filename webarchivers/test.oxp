@@ -1,5 +1,0 @@
-doc("http://www.chancellors.co.uk/properties/search?map=false&area=New+Barnet&longitude=0&latitude=0&radius=5&saleType=Rent")
-  /(//a[@id='Loadmore']/{click/})*
-  /self::node()[not(//a[@id='Loadmore'])]
-  /descendant::div[@class='list-property clearfix']
-  /descendant::h3[@class='price']:<price=string(.)>
