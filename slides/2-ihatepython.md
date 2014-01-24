@@ -38,7 +38,7 @@ def bestPath(contentZipPages):
       contentZipPages)
 ```
 ```python
-  max(set(topQueries), key=topQueries.count)
+  return max(set(topQueries), key=topQueries.count)
 ```
 ----------------------------------------------------------
 

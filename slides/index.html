@@ -157,12 +157,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode python"><code class="sourceCode python">  topQueries = <span class="dt">map</span>(<span class="kw">lambda</span> (c, p):
       <span class="dt">max</span>(topQueriesHead, key=partial(ratio, c, p)),
       contentZipPages)</code></pre>
-<pre class="sourceCode python"><code class="sourceCode python">  <span class="dt">max</span>(<span class="dt">set</span>(topQueries), key=topQueries.count)</code></pre>
+<pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">return</span> <span class="dt">max</span>(<span class="dt">set</span>(topQueries), key=topQueries.count)</code></pre>
 </div>
 </section>
 <section id="live-demo" class="slide level1">
 <h1>Live Demo</h1>
-<p> <a href="http://www.quantumdiaries.org/">http://www.quantumdiaries.org/</a></p>
+<p>↪  <a href="http://www.quantumdiaries.org/">http://www.quantumdiaries.org/</a></p>
 </section>
 <section id="the-crawler" class="slide level1">
 <h1>The crawler</h1>

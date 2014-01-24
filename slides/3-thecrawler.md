@@ -1,6 +1,6 @@
 # Live Demo
 
- \ <http://www.quantumdiaries.org/>
+↪ \ <http://www.quantumdiaries.org/>
 
 # The crawler
 
