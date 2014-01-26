@@ -56,7 +56,7 @@ $endfor$
 
   .reveal pre code {
     padding: 0px;
-    word-wrap: break-word;
+    /*word-wrap: break-word;*/
   }
   
   .level2 > h1 {
@@ -111,9 +111,9 @@ $endfor$
         history: true,
         center: true,
         overview: true,
-        transitionSpeed: 'fast',
-        theme: "beige",
-        transition: $if(transition)$'$transition$'$else$Reveal.getQueryHash().transition || 'default'$endif$, // default/cube/page/concave/zoom/linear/fade/none
+        // transitionSpeed: 'fast',
+        theme: "sky",
+        transition: $if(transition)$'$transition$'$else$Reveal.getQueryHash().transition || 'default'$endif$, // default/cube/page/cSoncave/zoom/linear/fade/none
 
         // Optional libraries used to extend on reveal.js
         dependencies: [

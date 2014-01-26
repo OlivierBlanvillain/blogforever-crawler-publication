@@ -54,7 +54,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
   .reveal pre code {
     padding: 0px;
-    word-wrap: break-word;
+    /*word-wrap: break-word;*/
   }
   
   .level2 > h1 {
@@ -78,8 +78,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h2>
 <ol>
-<li>This Internship</li>
-<li>I Hate Python</li>
+<li><p>This Internship</p></li>
+<li><p>I Hate Python</p></li>
 <li>The Crawler
 </h2>
 </li>
@@ -110,6 +110,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <img src="img/great.jpg" />
 </figure>
 <p>(^ This is Nikos)</p>
+<!--
+  goal -> text editor -> get started
+  great effect
+  highly motivated, feels like mine
+-->
+
 </section>
 <section class="slide level1">
 
@@ -117,22 +123,111 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <figure>
 <img src="img/bro.png" />
 </figure>
+<!--
+  online on bf.eu
+  not: started in 2011
+  not: close source version
+-->
+
 </section>
 <section class="slide level1">
 
-<h2 id="here-the-reality-btw">Here the reality BTW:</h2>
+<h2 id="btw-here-is-how-it-is">BTW, here is how it is:</h2>
 <figure>
 <img src="img/brolol.png" />
 </figure>
+<!--
+  no api
+  twitter closed
+  real time with invenio?
+  microformat/semantic: .5%
+  links are all URLs
+  
+  crawler's job
+-->
+
+</section>
+<section class="slide level1">
+
+<h2 id="outline">Outline:</h2>
+<ul>
+<li><p>Three months of developement</p></li>
+<li><p>Three months of redaction</p></li>
+<li><p>I learned Python somewhere in the process</p></li>
+</ul>
 </section>
 <section id="i-hate-python" class="slide level1">
 <h1>I Hate Python</h1>
 </section>
 <section class="slide level1">
 
+<h3 id="what-im-not-going-to-talk-about">What I'm not going to talk about:</h3>
+<ul>
+<li><p>sdtlib documentation</p></li>
+<li><p>pip, virtualenv</p></li>
+<li><p>Byte String vs Unicode String</p></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="things-that-bug-me">Things that bug me:</h3>
+<ul>
+<li><p>Interfaces?<br /> ↪  <em>you better like reading source code...</em></p></li>
+<li>Type-checking?<br /></li>
+<li><p>Exceptions as control flow?<br /> ↪  <em>you better like stack traces...</em></p></li>
+<li><p>Immutability?<br /> ↪  <em>just don't modify the thing...</em></p></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="interfaces">Interfaces</h2>
+<h3 id="were-all-consenting-adults-here"><em>&quot;We're all consenting adults here&quot;</em></h3>
+</section>
+<section id="nope." class="slide level1">
+<h1>Nope.</h1>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode python"><code class="sourceCode python">      <span class="kw">def</span> parseHTML(page):
+        <span class="co">&quot;&quot;&quot;Parses a page to a tree html elements.</span>
+
+<span class="co">        @type  page: string</span>
+<span class="co">        @param page: the page to parse</span>
+<span class="co">        @rtype: xml.etree.ElementTree.Element</span>
+<span class="co">        @return: the root of the html tree</span>
+<span class="co">        &quot;&quot;&quot;</span></code></pre>
+<div class="fragment">
+<pre class="sourceCode python"><code class="sourceCode python">        <span class="kw">try</span>:
+          <span class="kw">return</span> lxml.html.fromstring(page)
+        <span class="kw">except</span> (<span class="ot">LookupError</span>,
+                <span class="ot">UnicodeDecodeError</span>,
+                lxml.etree.XMLSyntaxError,
+                lxml.etree.ParserError): <span class="co"># TBC</span>
+          <span class="kw">try</span>:
+            <span class="kw">return</span> soupparser.fromstring(page)
+          <span class="kw">except</span> <span class="ot">Exception</span>:
+            <span class="kw">return</span> lxml.etree.Element(<span class="st">&quot;html&quot;</span>)</code></pre>
+</div>
+</section>
+<section class="slide level1">
+
+<h3 id="lxml-documentation">lxml documentation:</h3>
+<figure>
+<img src="img/lxml.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="type-checking">Type-checking</h2>
+<h3 id="if-it-looks-like-a-duck-and-quacks-like"><em>&quot;If it looks like a duck and quacks like</em></h3>
+<h3 id="a-duck-then-it-must-be-a-duck"><em>a duck, then it must be a duck&quot;</em></h3>
+</section>
+<section class="slide level1">
+
 <figure>
 <img src="img/sc.jpg" />
 </figure>
+<pre class="sourceCode python"><code class="sourceCode python">    <span class="dt">max</span>([ <span class="ot">True</span>, <span class="dv">2</span>, [<span class="dv">3</span>, <span class="dv">4</span>], {<span class="dv">5</span>: <span class="dv">6</span>, <span class="dv">7</span>: <span class="dv">8</span>}, <span class="st">&quot;nine&quot;</span>, <span class="ot">None</span> ])</code></pre>
 </section>
 <section class="slide level1">
 
@@ -150,22 +245,24 @@ code > span.er { color: #ff0000; font-weight: bold; }
   dct = <span class="dt">dict</span>()
   ratio = <span class="kw">lambda</span> content, page, query: (
       levenshtein(content, extractFirst(page, query)), dct)</code></pre>
-</div>
-<div class="fragment">
 <pre class="sourceCode python"><code class="sourceCode python">  topQueriesHead = nlargest(
-      <span class="dv">6</span>, queries, key=partial(ratio, *contentZipPages[<span class="dv">0</span>]))</code></pre>
+      <span class="dv">10</span>, queries, key=partial(ratio, *contentZipPages[<span class="dv">0</span>]))</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python">  topQueries = <span class="dt">map</span>(<span class="kw">lambda</span> (c, p):
       <span class="dt">max</span>(topQueriesHead, key=partial(ratio, c, p)),
       contentZipPages)</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">return</span> <span class="dt">max</span>(<span class="dt">set</span>(topQueries), key=topQueries.count)</code></pre>
 </div>
 </section>
-<section id="live-demo" class="slide level1">
-<h1>Live Demo</h1>
-<p>↪  <a href="http://www.quantumdiaries.org/">http://www.quantumdiaries.org/</a></p>
-</section>
 <section id="the-crawler" class="slide level1">
 <h1>The crawler</h1>
+</section>
+<section class="slide level1">
+
+<h2 id="live-demo">Live Demo</h2>
+<p>↪  <a href="http://www.quantumdiaries.org/">http://www.quantumdiaries.org/</a></p>
+</section>
+<section class="slide level1">
+
 <figure>
 <img src="img/scrapy_architecture.png" />
 </figure>
@@ -186,9 +283,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
         history: true,
         center: true,
         overview: true,
-        transitionSpeed: 'fast',
-        theme: "beige",
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        // transitionSpeed: 'fast',
+        theme: "sky",
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/cSoncave/zoom/linear/fade/none
 
         // Optional libraries used to extend on reveal.js
         dependencies: [

@@ -4,7 +4,9 @@
 
 <h2>
 #. This Internship
+
 #. I Hate Python
+
 #. The Crawler
 </h2>
 
@@ -39,9 +41,11 @@ This Internship
 
 (^ This is Nikos)
 
-[]: goal -> text editor -> get started
-[]: great effect
-[]: highly motivated, feels like mine
+<!--
+  goal -> text editor -> get started
+  great effect
+  highly motivated, feels like mine
+-->
 
 ----------------------------------------------------------
 
@@ -49,14 +53,35 @@ This Internship
 
 ![](img/bro.png)
 
-[]: online on bf.eu
-[]: not: started in 2011
-[]: not: 
-
+<!--
+  online on bf.eu
+  not: started in 2011
+  not: close source version
+-->
 
 ----------------------------------------------------------
 
-## Here the reality BTW:
+## BTW, here is how it is:
 
 ![](img/brolol.png)
+
+<!--
+  no api
+  twitter closed
+  real time with invenio?
+  microformat/semantic: .5%
+  links are all URLs
+  
+  crawler's job
+-->
+
+----------------------------------------------------------
+
+## Outline:
+
+- Three months of developement 
+
+- Three months of redaction
+
+- I learned Python somewhere in the process
 
