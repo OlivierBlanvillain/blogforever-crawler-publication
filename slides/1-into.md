@@ -3,15 +3,15 @@
 % JANUARY 29, 2014
 
 <h2>
-#. This Internship
+#. My internship
 
-#. I Hate Python
+#. I didn't like Python
 
-#. The Crawler
+#. The crawler
 </h2>
 
-This Internship
-===============
+My internship
+=============
 
 ----------------------------------------------------------
 
