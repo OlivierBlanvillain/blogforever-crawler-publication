@@ -78,15 +78,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h2>
 <ol>
-<li><p>This Internship</p></li>
-<li><p>I Hate Python</p></li>
-<li>The Crawler
+<li><p>My internship</p></li>
+<li><p>I didn't like Python</p></li>
+<li>The crawler
 </h2>
 </li>
 </ol>
 </section>
-<section id="this-internship" class="slide level1">
-<h1>This Internship</h1>
+<section id="my-internship" class="slide level1">
+<h1>My internship</h1>
 </section>
 <section class="slide level1">
 
@@ -95,13 +95,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><p>Mostly Java and Scala</p></li>
 <li><p>Mathematically Inclined</p></li>
 <li><p>I like compilers</p></li>
-<li><p>Recent interest in functional programming</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">cd</span> workspace/crawler/src/
-    $ <span class="kw">grep</span> -r <span class="st">&#39;for .* in&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
-    <span class="kw">13</span>
-    $ <span class="kw">grep</span> -r <span class="st">&#39;lambda&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
-    <span class="kw">95</span></code></pre></li>
+<li><p>Recent interest in functional programming</p></li>
 </ul>
+<pre class="sourceCode bash"><code class="sourceCode bash">            $ <span class="kw">cd</span> workspace/crawler/src/
+            $ <span class="kw">grep</span> -r <span class="st">&#39;for .* in&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
+            <span class="kw">13</span>
+            $ <span class="kw">grep</span> -r <span class="st">&#39;lambda&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
+            <span class="kw">95</span></code></pre>
 </section>
 <section class="slide level1">
 
@@ -152,12 +152,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2 id="outline">Outline:</h2>
 <ul>
 <li><p>Three months of developement</p></li>
-<li><p>Three months of redaction</p></li>
+<li><p>Three months of documentation</p></li>
 <li><p>I learned Python somewhere in the process</p></li>
 </ul>
 </section>
-<section id="i-hate-python" class="slide level1">
-<h1>I Hate Python</h1>
+<section id="i-didnt-like-python" class="slide level1">
+<h1>I didn't like Python</h1>
 </section>
 <section class="slide level1">
 
@@ -165,17 +165,17 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li><p>sdtlib documentation</p></li>
 <li><p>pip, virtualenv</p></li>
-<li><p>Byte String vs Unicode String</p></li>
+<li><p>byte vs unicode strings</p></li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="things-that-bug-me">Things that bug me:</h3>
 <ul>
-<li><p>Interfaces?<br /> ↪  <em>you better like reading source code...</em></p></li>
-<li>Type-checking?<br /></li>
-<li><p>Exceptions as control flow?<br /> ↪  <em>you better like stack traces...</em></p></li>
-<li><p>Immutability?<br /> ↪  <em>just don't modify the thing...</em></p></li>
+<li><p>No interfaces<br /> ↪  <em>you better like reading source code...</em></p></li>
+<li><p>No type-checking</p></li>
+<li><p>Exceptions as control flow<br /> ↪  <em>you better like stack traces...</em></p></li>
+<li><p>Immutability?</p></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -189,7 +189,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section class="slide level1">
 
 <pre class="sourceCode python"><code class="sourceCode python">      <span class="kw">def</span> parseHTML(page):
-        <span class="co">&quot;&quot;&quot;Parses a page to a tree html elements.</span>
+        <span class="co">&quot;&quot;&quot;Parses a page to an html tree.</span>
 
 <span class="co">        @type  page: string</span>
 <span class="co">        @param page: the page to parse</span>
@@ -231,20 +231,26 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section class="slide level1">
 
-<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> bestPath(contentZipPages):
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> similarity(string1, string2, bufferDict=<span class="ot">None</span>):
+  <span class="co">&quot;&quot;&quot;Computes the similarity between two strings.&quot;&quot;&quot;</span></code></pre>
+<div class="fragment">
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> extractFirst(page, query):
+  <span class="co">&quot;&quot;&quot;Executes a XPath query and return the first result.&quot;&quot;&quot;</span></code></pre>
+</div>
+<div class="fragment">
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> bestXPath(contentZipPages):
   <span class="co">&quot;&quot;&quot;Given a list of content/page, computes the best XPath</span>
 <span class="co">  query that would return the content on each page.</span>
-
-<span class="co">  @type  contentZipPages: list of (string, etree._Element)</span>
-<span class="co">  @param contentZipPages: list of guiding (content, page)</span>
-<span class="co">  @rtype: string</span>
-<span class="co">  @return: a XPath extracting the content of each pages</span>
-<span class="co">  &quot;&quot;&quot;</span></code></pre>
+<span class="co">  @type  contentZipPages: list of (string, etree.ElementTree)</span>
+<span class="co">  @rtype: string&quot;&quot;&quot;</span></code></pre>
+</div>
 <div class="fragment">
 <pre class="sourceCode python"><code class="sourceCode python">  queries = (<span class="st">&quot;/some/path&quot;</span>, <span class="st">&quot;/another/path&quot;</span>, ...)
   dct = <span class="dt">dict</span>()
   ratio = <span class="kw">lambda</span> content, page, query: (
-      levenshtein(content, extractFirst(page, query)), dct)</code></pre>
+      similarity(content, extractFirst(page, query)), dct)</code></pre>
+</div>
+<div class="fragment">
 <pre class="sourceCode python"><code class="sourceCode python">  topQueriesHead = nlargest(
       <span class="dv">10</span>, queries, key=partial(ratio, *contentZipPages[<span class="dv">0</span>]))</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python">  topQueries = <span class="dt">map</span>(<span class="kw">lambda</span> (c, p):
@@ -253,19 +259,111 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">return</span> <span class="dt">max</span>(<span class="dt">set</span>(topQueries), key=topQueries.count)</code></pre>
 </div>
 </section>
-<section id="the-crawler" class="slide level1">
-<h1>The crawler</h1>
-</section>
 <section class="slide level1">
 
-<h2 id="live-demo">Live Demo</h2>
-<p>↪  <a href="http://www.quantumdiaries.org/">http://www.quantumdiaries.org/</a></p>
+<h3 id="do-you-know-the-difference-between">Do you know the difference between</h3>
+<h3 id="and-200">500 and 200?</h3>
+<pre class="sourceCode python"><code class="sourceCode python">
+                  In [<span class="dv">1</span>]: <span class="dv">200</span> is <span class="dv">100</span> + <span class="dv">100</span>
+                  Out[<span class="dv">1</span>]: <span class="ot">True</span>
+                  
+                  In [<span class="dv">2</span>]: <span class="dv">500</span> is <span class="dv">250</span> + <span class="dv">250</span>
+                  Out[<span class="dv">2</span>]: <span class="ot">False</span></code></pre>
+</section>
+<section id="the-crawler" class="slide level1">
+<h1>The Crawler</h1>
 </section>
 <section class="slide level1">
 
 <figure>
+<img src="img/cd.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<figure>
+<img src="img/grail.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;rss</span><span class="ot"> version=</span><span class="st">&quot;2.0&quot;</span><span class="ot"> xmlns:content=</span><span class="st">&quot;http://purl.org/rss/1.0/modules/content/&quot;</span><span class="ot"> xmlns:wfw=</span><span class="st">&quot;http://wellformedweb.org/CommentAPI/&quot;</span><span class="ot"> xmlns:dc=</span><span class="st">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="ot"> xmlns:atom=</span><span class="st">&quot;http://www.w3.org/2005/Atom&quot;</span><span class="ot"> xmlns:sy=</span><span class="st">&quot;http://purl.org/rss/1.0/modules/syndication/&quot;</span><span class="ot"> xmlns:slash=</span><span class="st">&quot;http://purl.org/rss/1.0/modules/slash/&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;channel&gt;</span>
+  <span class="kw">&lt;title&gt;</span>Quantum Diaries<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;atom:link</span><span class="ot"> href=</span><span class="st">&quot;http://www.quantumdiaries.org/feed/&quot;</span><span class="ot"> rel=</span><span class="st">&quot;self&quot;</span><span class="ot"> type=</span><span class="st">&quot;application/rss+xml&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;link&gt;</span>http://www.quantumdiaries.org<span class="kw">&lt;/link&gt;</span>
+  <span class="kw">&lt;description&gt;</span>Thoughts on work and life from particle physicists from around the world.<span class="kw">&lt;/description&gt;</span>
+  <span class="kw">&lt;lastBuildDate&gt;</span>Tue, 28 Jan 2014 14:21:48 +0000<span class="kw">&lt;/lastBuildDate&gt;</span>
+  <span class="kw">&lt;language&gt;</span>en-US<span class="kw">&lt;/language&gt;</span>
+    <span class="kw">&lt;sy:updatePeriod&gt;</span>hourly<span class="kw">&lt;/sy:updatePeriod&gt;</span>
+    <span class="kw">&lt;sy:updateFrequency&gt;</span>1<span class="kw">&lt;/sy:updateFrequency&gt;</span>
+  <span class="kw">&lt;generator&gt;</span>http://wordpress.org/?v=3.7.1<span class="kw">&lt;/generator&gt;</span>
+  <span class="kw">&lt;item&gt;</span>
+    <span class="kw">&lt;title&gt;</span>Anti-beam me up, Scotty!<span class="kw">&lt;/title&gt;</span>
+    <span class="kw">&lt;link&gt;</span>http://www.quantumdiaries.org/2014/01/28/anti-beam-me-up-scotty/<span class="kw">&lt;/link&gt;</span>
+    <span class="kw">&lt;comments&gt;</span>http://www.quantumdiaries.org/2014/01/28/anti-beam-me-up-scotty/#comments<span class="kw">&lt;/comments&gt;</span>
+    <span class="kw">&lt;pubDate&gt;</span>Tue, 28 Jan 2014 13:46:08 +0000<span class="kw">&lt;/pubDate&gt;</span>
+    <span class="kw">&lt;dc:creator&gt;</span><span class="bn">&lt;![CDATA[</span>CERN<span class="bn">]]&gt;</span><span class="kw">&lt;/dc:creator&gt;</span>
+    <span class="kw">&lt;guid</span><span class="ot"> isPermaLink=</span><span class="st">&quot;false&quot;</span><span class="kw">&gt;</span>http://www.quantumdiaries.org/?p=32171<span class="kw">&lt;/guid&gt;</span>
+    <span class="kw">&lt;description&gt;</span><span class="bn">&lt;![CDATA[</span>While the CERN accelerator complex was being revamped in 2013, the ASACUSA experiment took time to carefully review the data taken in 2012 at the Antiproton Decelerator (AD) facility. This painstaking work paid off and they just announced in Nature having produced the first ever beam of antihydrogen atoms. In laboratory experiments like the ones [&amp;#8230;]<span class="bn">]]&gt;</span><span class="kw">&lt;/description&gt;</span>
+    <span class="kw">&lt;content:encoded&gt;</span><span class="bn">&lt;![CDATA[</span>&lt;p&gt;While the &lt;a href=&quot;http://public.web.cern.ch/&quot;&gt;CERN&lt;/a&gt; &lt;a href=&quot;http://www.quantumdiaries.org/2014/01/15/a-whole-universe-to-be-discovered/&quot;&gt;accelerator complex was being revamped&lt;/a&gt; in 2013, the &lt;a href=&quot;http://home.web.cern.ch/about/experiments/asacusa&quot;&gt;ASACUSA&lt;/a&gt; experiment took time to carefully review the data taken in 2012 at the &lt;a href=&quot;http://home.web.cern.ch/about/accelerators/antiproton-decelerator&quot;&gt;Antiproton Decelerator&lt;/a&gt; (AD) facility. This painstaking work paid off and they just &lt;a href=&quot;http://www.nature.com/ncomms/2014/140121/ncomms4089/full/ncomms4089.html&quot;&gt;announced in &lt;i&gt;Nature&lt;/i&gt;&lt;/a&gt; having produced the first ever beam of antihydrogen atoms.&lt;/p&gt;
+    ...</code></pre>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;rss</span><span class="ot"> version=</span><span class="st">&quot;2.0&quot;</span><span class="ot"> xmlns:content=</span><span class="st">&quot;http://purl.org/rss/1.0/modules/content/&quot;</span><span class="ot"> xmlns:wfw=</span><span class="st">&quot;http://wellformedweb.org/CommentAPI/&quot;</span><span class="ot"> xmlns:dc=</span><span class="st">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="ot"> xmlns:atom=</span><span class="st">&quot;http://www.w3.org/2005/Atom&quot;</span><span class="ot"> xmlns:sy=</span><span class="st">&quot;http://purl.org/rss/1.0/modules/syndication/&quot;</span><span class="ot"> xmlns:slash=</span><span class="st">&quot;http://purl.org/rss/1.0/modules/slash/&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;channel&gt;</span>
+  <span class="kw">&lt;title&gt;</span>Quantum Diaries<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;atom:link</span><span class="ot"> href=</span><span class="st">&quot;http://www.quantumdiaries.org/feed/&quot;</span><span class="ot"> rel=</span><span class="st">&quot;self&quot;</span><span class="ot"> type=</span><span class="st">&quot;application/rss+xml&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;link&gt;</span>http://www.quantumdiaries.org<span class="kw">&lt;/link&gt;</span>
+  <span class="kw">&lt;description&gt;</span>Thoughts on work and life from particle physicists from around the world.<span class="kw">&lt;/description&gt;</span>
+  <span class="kw">&lt;lastBuildDate&gt;</span>Tue, 28 Jan 2014 14:21:48 +0000<span class="kw">&lt;/lastBuildDate&gt;</span>
+  <span class="kw">&lt;language&gt;</span>en-US<span class="kw">&lt;/language&gt;</span>
+    <span class="kw">&lt;sy:updatePeriod&gt;</span>hourly<span class="kw">&lt;/sy:updatePeriod&gt;</span>
+    <span class="kw">&lt;sy:updateFrequency&gt;</span>1<span class="kw">&lt;/sy:updateFrequency&gt;</span>
+  <span class="kw">&lt;generator&gt;</span>http://wordpress.org/?v=3.7.1<span class="kw">&lt;/generator&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span>
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> 
+  <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> <span class="kw">&lt;item&gt;</span>...<span class="kw">&lt;/item&gt;</span> 
+<span class="kw">&lt;/channel&gt;</span>
+<span class="kw">&lt;/rss&gt;</span></code></pre>
+</section>
+<section class="slide level1">
+
+<figure>
+<img src="img/div.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<figure>
+<img src="img/divpa.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="the-algorithm">The algorithm:</h2>
+<ol type="1">
+<li><p>Find all possible <em>XPaths</em> for a given blog</p></li>
+<li><p>Obtain <em>training data</em> from the web-feed</p></li>
+<li><p>Execute all <em>XPaths</em> on the ~15 latest posts</p></li>
+<li><p>Find the <em>XPaths</em> returning results most<br /> similar to the training data</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<h2 id="scrapy">Scrapy</h2>
+<figure>
 <img src="img/scrapy_architecture.png" />
 </figure>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions?</h1>
 </section>
     </div>
   </div>
