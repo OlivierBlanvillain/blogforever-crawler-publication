@@ -165,7 +165,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li><p>sdtlib documentation</p></li>
 <li><p>pip, virtualenv</p></li>
-<li><p>Byte String vs Unicode String</p></li>
+<li><p>byte vs unicode strings</p></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -175,7 +175,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><p>No interfaces<br /> ↪  <em>you better like reading source code...</em></p></li>
 <li><p>No type-checking</p></li>
 <li><p>Exceptions as control flow<br /> ↪  <em>you better like stack traces...</em></p></li>
-<li><p>Functional programming?<br /> ↪  <em>just don't modify the thing...</em></p></li>
+<li><p>Immutability?</p></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -189,7 +189,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section class="slide level1">
 
 <pre class="sourceCode python"><code class="sourceCode python">      <span class="kw">def</span> parseHTML(page):
-        <span class="co">&quot;&quot;&quot;Parses a page to a tree html elements.</span>
+        <span class="co">&quot;&quot;&quot;Parses a page to an html tree.</span>
 
 <span class="co">        @type  page: string</span>
 <span class="co">        @param page: the page to parse</span>
@@ -261,17 +261,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section class="slide level1">
 
-<!-- <section data-background="img/scw.jpg"> -->
 <h3 id="do-you-know-the-difference-between">Do you know the difference between</h3>
-<h3 id="and-200-hint-its-not-the-movie">500 and 200 (hint: it's not the movie)?</h3>
+<h3 id="and-200">500 and 200?</h3>
 <pre class="sourceCode python"><code class="sourceCode python">
                   In [<span class="dv">1</span>]: <span class="dv">200</span> is <span class="dv">100</span> + <span class="dv">100</span>
                   Out[<span class="dv">1</span>]: <span class="ot">True</span>
                   
                   In [<span class="dv">2</span>]: <span class="dv">500</span> is <span class="dv">250</span> + <span class="dv">250</span>
                   Out[<span class="dv">2</span>]: <span class="ot">False</span></code></pre>
-<!-- </section> -->
-
 </section>
 <section id="the-crawler" class="slide level1">
 <h1>The Crawler</h1>
@@ -338,10 +335,35 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section class="slide level1">
 
+<figure>
+<img src="img/div.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<figure>
+<img src="img/divpa.png" />
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="the-algorithm">The algorithm:</h2>
+<ol type="1">
+<li><p>Find all possible <em>XPaths</em> for a given blog</p></li>
+<li><p>Obtain <em>training data</em> from the web-feed</p></li>
+<li><p>Execute all <em>XPaths</em> on the ~15 latest posts</p></li>
+<li><p>Find the <em>XPaths</em> returning results most<br /> similar to the training data</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
 <h2 id="scrapy">Scrapy</h2>
 <figure>
 <img src="img/scrapy_architecture.png" />
 </figure>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions?</h1>
 </section>
     </div>
   </div>

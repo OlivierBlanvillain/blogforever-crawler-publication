@@ -9,7 +9,7 @@ I didn't like Python
 
 - pip, virtualenv
 
-- Byte String vs Unicode String
+- byte vs unicode strings
 
 ----------------------------------------------------------
 
@@ -18,13 +18,12 @@ I didn't like Python
 - No interfaces  
   ↪ \ *you better like reading source code...*
   
-- No type-checking  
+- No type-checking
 
 - Exceptions as control flow  
   ↪ \ *you better like stack traces...*
 
-- Functional programming?  
-  ↪ \ *just don't modify the thing...*
+- Immutability?
 
 ----------------------------------------------------------
 
@@ -40,7 +39,7 @@ I didn't like Python
 
 ```python
       def parseHTML(page):
-        """Parses a page to a tree html elements.
+        """Parses a page to an html tree.
 
         @type  page: string
         @param page: the page to parse
@@ -128,11 +127,11 @@ def bestXPath(contentZipPages):
 ```python
   return max(set(topQueries), key=topQueries.count)
 ```
+
 ----------------------------------------------------------
 
-<!-- <section data-background="img/scw.jpg"> -->
 ### Do you know the difference between
-### 500 and 200 (hint: it's not the movie)?
+### 500 and 200?
 
 ```python
 
@@ -142,7 +141,6 @@ def bestXPath(contentZipPages):
                   In [2]: 500 is 250 + 250
                   Out[2]: False
 ```
-<!-- </section> -->
 
 ----------------------------------------------------------
 

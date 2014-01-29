@@ -63,6 +63,31 @@ The Crawler
 
 ----------------------------------------------------------
 
+![](img/div.png)
+
+----------------------------------------------------------
+
+![](img/divpa.png)
+
+----------------------------------------------------------
+
+## The algorithm:
+
+1. Find all possible *XPaths* for a given blog
+
+2. Obtain *training data* from the web-feed
+
+3. Execute all *XPaths* on the ~15 latest posts
+
+4. Find the *XPaths* returning results most  
+   similar to the training data
+
+----------------------------------------------------------
+
 ## Scrapy
 
 ![](img/scrapy_architecture.png)
+
+----------------------------------------------------------
+
+# Questions?
