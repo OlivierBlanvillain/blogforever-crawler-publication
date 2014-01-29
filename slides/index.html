@@ -78,15 +78,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h2>
 <ol>
-<li><p>This Internship</p></li>
-<li><p>I Hate Python</p></li>
-<li>The Crawler
+<li><p>My internship</p></li>
+<li><p>I didn't like Python</p></li>
+<li>The crawler
 </h2>
 </li>
 </ol>
 </section>
-<section id="this-internship" class="slide level1">
-<h1>This Internship</h1>
+<section id="my-internship" class="slide level1">
+<h1>My internship</h1>
 </section>
 <section class="slide level1">
 
@@ -95,13 +95,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><p>Mostly Java and Scala</p></li>
 <li><p>Mathematically Inclined</p></li>
 <li><p>I like compilers</p></li>
-<li><p>Recent interest in functional programming</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">cd</span> workspace/crawler/src/
-    $ <span class="kw">grep</span> -r <span class="st">&#39;for .* in&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
-    <span class="kw">13</span>
-    $ <span class="kw">grep</span> -r <span class="st">&#39;lambda&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
-    <span class="kw">95</span></code></pre></li>
+<li><p>Recent interest in functional programming</p></li>
 </ul>
+<pre class="sourceCode bash"><code class="sourceCode bash">            $ <span class="kw">cd</span> workspace/crawler/src/
+            $ <span class="kw">grep</span> -r <span class="st">&#39;for .* in&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
+            <span class="kw">13</span>
+            $ <span class="kw">grep</span> -r <span class="st">&#39;lambda&#39;</span> <span class="kw">|</span> <span class="kw">wc</span> -l
+            <span class="kw">95</span></code></pre>
 </section>
 <section class="slide level1">
 
@@ -152,12 +152,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2 id="outline">Outline:</h2>
 <ul>
 <li><p>Three months of developement</p></li>
-<li><p>Three months of redaction</p></li>
+<li><p>Three months of documentation</p></li>
 <li><p>I learned Python somewhere in the process</p></li>
 </ul>
 </section>
-<section id="i-hate-python" class="slide level1">
-<h1>I Hate Python</h1>
+<section id="i-didnt-like-python" class="slide level1">
+<h1>I didn't like Python</h1>
 </section>
 <section class="slide level1">
 
@@ -172,10 +172,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h3 id="things-that-bug-me">Things that bug me:</h3>
 <ul>
-<li><p>Interfaces?<br /> ↪  <em>you better like reading source code...</em></p></li>
-<li>Type-checking?<br /></li>
-<li><p>Exceptions as control flow?<br /> ↪  <em>you better like stack traces...</em></p></li>
-<li><p>Immutability?<br /> ↪  <em>just don't modify the thing...</em></p></li>
+<li><p>No interfaces<br /> ↪  <em>you better like reading source code...</em></p></li>
+<li><p>No type-checking</p></li>
+<li><p>Exceptions as control flow<br /> ↪  <em>you better like stack traces...</em></p></li>
+<li><p>Functional programming?<br /> ↪  <em>just don't modify the thing...</em></p></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -231,20 +231,26 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section class="slide level1">
 
-<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> bestPath(contentZipPages):
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> similarity(string1, string2, bufferDict=<span class="ot">None</span>):
+  <span class="co">&quot;&quot;&quot;Computes the similarity between two strings.&quot;&quot;&quot;</span></code></pre>
+<div class="fragment">
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> extractFirst(page, query):
+  <span class="co">&quot;&quot;&quot;Executes a XPath query and return the first result.&quot;&quot;&quot;</span></code></pre>
+</div>
+<div class="fragment">
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> bestXPath(contentZipPages):
   <span class="co">&quot;&quot;&quot;Given a list of content/page, computes the best XPath</span>
 <span class="co">  query that would return the content on each page.</span>
-
-<span class="co">  @type  contentZipPages: list of (string, etree._Element)</span>
-<span class="co">  @param contentZipPages: list of guiding (content, page)</span>
-<span class="co">  @rtype: string</span>
-<span class="co">  @return: a XPath extracting the content of each pages</span>
-<span class="co">  &quot;&quot;&quot;</span></code></pre>
+<span class="co">  @type  contentZipPages: list of (string, etree.ElementTree)</span>
+<span class="co">  @rtype: string&quot;&quot;&quot;</span></code></pre>
+</div>
 <div class="fragment">
 <pre class="sourceCode python"><code class="sourceCode python">  queries = (<span class="st">&quot;/some/path&quot;</span>, <span class="st">&quot;/another/path&quot;</span>, ...)
   dct = <span class="dt">dict</span>()
   ratio = <span class="kw">lambda</span> content, page, query: (
-      levenshtein(content, extractFirst(page, query)), dct)</code></pre>
+      similarity(content, extractFirst(page, query)), dct)</code></pre>
+</div>
+<div class="fragment">
 <pre class="sourceCode python"><code class="sourceCode python">  topQueriesHead = nlargest(
       <span class="dv">10</span>, queries, key=partial(ratio, *contentZipPages[<span class="dv">0</span>]))</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python">  topQueries = <span class="dt">map</span>(<span class="kw">lambda</span> (c, p):
@@ -253,16 +259,26 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode python"><code class="sourceCode python">  <span class="kw">return</span> <span class="dt">max</span>(<span class="dt">set</span>(topQueries), key=topQueries.count)</code></pre>
 </div>
 </section>
-<section id="the-crawler" class="slide level1">
-<h1>The crawler</h1>
-</section>
 <section class="slide level1">
 
-<h2 id="live-demo">Live Demo</h2>
+<!-- <section data-background="img/scw.jpg"> -->
+<h3 id="do-you-know-the-difference-between">Do you know the difference between</h3>
+<h3 id="and-200-hint-its-not-the-movie">500 and 200 (hint: it's not the movie)?</h3>
+<pre class="sourceCode python"><code class="sourceCode python">
+                  In [<span class="dv">1</span>]: <span class="dv">200</span> is <span class="dv">100</span> + <span class="dv">100</span>
+                  Out[<span class="dv">1</span>]: <span class="ot">True</span>
+                  
+                  In [<span class="dv">2</span>]: <span class="dv">500</span> is <span class="dv">250</span> + <span class="dv">250</span>
+                  Out[<span class="dv">2</span>]: <span class="ot">False</span></code></pre>
+<!-- </section> -->
+
+</section>
+<section id="live-demo" class="slide level1">
+<h1>Live Demo</h1>
 <p>↪  <a href="http://www.quantumdiaries.org/">http://www.quantumdiaries.org/</a></p>
 </section>
-<section class="slide level1">
-
+<section id="the-crawler" class="slide level1">
+<h1>The crawler</h1>
 <figure>
 <img src="img/scrapy_architecture.png" />
 </figure>

@@ -1,5 +1,5 @@
-I Hate Python
-=============
+I didn't like Python
+====================
 
 ----------------------------------------------------------
 
@@ -15,14 +15,15 @@ I Hate Python
 
 ### Things that bug me:
 
-- Interfaces?  
+- No interfaces  
   ↪ \ *you better like reading source code...*
   
-- Type-checking?  
-- Exceptions as control flow?  
+- No type-checking  
+
+- Exceptions as control flow  
   ↪ \ *you better like stack traces...*
 
-- Immutability?  
+- Functional programming?  
   ↪ \ *just don't modify the thing...*
 
 ----------------------------------------------------------
@@ -87,15 +88,23 @@ I Hate Python
 ----------------------------------------------------------
 
 ```python
-def bestPath(contentZipPages):
+def similarity(string1, string2, bufferDict=None):
+  """Computes the similarity between two strings."""
+```
+. . .
+
+```python
+def extractFirst(page, query):
+  """Executes a XPath query and return the first result."""
+```
+. . .
+
+```python
+def bestXPath(contentZipPages):
   """Given a list of content/page, computes the best XPath
   query that would return the content on each page.
-
-  @type  contentZipPages: list of (string, etree._Element)
-  @param contentZipPages: list of guiding (content, page)
-  @rtype: string
-  @return: a XPath extracting the content of each pages
-  """
+  @type  contentZipPages: list of (string, etree.ElementTree)
+  @rtype: string"""
 ```
 . . .
 
@@ -103,8 +112,10 @@ def bestPath(contentZipPages):
   queries = ("/some/path", "/another/path", ...)
   dct = dict()
   ratio = lambda content, page, query: (
-      levenshtein(content, extractFirst(page, query)), dct)
+      similarity(content, extractFirst(page, query)), dct)
 ```
+. . .
+
 ```python
   topQueriesHead = nlargest(
       10, queries, key=partial(ratio, *contentZipPages[0]))
@@ -117,5 +128,21 @@ def bestPath(contentZipPages):
 ```python
   return max(set(topQueries), key=topQueries.count)
 ```
+----------------------------------------------------------
+
+<!-- <section data-background="img/scw.jpg"> -->
+### Do you know the difference between
+### 500 and 200 (hint: it's not the movie)?
+
+```python
+
+                  In [1]: 200 is 100 + 100
+                  Out[1]: True
+                  
+                  In [2]: 500 is 250 + 250
+                  Out[2]: False
+```
+<!-- </section> -->
+
 ----------------------------------------------------------
 

@@ -5,4 +5,3 @@
 # The crawler
 
 ![](img/scrapy_architecture.png)
-

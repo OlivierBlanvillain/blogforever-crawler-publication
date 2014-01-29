@@ -25,13 +25,13 @@ My internship
 
 - Recent interest in functional programming  
 
-    ```bash
-        $ cd workspace/crawler/src/
-        $ grep -r 'for .* in' | wc -l
-        13
-        $ grep -r 'lambda' | wc -l
-        95
-    ```
+```bash
+            $ cd workspace/crawler/src/
+            $ grep -r 'for .* in' | wc -l
+            13
+            $ grep -r 'lambda' | wc -l
+            95
+```
 
 ----------------------------------------------------------
 
@@ -79,9 +79,9 @@ My internship
 
 ## Outline:
 
-- Three months of developement 
+- Three months of developement
 
-- Three months of redaction
+- Three months of documentation
 
 - I learned Python somewhere in the process
 
