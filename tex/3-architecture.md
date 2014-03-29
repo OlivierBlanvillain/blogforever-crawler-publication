@@ -15,6 +15,8 @@ Our use case has two types of spiders: *NewCrawl* and *UpdateCrawl*, which imple
 
 This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing a single line of code.
 
+\TODO{Is the modularity mentioned available in the current system implementation? For example, can you "sense" somehow the presence of JavaScript content so as to exclude the "Render JavaScript" step in the pipeline?}
+
 \begin{figure}
   \capstart
   \centering
@@ -32,10 +34,15 @@ In order to identify web pages as blog posts, our implementation enriches Scrapy
 
 Given a URL entry point to a website, the default Scrapy behaviour traverses all the pages of the same domain in a *last-in-first-out* manner. The *blog post identification* function is able to identify whether an URL points to a blog post or not. Internally, for each blog, this function uses a regular expression constructed from the blog post URLs found in the web feed. This simple approach requires that blogs use the same URL pattern for all their posts (or false negatives will occur) which has to be distinct for pages that are not posts (or false positives will occur). In practice, this assumption holds for all blog platforms we encountered and seems to be a common practice among web developers.
 
+\TODO{who is building the regular expressions out of the blog post URLs? Is it done manually or automatically? Please clarify. Additionally, what if the blog does not use friendly URLs (which they do support well the idea of constructing regular expressions out of the URLs)? Consider for example a WordPress based blog with URLs of the form http://<domain>/?p=234. How such a non informative URL affects your approach?}
+
 In order to efficiently deal with blogs that have a large number of pages which are not posts, the *blog post identification* mechanism is not sufficient. Indeed, after all pages identified as blog posts are processed, the crawler needs to download all other pages to search for additional blog posts. To replace the naive *random walk*, *depth first search* or *breadth first search* web site traversals, we use a priority queue where priorities for new URLs are determined by a machine learning system. This mechanism has shown to be mandatory for blogs hosted on a single domain alongside large number of other types of web pages, such as those in forums or wikis.
 
 The idea is to give high priority to URLs which are believed to point to pages with links to blog posts. These predictions are done using an active *Distance-Weighted k-Nearest-Neighbour* classifier @dudani1976. Let $L(u)$ be the number of links to blog posts contained in a page with URL $u$. Whenever a page is downloaded, its URL $u$ and $L(u)$ are given to the machine learning system as training data. When the crawler encounters a new URL $v$, it will ask the machine learning system for an estimation of $L(v)$, and use this value as the download priority of $v$. $L(v)$ is estimated by calculating a weighted average of the values of the $k$ URLs most similar to $v$.
 
+\TODO{The priority queue used, prioritizes the URLs based on a machine learning algorithm trained on the basis of the URL and the number of links it contains.
+a) Is there any assumption here that the links of the page lead to plog posts? Why do URLs with more links are preferred?
+b) What is the aim here? To prioritize or to prune? The former makes no sense (at the end you will have to deal with all the pages). The latter, if it holds, is not clear - I was expecting to read about some threshold value under which pages are dropped out of the queue.}
 
 JavaScript rendering
 --------------------
