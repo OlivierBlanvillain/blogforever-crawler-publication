@@ -32,15 +32,18 @@
 \MakeOuterQuote{"}
 \newfootnotes{A}
 \quotingsetup{vskip=0pt,font={itshape}}
-\setenumerate{noitemsep,topsep=0pt,parsep=2pt,partopsep=0pt}
-\setitemize{noitemsep,topsep=0pt,parsep=4pt,partopsep=0pt}
+\setenumerate{noitemsep,topsep=-2pt,parsep=1pt,partopsep=0pt}
+\setitemize{noitemsep,topsep=-2pt,parsep=1pt,partopsep=0pt}
 \setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
 \setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
 \def\algorithmautorefname{Algorithm}
 \graphicspath{{img/}}
-\newcommand{\cmark}{\ding{51}}
-\newcommand{\xmark}{\ding{55}}
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{-10pt}
+    \setlength\belowdisplayskip{0pt}
+}
 
 \newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
 \newcommand\edit[1]{\emph{\color{Green}#1}}
@@ -104,7 +107,7 @@
 
   \input{algos.tex}
   \input{tables.tex}
-  ~\\~\\~\\~\\~\\~\\~\\
+  % ~\\~\\~\\~\\~\\~\\~\\
   
   \section{Introduction}
   \label{introduction}

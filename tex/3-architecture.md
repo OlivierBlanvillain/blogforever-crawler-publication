@@ -13,9 +13,7 @@ Our use case has two types of spiders: *NewCrawl* and *UpdateCrawl*, which imple
   #. Download multimedia files
   #. Propagate resulting records to the back-end
 
-This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing a single line of code.
-
-\TODO{Is the modularity mentioned available in the current system implementation? For example, can you "sense" somehow the presence of JavaScript content so as to exclude the "Render JavaScript" step in the pipeline?} \edit{I'm not really sure what to do here. As written before, the modularity *is* available, but at the source code level. I did not do any JavaScript "sensing" as the JavaScript rendering phase also takes care of taking screenshots which we want to do on each page... See the added (*) sentence under 3.3.}
+This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing a single line of Scrapy's configuration file.
 
 \begin{figure}
   \capstart
@@ -32,11 +30,7 @@ Enriching Scrapy
 
 In order to identify web pages as blog posts, our implementation enriches Scrapy with two components to narrow the extraction process down to the subsets of pages which are blog posts: *blog post identification* and *download priority heuristic*.
 
-Given a URL entry point to a website, the default Scrapy behaviour traverses all the pages of the same domain in a *last-in-first-out* manner. The *blog post identification* function is able to identify whether an URL points to a blog post. Internally, for each blog, this function \edit{automatically builds a minimal regular expression that matches all the blog post URLs found in the feed, which is later used to classify URLs. Our implementation does not operate at the granularity of characters, as this sometimes leads to overly precise regular expressions which are not valid for all blog post URLs, for example when the publication year forms part of the URLs. Instead, we restrict the building blocks of these regular expressions to sequences of digits, sequences of alphanumeric characters and special characters.} This simple approach requires that blogs use the same URL pattern for all their posts (or false negatives will occur) which has to be distinct for pages that are not posts (or false positives will occur). In practice, this assumption holds for all blog platforms we encountered and seems to be a common practice among web developers.
-
-\edit{(I also have this reference, but I think it would be overkill here: "While this problem is known to be NP-Hard @pitt1993, in practice both the number of feed entries and the length of URLs are bounded.")}
-
-\TODO{who is building the regular expressions out of the blog post URLs? Is it done manually or automatically? Please clarify. Additionally, what if the blog does not use friendly URLs (which they do support well the idea of constructing regular expressions out of the URLs)? Consider for example a WordPress based blog with URLs of the form http://<domain>/?p=234. How such a non informative URL affects your approach?}
+Given a URL entry point to a website, the default Scrapy behaviour traverses all the pages of the same domain in a *last-in-first-out* manner. The *blog post identification* function is able to identify whether an URL points to a blog post. Internally, for each blog, this function \edit{automatically builds a minimal regular expression that matches all the blog post URLs found in the feed, which is later used to classify URLs. Our implementation does not operate at a granularity level of single characters, but instead restricts the building blocks of these regular expressions to sequences of digits, sequences of alphanumeric characters and special characters. That way we avoid producing overly precise regular expressions which might not be valid for all blog post URLs. For example, when the publication year forms part of the URLs, it is considered a sequence of digits rather than a fixed numeric value.} This simple approach requires that blogs use the same URL pattern for all their posts (or false negatives will occur) which has to be distinct for pages that are not posts (or false positives will occur). In practice, this assumption holds for all blog platforms we encountered and seems to be a common practice among web developers.
 
 In order to efficiently deal with blogs that have a large number of pages which are not posts, the *blog post identification* mechanism is not sufficient. Indeed, after all pages identified as blog posts are processed, the crawler needs to download other pages in order to find additional blog posts. To replace the naive *random walk*, *depth first search* or *breadth first search* web site traversals, we use a priority queue where priorities for new URLs are determined by a machine learning system. This mechanism has shown to be useful for blogs hosted on a single domain alongside large number of other types of web pages, such as those of a forum or a wiki. \edit{It also allows the crawler to extract data in presence of *spider traps*, where the naive traversals could have simply missed the actual content.}
 
@@ -44,19 +38,13 @@ The idea is to give high priority to URLs which are believed to point to pages w
 
 \edit{This priority mechanism allows Scrapy to stop a blog crawl before all of its pages have been visited while maximizing the proportion of blog posts harvested to the total number of pages downloaded. While a simple termination condition such an upper bound on the number of pages downloaded is mandatory to avoid infinite loops, it is also possible to add termination heuristics such as *stop if the last 1000 downloaded pages contain less than 1\% of blog posts*.}
 
-\TODO{The priority queue used, prioritizes the URLs based on a machine learning algorithm trained on the basis of the URL and the number of links it contains.
-a) Is there any assumption here that the links of the page lead to plog posts? Why do URLs with more links are preferred?
-b) What is the aim here? To prioritize or to prune? The former makes no sense (at the end you will have to deal with all the pages). The latter, if it holds, is not clear - I was expecting to read about some threshold value under which pages are dropped out of the queue.}
-
-\edit{(I don't think there is anything more needed about a), I seams clear here that we are only interested about links to blog posts, and we use the *blog post identification* to identify them. URLs with more links are preferred because the ultimate goal is to to visit blog posts, and URLs that are estimated by the machine learning system to have a big number of links to blog posts are more likely to contain such links.)}
-
 JavaScript rendering
 --------------------
 JavaScript is a widely used language for client-side scripting. While some applications simply use it for aesthetics, an increasing number of websites use JavaScript to download and display content. In such cases, traditional HTML based crawlers do not see web pages as they are presented to a human visitor by a web browser, and might therefore be obsolete for data extraction.
 
 In our experiments whilst crawling the blogosphere, we encountered several blogs where crawled data was incomplete because of the lack of JavaScript interpretation. The most frequent cases were blogs using the Disqus^[<http://disqus.com/websites>] and LiveFyre^[<http://web.livefyre.com>] comment hosting services. For webmasters, these tools are very handy because the entire commenting infrastructure is externalized and their setup essentially comes down to including a JavaScript snippet in each target page. Both of these services heavily rely on JavaScript to download and display the comments, even providing functionalities such as real-time updates for edits and newly written comments. Less commonly, some blogs are fully rendered using JavaScript. When loading such websites, the web browser will not receive the page content as an HTML document, but will instead have to execute JavaScript code to download and display the page content. The Blogger platform provides the *Dynamic Views* as a default template, which uses this mechanism @antinharasymiv2011.
 
-To support blogs with JavaScript-generated content, we embed a full web browser into the crawler. After considering multiple options, we opted for PhantomJS^[<http://phantomjs.org>], a headless web browser with great performance and scripting capabilities. The JavaScript rendering is the very first step of web page processing. Therefore, extracting blog post articles, comments or multimedia files works equally well on blogs with JavaScript-generated content and on traditional HTML-only blogs. \edit{(*) PhantomJS also allows to take screenshots of the rendered pages, which is one of the functional requirement of the BlogForever platform \cite[FR53]{requirements}.}
+To support blogs with JavaScript-generated content, we embed a full web browser into the crawler. After considering multiple options, we opted for PhantomJS^[<http://phantomjs.org>], a headless web browser with great performance and scripting capabilities. The JavaScript rendering is the very first step of web page processing. Therefore, extracting blog post articles, comments or multimedia files works equally well on blogs with JavaScript-generated content and on traditional HTML-only blogs.
 
 When the number of comments on a page exceeds a certain threshold, both Disqus and LiveFyre will only load the most recent ones and the stream of comments will end with a *Show More Comments* button. As part of the page loading process, we instruct PhantomJS to repeatedly click on these buttons until all comments are loaded. Paths to Disqus and LiveFyre *Show More* buttons are manually obtained. They constitute the only non-generic elements of our extraction stack which require human intervention to maintain and extend to other commenting platforms.
 
@@ -67,14 +55,11 @@ When aiming to work with a large amount of input, it is crucial to build every l
 
 Heading in this direction, we made the key design choice to have both *NewCrawl* and *UpdateCrawl* as stateless components. From a high-level point of view, these two components are *purely functional*:
 
-\newcommand{\URL}{\text{URL}}
-\newcommand{\DATE}{\text{DATE}}
-\newcommand{\RECORD}{\text{RECORD}}
 \begin{equation*}
   \begin{split}
-    NewCrawl:    &  \URL \rightarrow \mathcal{P}(\RECORD)\\
-    UpdateCrawl: &  \URL \times \DATE \rightarrow \mathcal{P}(\RECORD)
+    NewCrawl:~    &  \text{URL} \rightarrow \mathcal{P}(\text{RECORD})\\
+    UpdateCrawl:~ &  \text{URL} \times \text{DATE} \rightarrow \mathcal{P}(\text{RECORD})
   \end{split}
 \end{equation*}
 
-where $\URL$, $\DATE$ and $\RECORD$ are respectively the set of all URLs, dates and records, and $\mathcal{P}$ designates the power set operator. By delegating all shared mutable state to the back-end system, web crawler instances can be added, removed and used interchangeably.
+where $\text{URL}$, $\text{DATE}$ and $\text{RECORD}$ are respectively the set of all URLs, dates and records, and $\mathcal{P}$ designates the power set operator. By delegating all shared mutable state to the back-end system, web crawler instances can be added, removed and used interchangeably.
