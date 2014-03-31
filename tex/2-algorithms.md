@@ -49,7 +49,7 @@ Properties \ref{wordorderProp} and \ref{lengthProp} are essential when dealing w
 
 \similarityTable
 
-The Sørensen–Dice coefficient similarity algorithm operates by first building sets of pairs of adjacent characters, also knows as *bigrams*, and then applying the *quotient of similarity* formula:
+The Sørensen–Dice coefficient similarity algorithm operates by first building sets of pairs of adjacent characters, also known as *bigrams*, and then applying the *quotient of similarity* formula:
 
 \similarityAlgo
 
