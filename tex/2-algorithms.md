@@ -5,7 +5,7 @@ Motivation
 ----------
 Extracting metadata and content from HTML documents is a challenging task. Standards and format recommendations have been around for quite some time, strictly specifying how HTML documents should be organised @w3c2014. For instance the `<h1></h1>` tags have to contain the highest-level heading of the page and must not appear more than once per page @w3c2002. More recently, specifications such as microdata @whatwg2014 define ways to embed semantic information and metadata inside HTML documents, but these still suffer from very low usage: estimated to be used in less than\ 0.5% of websites @andrewrogers2014. In fact, the majority of websites rely on the generic `<span></span>` and `<div></div>` container elements with custom `id` or `class` attributes to organise the structure of pages, and more than 95% of pages do not pass HTML validation @brianwilson2008. Under such circumstances, relying on HTML structure to extract content from web pages is not viable and other techniques need to be employed.
 
-Having blogs as our target websites, we made the following observations which play a central role in the extraction process^[Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these observations, or to insufficient amount of \edit{text content} in posts. \edit{This is for instance the case of photoblogs where posts typically only contain a picture and a few words. Only looking at the text might then not be sufficient to differentiate the article content from other elements of the page.}]:
+Having blogs as our target websites, we made the following observations which play a central role in the extraction process^[Our experiments on a large dataset of blogs showed that failing tests were either due to a violation of one of these observations, or to insufficient amount of text content in posts. This is for instance the case of photoblogs where posts typically only contain a picture and a few words. Only looking at the text might then not be sufficient to differentiate the article content from other elements of the page.]:
 
 \begin{enumerate}[label={(\alph*)}]
   \item\label{havefeedAssum} Blogs provide web feeds: structured and standardized views of the latest posts of a blog,
@@ -45,7 +45,7 @@ Unsurprisingly, the choice of `ScoreFunction` greatly influences the running tim
   - Has low sensitivity to length variations,
   - Runs in linear time.
 
-\edit{The two first properties} are essential when dealing with cases where the blog's web feed only contains an abstract or a subset of the entire post article. #similarityTable gives examples to illustrate how these two properties hold for the Sørensen–Dice coefficient similarity but do not for *edit distance* based similarities such as the Levenshtein @levenshtein1966 similarity.
+The two first properties are essential when dealing with cases where the blog's web feed only contains an abstract or a subset of the entire post article. #similarityTable gives examples to illustrate how these two properties hold for the Sørensen–Dice coefficient similarity but do not for *edit distance* based similarities such as the Levenshtein @levenshtein1966 similarity.
 
 \similarityTable
 
