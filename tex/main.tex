@@ -1,11 +1,13 @@
 % \documentclass[draft]{sig-alternate}
-\documentclass{acm_proc_article-sp}
+\documentclass{sig-alternate}
 
 % Toggle comment this line, the url and the hyperref package
 % to generate a PDF/X-1a compliant output.
 % \usepackage[x-1a]{pdfx}
 
+\parindent 0pt
 \usepackage[ruled, vlined]{algorithm2e}
+\parindent 10pt
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[autostyle=false, style=english]{csquotes}
@@ -18,7 +20,6 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{gnuplottex}
-\usepackage{pifont}
 \usepackage{quoting}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
@@ -26,26 +27,16 @@
 \usepackage[pdfpagelabels=false]{hyperref}
 \usepackage{hypcap}
 
-\newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
-\newcommand{\lastvisited}{Last visited \lv\today}
-
 \MakeOuterQuote{"}
-\newfootnotes{A}
-\quotingsetup{vskip=0pt,font={itshape}}
-\setenumerate{noitemsep,topsep=-2pt,parsep=1pt,partopsep=0pt}
-\setitemize{noitemsep,topsep=-2pt,parsep=1pt,partopsep=0pt}
-\setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
-\setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
-\setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
+\setenumerate{noitemsep, topsep=10pt, parsep=6pt,partopsep=0pt}
+\setitemize{noitemsep,topsep=10pt, parsep=6pt, partopsep=0pt}
 \def\algorithmautorefname{Algorithm}
 \graphicspath{{img/}}
-\expandafter\def\expandafter\normalsize\expandafter{%
-    \normalsize
-    \setlength\abovedisplayskip{-10pt}
-    \setlength\belowdisplayskip{0pt}
-}
 
+\newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
+\newcommand{\lastvisited}{Last visited \lv\today}
 \newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
+\newcommand\noop[1]{\emph{\emph{#1}}}
 \newcommand\edit[1]{\emph{\color{Green}#1}}
 \newcommand\code[1]{\texttt{#1}}
 \newcommand\coderef[1]{\texttt{\ref{#1}}}
@@ -62,19 +53,16 @@
   \numberofauthors{3}
 
   \author{
-  % 1st. author
   \alignauthor
   Olivier Blanvillain\\
          \affaddr{École Polytechnique Fédérale de Lausanne (EPFL)}\\
          \affaddr{1015 Lausanne, Switzerland}\\
          \email{\href{mailto:olivier.blanvillain@epfl.ch}{olivier.blanvillain@epfl.ch}}
-  % 2nd. author
   \alignauthor
   Nikos Kasioumis\\
          \affaddr{European Organization for Nuclear Research (CERN)}\\
          \affaddr{1211 Geneva 23, Switzerland}\\
          \email{\href{mailto:nikos.kasioumis@cern.ch}{nikos.kasioumis@cern.ch}}
-  % 3rd. author
   \alignauthor
   Vangelis Banos\\
          \affaddr{Department of Informatics}\\
@@ -82,14 +70,10 @@
          \email{\href{mailto:vbanos@gmail.com}{vbanos@gmail.com}}
   }
   
-
-  \permission{Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that that copies bear this notice and the full citation on the first page. To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.}
   \conferenceinfo{WIMS'14,}{June 2-4, 2014 Thessaloniki, Greece}
   \CopyrightYear{2014}
   \crdata{978-1-4503-2538-7/14/06}
-  \global\copyrightetc{Copyright \the\copyrtyr\ ACM \the\acmcopyr\ ...\$15.00.}
 
-  \hypersetup{pageanchor=false}
   \maketitle
 
   \begin{abstract}
@@ -98,16 +82,11 @@
 
   \category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information filtering, Query formulation, Selection process]
   \category{\\D.2.8}{Software Engineering}{Metrics}[Complexity measures, Performance measures]
-
-  % In order of most significant, first letter of each word capitalized.
   \terms{Design, Algorithms, Performance, Experimentation}
-
-  % In alphabetical order, first letter of the first word capitalized.
   \keywords{Blog crawler, web data extraction, wrapper generation}
 
   \input{algos.tex}
   \input{tables.tex}
-  % ~\\~\\~\\~\\~\\~\\~\\
   
   \section{Introduction}
   \label{introduction}
@@ -140,6 +119,6 @@
   \balance
 
   \bibliographystyle{abbrv}
-  \bibliography{main,manual}
+  \bibliography{short}
 
 \end{document}

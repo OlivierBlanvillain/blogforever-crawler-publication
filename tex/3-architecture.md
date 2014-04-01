@@ -1,5 +1,12 @@
 This section provides an overview of the crawler system architecture and the different techniques we used. The overall software architecture is presented and discussed, introducing the Scrapy framework and the enrichments we implemented for our specific usage. Then, we show how we integrated a headless web browser into the harvesting process to support blogs that use JavaScript to display page content. Finally, we talk about the design choices we made in view of a large scale deployment.
 
+\begin{figure}[t]
+  \capstart
+  \centering
+  \includegraphics[width=0.47\textwidth]{./img/scrapy_architecture.eps}
+  \caption{Overview of the crawler architecture.\\(Credit: Pablo Hoffman, Daniel Graña, Scrapy)}
+  \label{scrapyarchitecture}
+\end{figure}
 
 Overview
 --------
@@ -15,14 +22,6 @@ Our use case has two types of spiders: *NewCrawl* and *UpdateCrawl*, which imple
 
 This pipeline design provides great modularity. For example, disabling JavaScript rendering or plugging in an alternative back-end can be done by editing a single line of Scrapy's configuration file.
 
-\begin{figure}
-  \capstart
-  \centering
-  \includegraphics[width=0.47\textwidth]{./img/scrapy_architecture.eps}
-  \caption{Overview of the crawler architecture.\\(Credit: Pablo Hoffman, Daniel Graña, Scrapy)}
-  \label{scrapyarchitecture}
-\end{figure}
-
 
 Enriching Scrapy
 ----------------
@@ -32,11 +31,11 @@ In order to identify web pages as blog posts, our implementation enriches Scrapy
 
 Given a URL entry point to a website, the default Scrapy behaviour traverses all the pages of the same domain in a *last-in-first-out* manner. The *blog post identification* function is able to identify whether an URL points to a blog post. Internally, for each blog, this function \edit{automatically builds a minimal regular expression that matches all the blog post URLs found in the feed, which is later used to classify URLs. Our implementation does not operate at a granularity level of single characters, but instead restricts the building blocks of these regular expressions to sequences of digits, sequences of alphanumeric characters and special characters. That way we avoid producing overly precise regular expressions which might not be valid for all blog post URLs. For example, when the publication year forms part of the URLs, it is considered a sequence of digits rather than a fixed numeric value.} This simple approach requires that blogs use the same URL pattern for all their posts (or false negatives will occur) which has to be distinct for pages that are not posts (or false positives will occur). In practice, this assumption holds for all blog platforms we encountered and seems to be a common practice among web developers.
 
-In order to efficiently deal with blogs that have a large number of pages which are not posts, the *blog post identification* mechanism is not sufficient. Indeed, after all pages identified as blog posts are processed, the crawler needs to download other pages in order to find additional blog posts. To replace the naive *random walk*, *depth first search* or *breadth first search* web site traversals, we use a priority queue where priorities for new URLs are determined by a machine learning system. This mechanism has shown to be useful for blogs hosted on a single domain alongside large number of other types of web pages, such as those of a forum or a wiki. \edit{It also allows the crawler to extract data in presence of *spider traps*, where the naive traversals could have simply missed the actual content.}
+In order to efficiently deal with blogs that have a large number of pages which are not posts, the *blog post identification* mechanism is not sufficient. Indeed, after all pages identified as blog posts are processed, the crawler needs to download other pages in order to find additional blog posts. To replace the naive *random walk*, *depth first search* or *breadth first search* web site traversals, we use a priority queue where priorities for new URLs are determined by a machine learning system. This mechanism has shown to be useful for blogs hosted on a single domain alongside large number of other types of web pages, such as those of a forum or a wiki. \edit{It also allows the crawler to extract data in presence of *spider traps*, where the naive traversals would have simply missed the actual content.}
 
 The idea is to give high priority to URLs which are believed to point to pages with links to blog posts. These predictions are done using an active *Distance-Weighted k-Nearest-Neighbour* classifier @dudani1976. Let $L(u)$ be the number of links to blog posts contained in a page with URL $u$. Whenever a page is downloaded, its URL $u$ and $L(u)$ are given to the machine learning system as training data. When the crawler encounters a new URL $v$, it will ask the machine learning system for an estimation of $L(v)$, and use this value as the download priority of $v$. $L(v)$ is estimated by calculating a weighted average of the values of the $k$ URLs most similar to $v$.
 
-\edit{This priority mechanism allows Scrapy to stop a blog crawl before all of its pages have been visited while maximizing the proportion of blog posts harvested to the total number of pages downloaded. While a simple termination condition such an upper bound on the number of pages downloaded is mandatory to avoid infinite loops, it is also possible to add termination heuristics such as *stop if the last 1000 downloaded pages contain less than 1\% of blog posts*.}
+\edit{This priority mechanism allows to stop a blog crawl before all of its pages have been visited while maximizing the proportion of blog posts out of all the downloaded pages. While a simple termination condition such as an upper bound on the number of pages downloaded is mandatory to avoid infinite loops, it is also possible to add termination heuristics such as *stop if the last 1000 downloaded pages contain less than 1\% blog posts*.}
 
 JavaScript rendering
 --------------------
@@ -61,5 +60,5 @@ Heading in this direction, we made the key design choice to have both *NewCrawl*
     UpdateCrawl:~ &  \text{URL} \times \text{DATE} \rightarrow \mathcal{P}(\text{RECORD})
   \end{split}
 \end{equation*}
-
-where $\text{URL}$, $\text{DATE}$ and $\text{RECORD}$ are respectively the set of all URLs, dates and records, and $\mathcal{P}$ designates the power set operator. By delegating all shared mutable state to the back-end system, web crawler instances can be added, removed and used interchangeably.
+\noop{\vspace{3px}\\
+where $\text{URL}$, $\text{DATE}$ and $\text{RECORD}$ are respectively the set of all URLs, dates and records, and $\mathcal{P}$ designates the power set operator. By delegating all shared mutable state to the back-end system, web crawler instances can be added, removed and used interchangeably.}
