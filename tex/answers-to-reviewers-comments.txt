@@ -1,0 +1,82 @@
+> ----------------------- REVIEW 1 ---------------------
+> page 2, footnote 1:
+> The term "insufficient amount of text" needs a couple of lines more
+> explanation. Why does this lead to a failure?
+We added two sentences to clarify this, but I would also like to give a
+concrete example. On this blog post [1], the textual content of the post is "A
+floral embroidered coat seems to be all the rage on chic girls this Winter".
+Now suppose that the layout adds some noise, for instance by also containing
+in deepest div containing with the article the text "facebook twitter email 27
+comments Posted in Women Tags: Coats, If You're Thinking About....". Then the
+div containing the title of the post, "If You’re Thinking About... Floral
+Embroidered Coats", or even the div of one of the comment, might be the more
+similar to the text provided than the actual article div.
+
+[1]: <http://www.thesartorialist.com/photos/if-youre-thinking-about-floral-embroidered-coats/>
+
+> section 2.4, 2nd paragraph:
+> A definition of n is missing (although it can be guessed).
+We added it.
+
+> section 2.5, 7th paragraph:
+> This paragraph is hard to follow! What is "an overflow on its comment feed"?
+> Do you mean comments content arriving by means of AJAX calls? Please
+> explain. The second sentence of the paragraph is also not clear ("..narrow
+> down ...fixint a target..."). Please rewrite this paragraph.
+Indeed this paragraph was not very clear. The information it contained was
+also really not important so we decided to remove it all together. The first
+sentence was a repetition of the "Similarly to blog feeds..." sentence in the
+paragraph before the bullet points: if the comment feed is not full there is
+no need to extract comments from the page. Regarding the "comment content is
+extracted first", this is a small optimization I did to first get the exact
+number of comments by matching the comment content (which is usually more
+unique and accurate that doing a matching on author/date), and use this number
+to then accurately get the other fields.
+
+> section 3.1, 3rd paragraph: Is the modularity mentioned available in the
+> current system implementation? For example, can you "sense" somehow the
+> presence of JavaScript content so as to exclude the "Render JavaScript" step
+> in the pipeline?
+Not this modularity is only "at source code level", but the pipeline is not
+dynamically modified at runtime. We added some clarifications on this.
+
+> section 3.2, 2nd paragraph:
+> who is building the regular expressions out of the blog post URLs? Is it
+> done manually or automatically? Please clarify. Additionally, what if the
+> blog does not use friendly URLs (which they do support well the idea of
+> constructing regular expressions out of the URLs)? Consider for example a
+> WordPress based blog with URLs of the form http://<domain>/?p=234. How such
+> a non informative URL affects your approach?
+We included precisions on this (automatic) process. For a blog with URLs on
+the format of "http://example.com/?p=234", the generated regular expression
+will be something like ^http://example.com/?[a-zA-Z0-9]+=[0-9]+$.
+
+> section 3.2, 4th paragraph:
+> The priority queue used, prioritizes the URLs based on a machine learning
+> algorithm trained on the basis of the URL and the number of links it
+> contains.
+> a) Is there any assumption here that the links of the page lead to plog
+>    posts? Why do URLs with more links are preferred?
+> b) What is the aim here? To prioritize or to prune? The former makes no
+>    sense (at the end you will have to deal with all the pages). The latter,
+>    if it holds, is not clear - I was expecting to read about some threshold
+>    value under which pages are dropped out of the queue.
+> Please clarify both the above.
+a) The "blog post identification function" described before serves this
+   purpose.
+b) The aim is to prune uninteresting pages, we wrote an additional paragraph
+   to make this clear. It explains that this mechanism allows to add
+   "termination conditions" in order to save some resources. Studying this
+   kind or engineering coefficient/heuristic requires to experiment with a
+   large amount of blogs, which was out of the scope of this paper.
+
+
+> ----------------------- REVIEW 2 ---------------------
+> The only comment is that the authors could have used some of the non-used
+> space (8 out of 12 pages) to further discuss some of the pointed directions
+> for future work.
+We extensively discussed this point at the beginning of our work on the
+crawler, and we decided to split the work into two parts. We originally aimed
+for the "short paper" format, and planned our work to have it ready for the
+first deadline (09/12/13), but we did not evaluated the length properly and
+finally switched to the "full paper" format.
