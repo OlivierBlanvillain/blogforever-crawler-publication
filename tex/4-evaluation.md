@@ -11,7 +11,7 @@ To evaluate article and title extraction from blog posts we compare our approach
 
 \input{runningtimeFigure.tex}
 
-On our test dataset, #extractionAlgo outperformed the competition by 4.9% on article extraction and 10.1% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages providing web feeds, as they constitute the reference data used to build extraction rules. Therefore, results shown in #precisionTable should not be interpreted as a general quality evaluation of the different projects, but simply as evidences that our approach is more suitable when working with blogs.
+On our test dataset, #extractionAlgo outperformed the competition by 4.9% on article extraction and 10.1% on title extraction. It is important to stress that Readability, Boilerpipe and Goose rely on generic techniques such as word density, paragraph clustering and heuristics on HTML tagging conventions, which are designed to work for any type of web page. On the contrary, our algorithm is only suitable for pages providing web feeds, as they constitute the reference data used to build extraction rules. Therefore, results shown in #precisionTable should not be interpreted as a general quality evaluation of the different projects, but simply as evidence that our approach is more suitable when working with blogs.
 
 Article extraction running times
 --------------------------------
