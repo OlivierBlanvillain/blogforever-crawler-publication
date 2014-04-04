@@ -1,4 +1,4 @@
-This section explains in detail the algorithms we developed to extract blog post articles as well as its variations for extracting authors, dates and comments. Our approach uses blog specific characteristics to build *extraction rules* which are applicable throughout a blog. Our focus is on minimising the algorithmic complexity while keeping the approach simple and generic.
+This section explains in detail the algorithms we developed to extract blog post articles as well as its variations for extracting authors, dates and comments. Our approach uses blog specific characteristics to build *extraction rules* which are applicable throughout a blog. Our focus is on minimising the algorithmic complexity while keeping our approach simple and generic.
 
 
 Motivation
