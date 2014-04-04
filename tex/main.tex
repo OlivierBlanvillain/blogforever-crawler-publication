@@ -1,14 +1,6 @@
 % \documentclass[draft]{sig-alternate}
 \documentclass{sig-alternate}
 
-% Toggle comment this line, the url and the hyperref package
-% to generate a PDF/X-1a compliant output.
-
-% \usepackage[x-1a]{pdfx}
-% \usepackage{atbegshi}
-%   \AtBeginShipout{\special{pdf: put @thispage <</TrimBox [9.0 9.0 621.0
-%   801.0]>>}}
-  
 \parindent 0pt
 \usepackage[ruled, vlined]{algorithm2e}
 \parindent 10pt
@@ -29,7 +21,7 @@
 \usepackage{setspace}
 \usepackage{xcolor}
 \usepackage[hyphens]{url}
-\usepackage[pdfpagelabels=false]{hyperref}
+\usepackage[pdfpagelabels=false,draft=true]{hyperref}
 \usepackage{hypcap}
 
 \MakeOuterQuote{"}

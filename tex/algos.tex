@@ -71,14 +71,12 @@
 \newcommand{\removelatexerror}{\let\@latex@error\@gobble}
 \makeatother
 
-
 \newcommand\similarityAlgo{
   \begingroup
   \removelatexerror
   \begin{figure}[ht]
 
-    \begin{function}[H]
-      \caption{Bigrams(string)}\label{bigramsAlgo}
+    \begin{function}[H]      \caption{Bigrams(string)}\label{bigramsAlgo}
       \Return{\emph{set of pairs of adjacent characters in \emph{string}}}\;
     \end{function}
 
@@ -94,28 +92,12 @@
       \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1}\emph{+}\len{bigrams2}}}\;
     \end{function}
     
-  \vspace{-10px}
+  \vspace{-11px}
   
   \end{figure}
   
   \endgroup
 }
-
-% \newcommand\similarityAlgo{
-%   \begin{function}[ht]
-%     \caption{Similarity(string1, string2)}\label{similarityAlgo}
-%     \setstretch{1.1}
-
-%     \emph{bigrams1 \Arrow} \Bigrams{string1}\;
-%     \emph{bigrams2 \Arrow} \Bigrams{string2}\;
-%     \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1}\emph{+}\len{bigrams2}}}\;
-%   \end{function}
-
-%   \begin{function}[ht]
-%     \caption{Bigrams(string)}\label{bigramsAlgo}
-%     \Return{\emph{set of pairs of adjacent characters in \emph{string}}}\;
-%   \end{function}
-% }
 
 \newcommand\linearAlgo{
   \begin{algorithm}[ht]

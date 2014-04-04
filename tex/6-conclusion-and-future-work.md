@@ -4,4 +4,4 @@ Future work could investigate *hybrid* content extraction algorithms to try and 
 
 Another possible research direction would be the deployment of the BlogForever Crawler on a large scale distributed system. This is particularly relevant in the domain of web crawling given that intensive network operations are a serious bottleneck. Crawlers greatly benefit from the use of multiple Internet access points which makes them natural candidates for distributed computing. We intend to explore these opportunities in our future work.
 
-[^1]: An in-depth analysis of causes of failure was not included in this paper given the high amount of manual work required to identify causes of failure on problematic pages.
+[^1]: An in-depth analysis of causes of failure was not included in this paper given the high amount of manual work required to identify failure causes on problematic pages.
