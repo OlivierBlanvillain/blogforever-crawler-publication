@@ -8,14 +8,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage[autostyle=false, style=english]{csquotes}
 \usepackage[usenames,dvipsnames]{color}
-\usepackage[justification=centering]{caption}
 \usepackage[nodayofweek]{datetime}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage[tableposition=top, font=bf]{caption}
 \usepackage{balance}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{gnuplottex}
+\usepackage{ifthen}
 \usepackage{quoting}
 \usepackage{sepfootnotes}
 \usepackage{setspace}
@@ -39,6 +40,7 @@
 \newcommand\set[1]{\{#1\}}
 \newcommand\surl[1]{\urlstyle{ff}\url{#1}}
 \newcommand\Oof[1]{$\mathcal{O}(#1)$}
+\newboolean{fref}
 
 \begin{document}
 
@@ -109,10 +111,28 @@
   \section{Acknowledgments}
   \label{acknowledgments}
   \input{7-acknowledgments.mdtex}
-  
+
   \vspace{3pt}
-  
+
   \balance
+
+  \def\changemargin{\list{}{\leftmargin3pt}\item[]}
+  \let\endchangemargin=\endlist
+  
+  \setboolean{fref}{true}
+  \let\oldbibitem\bibitem
+  \renewcommand\bibitem[1]{
+    \ifthenelse{\boolean{fref}}{
+      \setboolean{fref}{false}
+      \vspace{4pt}
+      \oldbibitem{#1}
+      \begin{changemargin}
+    }{
+      \end{changemargin}
+      \oldbibitem{#1}
+      \begin{changemargin}
+    }
+  }
 
   \bibliographystyle{abbrv}
   \bibliography{short}
