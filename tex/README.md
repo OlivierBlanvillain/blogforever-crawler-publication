@@ -9,5 +9,3 @@ Compile:
 To enable visual PDF diffs:
 
     git config --global diff.diffpdf.command diffpdf
-
-(If you are forced to use a proprietary operating system... Sorry.)

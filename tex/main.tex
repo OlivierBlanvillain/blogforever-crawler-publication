@@ -118,9 +118,9 @@
 
   \def\changemargin{\list{}{\leftmargin3pt}\item[]}
   \let\endchangemargin=\endlist
+  \let\oldbibitem\bibitem
   
   \setboolean{fref}{true}
-  \let\oldbibitem\bibitem
   \renewcommand\bibitem[1]{
     \ifthenelse{\boolean{fref}}{
       \setboolean{fref}{false}
@@ -135,6 +135,7 @@
   }
 
   \bibliographystyle{abbrv}
-  \bibliography{short}
-
+  \input{hardcoded.bbl}
+  % \bibliography{short}
+  
 \end{document}
