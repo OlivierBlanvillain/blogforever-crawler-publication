@@ -1,15 +1,13 @@
 \begin{figure}[t]
-  \capstart
   \refstepcounter{figure}
   \label{runningtime}
   \vspace{-12pt}
   \hspace{-34pt}
   \begin{gnuplot}% nop
     set terminal epslatex color
-    set size 0.76
+    set size 0.75
     set size ratio 0.618
 
-    set title '\textbf{Figure \arabic{figure}: Running time of article extraction}'
     set ylabel 'Cumulated running time (sec.)' offset 1.3
     set xlabel 'Processed blog posts'
 
@@ -25,5 +23,6 @@
     '' u 0:2 smooth cumulative w lines linewidth 4 title 'Boilerpipe',\
     '' u 0:3 smooth cumulative w lines linewidth 4 title 'Goose'
   \end{gnuplot}
-  \vspace{-12pt}
+  \vspace{-18pt}
+  \caption{Running time of article extraction.}
 \end{figure}
