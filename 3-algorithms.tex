@@ -64,7 +64,7 @@ abstract or full text), its title, authors and publication date. We call
 these fields \emph{targets} as they constitute the data our crawler aims 
 to extract. Observation (\ref{similarhtmlAssum}) guarantees the existence 
 of an appropriate extraction rule, as well as its applicability to all 
-posts of the blog.
+posts of the blog. Each page is uniquely identified by its URL. If a page is already processed, it is not processed again in the future.
 
 \autoref{extractionAlgo} shows the generic procedure we use to build 
 extraction rules. The idea is quite simple: for each \code{(}\emph{page, 
@@ -116,11 +116,11 @@ We chose the Sorensen–Dice coefficient similarity~\cite{dice1945},
 which is, to the best of our knowledge, the only string similarity 
 algorithm fulfilling the following criteria:
 
-\begin{itemize}
+\begin{enumerate}
 \item\label{wordorderProp} Has low sensitivity to word ordering,
 \item\label{lengthProp} Has low sensitivity to length variations,
 \item\label{linearProp} Runs in linear time.
-\end{itemize}
+\end{enumerate}
 
 Properties \ref{wordorderProp} and \ref{lengthProp} are essential when 
 dealing with cases where the blog's web feed only contains an abstract 
@@ -249,7 +249,7 @@ Similarity & 0.7817 & 0.6680 & 0.6212 \\ \hline
 
 With bigrams computed in this dynamic programming manner, the overall 
 time to compute all \coderef{bigramsAlgo}\code{(}\emph{node.text}\code{)} 
-is linear. To conclude the proof that \autoref{linearAlgo} runs in linear 
+is linear. To conclude the argument that \autoref{linearAlgo} runs in linear 
 time we show that all other computations of the inner loop can be done 
 in constant \emph{amortized} time. As the number of edges in a tree is 
 one less than the number of nodes, the \emph{amortized} number of bigrams 
@@ -309,15 +309,6 @@ comment authors) and $E(u, v)$ has weight equal to
 \coderef{similarityAlgo}\code{(}\emph{u, v}\code{)}.
 \end{itemize}
 
-Regarding time complexity, computing the \emph{tree distance} of each 
-node of a graph to a single reference node can be done in linear time, 
-and multiplying the number of targets by a constant factor does not 
-affect the asymptotic computational complexity. Computing scores of 
-comment extraction rules requires a more expensive algorithm. However, 
-this is compensated by the fact that the proportion of candidates left, 
-after filtering out rules not returning enough results, is very low in 
-practice. Analogous reformulations to the one done with 
-\autoref{linearAlgo} can be straightforwardly applied on each 
-\code{ScoreFunction} to minimize the time spent in 
-\coderef{similarityAlgo}.
+Regarding time complexity, computing the \emph{tree distance} of each node of a graph to a single reference node and multiplying the number of targets by a constant factor can be done in linear time. However, computing scores of comment extraction rules requires a more expensive algorithm. This is compensated by the fact that the proportion of candidate HTML nodes left, after filtering out rules not returning enough results, is very low in practice. Analogous reformulations to the one done with \autoref{linearAlgo} can be straightforwardly applied on each ScoreFunction to minimize the time spent in \coderef{similarityAlgo} calculations.
 
+It must be noted that there is no limitation due to comment nesting as long as comments follow the same format.

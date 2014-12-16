@@ -71,8 +71,9 @@ those that need to be visited next. While \cite{heydon99mercator} and
 \cite{boldi2003} uses a fully distributed architecture where URLs are 
 divided among nodes using consistent hashing. Both of these approaches 
 require the crawlers to implement complex mechanisms to achieve 
-fault tolerance. The BlogForever Crawler circumvents this problem by 
-delegating all shared mutable state to the back-end system. In addition, 
+fault tolerance. The BlogForever Crawler does not have to address this
+issue as it is already Handled by the BlogForever back-end system which
+is responsible for task and state management. In addition,
 since we process web pages on the fly and directly emit the extracted 
 content to the back-end, there is no need for persistent storage on 
 the crawler's side. This removes one layer of complexity when compared 

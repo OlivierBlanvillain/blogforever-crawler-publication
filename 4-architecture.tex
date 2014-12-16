@@ -111,8 +111,9 @@ template, which uses this mechanism~\cite{antinharasymiv2011}.
 To support blogs with JavaScript-generated content, we embed a full web 
 browser into the crawler. After considering multiple options, we opted 
 for PhantomJS\footnote{\url{http://phantomjs.org}}, a headless web 
-browser with great performance and scripting capabilities. The JavaScript 
-rendering is the very first step of web page processing. Therefore, 
+browser with great performance and scripting capabilities. 
+The JavaScript rendering is enabled by default and is the very first
+step of web page processing. Therefore, 
 extracting blog post articles, comments or multimedia files works equally 
 well on blogs with JavaScript-generated content and on traditional 
 HTML-only blogs.
