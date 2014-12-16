@@ -1,0 +1,120 @@
+﻿\documentclass{ws-ijait}
+
+\parindent 0pt
+\usepackage[ruled, vlined]{algorithm2e}
+\parindent 10pt
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[autostyle=false, style=english]{csquotes}
+\usepackage[usenames,dvipsnames]{color}
+% \usepackage[justification=centering]{caption}
+\usepackage[nodayofweek]{datetime}
+\usepackage{amssymb}
+\usepackage{booktabs}
+% \usepackage{balance}
+% \usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{gnuplottex}
+\usepackage{pifont}
+\usepackage{quoting}
+\usepackage[hyphens]{url}
+\usepackage{sepfootnotes}
+\usepackage{setspace}
+\usepackage[pdfpagelabels=false]{hyperref}
+\usepackage{hypcap}
+\usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
+
+\newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
+\newcommand{\lastvisited}{Last visited \lv\today}
+
+% \MakeOuterQuote{"}
+\newfootnotes{A}
+\quotingsetup{vskip=0pt,font={itshape}}
+\setenumerate{noitemsep,topsep=4pt,parsep=4pt,partopsep=0pt}
+\setitemize{noitemsep,topsep=4pt,parsep=4pt,partopsep=0pt}
+\setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
+\setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
+\setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
+\def\algorithmautorefname{Algorithm}
+\graphicspath{{img/}}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
+\renewcommand\comment[1]{\emph{\color{Gray}#1}}
+\newcommand\code[1]{\texttt{#1}}
+\newcommand\coderef[1]{\texttt{\ref{#1}}}
+\newcommand\stringliteral[1]{\texttt{\char`\"#1\char`\"}}
+\newcommand\len[1]{|#1|}
+\newcommand\set[1]{\{#1\}}
+\newcommand\surl[1]{\urlstyle{ff}\url{#1}}
+\newcommand\Oof[1]{$\mathcal{O}(#1)$}
+\renewcommand{\figurename}{Figure}
+
+\begin{document}
+
+\markboth{Vangelis Banos, Olivier Blanvillain, Nikos Kasioumis, Yannis Manolopoulos}
+{A scalable approach to harvest modern weblogs}
+
+%%%%%%%%%%%%%%%%%%%%% Publisher's Area please ignore %%%%%%%%%%%%%%%
+\catchline{}{}{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{A scalable approach to harvest modern weblogs}
+
+\author{\footnotesize Vangelis Banos}
+
+\address{Department of Informatics, Aristotle University of Thessaloniki (AUTH),\\
+Thessaloniki, 54124, Greece.\\
+\email{vbanos@gmail.com}}
+
+\author{\footnotesize Olivier Blanvillain}
+
+\address{École Polytechnique Fédérale de Lausanne (EPFL),\\
+1015 Lausanne, Switzerland.\\
+\email{olivier.blanvillain@epfl.ch}}
+
+\author{\footnotesize Nikos Kasioumis}
+
+\address{European Organization for Nuclear Research (CERN),\\
+Geneva 23, 1211, Switzerland.\\
+\email{nikos.kasioumis@cern.ch}}
+
+\author{\footnotesize Yannis Manolopoulos}
+
+\address{Department of Informatics, Aristotle University of Thessaloniki (AUTH),\\
+Thessaloniki, 54124, Greece.\\
+\email{manolopo@csd.auth.gr}}
+
+\maketitle
+
+\begin{history}
+\received{(Day Month Year)}
+\revised{(Day Month Year)}
+\accepted{(Day Month Year)}
+%\comby{(xxxxxxxxxx)}
+\end{history}
+
+\begin{abstract}
+    \input{0-abstract.tex}
+\end{abstract}
+
+\keywords{Blog crawler; web data extraction; wrapper generation; interoperability.}
+
+\input{algos.tex}
+\input{tables.tex}
+% ~\\~\\~\\~\\~\\~\\~\\
+\input{1-intro.tex}
+\input{2-related-work.tex}
+\input{3-algorithms.tex}
+\input{4-architecture.tex}
+\input{5-evaluation.tex}
+\input{6-conclusion-and-future-work.tex}
+\input{7-acknowledgments.tex}
+
+\bibliographystyle{abbrv}
+\bibliography{main,manual}
+
+\end{document}

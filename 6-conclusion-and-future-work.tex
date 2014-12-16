@@ -1,0 +1,45 @@
+\section{Discussion and Conclusions}
+\label{conclusionandfuturework}
+In this article, we presented our extended work on a scalable approach to 
+harvest modern weblogs. Our approach is based on a new algorithm to build 
+extraction rules from web feeds. The key observations which led us to 
+the inception and implementation of this algorithm are the facts that: 
+(1) weblogs provide web feeds which include structured and standardized 
+views of the latest blog posts, and (2) post of the same weblog share 
+a similar HTML structure. Following, we presented a simple adaptation 
+of this procedure that allows extracting different types of content, 
+including authors, dates, comments and potentially any other element. 
+The elaboration of this process enables the wider use of this method 
+as it is feasible to devise variations of the proposed method to extract 
+any kind of weblog content.
+
+A critical part of this work was the presentation of the BlogForever 
+crawler architecture and discussion of the software tools and the novel 
+techniques we used. In order to support rapidly evolving web technologies 
+such as JavaScript-generated content, the crawler uses a headless web 
+browser to render pages before processing them. Another important aspect 
+of the crawler architecture was the interoperability provisions. 
+In our design, we introduced a new metadata schema for interoperability, 
+encoding weblog crawling results in Archival Information Packages (AIPs) 
+using established open standards. This feature enables the use of our 
+system in many contexts and with multiple different back-ends, increasing 
+its relevance and reusability. We also highlighted the design choices 
+made to achieve both modularity and scalability. This is particularly 
+relevant in the domain of web crawling given that intensive network 
+operations can be a serious bottleneck. Crawlers greatly benefit from 
+the use of multiple Internet access points which makes them natural 
+candidates for distributed computing.
+
+Our method had great success with content extraction accuracy and 
+performance against state-of-the-art open source web article extraction 
+systems as presented in the evaluation section. We have to note thought 
+that our experiments on a considerably large weblogs dataset showed that 
+there were some failing tests which stem from either the violation of one 
+of our two key observations, or from an insufficient amount of text in 
+posts. Therefore, it is suggested to potential users to ensure that these 
+observations are valid on the target weblogs before proceeding with using 
+the BlogForever crawler. Future work could attempt to alleviate this problem
+using \emph{hybrid} extraction algorithms. Combining our approach with
+others techniques such as word density or special reasoning could lead
+to better performance given that these techniques are insensible to the
+above issues.

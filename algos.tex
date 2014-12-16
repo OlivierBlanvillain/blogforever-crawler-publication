@@ -1,0 +1,127 @@
+\SetKw{Of}{of}
+\SetKw{In}{in}
+\SetKw{As}{as}
+\SetKw{All}{all}
+\SetKw{With}{with}
+\SetKw{Over}{over}
+\SetKw{Using}{for}
+\SetKwFunction{Par}{}
+\SetKwFunction{Rule}{Rule}
+\SetKwFunction{Apply}{Apply}
+\SetKwFunction{Bigram}{Bigram}
+\SetKwFunction{AllRules}{AllRules}
+\SetKwFunction{Similarity}{Similarity}
+\SetKwFunction{ScoreFunction}{ScoreFunction}
+\SetKwFunction{RelativePathTo}{RelativePathTo}
+\SetKwFunction{Bigrams}{Bigrams}
+
+\DontPrintSemicolon
+\SetProcNameSty{texttt}
+\SetProcArgSty{textit}
+
+\newcommand\Arrow{$\longleftarrow$~}
+\newcommand\Indent{\hspace{12pt}}
+
+\newcommand\extractionAlgo{
+  \begin{algorithm}[ht]
+    \caption{Best Extraction Rule}\label{extractionAlgo}
+    \SetKwInOut{Input}{input}
+    \SetKwInOut{Output}{output}
+    \setstretch{1.1}
+    \thinspace
+
+    \Input{Set \emph{pageZipTarget} of (page and target) pairs}
+    \Output{Best extraction rule}
+    \BlankLine
+    \emph{bestRules \Arrow}new list\;
+    \ForEach{\Par{page, target} \In pageZipTarget}{
+      \emph{score \Arrow}new map\;
+      \ForEach{rule \In \AllRules{page}}{
+        \emph{extracted \Arrow \Apply{rule, page}}\;
+        \emph{score \Of rule \Arrow \ScoreFunction{extracted, target}}\;
+      }
+      \emph{bestRules \Arrow bestRules} + rule with highest \emph{score}\;
+    }
+    \Return{\emph{rule with highest occurrence in} bestRules}\;
+  \end{algorithm}
+}
+
+\newcommand\allrulesAlgo{
+  \begin{function}[ht]
+    \caption{AllRules(page)}\label{allrulesAlgo}
+    \setstretch{1.1}
+
+    \emph{rules} \Arrow new set\;
+    \ForEach{node \In page}{
+      \uIf{node \As \emph{\code{id} attribute}}{
+        \emph{rules \Arrow rules} + \set{\stringliteral{
+          //*[@id=`\textnormal{\it node.id}']}}\;
+      } \ElseIf{node \As \emph{\code{class} attribute}}{
+        \emph{rules \Arrow rules} + \set{\stringliteral{
+          //*[@class=`\textnormal{\it node.class}']}}\;
+      } \lElse{
+        \emph{rules \Arrow rules} + \set{\RelativePathTo{node}}
+      }
+    }
+    \Return{rules}\;
+  \end{function}
+}
+
+\makeatletter
+\newcommand{\removelatexerror}{\let\@latex@error\@gobble}
+\makeatother
+
+\newcommand\similarityAlgo{
+
+  \begingroup
+  \removelatexerror
+  \begin{figure}[ht]
+
+    \begin{function}[H]
+      \capstart
+      \caption{Similarity(string1, string2)}\label{similarityAlgo}
+      \setstretch{1.1}
+
+      \emph{bigrams1 \Arrow} \Bigrams{string1}\;
+      \emph{bigrams2 \Arrow} \Bigrams{string2}\;
+      \Return{\emph{2} \len{bigrams1 $\cap$ bigrams2} \emph{/} \Par{\len{bigrams1} \emph{+} \len{bigrams2}}}\;
+    \end{function}
+
+    \vspace{5pt}
+
+    \begin{function}[H]
+      \caption{Bigrams(string)}\label{bigramsAlgo}
+      \Return{\emph{set of pairs of adjacent characters in \emph{string}}}\;
+    \end{function}
+
+  \end{figure}
+  \endgroup
+}
+
+\newcommand\linearAlgo{
+  \begin{algorithm}[ht]
+    \caption{Linear Time Best Content Extraction Rule}\label{linearAlgo}
+    \SetKwInOut{Input}{input}
+    \SetKwInOut{Output}{output}
+    \setstretch{1.1}
+    \thinspace
+
+    \Input{Set \emph{pageZipTarget} of (Html and Text) pairs}
+    \Output{Best extraction rule}
+    \BlankLine
+    \emph{bestRules \Arrow}new list\;
+    \ForEach{\Par{page, target} \In pageZipTarget}{
+      \emph{score \Arrow}new map\;
+      \emph{bigrams \Arrow}new map\;
+      \emph{bigrams \Of target \Arrow \Bigrams{target}}\;
+      \ForEach{node \In page \With \emph{post-order traversal}}{
+        \emph{bigrams \Of node \Arrow}\;
+          \Indent \Bigrams{node.text} $\cup$ \emph{bigrams \Of \All node.childs}\;
+        \emph{score \Of node \Arrow }\;
+          \Indent $\dfrac{ {2~\len{\Par{bigrams~\Of~node} \cap \Par{bigrams~\Of~target}}} }{ \len{bigrams~\Of~node} + \len{bigrams~\Of~target} }$\;
+      }
+      \emph{bestRules \Arrow bestRules} + \Rule{\emph{node with best} score}\;
+    }
+    \Return{\emph{rule with highest occurrence in} bestRules}\;
+  \end{algorithm}
+}

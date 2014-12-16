@@ -1,0 +1,154 @@
+\documentclass{ws-ijait}
+
+\usepackage[ruled, vlined]{algorithm2e}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[autostyle=false, style=english]{csquotes}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[justification=centering]{caption}
+\usepackage[nodayofweek]{datetime}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{balance}
+% \usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{gnuplottex}
+\usepackage{pifont}
+\usepackage{quoting}
+\usepackage[hyphens]{url}
+\usepackage{sepfootnotes}
+\usepackage{setspace}
+\usepackage[pdfpagelabels=false]{hyperref}
+\usepackage{hypcap}
+
+\newdateformat{lv}{\THEDAY{ }\shortmonthname[\THEMONTH] \THEYEAR}
+\newcommand{\lastvisited}{Last visited \lv\today}
+
+\MakeOuterQuote{"}
+\newfootnotes{A}
+\quotingsetup{vskip=0pt,font={itshape}}
+\setenumerate{noitemsep,topsep=0pt,parsep=2pt,partopsep=0pt}
+\setitemize{noitemsep,topsep=0pt,parsep=4pt,partopsep=0pt}
+\setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
+\setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
+\setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
+\def\algorithmautorefname{Algorithm}
+\graphicspath{{img/}}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\newcommand\TODO[1]{\emph{\color{Red} TODO: #1}}
+\renewcommand\comment[1]{\emph{\color{Gray}#1}}
+\newcommand\code[1]{\texttt{#1}}
+\newcommand\coderef[1]{\texttt{\ref{#1}}}
+\newcommand\stringliteral[1]{\texttt{\char`\"#1\char`\"}}
+\newcommand\len[1]{|#1|}
+\newcommand\set[1]{\{#1\}}
+\newcommand\surl[1]{\urlstyle{ff}\url{#1}}
+\newcommand\Oof[1]{$\mathcal{O}(#1)$}
+
+\begin{document}
+
+\markboth{Vangelis Banos, Authors' Names}
+{Instructions for Typing Manuscripts (Paper's Title)}
+
+%%%%%%%%%%%%%%%%%%%%% Publisher's Area please ignore %%%%%%%%%%%%%%%
+%
+\catchline{}{}{}{}{}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{INSTRUCTIONS FOR TYPESETTING MANUSCRIPTS\\
+    USING \TeX\ OR \LaTeX\footnote{For the title, try not to use more than 
+        3 lines. Typeset the title in 10 pt Times roman, uppercase and 
+    boldface.}
+}
+
+\author{\footnotesize FIRST AUTHOR\footnote{
+        Typeset names in 8~pt Times roman, uppercase. Use the footnote 
+to indicate the present or permanent address of the author.}}
+
+\address{University Department, University Name, Address\\
+    City, State ZIP/Zone,
+    Country\footnote{State completely without abbreviations, the
+        affiliation and mailing address, including country. Typeset in 8~pt
+    Times italic.}\\
+first\_author@university.edu}
+
+\author{SECOND AUTHOR}
+
+\address{Group, Laboratory, Address\\
+    City, State ZIP/Zone, Country\\
+second\_author@group.com}
+
+\maketitle
+
+\begin{history}
+    \received{(Day Month Year)}
+    \revised{(Day Month Year)}
+    \accepted{(Day Month Year)}
+    %\comby{(xxxxxxxxxx)}
+\end{history}
+
+%\author{
+  % 1st. author
+%  \alignauthor
+%	Vangelis Banos\\
+%         \affaddr{Department of Informatics}\\
+%         \affaddr{Aristotle University of Thessaloniki, Greece}\\
+%         \email{\href{vmailto:vbanos@gmail.com}{vbanos@gmail.com}}
+%  % 2nd. author
+%	\alignauthor
+%	Olivier Blanvillain\\
+%         \affaddr{École Polytechnique Fédérale de Lausanne (EPFL)}\\
+%         \affaddr{1015 Lausanne, Switzerland}\\
+%         \email{\href{mailto:olivier.blanvillain@epfl.ch}{olivier.blanvillain@epfl.ch}}
+  % 3rd. author
+%	\alignauthor
+%  Nikos Kasioumis\\
+%         \affaddr{European Organization for Nuclear Research (CERN)}\\
+%         \affaddr{1211 Geneva 23, Switzerland}\\
+%         \email{\href{mailto:nikos.kasioumis@cern.ch}{nikos.kasioumis@cern.ch}}
+%  \alignauthor
+%	Yannis Manolopoulos\\
+%         \affaddr{Department of Informatics}\\
+%         \affaddr{Aristotle University of Thessaloniki, Greece}\\
+%         \email{\href{vmailto:manolopo@csd.auth.gr}{manolopo@csd.auth.gr}}
+%  }
+%  
+%  \additionalauthors{Yannis Manolopoulos (Department of Informatics, Aristotle University of Thessaloniki, Greece, {\texttt{manolopo@csd.auth.gr}})}
+%  
+%  \hypersetup{pageanchor=false}
+  \maketitle
+
+  \begin{abstract}
+    \input{0-abstract.tex}
+  \end{abstract}
+  
+%  \category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information filtering, Query formulation, Selection process]
+%  \category{\\D.2.8}{Software Engineering}{Metrics}[Complexity measures, Performance measures]
+  
+  % In order of most significant, first letter of each word capitalized.
+%  \terms{Design, Algorithms, Performance, Experimentation}
+
+  % In alphabetical order, first letter of the first word capitalized.
+  \keywords{Blog crawler, web data extraction, wrapper generation}
+
+  \input{algos.tex}
+  \input{tables.tex}
+  ~\\~\\~\\~\\~\\~\\~\\
+  \input{1-intro.tex}
+  \input{2-related-work.tex}
+  \input{3-algorithms.tex}
+  \input{4-architecture.tex}
+  \input{5-evaluation.tex}
+  \input{6-conclusion-and-future-work.tex}
+  \input{7-acknowledgments.tex}
+
+  \balance
+
+  \bibliographystyle{abbrv}
+  \bibliography{main,manual}
+
+\end{document}

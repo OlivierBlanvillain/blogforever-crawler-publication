@@ -1,0 +1,84 @@
+\section{Introduction}
+
+The blogosphere is an established channel of online communication which 
+bears great significance~\cite{oevre2012}. Wordpress, a single blog 
+publishing company, reports more than 1 million new posts and 1.5 million 
+new comments each day~\cite{wordpress2014}. These overwhelming numbers 
+illustrate the importance of blogs in most aspects of private and 
+business life~\cite{chung2007uses}. Blogs contain data with historic, 
+political, social and scientific value which need to be accessible 
+for current and future generations. For instance, blogs proved to 
+be an important resource during the 2011 Egyptian revolution by 
+playing an instrumental role in the organization and implementation of 
+protests~\cite{nahedeltantawy2012}. The problem is that blogs disappear 
+every day~\cite{johnson2008blogs} because there is no standard method or 
+authority to ensure blog archiving and long-term digital preservation.
+
+Among the challenges in developing a blog archiving software
+is the design of a web crawler capable of efficiently traversing blogs 
+to harvest their content. The sheer size of the blogosphere combined with 
+an unpredictable publishing rate of new information call for a highly 
+scalable system, while the lack of programmatic access to the complete 
+blog content makes the use of automatic extraction techniques necessary. 
+The variety of available blog publishing platforms offers a limited 
+common set of properties that a crawler can exploit, further narrowed by 
+the ever-changing structure of blog contents. Finally, an increasing 
+number of blogs heavily rely on dynamically created content to present 
+information, using the latest web technologies, hence invalidating 
+traditional web crawling techniques.
+
+A key characteristic of blogs which differentiates them from regular 
+websites is their association with web feeds~\cite{lindahl2003weblogs}. 
+Their primary use is to provide a uniform subscription mechanism, thereby 
+allowing users to keep track of the latest updates without the need to 
+actually visit blogs. Concretely, a web feed is an XML file containing 
+links to the latest blog posts along with their articles (abstract or 
+full text) and associated metadata~\cite{board2007rss}. While web feeds 
+essentially solve the question of update monitoring, their limited size 
+makes it necessary to download blog pages to harvest previous content.
+
+This paper presents the latest developments of the open-source 
+BlogForever Crawler, a key component of the BlogForever 
+platform~\cite{kasioumis2013towards} responsible for traversing blogs, 
+extracting their content and monitoring their updates. Our main 
+objectives in this work are to introduce a new approach to blog data 
+extraction and to present the architecture and implementation of a blog 
+crawler capable of extracting articles, authors, publication dates, 
+comments and potentially any other element which appear in weblog
+web feeds. Our contributions can be summarized as follows:
+
+\begin{itemize}
+\item 
+A new algorithm to build extraction rules from web feeds and an optimised 
+reformulation based on a particular string similarity algorithm featuring
+linear time complexity.
+\item 
+A methodology to use the algorithm for blog article extraction and how 
+it can be augmented to be used with other blog elements such as authors, 
+publication dates and comments.
+\item 
+The overall BlogForever crawler architecture and implementation with a 
+focus on design decisions, modularity, scalability and interoperability.
+\item 
+An approach to use a complete web browser to render JavaScript powered 
+web pages before processing them. This step allows our crawler to 
+effectively harvest blogs built with modern technologies, such as 
+the increasingly popular third-party commenting systems.
+\item 
+A mapping of the extracted blog content to Archival Information Packages 
+(AIPs) using METS and MARCXML standards for interoperability purposes.
+\item 
+An evaluation of the content extraction and execution time of our 
+algorithm against three state-of-the-art web article extraction algorithms.\\
+\end{itemize}
+
+The concepts emerging from our research are viewed in the context of the 
+BlogForever platform but the presented algorithms, techniques and system 
+architectures can be used in other applications related to Wrapper 
+Generation and Web Data Extraction.
+
+The rest of this work is structured as follows: Section 2 presents 
+related work. Section 3 introduces the new algorithms to extract data 
+from blogs. Section 4 presents the blog crawler system architecture and 
+implementation. Section 5 presents the evaluation and results. Finally, 
+our conclusions and some discussion on our work are presented in section 6.
